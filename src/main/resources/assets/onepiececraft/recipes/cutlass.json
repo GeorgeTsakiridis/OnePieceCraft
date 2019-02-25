@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "onepiececraft:cutlass"
+  },
+  "pattern": [
+    "  S",
+    "IS ",
+    "W  "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "onepiececraft:steel_ingot"
+    },
+    "W": {
+      "item": "minecraft:planks",
+      "data": 0
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  }
+}

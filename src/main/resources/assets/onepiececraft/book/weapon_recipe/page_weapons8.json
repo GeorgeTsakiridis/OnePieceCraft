@@ -1,0 +1,34 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Eisen Whip",
+      "totalLines": 1,
+      "lines": [
+        "§lEisen Whip§r is a sword owned by Ohm. A Eisen Dial installed in its base supplies a constant stream of Iron Cloud, which acts as the blade of the sword."
+      ],
+      "attack" : 8,
+      "durability" : 502,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:eisen_whip"
+    },
+    {
+      "title": "Durandal",
+      "totalLines": 1,
+      "lines": [
+        "§lDurandal§r is one of the Meito. It is currently owned by Cavendish."
+      ],
+      "attack" : 9,
+      "durability" : 2500,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:durandal_cased"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "entity_info",
+  "title": "Rayleigh",
+  "entityToDisplay" : ["rayleigh"],
+  "displaySize" : 50,
+  "totalLines": 2,
+  "lines":[
+    "Silvers Rayleigh, also known as the \"Dark King\", is the former first mate of the Roger Pirates, known as the \"Right Hand of the Pirate King\".",
+    "He can be found in all biomes but it can be hard to find him. Finding Rayleigh however is necessary in order to unlock the Emperor Haki."
+  ]
+}

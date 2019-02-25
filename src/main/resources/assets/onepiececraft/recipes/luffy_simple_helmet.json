@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "onepiececraft:luffy_simple_helmet"
+  },
+  "pattern": [
+    "WWW",
+    "WRW"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:wool",
+      "data": 14
+    },
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  }
+}

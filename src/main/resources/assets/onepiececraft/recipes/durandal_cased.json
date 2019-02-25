@@ -1,0 +1,30 @@
+{
+  "result": {
+    "item": "onepiececraft:durandal_cased"
+  },
+  "pattern": [
+    " ZS",
+    "GSX",
+    "TG "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "X": {
+      "item": "minecraft:dye",
+      "data": 5
+    },
+    "Z": {
+      "item": "minecraft:dye",
+      "data": 7
+    }
+  }
+}

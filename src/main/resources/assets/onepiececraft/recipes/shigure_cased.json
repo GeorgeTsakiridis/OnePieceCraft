@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "onepiececraft:shigure_cased"
+  },
+  "pattern": [
+    " DI",
+    "GID",
+    "SG "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:dye",
+      "data": 2
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

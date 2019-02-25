@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "onepiececraft:yubashiri_cased"
+  },
+  "pattern": [
+    " BS",
+    "GSB",
+    "TG "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    "S": {
+      "item": "onepiececraft:steel_ingot"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  }
+}

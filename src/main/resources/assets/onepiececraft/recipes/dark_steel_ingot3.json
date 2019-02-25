@@ -1,0 +1,11 @@
+{
+  "result": {
+    "item": "onepiececraft:dark_steel_ingot"
+  },
+  "ingredient": {
+    "item": "onepiececraft:dark_steel_ore"
+  },
+  "type": "minecraft:smelting",
+  "experience": 0.7,
+  "cookingtime": 200
+}

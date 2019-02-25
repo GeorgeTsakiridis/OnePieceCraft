@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "onepiececraft:kairoseki_block"
+  },
+  "pattern": [
+    "GGG",
+    "GGG",
+    "GGG"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "onepiececraft:kairoseki_gem"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "result": {
+    "item": "onepiececraft:zoro_simple_leggings"
+  },
+  "pattern": [
+    "GGG",
+    "G G",
+    "G G"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:wool",
+      "data": 5
+    }
+  }
+}

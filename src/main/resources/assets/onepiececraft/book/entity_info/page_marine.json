@@ -1,0 +1,12 @@
+{
+  "type": "entity_info",
+  "title": "Marines",
+  "entityToDisplay" : ["marine", "hardMarine"],
+  "displaySize" : 50,
+  "totalLines": 3,
+  "lines":[
+    "The Marines are the World Government's military sea force. They will attack you if your bounty is over 1000 berries.",
+    "They will also attack Pirates and Bandits. Occasionally a harder variation of Marines may be encountered.",
+    "Killing a marine increases your bounty by 100 berries!"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "type": "devil_fruit",
+  "title" : "Gomu Gomu no Mi - (Rubber)",
+  "prefix" : "Gomu Gomu no",
+  "powers": [
+    4,
+    {
+      "name" : "Pistol",
+      "cooldown" : 3,
+      "sideEffects" : "None",
+      "description" : "Creates a Punch that will stretch and damage everything it touches."
+    },
+    {
+      "name" : "Gear Second",
+      "cooldown" : 16,
+      "sideEffects" : "Slowness II, Weakness II",
+      "description" : "Gives the player: Strength II, Speed III, Jump Boost II and Regeneration II."
+    }
+  ,
+    {
+      "name" : "Gear Third",
+      "cooldown" : 15,
+      "sideEffects" : "Slowness III, Weakness II",
+      "description" : "Creates a big Punch that will damage everything it touches and it will create a small explosion if it collides with any block."
+    }
+  ,
+    {
+      "name" : "Gear Fourth",
+      "cooldown" : 35,
+      "sideEffects" : "Slowness III, Weakness II, Hunger II",
+      "description" : "Player will become immune to any kind of damage (including Fall Damage) and by pressing [SPACE] player can jump in mid air. Also gives the player: Strength III, Speed III and Regeneration III."
+    }
+  ]
+}

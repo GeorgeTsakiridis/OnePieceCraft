@@ -1,0 +1,11 @@
+{
+	"parent": "block/cube",
+	"textures": {
+		"particle": "onepiececraft:blocks/shipbuildersidea",
+		"up": "onepiececraft:blocks/shipbuildertop","down": "blocks/planks_oak",
+		"north": "onepiececraft:blocks/shipbuildersidea",
+		"east": "onepiececraft:blocks/shipbuildersideb",
+		"south": "onepiececraft:blocks/shipbuildersidea",
+		"west": "onepiececraft:blocks/shipbuildersideb"
+	}
+}

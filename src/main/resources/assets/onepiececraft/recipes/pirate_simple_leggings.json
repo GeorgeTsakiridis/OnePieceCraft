@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:pirate_simple_leggings"
+  },
+  "pattern": [
+    "BAB",
+    "B B",
+    "B B"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "A": {
+      "item": "minecraft:wool",
+      "data": 12
+    },
+    "B": {
+      "item": "minecraft:leather"
+    }
+  }
+}

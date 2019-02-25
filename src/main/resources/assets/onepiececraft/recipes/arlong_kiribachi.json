@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:arlong_kiribachi"
+  },
+  "pattern": [
+    "  D",
+    "LDD",
+    "IL "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  }
+}

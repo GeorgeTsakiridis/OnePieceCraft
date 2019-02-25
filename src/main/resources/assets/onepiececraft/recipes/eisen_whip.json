@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:eisen_whip"
+  },
+  "pattern": [
+    "  I",
+    "GI ",
+    "DG "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "D": {
+      "item": "onepiececraft:impact_dial"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

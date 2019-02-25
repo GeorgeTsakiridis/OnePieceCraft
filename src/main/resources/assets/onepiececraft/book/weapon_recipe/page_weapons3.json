@@ -1,0 +1,34 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Arlong's Kiribachi Sword",
+      "totalLines": 1,
+      "lines": [
+        "§lKiribachi§r is a gigantic sword wielded by Arlong."
+      ],
+      "attack" : 11,
+      "durability" : 2000,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:arlong_kiribachi"
+    },
+    {
+      "title": "Smoker's Jitte Sword",
+      "totalLines": 1,
+      "lines": [
+        "The §lNanashaku Jitte§r is Smoker's primary weapon. It is a jitte whose tip is made of Seastone, which Smoker uses to suppress Devil Fruit users' powers in order to debilitate and capture them."
+      ],
+      "attack" : 10,
+      "durability" : 2000,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:smoker_jitte"
+    }
+  ]
+}

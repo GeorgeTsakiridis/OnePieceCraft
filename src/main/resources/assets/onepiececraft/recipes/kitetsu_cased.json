@@ -1,0 +1,25 @@
+{
+  "result": {
+    "item": "onepiececraft:kitetsu_cased"
+  },
+  "pattern": [
+    "XLX",
+    "XDX",
+    "XSX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "X": {
+      "item": "minecraft:leather"
+    },
+    "L": {
+      "item": "onepiececraft:steel_ingot"
+    }
+  }
+}

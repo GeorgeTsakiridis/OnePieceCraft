@@ -1,0 +1,6 @@
+{
+  "type":"ship_recipe",
+  "title":"Sail Boat",
+  "description":"It can hold up to 4 Players and/or Mobs",
+  "result":"onepiececraft:sail_boat"
+}

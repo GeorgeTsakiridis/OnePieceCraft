@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "onepiececraft:pretzel_sword"
+  },
+  "pattern": [
+    " DS",
+    "GSD",
+    "TG "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "D": {
+      "item": "minecraft:dye",
+      "data": 5
+    },
+    "T": {
+      "item": "minecraft:stick"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  }
+}

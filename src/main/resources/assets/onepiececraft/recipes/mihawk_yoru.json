@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:mihawk_yoru"
+  },
+  "pattern": [
+    "DDD",
+    "DDD",
+    "RIR"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:diamond"
+    },
+    "D": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

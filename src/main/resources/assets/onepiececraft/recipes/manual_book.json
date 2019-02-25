@@ -1,0 +1,14 @@
+{
+  "result": {
+    "item": "onepiececraft:manual_book"
+  },
+  "ingredients": [
+    {
+      "item": "onepiececraft:luffy_simple_helmet"
+    },
+    {
+      "item": "minecraft:book"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

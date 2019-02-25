@@ -1,0 +1,12 @@
+{
+  "result": {
+    "item": "onepiececraft:kairoseki_gem",
+    "count": 2
+  },
+  "ingredient": {
+    "item": "onepiececraft:kairoseki_stone"
+  },
+  "type": "minecraft:smelting",
+  "experience": 1.0,
+  "cookingtime": 200
+}

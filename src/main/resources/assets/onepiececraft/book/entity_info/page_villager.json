@@ -1,0 +1,11 @@
+{
+  "type": "entity_info",
+  "title": "Villagers",
+  "entityToDisplay" : ["villager"],
+  "displaySize" : 50,
+  "totalLines": 2,
+  "lines":[
+    "Villagers can be found in normal Minecraft villages.",
+    "You can trade with them some mod introduced Items/Blocks."
+  ]
+}

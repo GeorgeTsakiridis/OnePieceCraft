@@ -1,0 +1,33 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Senriku Rifle",
+      "totalLines": 1,
+      "lines": [
+        "§lSenriku§r is a rifle with an extra-long barrel with a widely-flared muzzle, similar to a blunderbuss but highly exaggerated. The end would normally render the cross-hairs placed just behind it useless, though that does not seem to be the case."
+      ],
+      "attack" : 7,
+      "durability" : 300,
+      "rightClickToRemove" : false,
+      "range" : 80,
+      "reloadTime" : 0.5,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:senriku"
+    },
+    {
+      "title": "",
+      "totalLines": 0,
+      "lines": [
+      ],
+      "attack" : -1,
+      "durability" : -1,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:senriku_ammo"
+    }
+  ]
+}

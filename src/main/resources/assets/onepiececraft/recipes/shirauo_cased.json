@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:shirauo_cased"
+  },
+  "pattern": [
+    "  S",
+    "DS ",
+    "TD "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "T": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  }
+}

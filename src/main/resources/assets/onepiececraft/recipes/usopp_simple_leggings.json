@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:usopp_simple_leggings"
+  },
+  "pattern": [
+    "WLW",
+    "W W",
+    "W W"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:wool",
+      "data": 12
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  }
+}

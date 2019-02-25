@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "onepiececraft:ussop_kabuto"
+  },
+  "pattern": [
+    "  R",
+    "GSR",
+    "SGI"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "G": {
+      "item": "minecraft:dye",
+      "data": 2
+    },
+    "I": {
+      "item": "onepiececraft:impact_dial"
+    }
+  }
+}

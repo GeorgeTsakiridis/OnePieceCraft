@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:wado_ichi_monji_cased"
+  },
+  "pattern": [
+    "XIX",
+    "XIX",
+    "XSX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "minecraft:leather"
+    },
+    "I": {
+      "item": "onepiececraft:steel_ingot"
+    }
+  }
+}

@@ -1,0 +1,5 @@
+{
+	"variants": {
+		"normal": { "model": "onepiececraft:ship_builder_block" }
+	}
+}

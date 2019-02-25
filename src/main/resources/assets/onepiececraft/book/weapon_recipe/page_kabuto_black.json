@@ -1,0 +1,33 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Usopp's Black (Kuro) Kabuto",
+      "totalLines": 1,
+      "lines": [
+        "Besides being more easily portable compared to the previous Kabuto, it retains the same design and functions."
+      ],
+      "attack" : -1,
+      "durability" : 750,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:ussop_kabuto_black"
+    },
+    {
+      "title": "",
+      "totalLines": 0,
+      "lines": [
+      ],
+      "attack" : -1,
+      "durability" : -1,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:ussop_kabuto_ammo"
+    }
+  ]
+}

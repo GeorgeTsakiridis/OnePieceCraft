@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "onepiececraft:pirate_simple_chestplate"
+  },
+  "pattern": [
+    "W W",
+    "WBW",
+    "WWW"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:wool",
+      "data": 0
+    },
+    "W": {
+      "item": "minecraft:wool",
+      "data": 12
+    }
+  }
+}

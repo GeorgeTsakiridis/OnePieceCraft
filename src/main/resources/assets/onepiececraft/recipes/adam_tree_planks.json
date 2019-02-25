@@ -1,0 +1,12 @@
+{
+  "result": {
+    "item": "onepiececraft:adam_tree_planks",
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "item": "onepiececraft:adam_tree_wood"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

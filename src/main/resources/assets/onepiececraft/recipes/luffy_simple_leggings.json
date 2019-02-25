@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "onepiececraft:luffy_simple_leggings"
+  },
+  "pattern": [
+    "LLL",
+    "L L",
+    "W W"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:wool",
+      "data": 0
+    },
+    "L": {
+      "item": "minecraft:wool",
+      "data": 3
+    }
+  }
+}

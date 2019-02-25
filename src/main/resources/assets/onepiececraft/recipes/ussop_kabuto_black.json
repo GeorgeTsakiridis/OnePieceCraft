@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:ussop_kabuto_black"
+  },
+  "pattern": [
+    "BK",
+    "IB"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:dye",
+      "data": 0
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "K": {
+      "item": "onepiececraft:ussop_kabuto"
+    }
+  }
+}

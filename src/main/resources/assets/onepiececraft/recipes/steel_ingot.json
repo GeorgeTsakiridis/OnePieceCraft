@@ -1,0 +1,12 @@
+{
+  "result": {
+    "item": "onepiececraft:steel_ingot",
+    "count": 9
+  },
+  "ingredients": [
+    {
+      "item": "onepiececraft:steel_block"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

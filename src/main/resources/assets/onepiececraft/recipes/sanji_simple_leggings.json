@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "onepiececraft:sanji_simple_leggings"
+  },
+  "pattern": [
+    "BBB",
+    "B B",
+    "Y Y"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:wool",
+      "data": 15
+    },
+    "Y": {
+      "item": "minecraft:wool",
+      "data": 4
+    }
+  }
+}

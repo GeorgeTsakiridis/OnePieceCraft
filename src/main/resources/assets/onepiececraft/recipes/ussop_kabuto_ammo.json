@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "onepiececraft:ussop_kabuto_ammo",
+    "count": 2
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:cobblestone"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

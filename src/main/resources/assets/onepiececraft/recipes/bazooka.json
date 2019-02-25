@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:bazooka"
+  },
+  "pattern": [
+    "  I",
+    "WI ",
+    "WW "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:planks",
+      "data": 0
+    },
+    "I": {
+      "item": "onepiececraft:dark_steel_block"
+    }
+  }
+}

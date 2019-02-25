@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:zoro_simple_chestplate"
+  },
+  "pattern": [
+    "G G",
+    "GLG",
+    "GGG"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:wool",
+      "data": 13
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  }
+}

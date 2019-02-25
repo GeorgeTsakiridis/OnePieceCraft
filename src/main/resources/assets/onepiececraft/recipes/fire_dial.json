@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "onepiececraft:fire_dial"
+  },
+  "pattern": [
+    " C ",
+    "CBC",
+    " C "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "C": {
+      "item": "minecraft:clay_ball"
+    }
+  }
+}

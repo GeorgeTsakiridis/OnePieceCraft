@@ -1,0 +1,27 @@
+{
+  "type": "devil_fruit",
+  "title" : "Nikyu Nikyu no Mi - (Paw)",
+  "prefix" : "Nikyu Nikyu no Mi",
+  "powers": [
+    3,
+    {
+      "name" : "Pad Ho",
+      "cooldown" : 5,
+      "sideEffects" : "None",
+      "description" : "Damages and pushes players and mobs like a TNT does."
+    },
+    {
+      "name" : "Tsuppari Pad Ho",
+      "cooldown" : 20,
+      "sideEffects" : "Slowness I",
+      "description" : "A more powerful version of Pad Ho."
+    }
+  ,
+    {
+      "name" : "Tsuppari Ursus Shock",
+      "cooldown" : 60,
+      "sideEffects" : "Slowness I",
+      "description" : "=Creates an air bubble that will contract and then erupt destroying blocks and damaging players and mobs."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "type": "entity_info",
+  "title": "Tonta",
+  "entityToDisplay" : ["tonta"],
+  "displaySize" : 100,
+  "totalLines": 2,
+  "lines":[
+    "Tonta can be found in all biomes.",
+    "All they do for now is attacking bandits."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "textures": {"#sn": "onepiececraft:entity/other/snail"},
+    "model": "onepiececraft:snail.obj",
+    "transform": "forge:default-item"
+  },
+  "variants": {
+    "normal": [{"model": "onepiececraft:snail.obj"}],
+    "inventory":[{
+      "transform": {
+        "thirdperson": {
+          "translation": [0, 0.09375, -0.171875],
+          "rotation": [ { "y": -45}, {"x": 0}, {"z": -10} ],
+          "scale": 0.6
+        },
+        "gui": {
+          "rotation": [{ "y": 135}, {"x": 0}, {"z": 0}]
+        }
+      }
+    }],
+    "facing": {
+      "down": { "model": "onepiececraft:snail.obj"},
+      "up": { "model": "onepiececraft:snail.obj"},
+      "north": { "model": "onepiececraft:snail.obj", "y": -180},
+      "south": { "model": "onepiececraft:snail.obj", "y": 0},
+      "west": { "model": "onepiececraft:snail.obj", "y": 90},
+      "east": { "model": "onepiececraft:snail.obj", "y": 270}
+    }
+  }
+}

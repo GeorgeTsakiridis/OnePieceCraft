@@ -1,0 +1,28 @@
+{
+  "type": "variety_recipe",
+  "size": 1,
+  "recipes": [
+    {
+      "title": "Dials (Water/Lava/Fire/Thunder/Impact)",
+      "totalLines": 7,
+      "lines": [
+        "§lDials§r are strange, mysterious devices made from the remains of particular shellfish, which have the ability to store energy and matter. The shellfish remains are gathered from the shallows near the shore of the White-White Sea. Though they originate from Skypiea, some of them can reach and be used in the lower seas.",
+        "§9Water§r Dial: Places a water block (Like bucket but it is stackable).",
+        "§4Lava§r Dial: Places a lava block (Like bucket but it is stackable).",
+        "§6Fire§r Dial: Surrounds the Player with fire.",
+        "§bThunder§r Dial: Summons a thunder",
+        "§cImpact§r Dial: Damages the targeted Player or mob",
+        "(For Lava replace with Lava Bucket, for Fire with Flint and Steel, for Thunder with Redstone Cube and for Impact with a redstone dust)"
+      ],
+      "itemOrBlock" : "item",
+      "totalResults" : 5,
+      "results" : [
+        "onepiececraft:water_dial",
+        "onepiececraft:lava_dial",
+        "onepiececraft:fire_dial",
+        "onepiececraft:impact_dial",
+        "onepiececraft:thunder_dial"
+      ]
+    }
+  ]
+}

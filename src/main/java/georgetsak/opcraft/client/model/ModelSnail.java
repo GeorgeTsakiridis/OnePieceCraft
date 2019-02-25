@@ -1,0 +1,260 @@
+package georgetsak.opcraft.client.model;
+
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.entity.Entity;
+
+public class ModelSnail extends ModelBase
+{
+    //fields
+    private ModelRenderer Shape1;
+    private ModelRenderer Shape2;
+    private ModelRenderer Shape3;
+    private ModelRenderer Shape4;
+    private ModelRenderer Shape5;
+    private ModelRenderer Shape6;
+    private ModelRenderer Shape7;
+    private ModelRenderer Shape8;
+    private ModelRenderer Shape9;
+    private ModelRenderer Shape10;
+    private ModelRenderer Shape11;
+    private ModelRenderer Shape12;
+    private ModelRenderer Shape13;
+    private ModelRenderer Shape14;
+    private ModelRenderer Shape15;
+    private ModelRenderer Shape16;
+    private ModelRenderer Shape17;
+    private ModelRenderer Shape18;
+    private ModelRenderer Shape19;
+    private ModelRenderer Shape20;
+    private ModelRenderer Shape21;
+    private ModelRenderer Shape22;
+    private ModelRenderer Shape23;
+    private ModelRenderer Shape24;
+    private ModelRenderer Shape25;
+    private ModelRenderer Shape26;
+    private ModelRenderer Shape27;
+    private ModelRenderer Shape28;
+
+    public ModelSnail()
+    {
+        textureWidth = 128;
+        textureHeight = 128;
+
+        Shape1 = new ModelRenderer(this, 1, 16);
+        Shape1.addBox(-1.5F, -2.5F, -1.5F, 3, 3, 3);
+        Shape1.setRotationPoint(-2.5F, 13.5F, -5.5F);
+        Shape1.setTextureSize(128, 128);
+        Shape1.mirror = true;
+        setRotation(Shape1, 0F, 0F, 0F);
+        Shape2 = new ModelRenderer(this, 14, 16);
+        Shape2.addBox(-1.5F, -2.5F, -1.5F, 3, 3, 3);
+        Shape2.setRotationPoint(2.5F, 13.5F, -5.5F);
+        Shape2.setTextureSize(128, 128);
+        Shape2.mirror = true;
+        setRotation(Shape2, 0F, 0F, 0F);
+        Shape3 = new ModelRenderer(this, 27, 16);
+        Shape3.addBox(0F, 0F, 0F, 1, 5, 1);
+        Shape3.setRotationPoint(2F, 14F, -6F);
+        Shape3.setTextureSize(128, 128);
+        Shape3.mirror = true;
+        setRotation(Shape3, 0F, 0F, 0F);
+        Shape4 = new ModelRenderer(this, 32, 16);
+        Shape4.addBox(0F, 0F, 0F, 1, 5, 1);
+        Shape4.setRotationPoint(-3F, 14F, -6F);
+        Shape4.setTextureSize(128, 128);
+        Shape4.mirror = true;
+        setRotation(Shape4, 0F, 0F, 0F);
+        Shape5 = new ModelRenderer(this, 47, 0);
+        Shape5.addBox(0F, 0F, 0F, 10, 7, 7);
+        Shape5.setRotationPoint(-5F, 15F, -1F);
+        Shape5.setTextureSize(128, 128);
+        Shape5.mirror = true;
+        setRotation(Shape5, 0F, 0F, 0F);
+        Shape6 = new ModelRenderer(this, 85, 0);
+        Shape6.addBox(0F, 0F, 0F, 10, 1, 7);
+        Shape6.setRotationPoint(-5F, 14F, -1F);
+        Shape6.setTextureSize(128, 128);
+        Shape6.mirror = true;
+        setRotation(Shape6, 0F, 0F, 0F);
+        Shape7 = new ModelRenderer(this, 85, 9);
+        Shape7.addBox(0F, 0F, 0F, 10, 1, 7);
+        Shape7.setRotationPoint(-5F, 22F, -1F);
+        Shape7.setTextureSize(128, 128);
+        Shape7.mirror = true;
+        setRotation(Shape7, 0F, 0F, 0F);
+        Shape8 = new ModelRenderer(this, 71, 18);
+        Shape8.addBox(0F, 0F, 0F, 10, 7, 1);
+        Shape8.setRotationPoint(-5F, 15F, 6F);
+        Shape8.setTextureSize(128, 128);
+        Shape8.mirror = true;
+        setRotation(Shape8, 0F, 0F, 0F);
+        Shape9 = new ModelRenderer(this, 47, 15);
+        Shape9.addBox(0F, 0F, 0F, 10, 5, 1);
+        Shape9.setRotationPoint(-5F, 16F, -3F);
+        Shape9.setTextureSize(128, 128);
+        Shape9.mirror = true;
+        setRotation(Shape9, 0F, 0F, 0F);
+        Shape10 = new ModelRenderer(this, 47, 22);
+        Shape10.addBox(0F, 0F, 0F, 10, 5, 1);
+        Shape10.setRotationPoint(-5F, 16F, 7F);
+        Shape10.setTextureSize(128, 128);
+        Shape10.mirror = true;
+        setRotation(Shape10, 0F, 0F, 0F);
+        Shape11 = new ModelRenderer(this, 0, 0);
+        Shape11.addBox(0F, 0F, 0F, 11, 1, 10);
+        Shape11.setRotationPoint(-5.5F, 23F, -3F);
+        Shape11.setTextureSize(128, 128);
+        Shape11.mirror = true;
+        setRotation(Shape11, 0F, 0F, 0F);
+        Shape12 = new ModelRenderer(this, 1, 37);
+        Shape12.addBox(0F, 0F, 0F, 10, 1, 1);
+        Shape12.setRotationPoint(-5F, 23F, 7F);
+        Shape12.setTextureSize(128, 128);
+        Shape12.mirror = true;
+        setRotation(Shape12, 0F, 0F, 0F);
+        Shape13 = new ModelRenderer(this, 18, 68);
+        Shape13.addBox(0F, 0F, 0F, 10, 2, 1);
+        Shape13.setRotationPoint(-5F, 22F, -4F);
+        Shape13.setTextureSize(128, 128);
+        Shape13.mirror = true;
+        setRotation(Shape13, 0F, 0F, 0F);
+        Shape14 = new ModelRenderer(this, 18, 63);
+        Shape14.addBox(0F, 0F, 0F, 9, 2, 1);
+        Shape14.setRotationPoint(-4.5F, 22F, -5F);
+        Shape14.setTextureSize(128, 128);
+        Shape14.mirror = true;
+        setRotation(Shape14, 0F, 0F, 0F);
+        Shape15 = new ModelRenderer(this, 45, 48);
+        Shape15.addBox(0F, 0F, 0F, 8, 1, 1);
+        Shape15.setRotationPoint(-4F, 21F, -5F);
+        Shape15.setTextureSize(128, 128);
+        Shape15.mirror = true;
+        setRotation(Shape15, 0F, 0F, 0F);
+        Shape16 = new ModelRenderer(this, 18, 58);
+        Shape16.addBox(0F, 0F, 0F, 8, 2, 1);
+        Shape16.setRotationPoint(-4F, 22F, -6F);
+        Shape16.setTextureSize(128, 128);
+        Shape16.mirror = true;
+        setRotation(Shape16, 0F, 0F, 0F);
+        Shape17 = new ModelRenderer(this, 45, 44);
+        Shape17.addBox(0F, 0F, 0F, 8, 1, 1);
+        Shape17.setRotationPoint(-4F, 21F, -6F);
+        Shape17.setTextureSize(128, 128);
+        Shape17.mirror = true;
+        setRotation(Shape17, 0F, 0F, 0F);
+        Shape18 = new ModelRenderer(this, 11, 30);
+        Shape18.addBox(0F, 0F, 0F, 7, 1, 1);
+        Shape18.setRotationPoint(-3.5F, 20F, -6F);
+        Shape18.setTextureSize(128, 128);
+        Shape18.mirror = true;
+        setRotation(Shape18, 0F, 0F, 0F);
+        Shape19 = new ModelRenderer(this, 24, 23);
+        Shape19.addBox(0F, 0F, 0F, 6, 1, 1);
+        Shape19.setRotationPoint(-3F, 19F, -6F);
+        Shape19.setTextureSize(128, 128);
+        Shape19.mirror = true;
+        setRotation(Shape19, 0F, 0F, 0F);
+        Shape20 = new ModelRenderer(this, 18, 53);
+        Shape20.addBox(0F, 0F, 0F, 7, 3, 1);
+        Shape20.setRotationPoint(-3.5F, 21F, -7F);
+        Shape20.setTextureSize(128, 128);
+        Shape20.mirror = true;
+        setRotation(Shape20, 0F, 0F, 0F);
+        Shape21 = new ModelRenderer(this, 12, 27);
+        Shape21.addBox(0F, 0F, 0F, 6, 1, 1);
+        Shape21.setRotationPoint(-3F, 20F, -7F);
+        Shape21.setTextureSize(128, 128);
+        Shape21.mirror = true;
+        setRotation(Shape21, 0F, 0F, 0F);
+        Shape22 = new ModelRenderer(this, 31, 27);
+        Shape22.addBox(0F, 0F, 0F, 6, 1, 1);
+        Shape22.setRotationPoint(-3F, 20F, -5F);
+        Shape22.setTextureSize(128, 128);
+        Shape22.mirror = true;
+        setRotation(Shape22, 0F, 0F, 0F);
+        Shape23 = new ModelRenderer(this, 30, 30);
+        Shape23.addBox(0F, 0F, 0F, 7, 1, 1);
+        Shape23.setRotationPoint(-4.5F, 21F, -4F);
+        Shape23.setTextureSize(128, 128);
+        Shape23.mirror = true;
+        setRotation(Shape23, 0F, 0F, 0F);
+        Shape24 = new ModelRenderer(this, 29, 33);
+        Shape24.addBox(0F, 0F, 0F, 8, 1, 1);
+        Shape24.setRotationPoint(-5F, 22F, -3F);
+        Shape24.setTextureSize(128, 128);
+        Shape24.mirror = true;
+        setRotation(Shape24, 0F, 0F, 0F);
+        Shape25 = new ModelRenderer(this, 18, 48);
+        Shape25.addBox(0F, 0F, 0F, 6, 3, 1);
+        Shape25.setRotationPoint(-3F, 21F, -8F);
+        Shape25.setTextureSize(128, 128);
+        Shape25.mirror = true;
+        setRotation(Shape25, 0F, 0F, 0F);
+        Shape26 = new ModelRenderer(this, 18, 44);
+        Shape26.addBox(0F, 0F, 0F, 5, 2, 1);
+        Shape26.setRotationPoint(-2.5F, 22F, -9F);
+        Shape26.setTextureSize(128, 128);
+        Shape26.mirror = true;
+        setRotation(Shape26, 0F, 0F, 0F);
+        Shape27 = new ModelRenderer(this, 95, 18);
+        Shape27.addBox(0F, 0F, 0F, 10, 7, 1);
+        Shape27.setRotationPoint(-5F, 15F, -2F);
+        Shape27.setTextureSize(128, 128);
+        Shape27.mirror = true;
+        setRotation(Shape27, 0F, 0F, 0F);
+        Shape28 = new ModelRenderer(this, 1, 33);
+        Shape28.addBox(0F, 0F, 0F, 9, 1, 1);
+        Shape28.setRotationPoint(-4.5F, 23F, 8F);
+        Shape28.setTextureSize(128, 128);
+        Shape28.mirror = true;
+        setRotation(Shape28, 0F, 0F, 0F);
+    }
+
+    public void renderAll(){
+        float f5 = 0.0625F;
+
+        Shape1.render(f5);
+        Shape2.render(f5);
+        Shape3.render(f5);
+        Shape4.render(f5);
+        Shape5.render(f5);
+        Shape6.render(f5);
+        Shape7.render(f5);
+        Shape8.render(f5);
+        Shape9.render(f5);
+        Shape10.render(f5);
+        Shape11.render(f5);
+        Shape12.render(f5);
+        Shape13.render(f5);
+        Shape14.render(f5);
+        Shape15.render(f5);
+        Shape16.render(f5);
+        Shape17.render(f5);
+        Shape18.render(f5);
+        Shape19.render(f5);
+        Shape20.render(f5);
+        Shape21.render(f5);
+        Shape22.render(f5);
+        Shape23.render(f5);
+        Shape24.render(f5);
+        Shape25.render(f5);
+        Shape26.render(f5);
+        Shape27.render(f5);
+        Shape28.render(f5);
+
+    }
+
+    private void setRotation(ModelRenderer model, float x, float y, float z)
+    {
+        model.rotateAngleX = x;
+        model.rotateAngleY = y;
+        model.rotateAngleZ = z;
+    }
+
+    @Override
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn) {
+        super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
+    }
+
+}

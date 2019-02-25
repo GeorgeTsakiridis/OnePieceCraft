@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "onepiececraft:usopp_simple_chestplate"
+  },
+  "pattern": [
+    "B B",
+    "BLB"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:leather"
+    },
+    "L": {
+      "item": "minecraft:wool",
+      "data": 12
+    }
+  }
+}

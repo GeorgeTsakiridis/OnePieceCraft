@@ -1,0 +1,10 @@
+{
+  "type": "entity_info",
+  "title": "Morgan",
+  "entityToDisplay" : ["morgan"],
+  "displaySize" : 50,
+  "totalLines": 1,
+  "lines":[
+    "\"Axe-Hand Morgan\" is a former Marine captain. He can be found on top of the Morgan's Fortress Tower."
+  ]
+}

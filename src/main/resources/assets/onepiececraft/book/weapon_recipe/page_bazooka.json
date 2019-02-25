@@ -1,0 +1,33 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Bazooka",
+      "totalLines": 1,
+      "lines": [
+        "Just a Bazooka!"
+      ],
+      "attack" : 19,
+      "durability" : 500,
+      "rightClickToRemove" : false,
+      "range" : 20,
+      "reloadTime" : 3,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:bazooka"
+    },
+    {
+      "title": "",
+      "totalLines": 0,
+      "lines": [
+      ],
+      "attack" : -1,
+      "durability" : -1,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:bazooka_ammo"
+    }
+  ]
+}

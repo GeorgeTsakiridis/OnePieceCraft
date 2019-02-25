@@ -1,0 +1,38 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Incomplete / Completed Clima-Tact",
+      "totalLines": 6,
+      "lines": [
+        "The §lClima-Tact§r was first created by Usopp. It resembles a bo-staff that can be separated into three segments; §9Water§r, §6Fire§r and §bThunder§r.",
+        "In §9Water§r Mode you can freeze surrounding water block and nearby players (or mobs).",
+        "In §6Fire§r mode you can set players (or mobs) on fire.",
+        "Finally in §bThunder§r mode you can summon lightnings on other players (or mobs). Be aware that this mode will quickly wear out this item...",
+        "You can switch between modes by pressing <§aSHIFT§r> + <§aRight Click§r>",
+        "Note: Incomplete Clima-Tact cannot be used!"
+      ],
+      "attack" : -1,
+      "durability" : -1,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:clima_simple"
+    },
+    {
+      "title": "",
+      "totalLines": 0,
+      "lines": [
+      ],
+      "attack" : -1,
+      "durability" : -1,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:clima_water"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:clima_water"
+  },
+  "ingredients": [
+    {
+      "item": "onepiececraft:clima_simple"
+    },
+    {
+      "item": "onepiececraft:fire_dial"
+    },
+    {
+      "item": "onepiececraft:water_dial"
+    },
+    {
+      "item": "onepiececraft:thunder_dial"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}
