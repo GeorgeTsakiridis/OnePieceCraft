@@ -67,6 +67,9 @@ public class OPEntities {
         EnumCreatureType crocodile = EnumHelper.addCreatureType("crocodile", EntityCrocodile.class, 1, Material.AIR, false, false);
         EnumCreatureType rayleigh = EnumHelper.addCreatureType("rayleigh", EntityRayleigh.class, 1, Material.AIR, true, false);
 
+        EnumCreatureType crocodile = EnumHelper.addCreatureType("crocodile", EntityCrocodile.class, 1, Material.AIR, false, false);
+        EnumCreatureType rayleigh = EnumHelper.addCreatureType("rayleigh", EntityRayleigh.class, 1, Material.AIR, true, false);
+
         EntityRegistry.addSpawn(EntityWildMarine.class, 20, 1, 5, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityWildHardMarine.class, 10, 1, 1, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityPirate.class, 5, 1, 6, EnumCreatureType.MONSTER, allSpawnableBiomes);
