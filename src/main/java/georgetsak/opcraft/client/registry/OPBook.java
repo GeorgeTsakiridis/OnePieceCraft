@@ -20,6 +20,8 @@ public class OPBook {
         PageManager.addPage("devil_fruit/page_goro");
         PageManager.addPage("devil_fruit/page_moku");
         PageManager.addPage("devil_fruit/page_yami");
+        PageManager.addPage("info/page_devil_fruit_power_remover");
+        PageManager.addPage("info/page_berries");
         PageManager.addPage("simple_recipe/page_kairoseki");
         PageManager.addPage("weapon_recipe/page_weapons1");
         PageManager.addPage("weapon_recipe/page_weapons2");

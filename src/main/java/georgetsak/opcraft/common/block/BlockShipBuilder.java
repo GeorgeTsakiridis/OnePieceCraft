@@ -17,8 +17,6 @@ import net.minecraft.world.World;
  */
 public class BlockShipBuilder extends Block {
 
-    EntityPlayer user;
-
     public BlockShipBuilder() {
         super(Material.WOOD);
         setSoundType(SoundType.WOOD);
@@ -29,7 +27,6 @@ public class BlockShipBuilder extends Block {
     @Override
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if(!playerIn.isSneaking()){
-            this.user = playerIn;
             playerIn.openGui(OPCraft.MODID, 2, worldIn, pos.getX(), pos.getY(), pos.getZ());
             return true;
         }else{

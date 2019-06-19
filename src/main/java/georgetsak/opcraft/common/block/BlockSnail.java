@@ -1,7 +1,9 @@
 package georgetsak.opcraft.common.block;
 
+import georgetsak.opcraft.OPCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.BlockWorkbench;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -9,10 +11,9 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.EnumBlockRenderType;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.stats.StatList;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -108,12 +109,28 @@ public class BlockSnail extends Block{
     }
 
 
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if (playerIn.isSneaking())
+        {
+            return true;
+        }
+        else
+        {
+            playerIn.openGui(OPCraft.MODID, 5, worldIn, pos.getX(), pos.getY(), pos.getZ());
+            return true;
+        }
+    }
+
     /**
     @Override
     public TileEntity createNewTileEntity(World worldIn, int meta) {
     return new SnailTileEntity();
     }
 **/
+
+
+
     @Override
     public boolean isOpaqueCube(IBlockState state)
     {

@@ -5,6 +5,8 @@ import georgetsak.opcraft.client.gui.overlay.SixPowersSelectionWheelRender;
 import georgetsak.opcraft.client.registry.OPBook;
 import georgetsak.opcraft.client.render.*;
 import georgetsak.opcraft.client.render.devilfruit.*;
+import georgetsak.opcraft.common.command.CommandJoinCrew;
+import georgetsak.opcraft.common.crew.Crew;
 import georgetsak.opcraft.common.entity.boat.EntityAceBoat;
 import georgetsak.opcraft.common.entity.boat.EntitySailBoat;
 import georgetsak.opcraft.common.entity.devilfruit.*;
@@ -20,6 +22,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.IThreadListener;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.model.b3d.B3DLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.settings.KeyConflictContext;
@@ -35,6 +38,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
+import java.util.ArrayList;
+
 import static georgetsak.opcraft.common.registry.OPArmor.*;
 import static georgetsak.opcraft.common.registry.OPDevilFruits.*;
 import static georgetsak.opcraft.common.registry.OPItems.*;
@@ -44,6 +49,9 @@ public class ClientProxy extends CommonProxy {
 
 	public static final DevilFruitRenderOverlay devilFruitRenderOverlay = new DevilFruitRenderOverlay();
 	public static final SixPowersSelectionWheelRender sixPowersSelectionWheelRender = new SixPowersSelectionWheelRender();
+
+	public static ArrayList<Crew> crews;
+	public static String crewLastInviteName;
 
 	@Override
 	public void preInit(FMLPreInitializationEvent event) {
@@ -95,8 +103,10 @@ public class ClientProxy extends CommonProxy {
 		super.postInit(event);
 		OPClientEventHooks opClientEventHooks = new OPClientEventHooks();
 		MinecraftForge.EVENT_BUS.register(opClientEventHooks);
-	}
 
+		ClientCommandHandler.instance.registerCommand(new CommandJoinCrew());
+
+	}
 
 	@Override
 	public EntityPlayer getPlayerEntityFromContext(MessageContext ctx)
@@ -244,6 +254,9 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemPretzelSword, true);
 		mir(ItemShirauoCased, true);
 		mir(ItemShirauoOpen, true);
+		mir(ItemBandage, true);
+		mir(ItemSutures, true);
+		mir(ItemFirstAidKit, true);
 
 		if(!OPCraft.config.completelyDisableDevilFruitGomu)mir(ItemDevilFruitGomu, true);
 		if(!OPCraft.config.completelyDisableDevilFruitMera)mir(ItemDevilFruitMera, true);

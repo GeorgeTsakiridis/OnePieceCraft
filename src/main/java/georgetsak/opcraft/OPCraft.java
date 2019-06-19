@@ -1,9 +1,6 @@
 package georgetsak.opcraft;
 
-import georgetsak.opcraft.common.command.CommandAddBounty;
-import georgetsak.opcraft.common.command.CommandGetBounty;
-import georgetsak.opcraft.common.command.CommandResetStats;
-import georgetsak.opcraft.common.command.CommandSetBounty;
+import georgetsak.opcraft.common.command.*;
 import georgetsak.opcraft.common.config.ConfigHandler;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
@@ -22,9 +19,9 @@ import java.util.Map;
 @Mod(modid = OPCraft.MODID, version = OPCraft.VERSION, name = OPCraft.NAME)
 public class OPCraft {
     public static final String MODID = "onepiececraft";
-    public static final String VERSION = "2.3";
+    public static final String VERSION = "2.2.2pre1";
     public static final String NAME = "One Piece Craft";
-    public static final boolean IS_RELEASE_VERSION = true;
+    public static final boolean IS_RELEASE_VERSION = false;
 
     @SidedProxy(clientSide = "georgetsak.opcraft.client.proxy.ClientProxy", serverSide = "georgetsak.opcraft.common.network.proxy.CommonProxy")
     public static CommonProxy proxy;
@@ -53,6 +50,8 @@ public class OPCraft {
         event.registerServerCommand(new CommandAddBounty());
         event.registerServerCommand(new CommandResetStats());
         event.registerServerCommand(new CommandGetBounty());
+        event.registerServerCommand(new CommandSetSixPowerLevel());
+        event.registerServerCommand(new CommandCrewMessage());
     }
 
     @NetworkCheckHandler()

@@ -16,7 +16,7 @@ tile.onepiececraft:dome_block.name=Dome Block
 tile.onepiececraft:ice_cage.name=Cage Ice
 tile.onepiececraft:ice_age.name=Road Ice
 tile.onepiececraft:ship_builder_block.name=Ship Builder
-tile.onepiececraft:snail.name=Den Den Mushi (WIP)
+tile.onepiececraft:snail.name=Den Den Mushi
 tile.onepiececraft:kairoseki_block.name=Kairoseki Block
 tile.onepiececraft:kairoseki_bars.name=Kairoseki Bars
 
@@ -113,12 +113,17 @@ item.onepiececraft:terry_sword.name=Terry Sword
 item.onepiececraft:pretzel_sword.name=Pretzel Sword
 item.onepiececraft:durandal_cased.name=Durandal Sword
 item.onepiececraft:durandal_open.name=Durandal Sword
+item.onepiececraft:bandage.name=Bandage
+item.onepiececraft:sutures.name=Sutures
+item.onepiececraft:first_aid_kit.name=First Aid Kit
 
 item.record.disc_we_are.desc=OPCraft - We Are!
 
 entity.ussop_kabuto_ammo.name=Kabuto
 entity.marine.name=Marine
+entity.wild_marine.name=Marine
 entity.hard_marine.name=Marine
+entity.wild_hard_marine.name=Marine
 entity.gomu_pistol=Gomu Gomu no: Pistol
 entity.morgan.name=Morgan
 entity.bandit.name=Bandit

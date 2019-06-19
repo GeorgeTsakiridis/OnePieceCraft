@@ -6,10 +6,14 @@ import georgetsak.opcraft.common.entity.boat.EntitySailBoat;
 import georgetsak.opcraft.common.entity.devilfruit.*;
 import georgetsak.opcraft.common.entity.marine.*;
 import georgetsak.opcraft.common.entity.other.*;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.awt.*;
@@ -56,11 +60,14 @@ public class OPEntities {
         registerEntity(EntityRayleigh.class, "rayleigh", id++, OPCraft.MODID, 48, 3, true, toRGB(244, 167, 66), toRGB(239, 239, 239));
         registerEntity(EntityStormLeg.class, "storm_leg", id++, OPCraft.MODID, 48, 3, false);
 
+        EnumCreatureType crocodile = EnumHelper.addCreatureType("crocodile", EntityCrocodile.class, 1, Material.AIR, false, false);
+        EnumCreatureType rayleigh = EnumHelper.addCreatureType("rayleigh", EntityRayleigh.class, 1, Material.AIR, true, false);
+
         EntityRegistry.addSpawn(EntityWildMarine.class, 20, 1, 5, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityWildHardMarine.class, 10, 1, 1, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityPirate.class, 5, 1, 6, EnumCreatureType.MONSTER, allSpawnableBiomes);
-        EntityRegistry.addSpawn(EntityCrocodile.class, 1, 0, 1, EnumCreatureType.MONSTER, hotBiomes);
-        EntityRegistry.addSpawn(EntityRayleigh.class, 1, 0, 1, EnumCreatureType.CREATURE, allSpawnableBiomes);
+        EntityRegistry.addSpawn(EntityCrocodile.class, 1, 0, 1, crocodile, hotBiomes);
+        EntityRegistry.addSpawn(EntityRayleigh.class, 1, 0, 1, rayleigh, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityTonta.class, 1, 1, 6, EnumCreatureType.CREATURE, allSpawnableBiomes);
 
 

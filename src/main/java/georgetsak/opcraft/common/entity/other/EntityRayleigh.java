@@ -1,39 +1,35 @@
 package georgetsak.opcraft.common.entity.other;
 
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
-import georgetsak.opcraft.common.capability.bounty.BountyCapProvider;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
-import georgetsak.opcraft.common.network.packets.HakiPacket;
+import georgetsak.opcraft.common.network.packets.common.HakiPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.proxy.CommonProxy;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCreature;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.text.Style;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
-import java.awt.*;
-
-public class EntityRayleigh extends EntityCreature {
+public class EntityRayleigh extends EntityMob {
 
     int ticksCooldown = 0;
 
     public EntityRayleigh(World worldIn) {
         super(worldIn);
         setSize(0.7f, 2f);
+    }
+
+    public EntityRayleigh(World worldIn, BlockPos position){
+        this(worldIn);
+        this.setPosition(position.getX(), position.getY(), position.getZ());
     }
 
     @Override
@@ -53,7 +49,7 @@ public class EntityRayleigh extends EntityCreature {
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.35D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(60D);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(40D);
-        this.getAttributeMap().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(30.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(30.0D);
     }
 
     public boolean attackEntityAsMob(Entity entityIn) {
@@ -101,6 +97,12 @@ public class EntityRayleigh extends EntityCreature {
         if(ticksCooldown > 0){
             ticksCooldown--;
         }
+    }
+
+    @Override
+    public EnumCreatureAttribute getCreatureAttribute()
+    {
+        return EnumCreatureAttribute.UNDEAD;
     }
 
     @Override

@@ -109,6 +109,9 @@ public class OPItems {
     public static Item ItemPretzelSword;
     public static Item ItemShirauoCased;
     public static Item ItemShirauoOpen;
+    public static Item ItemBandage;
+    public static Item ItemSutures;
+    public static Item ItemFirstAidKit;
 
     public static void registerItems(){
 
@@ -218,6 +221,9 @@ public class OPItems {
         ItemPretzelSword = new ItemSimpleSword(2500, 8).setRegistryName("pretzel_sword").setCreativeTab(OPTab);
         ItemShirauoCased = new ItemSwordWithCase(3000, 0).setRegistryName("shirauo_cased").setCreativeTab(OPTab);
         ItemShirauoOpen = new ItemSwordWithCase(3000, 9).setRegistryName("shirauo_open");
+        ItemBandage = new ItemHeal(4).setRegistryName("bandage").setCreativeTab(OPTab);
+        ItemSutures = new ItemHeal(6).setRegistryName("sutures").setCreativeTab(OPTab);
+        ItemFirstAidKit = new ItemHeal(10).setRegistryName("first_aid_kit").setCreativeTab(OPTab);
 
         SwordPairsManager.addPair(ItemWadoIchiMonjiCased, ItemWadoIchiMonjiOpen);
         SwordPairsManager.addPair(ItemKitetsuCased, ItemKitetsuOpen);
@@ -288,6 +294,9 @@ public class OPItems {
         registerItem(ItemPretzelSword);
         registerItem(ItemShirauoCased);
         registerItem(ItemShirauoOpen);
+        registerItem(ItemBandage);
+        registerItem(ItemSutures);
+        registerItem(ItemFirstAidKit);
         // registerItem(ItemSnail);
 
         //Ore Dictionary

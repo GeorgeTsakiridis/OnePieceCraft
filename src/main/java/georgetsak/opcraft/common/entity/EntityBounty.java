@@ -2,7 +2,7 @@ package georgetsak.opcraft.common.entity;
 
 import georgetsak.opcraft.common.capability.bounty.BountyCapProvider;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
-import georgetsak.opcraft.common.network.packets.BountyPacket;
+import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
@@ -31,7 +31,7 @@ public class EntityBounty extends EntityMob{
         if(cause.getTrueSource() instanceof EntityPlayer && !world.isRemote){
             IBountyCap b = cause.getTrueSource().getCapability(BountyCapProvider.B_CAP, null);
             b.changeBountyBy(bounty);
-            PacketDispatcher.sendTo(new BountyPacket(b), (EntityPlayerMP)cause.getTrueSource());
+            PacketDispatcher.sendTo(new BountyClientPacket(b), (EntityPlayerMP)cause.getTrueSource());
         }
     }
 }

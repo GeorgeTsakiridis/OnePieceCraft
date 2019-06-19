@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.capability.haki;
 
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.HakiPacket;
+import georgetsak.opcraft.common.network.packets.common.HakiPacket;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 

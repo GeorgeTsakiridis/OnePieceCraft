@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.capability.sixpowers;
 
 import georgetsak.opcraft.client.gui.overlay.EnumSixPowers;
-import georgetsak.opcraft.common.network.packets.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -167,8 +167,15 @@ public class SixPowersCap implements ISixPowersCap {
     }
 
     @Override
-    public int getRequiredPointsForLevel(EnumSixPowers power) {
+    public int getRequiredPointsForNextLevel(EnumSixPowers power) {
         return allLevels[power.id()][getPowerLevel(power)];
+    }
+
+    @Override
+    public int getRequiredPointsForLevel(EnumSixPowers power, int level) {
+        if(level == 0)return 0;
+
+        return allLevels[power.id()][level-1];
     }
 
     @Override

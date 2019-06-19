@@ -79,6 +79,8 @@ public class OPMerchantTrades {
         merchantRecipes.add(new MerchantRecipe(new ItemStack(ItemBerryCoin, 5), new ItemStack(PirateSimpleChestplate)));
         merchantRecipes.add(new MerchantRecipe(new ItemStack(ItemBerryCoin, 1), new ItemStack(ItemManualBook)));
         merchantRecipes.add(new MerchantRecipe(new ItemStack(ItemBerryCoin, 1), new ItemStack(ItemSake)));
+        merchantRecipes.add(new MerchantRecipe(new ItemStack(ItemBerryCoin, 1), new ItemStack(ItemDevilFruitPowerRemover)));
+
         //TODO add item for item trades not only for money
 
         merchantRecipes.add(new MerchantRecipe(new ItemStack(ItemKairosekiGem), new ItemStack(ItemBerryCoin, 10)));

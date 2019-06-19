@@ -34,7 +34,8 @@ public interface ISixPowersCap {
     int getDistanceRun();
     int getDistanceRunInPlants();
 
-    int getRequiredPointsForLevel(EnumSixPowers sixPowers);
+    int getRequiredPointsForNextLevel(EnumSixPowers sixPowers);
+    int getRequiredPointsForLevel(EnumSixPowers sixPowers, int level);
 
     void copy(ISixPowersCap b, EntityPlayer entityPlayer);
     void resetAll();

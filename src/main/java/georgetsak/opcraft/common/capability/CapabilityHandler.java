@@ -16,12 +16,17 @@ import georgetsak.opcraft.common.capability.sixpowers.SixPowersCapProvider;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCapProvider;
-import georgetsak.opcraft.common.network.packets.*;
+import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
+import georgetsak.opcraft.common.network.packets.client.DevilFruitCapClientPacket;
+import georgetsak.opcraft.common.network.packets.client.StatsNormalClientPacket;
+import georgetsak.opcraft.common.network.packets.common.HakiPacket;
+import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
@@ -32,11 +37,11 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  */
 public class CapabilityHandler {
 
-    public static final ResourceLocation DF_CAP = new ResourceLocation(OPCraft.MODID, "devilfruits");
-    public static final ResourceLocation B_CAP = new ResourceLocation(OPCraft.MODID, "bounty");
-    public static final ResourceLocation SN_CAP = new ResourceLocation(OPCraft.MODID, "normalstats");
-    public static final ResourceLocation H_CAP = new ResourceLocation(OPCraft.MODID, "haki");
-    public static final ResourceLocation SP_CAP = new ResourceLocation(OPCraft.MODID, "sixpowers");
+    public static final ResourceLocation DEVIL_FRUITS_CAP = new ResourceLocation(OPCraft.MODID, "devilfruits");
+    public static final ResourceLocation BOUNTY_CAP = new ResourceLocation(OPCraft.MODID, "bounty");
+    public static final ResourceLocation NORMAL_STATS_CAP = new ResourceLocation(OPCraft.MODID, "normalstats");
+    public static final ResourceLocation HAKI_CAP = new ResourceLocation(OPCraft.MODID, "haki");
+    public static final ResourceLocation SIX_POWERS_CAP = new ResourceLocation(OPCraft.MODID, "sixpowers");
 
     @SubscribeEvent
     public void attachCapability(AttachCapabilitiesEvent event)
@@ -45,11 +50,11 @@ public class CapabilityHandler {
         Object object = event.getObject();
 
         if (!(object instanceof EntityPlayer)) return;
-        event.addCapability(DF_CAP, new DevilFruitsCapProvider());
-        event.addCapability(B_CAP, new BountyCapProvider());
-        event.addCapability(SN_CAP, new StatsNormalCapProvider());
-        event.addCapability(H_CAP, new HakiCapProvider());
-        event.addCapability(SP_CAP, new SixPowersCapProvider());
+        event.addCapability(DEVIL_FRUITS_CAP, new DevilFruitsCapProvider());
+        event.addCapability(BOUNTY_CAP, new BountyCapProvider());
+        event.addCapability(NORMAL_STATS_CAP, new StatsNormalCapProvider());
+        event.addCapability(HAKI_CAP, new HakiCapProvider());
+        event.addCapability(SIX_POWERS_CAP, new SixPowersCapProvider());
     }
 
     @SubscribeEvent
@@ -57,14 +62,18 @@ public class CapabilityHandler {
     {
         EntityPlayer player = event.player;
 
-        PacketDispatcher.sendTo(new DevilFruitCapPacket(DevilFruitsCap.get(player)), (EntityPlayerMP) player);
-        PacketDispatcher.sendTo(new BountyPacket(BountyCap.get(player)), (EntityPlayerMP)player);
-        PacketDispatcher.sendTo(new StatsNormalPacket(StatsNormalCap.get(player)), (EntityPlayerMP) player);
+        PacketDispatcher.sendTo(new DevilFruitCapClientPacket(DevilFruitsCap.get(player)), (EntityPlayerMP) player);
+        PacketDispatcher.sendTo(new BountyClientPacket(BountyCap.get(player)), (EntityPlayerMP)player);
+        PacketDispatcher.sendTo(new StatsNormalClientPacket(StatsNormalCap.get(player)), (EntityPlayerMP) player);
         PacketDispatcher.sendTo(new HakiPacket(HakiCap.get(player)), (EntityPlayerMP) player);
         PacketDispatcher.sendTo(new SixPowersPacket(SixPowersCap.get(player)), (EntityPlayerMP) player);
 
+
         if(!OPCraft.IS_RELEASE_VERSION){
-            player.sendMessage(new TextComponentString("You are using an unreleased version of OPCraft. Some debug chat messages will be displayed when you do various things. Don't worry these will not be at the released version!"));
+            player.sendMessage(new TextComponentString(TextFormatting.GOLD + "==============================="));
+            player.sendMessage(new TextComponentString(TextFormatting.RED + "Unreleased Version of OPCraft (V" + OPCraft.VERSION + ")"));
+            player.sendMessage(new TextComponentString(TextFormatting.GOLD + "You are using an unreleased version of OPCraft. Some debug chat messages may be displayed. These will not be displayed in the released version."));
+            player.sendMessage(new TextComponentString(TextFormatting.GOLD + "==============================="));
         }
 
     }
@@ -78,17 +87,17 @@ public class CapabilityHandler {
 
             if (!player.world.isRemote)
             {
-                IDevilFruitsCap df = DevilFruitsCap.get(player);
-                IBountyCap b = BountyCap.get(player);
-                IStatsNormalCap sn = StatsNormalCap.get(player);
-                IHakiCap h = HakiCap.get(player);
-                ISixPowersCap sp = SixPowersCap.get(player);
+                IDevilFruitsCap devilFruitsCap = DevilFruitsCap.get(player);
+                IBountyCap bountyCap = BountyCap.get(player);
+                IStatsNormalCap statsNormalCap = StatsNormalCap.get(player);
+                IHakiCap hakiCap = HakiCap.get(player);
+                ISixPowersCap sixPowersCap = SixPowersCap.get(player);
 
-                PacketDispatcher.sendTo(new DevilFruitCapPacket(df), (EntityPlayerMP)player);
-                PacketDispatcher.sendTo(new BountyPacket(b), (EntityPlayerMP)player);
-                PacketDispatcher.sendTo(new StatsNormalPacket(sn), (EntityPlayerMP)player);
-                PacketDispatcher.sendTo(new HakiPacket(h), (EntityPlayerMP)player);
-                PacketDispatcher.sendTo(new SixPowersPacket(sp), (EntityPlayerMP)player);
+                PacketDispatcher.sendTo(new DevilFruitCapClientPacket(devilFruitsCap), (EntityPlayerMP)player);
+                PacketDispatcher.sendTo(new BountyClientPacket(bountyCap), (EntityPlayerMP)player);
+                PacketDispatcher.sendTo(new StatsNormalClientPacket(statsNormalCap), (EntityPlayerMP)player);
+                PacketDispatcher.sendTo(new HakiPacket(hakiCap), (EntityPlayerMP)player);
+                PacketDispatcher.sendTo(new SixPowersPacket(sixPowersCap), (EntityPlayerMP)player);
             }
         }
     }

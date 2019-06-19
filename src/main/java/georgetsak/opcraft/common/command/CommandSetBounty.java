@@ -2,11 +2,14 @@ package georgetsak.opcraft.common.command;
 
 import georgetsak.opcraft.common.capability.bounty.BountyCapProvider;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
+import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
+import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 
@@ -48,6 +51,8 @@ public class CommandSetBounty extends CommandBase {
             String bountyString = args[1];
             int bounty = parseInt(bountyString);
             bountyCap.setBounty(bounty);
+            PacketDispatcher.sendTo(new BountyClientPacket(bountyCap),(EntityPlayerMP)entity);
+
             notifyCommandListener(sender, this, "Set %s's bounty to %s", new Object[] {entity.getName(), bountyString});
         }
     }

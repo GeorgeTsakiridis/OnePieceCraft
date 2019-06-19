@@ -2,7 +2,7 @@ package georgetsak.opcraft.common.item.devilfruits;
 
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapProvider;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
-import georgetsak.opcraft.common.network.packets.DevilFruitCapPacket;
+import georgetsak.opcraft.common.network.packets.client.DevilFruitCapClientPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -30,7 +30,7 @@ public class ItemPowerRemover extends ItemFood {
         if(!worldIn.isRemote && player.isCreative()){
             IDevilFruitsCap df = player.getCapability(DevilFruitsCapProvider.DF_CAP, null);
             df.setPower(0);
-            PacketDispatcher.sendTo(new DevilFruitCapPacket(df), (EntityPlayerMP) player);
+            PacketDispatcher.sendTo(new DevilFruitCapClientPacket(df), (EntityPlayerMP) player);
         }
         return super.onItemRightClick(worldIn, player, hand);
     }
@@ -41,7 +41,7 @@ public class ItemPowerRemover extends ItemFood {
         if(!worldIn.isRemote){
             IDevilFruitsCap df = player.getCapability(DevilFruitsCapProvider.DF_CAP, null);
             df.setPower(0);
-            PacketDispatcher.sendTo(new DevilFruitCapPacket(df), (EntityPlayerMP) player);
+            PacketDispatcher.sendTo(new DevilFruitCapClientPacket(df), (EntityPlayerMP) player);
             player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 0));
             player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 1));
         }

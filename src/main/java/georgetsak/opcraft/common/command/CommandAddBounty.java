@@ -2,9 +2,12 @@ package georgetsak.opcraft.common.command;
 
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
+import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
+import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.command.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 
@@ -43,8 +46,8 @@ public class CommandAddBounty extends CommandBase {
 
                 int bounty = parseInt(args[1]);
                 bountyCap.changeBountyBy(bounty);
-
-                notifyCommandListener(sender, this, "Added %i to %s's bounty", entity.getName(), bounty, String.valueOf(bountyCap.getBounty()));
+                PacketDispatcher.sendTo(new BountyClientPacket(bountyCap),(EntityPlayerMP)entity);
+                notifyCommandListener(sender, this, "Added %s to %s's bounty", new Object[]{String.valueOf(bounty), entity.getName()});
             }
         }
     }

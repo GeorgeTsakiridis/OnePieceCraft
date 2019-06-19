@@ -2,19 +2,16 @@ package georgetsak.opcraft.common.command;
 
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
-import georgetsak.opcraft.common.network.packets.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
 import georgetsak.opcraft.common.util.OPUtils;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.HakiPacket;
-import georgetsak.opcraft.common.network.packets.StatsNormalPacket;
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.command.WrongUsageException;
+import georgetsak.opcraft.common.network.packets.common.HakiPacket;
+import georgetsak.opcraft.common.network.packets.client.StatsNormalClientPacket;
+import net.minecraft.command.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -64,10 +61,14 @@ public class CommandResetStats extends CommandBase {
                 }
                 case "haki":{
                     resetHaki(entity, sender, true);
+                    break;
                 }
                 case "six_powers":{
                     resetSixPowers(entity, sender, true);
+                    break;
                 }
+                default:
+                    throw new SyntaxErrorException("Invalid stat");
             }
         }
 
@@ -84,7 +85,7 @@ public class CommandResetStats extends CommandBase {
     private void resetStats(Entity entity, ICommandSender sender, boolean notify) {
         IStatsNormalCap stats = StatsNormalCap.get((EntityPlayer) entity);
         stats.resetAll();
-        PacketDispatcher.sendTo(new StatsNormalPacket(stats), (EntityPlayerMP) entity);
+        PacketDispatcher.sendTo(new StatsNormalClientPacket(stats), (EntityPlayerMP) entity);
         OPUtils.updateStats((EntityPlayer) entity, stats);
         if (notify) {
             notifyCommandListener(sender, this, "Reset %s's Stats", new Object[]{entity.getName()});
@@ -110,7 +111,7 @@ public class CommandResetStats extends CommandBase {
     }
 
 
-        @Override
+    @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
 
         List<String> list = new ArrayList<>();

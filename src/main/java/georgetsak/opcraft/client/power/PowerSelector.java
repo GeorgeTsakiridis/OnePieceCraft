@@ -27,11 +27,11 @@ public class PowerSelector {
         return PowerHandler.getPower(fruitID, index);
     }
 
-    public static void buttonPressed(boolean nextKey, boolean prevKey){
-        if(nextKey){
+    public static void buttonPressed(boolean next){
+        if(next){
             index = getNextIndex();
         }
-        if(prevKey){
+        else{
             index = getPrevIndex();
         }
     }

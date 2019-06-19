@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.item.devilfruits;
 
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapProvider;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.registry.OPDevilFruits;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -52,7 +53,9 @@ public class ItemDevilFruit extends ItemFood {
 				}
 			}
             else{
-				df.setPower(id);
+            	if(id != OPDevilFruits.GIRAFFE) {
+					df.setPower(id);
+				}
 			}
         }
 

@@ -1,7 +1,5 @@
 package georgetsak.opcraft.common.item.weapons;
 
-import georgetsak.opcraft.common.network.packets.CreateExplosionPacket;
-import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.client.OPSoundEvent;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,7 +9,6 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;

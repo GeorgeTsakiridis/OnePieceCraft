@@ -115,7 +115,7 @@ public class SixPowersWheelHandler {
                 if(sixPowersCap.getPowerLevel(power) == 5){
                     return "Mastered!";
                 }
-                return "Progress: " + sixPowersCap.getProgress(power) + "/" + sixPowersCap.getRequiredPointsForLevel(power);
+                return "Progress: " + sixPowersCap.getProgress(power) + "/" + sixPowersCap.getRequiredPointsForNextLevel(power);
             }
             return "";
         }

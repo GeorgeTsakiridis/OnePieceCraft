@@ -2,7 +2,7 @@ package georgetsak.opcraft.common;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
-import georgetsak.opcraft.common.capability.bounty.BountyCapProvider;
+import georgetsak.opcraft.common.capability.bounty.IBountyCap;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
@@ -10,26 +10,25 @@ import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
+import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.entity.marine.EntityMarine;
 import georgetsak.opcraft.common.entity.other.EntityBandit;
-import georgetsak.opcraft.common.network.packets.ConfigPacket;
-import georgetsak.opcraft.common.network.packets.DevilFruitCapPacket;
-import georgetsak.opcraft.common.network.packets.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
+import georgetsak.opcraft.common.network.packets.client.DevilFruitCapClientPacket;
+import georgetsak.opcraft.common.network.packets.client.SyncCrewClientPacket;
+import georgetsak.opcraft.common.network.packets.common.ConfigPacket;
+import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
 import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.block.Block;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
@@ -43,10 +42,7 @@ import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.LootTableLoadEvent;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.event.entity.living.LivingEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
+import net.minecraftforge.event.entity.living.*;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -62,18 +58,25 @@ public class OPCommonEventHooks {
 
     public static final String TAG_PLAYER_HAS_MANUAL = "onepiececraft.hasBook";
 
+    boolean once = true;
+
+
     @SideOnly(Side.SERVER)
     @SubscribeEvent(priority = EventPriority.NORMAL)
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+
         if (event.player != null) {
             System.out.println("Player " + event.player.getDisplayName() + " joined. Sending Config.");
             PacketDispatcher.sendTo(new ConfigPacket(), (EntityPlayerMP) event.player);
+            PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
         }
 
     }
 
     @SubscribeEvent
     public void onPlayerLoggedIn2(PlayerEvent.PlayerLoggedInEvent event) {
+        PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
+
         NBTTagCompound playerData = event.player.getEntityData();//Gives the manual on first login.
         NBTTagCompound data;
         if (!playerData.hasKey(EntityPlayer.PERSISTED_NBT_TAG)) {
@@ -136,7 +139,7 @@ public class OPCommonEventHooks {
 
                     hurtPlayer.sendMessage((new TextComponentString("You were revived by using Yomi Yomi no mi devil fruit power!")));
                     devilFruitsCap.setPower(0);
-                    PacketDispatcher.sendTo(new DevilFruitCapPacket(devilFruitsCap), (EntityPlayerMP) hurtPlayer);
+                    PacketDispatcher.sendTo(new DevilFruitCapClientPacket(devilFruitsCap), (EntityPlayerMP) hurtPlayer);
 
                     hurtPlayer.heal(20);
 
@@ -163,9 +166,6 @@ public class OPCommonEventHooks {
                     ISixPowersCap attackerSixPowersCap = SixPowersCap.get(attackerPlayer);
                     attackerSixPowersCap.addPunchDamage(1);
                     PacketDispatcher.sendTo(new SixPowersPacket(attackerSixPowersCap), (EntityPlayerMP) attackerPlayer);
-                    if (!OPCraft.IS_RELEASE_VERSION) {
-                        attackerPlayer.sendMessage(new TextComponentString("You gave punch damage: " + 1 + " // " + attackerSixPowersCap.getPunchDamageGiven()));
-                    }
                 }
             }
         }
@@ -202,15 +202,50 @@ public class OPCommonEventHooks {
 
             if (sourcePlayer != null) {//Increases attack for Attack Haki Stat.
                 IHakiCap sourceHakiCap = HakiCap.get(sourcePlayer);
+
                 if (sourceHakiCap.getAttackLevel() > 0 && targetDevilFruitsCap.hasPower()) {
                     float newDamage = event.getAmount() * (float) sourceHakiCap.getAttackLevel() / 10f;
                     if (newDamage > 0) {
                         targetPlayer.attackEntityFrom(DamageSource.GENERIC, event.getAmount() + newDamage);
                     }
                 }
+
             }
         }
 
+    }
+
+    @SubscribeEvent
+    public void onPlayerDeath(LivingDeathEvent event){
+        Entity victimEntity = event.getEntity();
+        Entity killerEntity = event.getSource().getTrueSource();
+        EntityPlayer victimPlayer;
+        EntityPlayer killerPlayer = null;
+        IBountyCap victimBountyCap;
+
+        if (victimEntity instanceof EntityPlayer) {
+
+            victimPlayer = (EntityPlayer) victimEntity;
+            victimBountyCap = BountyCap.get(victimPlayer);
+        }else{
+            return;
+        }
+        if (killerEntity instanceof EntityPlayer) {
+            killerPlayer = (EntityPlayer) killerEntity;
+        }
+
+        if(killerPlayer != null){
+            IBountyCap sourceBountyCap = BountyCap.get(killerPlayer);
+            sourceBountyCap.changeBountyBy((int)(victimBountyCap.getBounty() * 0.30f));
+            victimBountyCap.changeBountyBy((int)(-victimBountyCap.getBounty() * 0.35f));
+
+            PacketDispatcher.sendTo(new BountyClientPacket(victimBountyCap), (EntityPlayerMP)victimPlayer);
+            PacketDispatcher.sendTo(new BountyClientPacket(sourceBountyCap), (EntityPlayerMP)killerPlayer);
+
+        }else {
+            victimBountyCap.changeBountyBy((int) (-victimBountyCap.getBounty() * 0.1f));
+            PacketDispatcher.sendTo(new BountyClientPacket(victimBountyCap), (EntityPlayerMP) victimPlayer);
+        }
     }
 
     @SubscribeEvent
@@ -247,16 +282,10 @@ public class OPCommonEventHooks {
                 if (player.isSprinting()) {
                     sixPowersCap.addRunningJumps(1);
                     PacketDispatcher.sendToServer(new SixPowersPacket(sixPowersCap));
-                    if (!OPCraft.IS_RELEASE_VERSION) {
-                        player.sendMessage(new TextComponentString("Running Jumps: " + sixPowersCap.getRunningJumps()));
-                    }
                 }
                 else if(player.moveForward == 0 && player.moveStrafing == 0) {//moveForward & moveStrafing fields only work in remote worlds, so sending a packet will sync the server to the correct value.
                     sixPowersCap.addStillJumps(1);
                     PacketDispatcher.sendToServer(new SixPowersPacket(sixPowersCap));
-                    if (!OPCraft.IS_RELEASE_VERSION) {
-                        player.sendMessage(new TextComponentString("Still Jumps: " + sixPowersCap.getStillJumps()));
-                    }
                 }
             }
         }
