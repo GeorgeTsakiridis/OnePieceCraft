@@ -2,9 +2,12 @@ package georgetsak.opcraft.common.util;
 
 import com.google.common.base.Predicates;
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
+import georgetsak.opcraft.common.crew.EnumRole;
+import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -89,7 +92,7 @@ public class OPUtils {
 
         //ATTACK
 
-        mod = new AttributeModifier(attackID, "OPAttackMod", 1.0D + 1.0D * stats.getAttackLevel() * 0.25, 2);
+        mod = new AttributeModifier(attackID, "OPAttackMod",1.0D * stats.getAttackLevel() * 0.25, 2);
         attribute = ep.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE);
 
         if (attribute.hasModifier(mod)) {
@@ -101,6 +104,12 @@ public class OPUtils {
 
         attribute = ep.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
         attribute.setBaseValue(20 + stats.getHealthLevel() * 2);
+
+        Member member = CrewUtils.getMemberFromPlayer(ClientProxy.crews, ep);
+        if(member != null && member.getRole() == EnumRole.DOCTOR){
+            attribute.setBaseValue(attribute.getBaseValue() + attribute.getBaseValue()*0.15D);//TODO Doctor role increased HP is not updated instantly and is updated only when Normal Stats are updated.
+        }
+
     }
 
     public static RayTraceResult getMouseOverExtended(float dist) {

@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
@@ -11,8 +12,13 @@ import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.crew.CrewSaveData;
+import georgetsak.opcraft.common.crew.EnumRole;
+import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.entity.marine.EntityMarine;
 import georgetsak.opcraft.common.entity.other.EntityBandit;
+import georgetsak.opcraft.common.item.weapons.ItemUssopKabuto;
+import georgetsak.opcraft.common.item.weapons.swords.ItemSimpleSword;
+import georgetsak.opcraft.common.item.weapons.swords.ItemSwordWithCase;
 import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
 import georgetsak.opcraft.common.network.packets.client.DevilFruitCapClientPacket;
 import georgetsak.opcraft.common.network.packets.client.SyncCrewClientPacket;
@@ -22,6 +28,7 @@ import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
 import georgetsak.opcraft.common.registry.OPItems;
+import georgetsak.opcraft.common.util.CrewUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -29,7 +36,11 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBow;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
@@ -57,9 +68,6 @@ public class OPCommonEventHooks {
 
 
     public static final String TAG_PLAYER_HAS_MANUAL = "onepiececraft.hasBook";
-
-    boolean once = true;
-
 
     @SideOnly(Side.SERVER)
     @SubscribeEvent(priority = EventPriority.NORMAL)
@@ -111,6 +119,7 @@ public class OPCommonEventHooks {
 
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void livingHurtEvent(LivingHurtEvent event) {
+        //This is called from the victim's perspective
         Entity entity = event.getEntityLiving();
         EntityPlayer hurtPlayer = null;
         EntityPlayer attackerPlayer = null;
@@ -158,6 +167,12 @@ public class OPCommonEventHooks {
             if (!event.getSource().damageType.equals("outOfWorld")) {//Reduces damage according to defence stat.
                 event.setAmount(event.getAmount() - event.getAmount() * StatsNormalCap.get(hurtPlayer).getDefenceLevel() * 5 / 100);
             }
+
+            Member member = CrewUtils.getMemberFromPlayer(ClientProxy.crews, hurtPlayer);//Reduces damage by 15% if player's role in a crew is Fighter
+            if(member != null && member.getRole() == EnumRole.FIGHTER){
+                event.setAmount(event.getAmount() - event.getAmount()*0.15f);
+            }
+
         }
 
         if (attackerPlayer != null && !(attackerPlayer instanceof FakePlayer) ) {//TODO FIX: After Death user causes double damage to all Entities. Maybe an attribute is applied twice?
@@ -200,13 +215,41 @@ public class OPCommonEventHooks {
                 event.setCanceled(true);
             }
 
-            if (sourcePlayer != null) {//Increases attack for Attack Haki Stat.
+            if (sourcePlayer != null) {
+                //Increases attack for Attack Haki Stat.
                 IHakiCap sourceHakiCap = HakiCap.get(sourcePlayer);
 
                 if (sourceHakiCap.getAttackLevel() > 0 && targetDevilFruitsCap.hasPower()) {
                     float newDamage = event.getAmount() * (float) sourceHakiCap.getAttackLevel() / 10f;
                     if (newDamage > 0) {
                         targetPlayer.attackEntityFrom(DamageSource.GENERIC, event.getAmount() + newDamage);
+                    }
+                }
+
+                //Roles
+                Member memberAttacker = CrewUtils.getMemberFromPlayer(ClientProxy.crews, sourcePlayer);
+                if(memberAttacker != null){
+                    EnumRole role = memberAttacker.getRole();
+                    Item heldItem = sourcePlayer.getHeldItemMainhand().getItem();
+
+                    if(role == EnumRole.SWORDSMAN){
+                        if(heldItem instanceof ItemSword || heldItem instanceof ItemSwordWithCase || heldItem instanceof ItemSimpleSword){
+                            float additionalDamage = event.getAmount() * 0.25f;
+                            targetPlayer.attackEntityFrom(DamageSource.GENERIC, event.getAmount() + additionalDamage);
+                        }
+                    }
+                    else if(role == EnumRole.ARCHER){
+                        if(heldItem instanceof ItemBow){
+                            System.out.println("BOW BOW BOW!");
+                            float additionalDamage = event.getAmount() * 0.25f;
+                            targetPlayer.attackEntityFrom(DamageSource.GENERIC, event.getAmount() + additionalDamage);
+                        }
+                    }
+                    else if(role == EnumRole.FIGHTER){
+                        if(heldItem == Items.AIR){
+                            float additionalDamage = event.getAmount() * 0.25f;
+                            targetPlayer.attackEntityFrom(DamageSource.GENERIC, event.getAmount() + additionalDamage);
+                        }
                     }
                 }
 
