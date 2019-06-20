@@ -1,0 +1,17 @@
+{
+  "type": "simple_recipe",
+  "size": 1,
+  "recipes": [
+    {
+      "title": "First Aid Kit",
+      "totalLines": 3,
+      "lines": [
+        "§lFirst Aid Kit§r is a medical item that can heal another player by right clicking it.",
+        "Heal Amount: §a10§r (§a5§r Hearts)",
+        "Heal Amount (if Doctor): §a20§r (§a10§r Hearts)"
+      ],
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:first_aid_kit"
+    }
+  ]
+}

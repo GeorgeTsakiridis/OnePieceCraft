@@ -40,6 +40,8 @@ public class OPBook {
         PageManager.addPage("weapon_recipe/page_bazooka");
         PageManager.addPage("weapon_recipe/page_clima");
         PageManager.addPage("variety_recipe/page_dials");
+        PageManager.addPage("simple_recipe/page_heal1");
+        PageManager.addPage("simple_recipe/page_heal2");
         PageManager.addPage("simple_recipe/page_ship_builder");
         PageManager.addPage("ship_recipe/page_striker");
         PageManager.addPage("ship_recipe/page_sail_boat");
