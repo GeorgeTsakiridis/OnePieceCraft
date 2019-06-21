@@ -6,6 +6,8 @@ import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
+import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
+import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.registry.OPBlocks;
@@ -81,8 +83,12 @@ public class OPUtils {
         return damage;
     }
 
+    public static void refreshStats(EntityPlayer ep){
+        updateStats(ep, StatsNormalCap.get(ep));
+    }
+
     public static void updateStats(EntityPlayer ep, IStatsNormalCap stats) {
-        AttributeModifier mod = new AttributeModifier(speedID, "OPSpeedMod", 0.1D + 0.1D * (double) stats.getSpeedLevel() * 0.3D, 2);
+        AttributeModifier mod = new AttributeModifier(speedID, "OPSpeedMod", 0.1D * (double) stats.getSpeedLevel() * 0.3D, 2);
         IAttributeInstance attribute = ep.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED);
 
         if (attribute.hasModifier(mod)) {
@@ -105,11 +111,12 @@ public class OPUtils {
         attribute = ep.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH);
         attribute.setBaseValue(20 + stats.getHealthLevel() * 2);
 
-        Member member = CrewUtils.getMemberFromPlayer(ClientProxy.crews, ep);
+        CrewSaveData saveData = CrewSaveData.get(ep.world);
+        Member member = CrewUtils.getMemberFromPlayer(saveData.getCrews(), ep);
         if(member != null && member.getRole() == EnumRole.DOCTOR){
-            attribute.setBaseValue(attribute.getBaseValue() + attribute.getBaseValue()*0.15D);//TODO Doctor role increased HP is not updated instantly and is updated only when Normal Stats are updated.
+            attribute.setBaseValue(attribute.getBaseValue() + attribute.getBaseValue()*0.15D);
         }
-
+        System.out.println("Updated Stats");
     }
 
     public static RayTraceResult getMouseOverExtended(float dist) {

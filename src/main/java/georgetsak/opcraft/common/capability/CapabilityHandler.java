@@ -85,8 +85,7 @@ public class CapabilityHandler {
         {
             EntityPlayer player = (EntityPlayer) event.getEntity();
 
-            if (!player.world.isRemote)
-            {
+            if (!player.world.isRemote) {
                 IDevilFruitsCap devilFruitsCap = DevilFruitsCap.get(player);
                 IBountyCap bountyCap = BountyCap.get(player);
                 IStatsNormalCap statsNormalCap = StatsNormalCap.get(player);
