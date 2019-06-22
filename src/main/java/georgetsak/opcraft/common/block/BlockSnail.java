@@ -12,7 +12,10 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -69,8 +72,13 @@ public class BlockSnail extends Block{
 
     @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
-        this.getDefaultState().withProperty(FACING, state.getValue(FACING));
+        super.onBlockAdded(worldIn, pos, state);
         this.setDefaultDirection(worldIn, pos, state);
+    }
+
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)
+    {
+        worldIn.setBlockState(pos, state.withProperty(FACING, EnumFacing.getDirectionFromEntityLiving(pos, placer).getOpposite()), 2);
     }
 
     private void setDefaultDirection(World worldIn, BlockPos pos, IBlockState state)
@@ -103,7 +111,7 @@ public class BlockSnail extends Block{
                     enumfacing = EnumFacing.WEST;
                 }
             }
-
+            System.out.println(enumfacing);
             worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing));
         }
     }

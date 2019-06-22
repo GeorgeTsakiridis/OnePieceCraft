@@ -116,7 +116,6 @@ public class OPUtils {
         if(member != null && member.getRole() == EnumRole.DOCTOR){
             attribute.setBaseValue(attribute.getBaseValue() + attribute.getBaseValue()*0.15D);
         }
-        System.out.println("Updated Stats");
     }
 
     public static RayTraceResult getMouseOverExtended(float dist) {

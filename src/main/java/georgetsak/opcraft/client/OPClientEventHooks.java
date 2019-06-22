@@ -518,13 +518,6 @@ public class OPClientEventHooks {
     }
 
     /**
-     * Makes the player invincible faster and without the "protection" the disableDamage() function provides. So this packet may be lost.
-     */
-    private void immediatelyDisableDamage(){
-        sendMessage("DISABLE DAMAGE");//TODO check if this works. Probably it doesn't and must be changed to "DISABLEDAMAGE".
-    }
-
-    /**
      * Disables the damage for the Player and enables it after a delay.
      * @param delay
      */

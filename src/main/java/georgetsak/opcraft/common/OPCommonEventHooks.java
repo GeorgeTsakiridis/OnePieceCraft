@@ -175,7 +175,7 @@ public class OPCommonEventHooks {
 
         }
 
-        if (attackerPlayer != null && !(attackerPlayer instanceof FakePlayer) ) {//TODO FIX: After Death user causes double damage to all Entities. Maybe an attribute is applied twice?
+        if (attackerPlayer != null && !(attackerPlayer instanceof FakePlayer) ) {
             if (attackerPlayer.getHeldItem(EnumHand.MAIN_HAND).isEmpty()) {//Increases punchDamageGiven field for SixPowersCap.
                 if (!attackerPlayer.world.isRemote) {
                     ISixPowersCap attackerSixPowersCap = SixPowersCap.get(attackerPlayer);
