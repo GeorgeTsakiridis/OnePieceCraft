@@ -111,7 +111,7 @@ public class BlockSnail extends Block{
                     enumfacing = EnumFacing.WEST;
                 }
             }
-
+            System.out.println(enumfacing);
             worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing));
         }
     }
