@@ -74,7 +74,7 @@ public class OPClientEventHooks {
     private int cooldown = 0; //How many ticks left before a power can be used again.
     private int cooldownMax = 0; //Used for drawing the power bar.
     private String action = ""; //Keeps the power name e.g. "GomuGear4A".
-    private int ticksPS = OPCraft.config.cooldownSpeed/2; //How many ticks correspond to 1 real life second.
+    private int ticksPS = OPCraft.config.cooldownSpeed.getCurrentValue()/2; //How many ticks correspond to 1 real life second.
 
     private boolean isGear4Active = false;
     private boolean isInRoom = false; //Whether or not the player is inside the Law Dome (Room)
@@ -153,6 +153,7 @@ public class OPClientEventHooks {
             this.id = df.getPower();
             PowerSelector.setFruitID(id);
 
+            //if(OPCraft.config.getConfigEntries().)TODO add check here
             if (cooldown <= consequencesWaitTime) {
                 if (hasConsequences) {
                     isGear4Active = false;
@@ -161,6 +162,7 @@ public class OPClientEventHooks {
             } else {
                 executeAction(mcPlayer);
             }
+
 
             if(fallDamageSendMessage) {//There was a problem where the "DISABLEDAMAGE" packet would occasionally be lost. This ensures the packet is sent multiple times.
                 if (fallDamageDisabled || fallDamageDisabledDelay > 0) {
@@ -602,7 +604,6 @@ public class OPClientEventHooks {
     @SubscribeEvent
     public void onPlayerLoggedOut(PlayerEvent.PlayerLoggedOutEvent event){
         OPCraft.config.restoreConfig();
-        OPUtils.setFruitsCreativeTab();
     }
 
     private int cooldownTransparency = 0;

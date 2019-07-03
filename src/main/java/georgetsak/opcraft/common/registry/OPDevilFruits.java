@@ -24,6 +24,7 @@ public class OPDevilFruits {
     public static Item ItemDevilFruitGoro;//Thunder
     public static Item ItemDevilFruitMoku;//Smoke
     public static Item ItemDevilFruitYami;//Dark
+    public static Item ItemDevilFruitIto;//String
 
     public static final int NO_POWER = 0;
     public static final int GOMU = 1;
@@ -38,6 +39,7 @@ public class OPDevilFruits {
     public static final int GORO = 10;
     public static final int MOKU = 11;
     public static final int YAMI = 12;
+    public static final int ITO = 13;
 
     public static void registerDevilFruits(){
         ItemDevilFruitGomu = new ItemDevilFruit(GOMU).setRegistryName("devil_fruit_gomu");
@@ -52,7 +54,7 @@ public class OPDevilFruits {
         ItemDevilFruitGoro = new ItemDevilFruit(GORO).setRegistryName("devil_fruit_goro");
         ItemDevilFruitMoku = new ItemDevilFruit(MOKU).setRegistryName("devil_fruit_moku");
         ItemDevilFruitYami = new ItemDevilFruit(YAMI).setRegistryName("devil_fruit_yami");
-        OPUtils.setFruitsCreativeTab();
+        ItemDevilFruitIto = new ItemDevilFruit(ITO).setRegistryName("devil_fruit_ito");
 
         registerItem(ItemDevilFruitGomu);
         registerItem(ItemDevilFruitMera);
@@ -66,6 +68,7 @@ public class OPDevilFruits {
         registerItem(ItemDevilFruitGoro);
         registerItem(ItemDevilFruitMoku);
         registerItem(ItemDevilFruitYami);
+        registerItem(ItemDevilFruitIto);
 
         DevilFruitAssetsManager.addDevilFruitAsset(NO_POWER, null, null, "");//if a non existent fruit is requested this will be returned. This also stands for No power status.
         DevilFruitAssetsManager.addDevilFruitAsset(GOMU, "gomu", "Gum-Gum Fruit", "Gomu Gomu no Mi");
@@ -80,6 +83,7 @@ public class OPDevilFruits {
         DevilFruitAssetsManager.addDevilFruitAsset(GORO, "goro", "Thunder-Thunder Fruit", "Goro Goro no Mi");
         DevilFruitAssetsManager.addDevilFruitAsset(MOKU, "moku", "Smoke-Smoke Fruit", "Moku Moku no Mi");
         DevilFruitAssetsManager.addDevilFruitAsset(YAMI, "yami", "Dark-Dark Fruit", "Yami Yami no Mi");
+        DevilFruitAssetsManager.addDevilFruitAsset(ITO,"ito", "String-String Fruit", "Ito Ito no Mi");
     }
 
     @SideOnly(Side.CLIENT)

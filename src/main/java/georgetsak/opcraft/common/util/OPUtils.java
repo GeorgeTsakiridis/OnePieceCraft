@@ -11,6 +11,7 @@ import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.registry.OPBlocks;
+import javafx.geometry.Point3D;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -29,7 +30,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -40,7 +40,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.apache.commons.codec.language.bm.Lang;
 
 import javax.vecmath.Point3d;
 import java.util.ArrayList;
@@ -300,6 +299,7 @@ public class OPUtils {
     }
 
     public static List<Entity> getNearbyEntities(EntityPlayer player, double radius, Class get) {
+        /*
         BlockPos center = player.getPosition();
         World world = player.getServer().getEntityWorld();
 
@@ -312,7 +312,8 @@ public class OPUtils {
 
         List<Entity> entities = world.getEntitiesWithinAABB(get, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
 
-        return entities;
+        return entities;*/
+        return getNearbyEntities(player, player.getPosition(),radius,get);
     }
 
     public static List<Entity> getNearbyEntities(EntityPlayer player, BlockPos center,  double radius, Class get) {
@@ -344,35 +345,6 @@ public class OPUtils {
         List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(excluding, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
 
         return entities;
-    }
-
-
-    public static void setFruitsCreativeTab() {
-        if (!OPCraft.config.completelyDisableDevilFruitGomu) ItemDevilFruitGomu.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitMera) ItemDevilFruitMera.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitNoro) ItemDevilFruitNoro.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitSuke) ItemDevilFruitSuke.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitUshi) ItemDevilFruitGiraffe.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitOpe) ItemDevilFruitOpe.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitHie) ItemDevilFruitHie.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitNikyu) ItemDevilFruitNikyu.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitYomi) ItemDevilFruitYomi.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitGoro) ItemDevilFruitGoro.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitMoku) ItemDevilFruitMoku.setCreativeTab(OPTab);
-        if (!OPCraft.config.completelyDisableDevilFruitYami) ItemDevilFruitYami.setCreativeTab(OPTab);
-
-        if (OPCraft.config.completelyDisableDevilFruitGomu) ItemDevilFruitGomu.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitMera) ItemDevilFruitMera.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitNoro) ItemDevilFruitNoro.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitSuke) ItemDevilFruitSuke.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitUshi) ItemDevilFruitGiraffe.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitOpe) ItemDevilFruitOpe.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitHie) ItemDevilFruitHie.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitNikyu) ItemDevilFruitNikyu.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitYomi) ItemDevilFruitYomi.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitGoro) ItemDevilFruitGoro.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitMoku) ItemDevilFruitMoku.setCreativeTab(null);
-        if (OPCraft.config.completelyDisableDevilFruitYami) ItemDevilFruitYami.setCreativeTab(null);
     }
 
     //Converts Yaw and Pitch to Vec3d. Used by projectiles for example to multiply speed.

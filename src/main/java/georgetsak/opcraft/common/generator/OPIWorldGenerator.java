@@ -61,11 +61,11 @@ public class OPIWorldGenerator implements IWorldGenerator
             }
         }
 
-        if(biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT && OPCraft.config.enableMorganFortress){
+        if(biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT && OPCraft.config.enableMorganFortress.getCurrentValue()){
             int randX = blockX + rand.nextInt(16);
             int randZ = blockZ + rand.nextInt(16);
 //rand.nextInt(OPCraft.config.morganFortressSpawnChance)
-            if(rand.nextInt(OPCraft.config.morganFortressSpawnChance) == 0){
+            if(rand.nextInt(OPCraft.config.morganFortressSpawnChance.getCurrentValue()) == 0){
 
 				Template morgan_fortress_stage1 = getTemplate("morgan_fortress_stage1", world);
 				Template morgan_fortress_stage2 = getTemplate("morgan_fortress_stage2", world);

@@ -258,18 +258,6 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemSutures, true);
 		mir(ItemFirstAidKit, true);
 
-		if(!OPCraft.config.completelyDisableDevilFruitGomu)mir(ItemDevilFruitGomu, true);
-		if(!OPCraft.config.completelyDisableDevilFruitMera)mir(ItemDevilFruitMera, true);
-		if(!OPCraft.config.completelyDisableDevilFruitNoro)mir(ItemDevilFruitNoro, true);
-		if(!OPCraft.config.completelyDisableDevilFruitSuke)mir(ItemDevilFruitSuke, true);
-		if(!OPCraft.config.completelyDisableDevilFruitUshi)mir(ItemDevilFruitGiraffe, true);
-		if(!OPCraft.config.completelyDisableDevilFruitOpe)mir(ItemDevilFruitOpe, true);
-		if(!OPCraft.config.completelyDisableDevilFruitHie)mir(ItemDevilFruitHie, true);
-		if(!OPCraft.config.completelyDisableDevilFruitNikyu)mir(ItemDevilFruitNikyu, true);
-		if(!OPCraft.config.completelyDisableDevilFruitYomi)mir(ItemDevilFruitYomi, true);
-		if(!OPCraft.config.completelyDisableDevilFruitGoro)mir(ItemDevilFruitGoro, true);
-		if(!OPCraft.config.completelyDisableDevilFruitMoku)mir(ItemDevilFruitMoku, true);
-		if(!OPCraft.config.completelyDisableDevilFruitMoku)mir(ItemDevilFruitYami, true);
 	}
 
 	//Minecraft Item Render (MIR)
