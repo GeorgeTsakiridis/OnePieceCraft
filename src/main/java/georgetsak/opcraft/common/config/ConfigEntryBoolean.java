@@ -7,8 +7,13 @@ public class ConfigEntryBoolean extends ConfigEntry{
     private boolean currentValue;
     private boolean originalValue;
 
+    public ConfigEntryBoolean(Configuration configuration, String name, String comment, String category, boolean defaultValue, int ID) {
+        super(configuration, name, comment, category, ID);
+        originalValue = currentValue = configuration.getBoolean(name, category, defaultValue, comment);
+    }
+
     public ConfigEntryBoolean(Configuration configuration, String name, String comment, String category, boolean defaultValue) {
-        super(configuration, name, comment, category);
+        super(configuration, name, comment, category, -1);
         originalValue = currentValue = configuration.getBoolean(name, category, defaultValue, comment);
     }
 
@@ -23,5 +28,6 @@ public class ConfigEntryBoolean extends ConfigEntry{
     public void restore(){
         currentValue = originalValue;
     }
+
 
 }

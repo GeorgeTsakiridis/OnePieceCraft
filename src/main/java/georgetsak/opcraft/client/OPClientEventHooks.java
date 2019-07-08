@@ -153,16 +153,16 @@ public class OPClientEventHooks {
             this.id = df.getPower();
             PowerSelector.setFruitID(id);
 
-            //if(OPCraft.config.getConfigEntries().)TODO add check here
-            if (cooldown <= consequencesWaitTime) {
-                if (hasConsequences) {
-                    isGear4Active = false;
-                    executeConsequence();
+            if(!OPCraft.config.isPowerDisabled(id)) {
+                if (cooldown <= consequencesWaitTime) {
+                    if (hasConsequences) {
+                        isGear4Active = false;
+                        executeConsequence();
+                    }
+                } else {
+                    executeAction(mcPlayer);
                 }
-            } else {
-                executeAction(mcPlayer);
             }
-
 
             if(fallDamageSendMessage) {//There was a problem where the "DISABLEDAMAGE" packet would occasionally be lost. This ensures the packet is sent multiple times.
                 if (fallDamageDisabled || fallDamageDisabledDelay > 0) {
@@ -373,7 +373,7 @@ public class OPClientEventHooks {
             }
 
             if (ClientProxy.key3.isPressed()) {
-                if (cooldown <= 0) {//V
+                if (cooldown <= 0 && PowerSelector.getSelectedPower() != null) {//V
                     setVariables(PowerSelector.getSelectedPower().getKey());
                 }
             }

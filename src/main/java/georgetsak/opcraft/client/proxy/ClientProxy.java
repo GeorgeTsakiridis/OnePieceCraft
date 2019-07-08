@@ -258,6 +258,19 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemSutures, true);
 		mir(ItemFirstAidKit, true);
 
+		mir(ItemDevilFruitGomu, true);
+		mir(ItemDevilFruitMera, true);
+		mir(ItemDevilFruitNoro, true);
+		mir(ItemDevilFruitSuke, true);
+		mir(ItemDevilFruitGiraffe, true);
+		mir(ItemDevilFruitOpe, true);
+		mir(ItemDevilFruitHie, true);
+		mir(ItemDevilFruitNikyu, true);
+		mir(ItemDevilFruitYomi, true);
+		mir(ItemDevilFruitGoro, true);
+		mir(ItemDevilFruitMoku, true);
+		mir(ItemDevilFruitYami, true);
+		mir(ItemDevilFruitIto, true);
 	}
 
 	//Minecraft Item Render (MIR)

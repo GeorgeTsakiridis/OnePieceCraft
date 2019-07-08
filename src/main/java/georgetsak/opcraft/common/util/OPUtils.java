@@ -47,15 +47,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-import static georgetsak.opcraft.common.registry.OPDevilFruits.*;
-import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
-
 public class OPUtils {
     private static UUID speedID = UUID.fromString("b36cb6dd-d15a-40a9-98b2-ec704a6ad645");
     private static UUID attackID = UUID.fromString("579c2c4c-ed00-4c57-b0b4-fac886c192b4");
     static Random r = new Random();
 
     public static float damageCalculation(EntityPlayer target, float baseDamage, boolean isDFdamage) {
+        if(target == null)return 0;
+
         float defensePoints = (float) target.getTotalArmorValue();
         float toughness = 2;
 

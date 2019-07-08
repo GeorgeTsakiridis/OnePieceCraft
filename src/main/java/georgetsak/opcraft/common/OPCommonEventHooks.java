@@ -73,8 +73,6 @@ public class OPCommonEventHooks {
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 
         if (event.player != null) {
-            System.out.println("Player " + event.player.getDisplayName() + " joined. Sending Config.");
-            PacketDispatcher.sendTo(new ConfigPacket(), (EntityPlayerMP) event.player);
             PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
         }
 
@@ -83,6 +81,8 @@ public class OPCommonEventHooks {
     @SubscribeEvent
     public void onPlayerLoggedIn2(PlayerEvent.PlayerLoggedInEvent event) {
         PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
+        System.out.println("Player " + event.player.getDisplayName() + " joined. Sending Config.");
+        PacketDispatcher.sendTo(new ConfigPacket(), (EntityPlayerMP) event.player);
 
         NBTTagCompound playerData = event.player.getEntityData();//Gives the manual on first login.
         NBTTagCompound data;
@@ -380,7 +380,6 @@ public class OPCommonEventHooks {
         if (flag) {
             final LootPool main = event.getTable().getPool("main");
             if (main != null && OPCraft.config.enableDevilFruitsSpawning.getCurrentValue()) {
-
                 if(OPCraft.config.enableDevilFruitGomuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitGomu, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPluffyLoot"));
                 if(OPCraft.config.enableDevilFruitMeraSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitMera, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPaceLoot"));
                 if(OPCraft.config.enableDevilFruitNoroSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitNoro, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPslowLoot"));

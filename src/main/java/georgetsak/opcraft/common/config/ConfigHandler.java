@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.config;
 
+import georgetsak.opcraft.common.registry.OPDevilFruits;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
@@ -61,7 +62,7 @@ public class ConfigHandler {
 
         configuration.addCustomCategoryComment(CATEGORY_FRUITS, "If you change spawning options, changes will apply only to the new generated chunks. Creating a new world is recommended.");
 
-        configEntries.add(enableDevilFruitGomuSpawning = new ConfigEntryBoolean(configuration, "allowDevilFruitsSpawning", "", CATEGORY_GENERATION, true));
+        configEntries.add(enableDevilFruitsSpawning = new ConfigEntryBoolean(configuration, "allowDevilFruitsSpawning", "", CATEGORY_GENERATION, true));
         configEntries.add(enableDevilFruitGomuSpawning = new ConfigEntryBoolean(configuration, "enableDevilFruitGomuSpawning", "Rubber Devil Fruit", CATEGORY_GENERATION, true));
         configEntries.add(enableDevilFruitMeraSpawning = new ConfigEntryBoolean(configuration, "enableDevilFruitMeraSpawning", "Fire Devil Fruit", CATEGORY_GENERATION, true));
         configEntries.add(enableDevilFruitNoroSpawning = new ConfigEntryBoolean(configuration, "enableDevilFruitNoroSpawning", "Slow Devil Fruit", CATEGORY_GENERATION, true));
@@ -76,24 +77,24 @@ public class ConfigHandler {
         configEntries.add(enableDevilFruitYamiSpawning = new ConfigEntryBoolean(configuration, "enableDevilFruitYamiSpawning", "Dark Devil Fruit", CATEGORY_GENERATION, true));
         configEntries.add(enableDevilFruitItoSpawning = new ConfigEntryBoolean(configuration, "enableDevilFruitItoSpawning", "String Devil Fruit", CATEGORY_GENERATION, true));
 
-        configEntries.add(disablePowersGomu = new ConfigEntryBoolean(configuration, "disablePowersGomu", "Rubber Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersMera = new ConfigEntryBoolean(configuration, "disablePowersMera", "Fire Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersNoro = new ConfigEntryBoolean(configuration, "disablePowersNoro", "Slow Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersSuke = new ConfigEntryBoolean(configuration, "disablePowersSuke", "Clear Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersUshi = new ConfigEntryBoolean(configuration, "disablePowersUshi", "Giraffe Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersOpe = new ConfigEntryBoolean(configuration, "disablePowersOpe", "Operation (Law's) Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersHie = new ConfigEntryBoolean(configuration, "disablePowersHie", "Ice Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersNikyu = new ConfigEntryBoolean(configuration, "disablePowersNikyu", "Paw Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersYomi = new ConfigEntryBoolean(configuration, "disablePowersYomi", "Revive Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersGoro = new ConfigEntryBoolean(configuration, "disablePowersGoro", "Thunder Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersMoku = new ConfigEntryBoolean(configuration, "disablePowersMoku", "Smoke Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersYami = new ConfigEntryBoolean(configuration, "disablePowersYami", "Dark Devil Fruit", CATEGORY_POWERS, false));
-        configEntries.add(disablePowersIto = new ConfigEntryBoolean(configuration, "disablePowersIto", "String Devil Fruit", CATEGORY_POWERS, false));
+        configEntries.add(disablePowersGomu = new ConfigEntryBoolean(configuration, "disablePowersGomu", "Rubber Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GOMU));
+        configEntries.add(disablePowersMera = new ConfigEntryBoolean(configuration, "disablePowersMera", "Fire Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.MERA));
+        configEntries.add(disablePowersNoro = new ConfigEntryBoolean(configuration, "disablePowersNoro", "Slow Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.NORO));
+        configEntries.add(disablePowersSuke = new ConfigEntryBoolean(configuration, "disablePowersSuke", "Clear Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.SUKE));
+        configEntries.add(disablePowersUshi = new ConfigEntryBoolean(configuration, "disablePowersUshi", "Giraffe Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GIRAFFE));
+        configEntries.add(disablePowersOpe = new ConfigEntryBoolean(configuration, "disablePowersOpe", "Operation (Law's) Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.OPE));
+        configEntries.add(disablePowersHie = new ConfigEntryBoolean(configuration, "disablePowersHie", "Ice Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.HIE));
+        configEntries.add(disablePowersNikyu = new ConfigEntryBoolean(configuration, "disablePowersNikyu", "Paw Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.NIKYU));
+        configEntries.add(disablePowersYomi = new ConfigEntryBoolean(configuration, "disablePowersYomi", "Revive Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.YOMI));
+        configEntries.add(disablePowersGoro = new ConfigEntryBoolean(configuration, "disablePowersGoro", "Thunder Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GORO));
+        configEntries.add(disablePowersMoku = new ConfigEntryBoolean(configuration, "disablePowersMoku", "Smoke Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.MOKU));
+        configEntries.add(disablePowersYami = new ConfigEntryBoolean(configuration, "disablePowersYami", "Dark Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.YAMI));
+        configEntries.add(disablePowersIto = new ConfigEntryBoolean(configuration, "disablePowersIto", "String Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.ITO));
 
         configEntries.add(cooldownSpeed = new ConfigEntryInt(configuration, "cooldownSpeedMultiplier","Cooldown (wait time between powers) duration in ticks per second. 20 is normal. 40 is double, 10 is half", CATEGORY_POWERS,20,5,100));
         configEntries.add(enableSideEffects = new ConfigEntryBoolean(configuration, "enableSideEffects", "Enables side effects (Slowness, Weakness etc) after each power", CATEGORY_POWERS, false));
 
-        configEntries.add(enableMorganFortress = new ConfigEntryBoolean(configuration, "enableMorganFortressGeneration", "Enables or Disables Morgan's fortress generation", CATEGORY_POWERS, true));
+        configEntries.add(enableMorganFortress = new ConfigEntryBoolean(configuration, "enableMorganFortressGeneration", "Enables or Disables Morgan's fortress generation", CATEGORY_GENERATION, true));
         configEntries.add(morganFortressSpawnChance = new ConfigEntryInt(configuration, "morganFortressSpawnChance", "Chance 1/x per chunk (Only for plain biome chunks)", CATEGORY_GENERATION, 800,200,Integer.MAX_VALUE));
 
     }
@@ -104,6 +105,15 @@ public class ConfigHandler {
 
     public ArrayList<ConfigEntry> getConfigEntries(){
         return configEntries;
+    }
+
+    public boolean isPowerDisabled(int id){
+        for(ConfigEntry entry : configEntries){
+            if(entry instanceof ConfigEntryBoolean && entry.getID() == id){
+                return ((ConfigEntryBoolean) entry).getCurrentValue();
+            }
+        }
+        return false;
     }
 
 }

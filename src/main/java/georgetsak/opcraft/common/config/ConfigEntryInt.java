@@ -8,7 +8,7 @@ public class ConfigEntryInt extends ConfigEntry{
     private int originalValue = 0;
 
     public ConfigEntryInt(Configuration configuration, String name, String comment, String category, int defaultValue, int minValue, int maxValue) {
-        super(configuration, name, comment, category);
+        super(configuration, name, comment, category, -1);
         originalValue = currentValue = configuration.getInt(name,category,defaultValue,minValue, maxValue,comment);
     }
 
