@@ -81,7 +81,6 @@ public class OPCommonEventHooks {
     @SubscribeEvent
     public void onPlayerLoggedIn2(PlayerEvent.PlayerLoggedInEvent event) {
         PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
-        System.out.println("Player " + event.player.getDisplayName() + " joined. Sending Config.");
         PacketDispatcher.sendTo(new ConfigPacket(), (EntityPlayerMP) event.player);
 
         NBTTagCompound playerData = event.player.getEntityData();//Gives the manual on first login.
@@ -167,7 +166,7 @@ public class OPCommonEventHooks {
                 event.setAmount(event.getAmount() - event.getAmount() * StatsNormalCap.get(hurtPlayer).getDefenceLevel() * 5 / 100);
             }
 
-            Member member = CrewUtils.getMemberFromPlayer(ClientProxy.crews, hurtPlayer);//Reduces damage by 15% if player's role in a crew is Fighter
+            Member member = CrewUtils.getMemberFromPlayer(CrewSaveData.get(hurtPlayer.world).getCrews(), hurtPlayer);//Reduces damage by 15% if player's role in a crew is Fighter
             if(member != null && member.getRole() == EnumRole.FIGHTER){
                 event.setAmount(event.getAmount() - event.getAmount()*0.15f);
             }
@@ -226,7 +225,7 @@ public class OPCommonEventHooks {
                 }
 
                 //Roles
-                Member memberAttacker = CrewUtils.getMemberFromPlayer(ClientProxy.crews, sourcePlayer);
+                Member memberAttacker = CrewUtils.getMemberFromPlayer(CrewSaveData.get(sourcePlayer.world).getCrews(), sourcePlayer);
                 if(memberAttacker != null){
                     EnumRole role = memberAttacker.getRole();
                     Item heldItem = sourcePlayer.getHeldItemMainhand().getItem();
