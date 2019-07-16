@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "onepiececraft:bandage"
+    },
+    {
+      "item": "onepiececraft:sutures"
+    },
+    {
+      "item": "onepiececraft:bandage"
+    }
+  ],
+  "result": {
+    "item": "onepiececraft:first_aid_kit",
+    "count": 1
+  }
+}
