@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#W#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "item": "minecraft:wool",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "onepiececraft:bandage",
+    "count": 1
+  }
+}
