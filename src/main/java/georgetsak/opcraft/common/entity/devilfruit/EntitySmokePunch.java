@@ -14,75 +14,54 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class EntitySmokePunch extends EntityFlying {
+public class EntitySmokePunch extends EntitySimpleProjectile {
 
-    double x, y, z, startY;
-    float yaw, pitch;
-    Vec3d direction = new Vec3d(0, 0, 0);
-    EntityPlayer ep;
+    float speed = 1f;
 
     public EntitySmokePunch(World worldIn) {
         super(worldIn);
-        setSize(1f, 1f);
     }
 
     public EntitySmokePunch(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner) {
-        super(worldIn);
-
-        this.ep = owner;
-        this.x = x;
-        this.y = this.startY = y;
-        this.z = z;
-        this.yaw = yaw;
-        this.pitch = pitch;
-        this.direction = OPUtils.convertRotation(yaw, pitch);
-        direction.scale(2.5F);
-        this.setPositionAndRotation(x, y, z, yaw, pitch);
-
-        this.motionX = direction.x;
-        this.motionY = direction.y;
-        this.motionZ = direction.z;
-        this.setSize(1F, 1F);
+        super(worldIn, x, y, z, yaw, pitch, 1f, 1f, owner);
     }
 
+    @Override
+    public int getMaxTicks() {
+        return 80;
+    }
 
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
-            this.motionX = direction.x;
-            this.motionY = direction.y;
-            this.motionZ = direction.z;
+    @Override
+    public float getSpeedMultiplier() {
+        return speed;
     }
 
     public void onCollideWithPlayer(EntityPlayer entityIn) {
-        if (ep != entityIn && ep != null && !this.world.isRemote && entityIn.hurtResistantTime == 0) {
-            float damage = OPUtils.damageCalculation(entityIn, 12F, true);
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), damage);
-            entityIn.hurtResistantTime = 20;
-        }
-    }
+        if (!isCollisionWithPlayerValid(entityIn))return;
 
-    public void onUpdate() {
-        super.onUpdate();
-        spawnParticles();
-        if (this.ticksExisted >= 80) {
-            this.setDead();
-        }
+        float damage = OPUtils.damageCalculation(entityIn, 12F, true);
+        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), damage);
+        entityIn.hurtResistantTime = 20;
+
     }
 
     public void collideWithEntity(Entity entityIn) {
-        if (!this.world.isRemote && entityIn instanceof EntityLiving) {
-                entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.damageCalculation(ep, 12F, true));
-        }
+        if(!isCollisionWithEntityValid(entityIn))return;
+
+        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.damageCalculation(owner, 12F, true));
     }
 
+    @Override
+    public void onMaxDistanceCovered() {
+        speed = 0f;
+    }
 
     //@#@#@#@#@#@#@#@#@#@#@##@#@#@#@
-    Random r = new Random();
-    private void spawnParticles() {
+     public void spawnParticles() {
         for(int i = 0; i < 2; i++){
-            double offsetX = ((double)r.nextInt(20)+ 1 -10) / 14;
-            double offsetY = ((double)r.nextInt(20)+ 1 -10) / 14 + 0.5;
-            double offsetZ = ((double)r.nextInt(20)+ 1 -10) / 14;
+            double offsetX = ((double)rand.nextInt(20)+ 1 - 10) / 14;
+            double offsetY = ((double)rand.nextInt(20)+ 1 - 10) / 14 + 0.5;
+            double offsetZ = ((double)rand.nextInt(20)+ 1 - 10) / 14;
 
             this.world.spawnParticle(EnumParticleTypes.CLOUD, this.posX + offsetX, this.posY + offsetY, this.posZ + offsetZ, 0, 0, 0);
         }
@@ -90,18 +69,6 @@ public class EntitySmokePunch extends EntityFlying {
 
     public float getCollisionBorderSize() {
         return 2.0F;
-    }
-
-    public boolean isEntityInvulnerable(DamageSource source) {
-        return true;
-    }
-
-    public boolean canBePushed() {
-        return false;
-    }
-
-    public boolean canBeCollidedWith() {
-        return true;
     }
 
 }

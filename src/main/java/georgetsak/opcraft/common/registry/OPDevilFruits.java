@@ -121,6 +121,10 @@ public class OPDevilFruits {
         PowerHandler.addPower(20, 15, "Kurouzu", true, "Kurouzu", YAMI, 2, "kurouzu");
         PowerHandler.addPower(60, 20, "Liberation", true, "Liberation", YAMI, 3, "liberation");
 
+        PowerHandler.addPower(5, 0, "Tamaito", false, "Tamaito", ITO, 1);
+        PowerHandler.addPower(60, 0, "Overheat", true, "Overheat", ITO, 2);
+        PowerHandler.addPower(50, 0, "Goshikito", true, "Goshikito", ITO, 3);
+        PowerHandler.addPower(35, 0, "Sora no Michi", true, "Sora no Michi", ITO, 4);
     }
 
 
