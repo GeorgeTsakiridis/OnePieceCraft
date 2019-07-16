@@ -1,0 +1,317 @@
+package georgetsak.opcraft.common.registry;
+
+import georgetsak.opcraft.common.item.*;
+import georgetsak.opcraft.common.item.devilfruits.ItemPowerRemover;
+import georgetsak.opcraft.common.item.ItemOPBook;
+import georgetsak.opcraft.common.item.ItemOPRecord;
+import georgetsak.opcraft.common.item.weapons.*;
+import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.OPSoundEvent;
+import georgetsak.opcraft.common.item.weapons.ItemUssopKabuto;
+import georgetsak.opcraft.common.item.weapons.ammo.ItemGunAmmo;
+import georgetsak.opcraft.common.item.weapons.ammo.ItemUssopKabutoAmmo;
+import georgetsak.opcraft.common.item.weapons.swords.*;
+import net.minecraft.block.Block;
+import net.minecraft.init.MobEffects;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemFood;
+import net.minecraft.potion.PotionEffect;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
+
+import static georgetsak.opcraft.common.registry.OPBlocks.*;
+import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
+
+/**
+ * Created by GeorgeTsak on 8/7/2017.
+ */
+public class OPItems {
+
+    public static Item ItemCherryTreeSapling;
+    public static Item ItemCherryTreeWood;
+    public static Item ItemCherryTreePlanks;
+    public static Item ItemCherryTreeLeavesNonDecayable;
+    public static Item ItemAdamTreeWood;
+    public static Item ItemAdamTreePlanks;
+    public static Item ItemAdamTreeLeavesNonDecayable;
+    public static Item ItemKairosekiStone;
+    public static Item ItemKairosekiGem;
+    public static Item ItemSteelOre;
+    public static Item ItemDarkSteelOre;
+    public static Item ItemSteelIngot;
+    public static Item ItemDarkSteelIngot;
+    public static Item ItemSteelBlock;
+    public static Item ItemDarkSteelBlock;
+    public static Item ItemDarkSteelNugget;
+    public static Item ItemWadoIchiMonjiCased;
+    public static Item ItemWadoIchiMonjiOpen;
+    public static Item ItemKitetsuCased;
+    public static Item ItemKitetsuOpen;
+    public static Item ItemShuusuiCased;
+    public static Item ItemShuusuiOpen;
+    public static Item ItemMihawkYoru;
+    public static Item ItemArlongKiribachi;
+    public static Item ItemSmokerJitte;
+    public static Item ItemBrookSwordCased;
+    public static Item ItemBrookSwordOpen;
+    public static Item ItemCrocodileHookCased;
+    public static Item ItemCrocodileHookOpen;
+    public static Item ItemKikokuCased;
+    public static Item ItemKikokuOpen;
+    public static Item ItemClimaSimple;
+    public static Item ItemClimaCompletedWater;
+    public static Item ItemClimaCompletedFire;
+    public static Item ItemClimaCompletedThunder;
+    public static Item ItemTemporaryIce;
+    public static Item ItemUssopKabuto;
+    public static Item ItemUssopKabutoBlack;
+    public static Item ItemUssopKabutoAmmo;
+    public static Item ItemFlintlock;
+    public static Item ItemFlintlockAmmo;
+    public static Item ItemSenriku;
+    public static Item ItemSenrikuAmmo;
+    public static Item ItemBazooka;
+    public static Item ItemBazookaAmmo;
+    public static Item ItemWaterDial;
+    public static Item ItemLavaDial;
+    public static Item ItemFireDial;
+    public static Item ItemImpactDial;
+    public static Item ItemThunderDial;
+    public static Item ItemCutlass;
+    public static Item ItemLawDomeBlock;
+    public static Item ItemLawDomeCenterBlock;
+    public static Item ItemIceCageBlock;
+    public static Item ItemIceAgeBlock;
+    public static Item ItemBerryCoin;
+    public static Item ItemManualBook;
+    public static Item ItemDevilFruitPowerRemover;
+    public static Item ItemWeAreDisk;
+    public static Item ItemSake;
+    public static Item ItemSnail;
+    public static Item ItemShipBuilder;
+    public static Item ItemAceBoat;
+    public static Item ItemKairosekiBlock;
+    public static Item ItemKairosekiBars;
+    public static Item ItemSailBoat;
+    public static Item ItemLawHeart;
+    public static Item ItemBisento;
+    public static Item ItemShigureCased;
+    public static Item ItemShigureOpen;
+    public static Item ItemYubashiriCased;
+    public static Item ItemYubashiriOpen;
+    public static Item ItemTerrySword;
+    public static Item ItemEisenWhip;
+    public static Item ItemDurandalCased;
+    public static Item ItemDurandalOpen;
+    public static Item ItemSamekiriBochoSword;
+    public static Item ItemPretzelSword;
+    public static Item ItemShirauoCased;
+    public static Item ItemShirauoOpen;
+    public static Item ItemBandage;
+    public static Item ItemSutures;
+    public static Item ItemFirstAidKit;
+
+    public static void registerItems(){
+
+        ItemCherryTreeSapling = new ItemBlock(BlockCherryTreeSapling);
+        ItemCherryTreeWood = new ItemBlock(BlockCherryTreeWood);
+        ItemCherryTreePlanks = new ItemBlock(BlockCherryTreePlanks);
+        ItemCherryTreeLeavesNonDecayable = new ItemBlock(BlockCherryTreeLeavesNonDecayable);
+        ItemAdamTreeWood = new ItemBlock(BlockAdamTreeWood);
+        ItemAdamTreePlanks = new ItemBlock(BlockAdamTreePlanks);
+        ItemAdamTreeLeavesNonDecayable = new ItemBlock(BlockAdamTreeLeavesNonDecayable);
+        ItemKairosekiStone = new ItemBlock(BlockKairosekiStone);
+        ItemSteelOre = new ItemBlock(BlockSteelOre);
+        ItemDarkSteelOre = new ItemBlock(BlockDarkSteelOre);
+        ItemSteelBlock = new ItemBlock(BlockSteelBlock);
+        ItemDarkSteelBlock = new ItemBlock(BlockDarkSteelBlock);
+        ItemTemporaryIce = new ItemBlock(BlockTemporaryIce);
+        ItemLawDomeBlock = new ItemBlock(BlockLawDome);
+        ItemLawDomeCenterBlock = new ItemBlock(BlockLawDomeCenter);
+        ItemIceCageBlock = new ItemBlock(BlockIceCage);
+        ItemIceAgeBlock = new ItemBlock(BlockIceAge);
+        ItemShipBuilder = new ItemBlock(BlockShipBuilder);
+        ItemSnail = new ItemBlock(BlockSnail);
+        ItemKairosekiBlock = new ItemBlock(BlockKairosekiBlock);
+        ItemKairosekiBars = new ItemBlock(BlockKairosekiBars);
+
+        registerItemBlock(ItemCherryTreeSapling, BlockCherryTreeSapling);
+        registerItemBlock(ItemCherryTreeWood, BlockCherryTreeWood);
+        registerItemBlock(ItemCherryTreePlanks, BlockCherryTreePlanks);
+        registerItemBlock(ItemCherryTreeLeavesNonDecayable, BlockCherryTreeLeavesNonDecayable);
+        registerItemBlock(ItemAdamTreeWood, BlockAdamTreeWood);
+        registerItemBlock(ItemAdamTreePlanks, BlockAdamTreePlanks);
+        registerItemBlock(ItemAdamTreeLeavesNonDecayable, BlockAdamTreeLeavesNonDecayable);
+        registerItemBlock(ItemKairosekiStone, BlockKairosekiStone);
+        registerItemBlock(ItemSteelOre, BlockSteelOre);
+        registerItemBlock(ItemDarkSteelOre, BlockDarkSteelOre);
+        registerItemBlock(ItemSteelBlock, BlockSteelBlock);
+        registerItemBlock(ItemDarkSteelBlock, BlockDarkSteelBlock);
+        registerItemBlock(ItemTemporaryIce, BlockTemporaryIce);
+        registerItemBlock(ItemLawDomeBlock, BlockLawDome);
+        registerItemBlock(ItemLawDomeCenterBlock, BlockLawDomeCenter);
+        registerItemBlock(ItemIceCageBlock, BlockIceCage);
+        registerItemBlock(ItemIceAgeBlock, BlockIceAge);
+        registerItemBlock(ItemShipBuilder, BlockShipBuilder);
+        registerItemBlock(ItemSnail, BlockSnail);
+        registerItemBlock(ItemKairosekiBlock, BlockKairosekiBlock);
+        registerItemBlock(ItemKairosekiBars, BlockKairosekiBars);
+
+        //Standalone Items
+
+        ItemSteelIngot = new ItemSteelIngot().setRegistryName("steel_ingot").setCreativeTab(OPTab);
+        ItemKairosekiGem = new ItemKairosekiGem().setRegistryName("kairoseki_gem").setCreativeTab(OPTab);
+        ItemDarkSteelIngot = new ItemSteelIngot().setRegistryName("dark_steel_ingot").setCreativeTab(OPTab);
+        ItemDarkSteelNugget = new Item().setRegistryName("dark_steel_nugget").setCreativeTab(OPTab);
+
+        ItemWadoIchiMonjiCased = new ItemSwordWithCase(3000, 0).setRegistryName("wado_ichi_monji_cased").setCreativeTab(OPTab);
+        ItemWadoIchiMonjiOpen = new ItemSwordWithCase(3000, 7).setRegistryName("wado_ichi_monji_open");
+        ItemKitetsuCased = new ItemSwordWithCase(3000, 0).setRegistryName("kitetsu_cased").setCreativeTab(OPTab);
+        ItemKitetsuOpen = new ItemSwordWithCase(3000, 6).setRegistryName("kitetsu_open");
+        ItemShuusuiCased = new ItemSwordWithCase(3000, 0).setRegistryName("shuusui_cased").setCreativeTab(OPTab);
+        ItemShuusuiOpen = new ItemSwordWithCase(3000, 9).setRegistryName("shuusui_open");
+        ItemMihawkYoru = new ItemSimpleSword(10000, 14).setRegistryName("mihawk_yoru").setCreativeTab(OPTab);
+        ItemArlongKiribachi = new ItemSimpleSword(2000, 10).setRegistryName("arlong_kiribachi").setCreativeTab(OPTab);
+        ItemSmokerJitte = new ItemSmokerJitte(2000, 9).setRegistryName("smoker_jitte").setCreativeTab(OPTab);
+        ItemBrookSwordCased = new ItemSwordWithCase(3000, 0).setRegistryName("brook_sword_cased").setCreativeTab(OPTab);
+        ItemBrookSwordOpen = new ItemSwordWithCase(3000, 8).setRegistryName("brook_sword_open");
+        ItemCrocodileHookCased = new ItemCrocodileHook(4000, 0, 1).setRegistryName("crocodile_hook_cased").setCreativeTab(OPTab);
+        ItemCrocodileHookOpen = new ItemCrocodileHook(4000, 5, 2).setRegistryName("crocodile_hook_open");
+        ItemKikokuCased = new ItemSwordWithCase(4000, 0).setRegistryName("kikoku_cased").setCreativeTab(OPTab);
+        ItemKikokuOpen = new ItemSwordWithCase(4000, 8).setRegistryName("kikoku_open");
+        ItemClimaSimple = new ItemClima(100, 1, 0, false).setRegistryName("clima_simple").setCreativeTab(OPTab);
+        ItemClimaCompletedWater = new ItemClima(100, 2, 1, true).setRegistryName("clima_water").setCreativeTab(OPTab);
+        ItemClimaCompletedFire = new ItemClima(100, 2, 2, true).setRegistryName("clima_fire");
+        ItemClimaCompletedThunder = new ItemClima(100, 2, 3, true).setRegistryName("clima_thunder");
+        ItemUssopKabuto = new ItemUssopKabuto(0).setRegistryName("ussop_kabuto").setCreativeTab(OPTab);
+        ItemUssopKabutoBlack = new ItemUssopKabuto(1).setRegistryName("ussop_kabuto_black").setCreativeTab(OPTab);
+        ItemUssopKabutoAmmo = new ItemUssopKabutoAmmo().setRegistryName("ussop_kabuto_ammo").setCreativeTab(OPTab);
+        ItemFlintlock = new ItemGun(50, 10, 30, 20, 1).setRegistryName("flintlock").setCreativeTab(OPTab);
+        ItemSenriku = new ItemGun(300, 6, 80, 10, 2).setRegistryName("senriku").setCreativeTab(OPTab);
+        ItemBazooka = new ItemGun(500, 18, 20, 60, 3).setRegistryName("bazooka").setCreativeTab(OPTab);
+        ItemFlintlockAmmo = new ItemGunAmmo().setRegistryName("flintlock_ammo").setCreativeTab(OPTab);
+        ItemSenrikuAmmo = new ItemGunAmmo().setRegistryName("senriku_ammo").setCreativeTab(OPTab);
+        ItemBazookaAmmo = new ItemGunAmmo().setRegistryName("bazooka_ammo").setCreativeTab(OPTab);
+        ItemWaterDial = new ItemDial(1).setRegistryName("water_dial").setCreativeTab(OPTab);
+        ItemLavaDial = new ItemDial(2).setRegistryName("lava_dial").setCreativeTab(OPTab);
+        ItemFireDial = new ItemDial(3).setRegistryName("fire_dial").setCreativeTab(OPTab);
+        ItemImpactDial = new ItemDial(4).setRegistryName("impact_dial").setCreativeTab(OPTab);
+        ItemThunderDial = new ItemDial(5).setRegistryName("thunder_dial").setCreativeTab(OPTab);
+        ItemCutlass = new ItemSimpleSword(251, 6).setRegistryName("cutlass").setCreativeTab(OPTab);
+        ItemBerryCoin = new Item().setRegistryName("berry_coin").setCreativeTab(OPTab);
+        ItemManualBook = new ItemOPBook().setRegistryName("manual_book").setCreativeTab(OPTab);
+        ItemDevilFruitPowerRemover = new ItemPowerRemover().setRegistryName("devil_fruit_power_remover").setCreativeTab(OPTab);
+        ItemWeAreDisk = new ItemOPRecord("disc_we_are", OPSoundEvent.we_are).setRegistryName("disc_we_are").setCreativeTab(OPTab);
+        ItemSake = new ItemFood(2, 0.3F, false).setAlwaysEdible().setPotionEffect(new PotionEffect(MobEffects.NAUSEA, 200, 0), 0.5F).setRegistryName("sake").setCreativeTab(OPTab);
+        ItemAceBoat = new ItemOPBoat(0).setRegistryName("ace_boat").setCreativeTab(OPTab).setMaxStackSize(1);
+        ItemSailBoat = new ItemOPBoat(1).setRegistryName("sail_boat").setCreativeTab(OPTab).setMaxStackSize(1);
+        ItemLawHeart = new ItemLawHeart().setRegistryName("law_heart").setCreativeTab(OPTab).setMaxStackSize(1);
+        ItemBisento = new ItemSimpleSword(3000, 11).setRegistryName("bisento").setCreativeTab(OPTab).setMaxStackSize(1);
+        ItemShigureCased = new ItemSwordWithCase(251, 0).setRegistryName("shigure_cased").setCreativeTab(OPTab);
+        ItemShigureOpen = new ItemSwordWithCase(251, 6).setRegistryName("shigure_open");
+        ItemYubashiriCased = new ItemSwordWithCase(502, 0).setRegistryName("yubashiri_cased").setCreativeTab(OPTab);
+        ItemYubashiriOpen = new ItemSwordWithCase(502, 7).setRegistryName("yubashiri_open");
+        ItemTerrySword = new ItemSimpleSword(264, 4).setRegistryName("terry_sword").setCreativeTab(OPTab);
+        ItemEisenWhip = new ItemSimpleSword(502, 7).setRegistryName("eisen_whip").setCreativeTab(OPTab);
+        ItemDurandalCased = new ItemSwordWithCase(2500, 0).setRegistryName("durandal_cased").setCreativeTab(OPTab);
+        ItemDurandalOpen = new ItemSwordWithCase(2500, 8).setRegistryName("durandal_open");
+        ItemSamekiriBochoSword = new ItemSimpleSword(502, 7).setRegistryName("samekiri_bocho_sword").setCreativeTab(OPTab);
+        ItemPretzelSword = new ItemSimpleSword(2500, 8).setRegistryName("pretzel_sword").setCreativeTab(OPTab);
+        ItemShirauoCased = new ItemSwordWithCase(3000, 0).setRegistryName("shirauo_cased").setCreativeTab(OPTab);
+        ItemShirauoOpen = new ItemSwordWithCase(3000, 9).setRegistryName("shirauo_open");
+        ItemBandage = new ItemHeal(4).setRegistryName("bandage").setCreativeTab(OPTab);
+        ItemSutures = new ItemHeal(6).setRegistryName("sutures").setCreativeTab(OPTab);
+        ItemFirstAidKit = new ItemHeal(10).setRegistryName("first_aid_kit").setCreativeTab(OPTab);
+
+        SwordPairsManager.addPair(ItemWadoIchiMonjiCased, ItemWadoIchiMonjiOpen);
+        SwordPairsManager.addPair(ItemKitetsuCased, ItemKitetsuOpen);
+        SwordPairsManager.addPair(ItemShuusuiCased, ItemShuusuiOpen);
+        SwordPairsManager.addPair(ItemBrookSwordCased, ItemBrookSwordOpen);
+        SwordPairsManager.addPair(ItemKikokuCased, ItemKikokuOpen);
+        SwordPairsManager.addPair(ItemShigureCased, ItemShigureOpen);
+        SwordPairsManager.addPair(ItemYubashiriCased, ItemYubashiriOpen);
+        SwordPairsManager.addPair(ItemDurandalCased, ItemDurandalOpen);
+        SwordPairsManager.addPair(ItemShirauoCased, ItemShirauoOpen);
+
+        registerItem(ItemSteelIngot);
+        registerItem(ItemDarkSteelIngot);
+        registerItem(ItemDarkSteelNugget);
+        registerItem(ItemKairosekiGem);
+        registerItem(ItemWadoIchiMonjiCased);
+        registerItem(ItemWadoIchiMonjiOpen);
+        registerItem(ItemKitetsuCased);
+        registerItem(ItemKitetsuOpen);
+        registerItem(ItemShuusuiCased);
+        registerItem(ItemShuusuiOpen);
+        registerItem(ItemMihawkYoru);
+        registerItem(ItemArlongKiribachi);
+        registerItem(ItemSmokerJitte);
+        registerItem(ItemBrookSwordCased);
+        registerItem(ItemBrookSwordOpen);
+        registerItem(ItemCrocodileHookCased);
+        registerItem(ItemCrocodileHookOpen);
+        registerItem(ItemKikokuCased);
+        registerItem(ItemKikokuOpen);
+        registerItem(ItemClimaSimple);
+        registerItem(ItemClimaCompletedWater);
+        registerItem(ItemClimaCompletedFire);
+        registerItem(ItemClimaCompletedThunder);
+        registerItem(ItemUssopKabuto);
+        registerItem(ItemUssopKabutoBlack);
+        registerItem(ItemUssopKabutoAmmo);
+        registerItem(ItemFlintlock);
+        registerItem(ItemSenriku);
+        registerItem(ItemBazooka);
+        registerItem(ItemFlintlockAmmo);
+        registerItem(ItemSenrikuAmmo);
+        registerItem(ItemBazookaAmmo);
+        registerItem(ItemWaterDial);
+        registerItem(ItemLavaDial);
+        registerItem(ItemFireDial);
+        registerItem(ItemThunderDial);
+        registerItem(ItemImpactDial);
+        registerItem(ItemCutlass);
+        registerItem(ItemBerryCoin);
+        registerItem(ItemManualBook);
+        registerItem(ItemDevilFruitPowerRemover);
+        registerItem(ItemWeAreDisk);
+        registerItem(ItemSake);
+        registerItem(ItemAceBoat);
+        registerItem(ItemSailBoat);
+        registerItem(ItemLawHeart);
+        registerItem(ItemBisento);
+        registerItem(ItemShigureCased);
+        registerItem(ItemShigureOpen);
+        registerItem(ItemYubashiriCased);
+        registerItem(ItemYubashiriOpen);
+        registerItem(ItemTerrySword);
+        registerItem(ItemEisenWhip);
+        registerItem(ItemDurandalCased);
+        registerItem(ItemDurandalOpen);
+        registerItem(ItemSamekiriBochoSword);
+        registerItem(ItemPretzelSword);
+        registerItem(ItemShirauoCased);
+        registerItem(ItemShirauoOpen);
+        registerItem(ItemBandage);
+        registerItem(ItemSutures);
+        registerItem(ItemFirstAidKit);
+        // registerItem(ItemSnail);
+
+        //Ore Dictionary
+        OreDictionary.registerOre("plankWood", BlockCherryTreePlanks);
+        OreDictionary.registerOre("plankWood", BlockAdamTreePlanks);
+
+
+    }
+
+    static void registerItemBlock(Item item, Block block){
+        ForgeRegistries.ITEMS.register(item.setRegistryName(block.getRegistryName().toString()));
+    }
+
+    static void registerItem(Item item){
+        ForgeRegistries.ITEMS.register(item.setUnlocalizedName(item.getRegistryName().toString()));
+    }
+
+}
