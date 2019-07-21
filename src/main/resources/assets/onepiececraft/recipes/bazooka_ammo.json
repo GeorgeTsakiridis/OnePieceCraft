@@ -1,0 +1,23 @@
+{
+  "result": {
+    "item": "onepiececraft:bazooka_ammo",
+    "count": 4
+  },
+  "pattern": [
+    " D ",
+    "ITI",
+    " D "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "T": {
+      "item": "minecraft:tnt"
+    },
+    "D": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "I": {
+      "item": "onepiececraft:steel_ingot"
+    }
+  }
+}

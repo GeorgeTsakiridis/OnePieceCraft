@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "onepiececraft:sanji_simple_helmet"
+  },
+  "pattern": [
+    "YYY",
+    "Y Y"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "Y": {
+      "item": "minecraft:wool",
+      "data": 4
+    }
+  }
+}

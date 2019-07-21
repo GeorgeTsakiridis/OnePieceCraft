@@ -114,7 +114,7 @@ public class EntityLiberation extends EntityFlying {
                     for (Entity entity : OPUtils.getNearbyEntitiesExcluding(owner, 20, owner)) {
                         if(entity == this)continue;
                         if (entity instanceof EntityPlayer) {
-                            entity.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.damageCalculation((EntityPlayer) entity, 16f, true));
+                            entity.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage((EntityPlayer) entity, 16f, true));
                             continue;
                         }
                         entity.attackEntityFrom(DamageSource.causePlayerDamage(owner), 16f);

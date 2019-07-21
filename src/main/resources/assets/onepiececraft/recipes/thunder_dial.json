@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "onepiececraft:thunder_dial"
+  },
+  "pattern": [
+    " C ",
+    "CBC",
+    " C "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:redstone_block"
+    },
+    "C": {
+      "item": "minecraft:clay_ball"
+    }
+  }
+}

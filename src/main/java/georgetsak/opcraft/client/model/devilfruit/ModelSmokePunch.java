@@ -186,6 +186,7 @@ public class ModelSmokePunch extends ModelBase {
     public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
         GL11.glRotatef(180f, 0f, 1f, 0f);
         GL11.glScalef(2.0f, 2.0f, 2.0f);
+        GL11.glRotatef(-rotationPitch, 1, 0, 0);
         GL11.glTranslatef(-0.1f, 0.3f, -0.4f);
         this.armPart1.render(scale);
         GL11.glScalef(1.0f, 1.0f, 1.0f);

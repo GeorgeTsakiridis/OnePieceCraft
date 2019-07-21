@@ -20,19 +20,16 @@ public class ManualBookGUI extends GuiScreen {
     private static final ResourceLocation page0 = new ResourceLocation(OPCraft.MODID, "textures/gui/manual/page0.png");
 
 
-    GuiButton prevPage;
-    GuiButton nextPage;
-    EntityPlayer player;
+    private GuiButton prevPage;
+    private GuiButton nextPage;
+    private EntityPlayer player;
 
     int page = 0;
-    final int totalPages = PageManager.getTotalPages() - 1;//32;
+    private final int totalPages = PageManager.getTotalPages() - 1;//32;
 
-    int x = width/2;
+    private int x = width/2;
 
-    //Design fields not used.
-    int value = 1;
-    GuiButton add;
-    GuiButton minus;
+    private int value = 1;
 
     public ManualBookGUI(EntityPlayer player){
         if(player != null){
@@ -45,8 +42,6 @@ public class ManualBookGUI extends GuiScreen {
     public void initGui() {
         this.prevPage = this.addButton(new GuiButton(0, this.width / 2 - 100, height - 40, 98, 20, "Previous Page"));
         this.nextPage = this.addButton(new GuiButton(1, this.width / 2 + 2, height - 40, 98, 20, "Next Page"));
-        //this.add = this.addButton(new GuiButton(2, this.width / 2 - 100, height - 20, 98, 20, "+"));
-        //this.minus = this.addButton(new GuiButton(3, this.width / 2 + 2, height - 20, 98, 20, "-"));
 
         this.prevPage.enabled = false;
 
@@ -69,14 +64,6 @@ public class ManualBookGUI extends GuiScreen {
                 break;
             case 1:
                 page++;
-                break;
-            case 2:
-                value++;
-                System.out.println(value);
-                break;
-            case 3:
-                value--;
-                System.out.println(value);
                 break;
         }
 

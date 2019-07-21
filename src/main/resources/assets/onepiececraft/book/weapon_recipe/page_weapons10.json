@@ -1,0 +1,20 @@
+{
+  "type": "weapon_recipe",
+  "size": 1,
+  "recipes": [
+    {
+      "title": "Shirauo",
+      "totalLines": 1,
+      "lines": [
+        "§lShirauo§r is an extremely long nodachi, taller than average-sized people. Appropriate to its name, the sword has a pure white fish-shaped tsuba guard and a grip with scale patterns."
+      ],
+      "attack" : 10,
+      "durability" : 3000,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:shirauo_cased"
+    }
+  ]
+}

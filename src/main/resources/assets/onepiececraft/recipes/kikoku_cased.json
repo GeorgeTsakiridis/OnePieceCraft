@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "onepiececraft:kikoku_cased"
+  },
+  "pattern": [
+    " BD",
+    "ODB",
+    "SO "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:obsidian"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "O": {
+      "item": "minecraft:dye",
+      "data": 14
+    }
+  }
+}

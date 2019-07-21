@@ -77,7 +77,7 @@ public class EntityEntei extends EntityFlying {
 	 public void onCollideWithPlayer(EntityPlayer entityIn)
 	    {
 		 if(ep != entityIn && ep != null){
-			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.damageCalculation(entityIn, 10F, true));
+			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 10F, true));
 			 entityIn.setFire(10);
 		 }
 		 }

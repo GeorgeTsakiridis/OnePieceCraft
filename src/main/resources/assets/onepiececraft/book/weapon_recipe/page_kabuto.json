@@ -1,0 +1,33 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Usopp's Kabuto (with ammo)",
+      "totalLines": 1,
+      "lines": [
+        "Usopp developed this weapon sometime before arriving in Enies Lobby, using the Dials that he obtained in Skypiea. It is a green metallic contraption that looks like a cross between a staff and a slingshot."
+      ],
+      "attack" : -1,
+      "durability" : 500,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:ussop_kabuto"
+    },
+    {
+      "title": "",
+      "totalLines": 0,
+      "lines": [
+      ],
+      "attack" : -1,
+      "durability" : -1,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:ussop_kabuto_ammo"
+    }
+  ]
+}

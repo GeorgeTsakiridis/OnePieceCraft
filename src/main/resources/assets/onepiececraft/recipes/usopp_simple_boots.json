@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "onepiececraft:usopp_simple_boots"
+  },
+  "pattern": [
+    "L L",
+    "B B"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:wool",
+      "data": 12
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  }
+}

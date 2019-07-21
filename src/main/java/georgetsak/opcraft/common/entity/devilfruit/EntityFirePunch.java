@@ -2,19 +2,13 @@ package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class EntityFirePunch extends EntitySimpleProjectile {
 
@@ -39,7 +33,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	public void onUpdate()
 	    {
 	        super.onUpdate();
-			spawnParticles();
+
 	        boolean flag1 = getType() != 1 && getType() != 0;
 
         	if(this.collided && flag1){
@@ -57,7 +51,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	public void onCollideWithPlayer(EntityPlayer entityIn) {
 		if (!isCollisionWithPlayerValid(entityIn) || getType() == 0) return;
 
-		entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.damageCalculation(entityIn, getDamageValue(), true));
+		entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(entityIn, getDamageValue(), true));
 		entityIn.setFire(getFireTimeValue());
 	}
 
@@ -85,7 +79,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 
 	@Override
 	public int getMaxTicks() {
-		return 160;
+		return 160000;
 	}
 
 	private float getExplosionSize() {
@@ -133,11 +127,12 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	}
 
 	 public float getSpeedMultiplier() {
+
 		 switch(getType()){
-		 case 1: return 0.8f;
-		 case 2: return 0.8f;
-		 case 3: return 1.2f;
-		 case 4: return 1.5f;
+		 case 1: return 1f;
+		 case 2: return 1f;
+		 case 3: return 1.5f;
+		 case 4: return 3.5f;
 		 default: return 0f;
 		 }
 	}

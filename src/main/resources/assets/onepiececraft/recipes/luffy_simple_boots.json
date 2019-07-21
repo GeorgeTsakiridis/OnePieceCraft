@@ -1,0 +1,15 @@
+{
+  "result": {
+    "item": "onepiececraft:luffy_simple_boots"
+  },
+  "pattern": [
+    "W W",
+    "W W"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:wheat"
+    }
+  }
+}

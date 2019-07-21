@@ -1,0 +1,11 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "onepiececraft:blocks/cherrytreeside",
+        "up": "blocks/log_oak_top","down": "blocks/log_oak_top",
+        "north": "onepiececraft:blocks/cherrytreeside",
+        "east": "onepiececraft:blocks/cherrytreeside",
+        "south": "onepiececraft:blocks/cherrytreeside",
+        "west": "onepiececraft:blocks/cherrytreeside"
+    }
+}

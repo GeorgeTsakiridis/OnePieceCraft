@@ -1,0 +1,21 @@
+{
+  "result": {
+    "item": "onepiececraft:luffy_simple_chestplate"
+  },
+  "pattern": [
+    "R R",
+    "RRR",
+    "YYY"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "R": {
+      "item": "minecraft:wool",
+      "data": 14
+    },
+    "Y": {
+      "item": "minecraft:wool",
+      "data": 4
+    }
+  }
+}

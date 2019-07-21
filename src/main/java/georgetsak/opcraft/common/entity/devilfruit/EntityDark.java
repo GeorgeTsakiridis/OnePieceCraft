@@ -1,23 +1,16 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapProvider;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-import java.util.List;
 import java.util.Random;
 
 public class EntityDark extends EntityLiving {
@@ -87,7 +80,7 @@ public class EntityDark extends EntityLiving {
                     player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 9));
                     player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 80, 9));
 
-                    entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.damageCalculation(player, 12.0f, true));
+                    entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(player, 12.0f, true));
                 }
                 entityIn.hurtResistantTime = 60;
             }

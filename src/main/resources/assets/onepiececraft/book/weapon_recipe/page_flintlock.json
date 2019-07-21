@@ -1,0 +1,33 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Flintlock Gun",
+      "totalLines": 1,
+      "lines": [
+        "The §lFlintlock§r is a type of gun ignition mechanism that was first introduced in about 1630. It was a revolutionary design that replaced the firearm-ignition technologies at the time, such as the matchlock and wheel-lock."
+      ],
+      "attack" : 11,
+      "durability" : 50,
+      "rightClickToRemove" : false,
+      "range" : 30,
+      "reloadTime" : 1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:flintlock"
+    },
+    {
+      "title": "",
+      "totalLines": 0,
+      "lines": [
+      ],
+      "attack" : -1,
+      "durability" : -1,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:flintlock_ammo"
+    }
+  ]
+}

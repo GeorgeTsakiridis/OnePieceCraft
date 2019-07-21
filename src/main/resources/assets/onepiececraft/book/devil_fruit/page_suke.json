@@ -1,0 +1,14 @@
+{
+  "type": "devil_fruit",
+  "title" : "Suke Suke no Mi - (Clear)",
+  "prefix" : "Suke Suke no Mi",
+  "powers": [
+    1,
+    {
+      "name" : "Skating",
+      "cooldown" : 30,
+      "sideEffects" : "None",
+      "description" : "Makes the player invisible."
+    }
+  ]
+}

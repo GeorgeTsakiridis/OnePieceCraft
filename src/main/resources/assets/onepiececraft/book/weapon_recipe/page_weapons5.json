@@ -1,0 +1,34 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Law's Sword (Kikoku)",
+      "totalLines": 1,
+      "lines": [
+        "The §lKikoku§r is a large two-handed sword. Its cutting capability and range exceed that of a katana, due to its weight and size. Right clicking a player with this sword while being an Ope Ope no Mi Devil fruit user and being in a dome will extract the Player's heart."
+      ],
+      "attack" : 9,
+      "durability" : 4000,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:kikoku_cased"
+    },
+    {
+      "title": "Cutlass",
+      "totalLines": 1,
+      "lines": [
+        "A §lCutlass§r is a short, thick saber, with a slightly curved blade sharpened on the cutting edge, and a hilt often featuring a solid cupped or basket-shaped guard. It is used by many low-ranked marines."
+      ],
+      "attack" : 7,
+      "durability" : 251,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:cutlass"
+    }
+  ]
+}

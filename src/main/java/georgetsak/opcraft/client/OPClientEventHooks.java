@@ -5,8 +5,6 @@ import georgetsak.opcraft.client.gui.overlay.EnumSixPowers;
 import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
-import georgetsak.opcraft.common.capability.bounty.BountyCap;
-import georgetsak.opcraft.common.capability.bounty.IBountyCap;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
@@ -48,7 +46,6 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -57,9 +54,6 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import org.lwjgl.opengl.GL11;
-
-import java.awt.*;
 
 /**
  * Client based logic. All these function are executed in each individual player. Not safe because hacking using OPMessages is easy,
@@ -205,7 +199,7 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("IceBallA")) {
-            Entity entity = OPUtils.findEntity(ep, 50);
+            Entity entity = OPUtils.getLookingEntity(ep, 50);
             if (entity != null) {
                 PacketDispatcher.sendToServer(new IceCageEntityServerPacket(entity));
                 return true;
@@ -213,7 +207,7 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("WhiteSnakeA")) {
-            Entity entity = OPUtils.findEntity(ep, 50);
+            Entity entity = OPUtils.getLookingEntity(ep, 50);
             if (entity != null) {
                 PacketDispatcher.sendToServer(new SmokeSnakeServerPacket(entity));
                 return true;
@@ -234,7 +228,7 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("KurouzuA")) {
-            Entity entity = OPUtils.findEntity(ep,50);
+            Entity entity = OPUtils.getLookingEntity(ep,50);
             if(entity != null){
                 PacketDispatcher.sendToServer(new KurouzuServerPacket(entity));
             }
@@ -311,7 +305,7 @@ public class OPClientEventHooks {
                     case FINGER_PISTOL:
                         if(checkAndSetEnergyBar(100f))break;
 
-                        Entity entity = OPUtils.findEntity(p, 5);
+                        Entity entity = OPUtils.getLookingEntity(p, 5);
                         if (entity instanceof EntityLiving) {
                             System.out.println(sixPowerLevel * 5f);
                             PacketDispatcher.sendToServer(new DamageEntityServerPacket(entity, sixPowerLevel * 4f));

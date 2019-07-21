@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:shuusui_cased"
+  },
+  "pattern": [
+    "XDX",
+    "XDX",
+    "XSX"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "X": {
+      "item": "minecraft:leather"
+    }
+  }
+}

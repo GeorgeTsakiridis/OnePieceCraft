@@ -33,6 +33,7 @@ public class ModelFireFist extends ModelBase {
 		}
 
 		if(((EntityFirePunch)(entity)).getType() == 2){
+			GL11.glRotatef(f4, 1, 0, 0);
 			new ModelShinka().render(entity, f, f1, f2, f3, f4, f5);
 			return;
 		}

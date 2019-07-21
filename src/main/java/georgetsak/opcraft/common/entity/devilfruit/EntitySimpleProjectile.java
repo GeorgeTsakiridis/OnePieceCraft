@@ -13,6 +13,7 @@ public class EntitySimpleProjectile extends EntityFlying {
 
     private double startX;
     private double startY;
+    private double startZ;
 
     private Vec3d direction = new Vec3d(0, 0, 0);
     EntityPlayer owner;
@@ -21,6 +22,7 @@ public class EntitySimpleProjectile extends EntityFlying {
         super(world);
         startX = x;
         startY = y;
+        startZ = z;
         direction = OPUtils.convertRotation(yaw, pitch);
         setPositionAndRotation(x, y, z, yaw, pitch);
         setSize(width, height);
@@ -34,7 +36,7 @@ public class EntitySimpleProjectile extends EntityFlying {
     @Override
     public void onUpdate() {
         super.onUpdate();
-
+        spawnParticles();
         if(ticksExisted > getMaxTicks()){
             onExpired();
         }
@@ -43,13 +45,23 @@ public class EntitySimpleProjectile extends EntityFlying {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
-        if(Math.sqrt((startX - posX)*(startX - posX)) > getMaxDistance() || Math.sqrt((startY - posY)*(startY - posY)) > getMaxDistance()){
+        if(Math.sqrt((startX - posX)*(startX - posX)) > getMaxDistance() || Math.sqrt((startZ - posZ)*(startZ - posZ)) > getMaxDistance()){
             onMaxDistanceCovered();
+        }else {
+            setVelocity(direction.x * getSpeedMultiplier(), direction.y * getSpeedMultiplier(), direction.z * getSpeedMultiplier());
         }
+    }
 
-        this.motionX = direction.x * getSpeedMultiplier();
-        this.motionY = direction.y * getSpeedMultiplier();
-        this.motionZ = direction.z * getSpeedMultiplier();
+    public double getStartX() {
+        return startX;
+    }
+
+    public double getStartY() {
+        return startY;
+    }
+
+    public double getStartZ() {
+        return startZ;
     }
 
     public int getMaxTicks(){

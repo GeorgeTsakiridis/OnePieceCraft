@@ -1,0 +1,27 @@
+{
+  "type": "devil_fruit",
+  "title" : "Goro Goro no Mi - (Thunder)",
+  "prefix" : "Goro Goro no Mi",
+  "powers": [
+    3,
+    {
+      "name" : "El Thor",
+      "cooldown" : 5,
+      "sideEffects" : "None",
+      "description" : "Creates a big lightning bolt to the location player is looking."
+    },
+    {
+      "name" : "Sango",
+      "cooldown" : 10,
+      "sideEffects" : "Slowness II, Weakness II",
+      "description" : "Creates random lightning bolts in a 100 x 100 blocks radius area."
+    }
+  ,
+    {
+      "name" : "Deathpiea",
+      "cooldown" : 30,
+      "sideEffects" : "Slowness III, Weakness III, Hunger III",
+      "description" : "Creates more random lightning bolts in a 150 x 150 block radius area."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Same-kiri Bocho",
+      "totalLines": 1,
+      "lines": [
+        "The §lSame-kiri Bocho§r is a large zanbato, with a design similar to a cleaver, with string tassel tied at the pommel of the handle."
+      ],
+      "attack" : 8,
+      "durability" : 502,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:samekiri_bocho_sword"
+    },
+    {
+      "title": "Pretzel",
+      "totalLines": 1,
+      "lines": [
+        "§lPretzel§r is the name of Charlotte Cracker's sword. It is a longsword which Cracker states holds no equal."
+      ],
+      "attack" : 9,
+      "durability" : 2500,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:pretzel_sword"
+    }
+  ]
+}

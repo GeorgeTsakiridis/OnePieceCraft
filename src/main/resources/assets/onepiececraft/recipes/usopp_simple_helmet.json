@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "onepiececraft:usopp_simple_helmet"
+  },
+  "pattern": [
+    "WWW",
+    "W W"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "W": {
+      "item": "minecraft:wool",
+      "data": 0
+    }
+  }
+}

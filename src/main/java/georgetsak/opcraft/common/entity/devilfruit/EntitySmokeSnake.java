@@ -10,7 +10,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -54,7 +53,7 @@ public class EntitySmokeSnake extends EntityFlying {
 
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         if (ep != entityIn && ep != null && !this.world.isRemote) {
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.damageCalculation(entityIn, 12F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 12F, true));
             entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
             entityIn.hurtResistantTime = 40;
         }
@@ -77,7 +76,7 @@ public class EntitySmokeSnake extends EntityFlying {
 
     public void collideWithEntity(Entity entityIn) {
         if (ep != null && entityIn instanceof EntityLiving && !this.world.isRemote) {
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.damageCalculation(ep, 12F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(ep, 12F, true));
             ((EntityLiving)(entityIn)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
 
         }

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "onepiececraft",
+  "param1": "One Piece Craft",
+  "description": "A mod that adds stuff from the One Piece Anime.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["GeorgeTsak"],
+  "credits": "GeorgeTsak",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

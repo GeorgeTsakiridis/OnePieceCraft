@@ -1,0 +1,11 @@
+{
+  "type": "entity_info",
+  "title": "Crocodile",
+  "entityToDisplay" : ["crocodile"],
+  "displaySize" : 50,
+  "totalLines": 2,
+  "lines":[
+    "Sir Crocodile is the former president of the mysterious crime syndicate Baroque Works.",
+    "He can be found in desert and mesa biomes. He has a distinct laugh and will turn any dirt or grass block into sand."
+  ]
+}

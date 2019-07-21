@@ -1,0 +1,289 @@
+{
+	"effects.iceeffect": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/iceeffect",
+				"stream": false
+			}
+		]
+	},
+	"effects.fireeffect": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/fireeffect",
+				"stream": false
+			}
+		]
+	},
+	"effects.ussopkabutoload": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/ussopkabutoload",
+				"stream": false
+			}
+		]
+	},
+	"effects.ussopkabutorelease": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/ussopkabutorelease",
+				"stream": false
+			}
+		]
+	},
+	"effects.weapons.flintlockfire": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/weapons/flintlockfire",
+				"stream": false
+			}
+		]
+	},
+	"effects.weapons.senrikufire": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/weapons/senrikufire",
+				"stream": false
+			}
+		]
+	},
+	"effects.weapons.bazookafire": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/weapons/bazookafire",
+				"stream": false
+			}
+		]
+	},
+	"effects.weapons.gunempty": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/weapons/gunempty",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.gomu.stretch": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/gomu/stretch",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.gomu.gear2": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/gomu/gear2",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.mera.firefist": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/mera/firefist",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.mera.enteicharge": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/mera/enteicharge",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.noro.slowbeam": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/noro/slowslowbeam",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.op.domeappear": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/op/domeappear",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.op.domedisappear": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/op/domedisappear",
+				"stream": false
+			}
+		]
+	},
+  "devilfruit.op.shambles": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "onepiececraft:devilfruits/op/shambles",
+        "stream": false
+      }
+    ]
+  },
+  "devilfruit.op.takt": {
+    "category": "record",
+    "sounds": [
+      {
+        "name": "onepiececraft:devilfruits/op/takt",
+        "stream": false
+      }
+    ]
+  },
+	"devilfruit.hie.icesaber": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/hie/icesaber",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.hie.iceball": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/hie/iceball",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.hie.iceage": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/hie/iceage",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.hie.icephoenix": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/hie/icephoenix",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.nikyu.padho": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/nikyu/padho",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.nikyu.ursusshock": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/nikyu/ursusshock",
+				"stream": false
+			}
+		]
+	},
+	"misc.weare": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:misc/weare",
+				"stream": true
+			}
+		]
+	},
+	"devilfruit.moku.smokewhoosh": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/moku/smokewhoosh",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.moku.smokeambient": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/moku/smokeambient",
+				"stream": false
+			}
+		]
+	},
+	"effects.emperorhaki": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/emperorhaki",
+				"stream": true
+			}
+		]
+	},
+	"effects.crocodile.crocodilelaugh": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/crocodile/crocodilelaugh1",
+				"stream": false
+			},
+			{
+				"name": "onepiececraft:effects/crocodile/crocodilelaugh2",
+				"stream": false
+			},
+			{
+				"name": "onepiececraft:effects/crocodile/crocodilelaugh3",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.yami.dark": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/yami/dark",
+				"stream": false
+			}
+		]
+	},
+	"effects.airblast": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:effects/airblast",
+				"stream": false
+			}
+		]
+	},
+	"devilfruit.ito.tamaito": {
+		"category": "record",
+		"sounds": [
+			{
+				"name": "onepiececraft:devilfruits/ito/tamaito",
+				"stream": false
+			}
+		]
+	}
+}

@@ -28,9 +28,10 @@ public class RenderGomuPistol extends RenderLiving<EntityGomuPistol>{
     protected void preRenderCallback(EntityGomuPistol entity, float partialTickTime) {
 	    if (entity.isGear3()) {
             GL11.glScalef(5f, 5f, 5f);
-            GL11.glTranslatef(0.25f, 1.25f, 0.1f);
+            GL11.glTranslatef(0.127f, 1.23f, 0.1f);
 	    }else {
 	        GL11.glTranslatef(0f, 0.2f, 0f);
+	        GL11.glTranslatef(0f, 0.5f, 0f);
         }
         super.preRenderCallback(entity, partialTickTime);
     }

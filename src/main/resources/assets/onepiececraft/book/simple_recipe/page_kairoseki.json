@@ -1,0 +1,26 @@
+{
+  "type": "simple_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Kairoseki Ore / Gem / Block / Bars",
+      "totalLines": 3,
+      "lines": [
+        "§lKairoseki§r (translated \"Seastone\") is a rare stone that drains the power of Devil Fruit Users. Because Kairoseki gives off a wavelength that is the same as the sea itself it can only be found below §bOceans/Rivers§r and so on.",
+        "Blocks made of this stone can be used to disable Devil Fruit Users powers as well as weaken them.",
+        "Breaking a Kairoseki ore drops 1 §8Kairoseki Gem§r, while putting it in a furnace gives 2."
+      ],
+      "itemOrBlock" : "block",
+      "result" : "onepiececraft:kairoseki_block"
+    },
+    {
+      "title": "Steel / Dark Steel Ore / Ingot",
+      "totalLines": 1,
+      "lines": [
+        "§lSteel ore§r can be found deep in every biome. Ingots obtained by melting it in a furnace are used to craft weapons and ammo."
+      ],
+      "itemOrBlock" : "block",
+      "result" : "onepiececraft:kairoseki_bars"
+    }
+  ]
+}

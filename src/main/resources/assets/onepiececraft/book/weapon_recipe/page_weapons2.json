@@ -1,0 +1,34 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Shusui Sword",
+      "totalLines": 1,
+      "lines": [
+        "§lShusui§r is one of the 21 O Wazamono grade swords and was once wielded by the legendary samurai Ryuma. It is considered the national treasure of the Wano Country. After his death, the katana was buried with Ryuma, until his grave was robbed by Moriah's crew."
+      ],
+      "attack" : 10,
+      "durability" : 3000,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:shuusui_cased"
+    },
+    {
+      "title": "Mihawk's Yoru Sword",
+      "totalLines": 1,
+      "lines": [
+        "§lYoru§r is one of the strongest swords in the world. It is one of the twelve Saijo O Wazamono and a \"Black Sword\". This blade is currently owned by Dracule Mihawk."
+      ],
+      "attack" : 15,
+      "durability" : 10000,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:mihawk_yoru"
+    }
+  ]
+}

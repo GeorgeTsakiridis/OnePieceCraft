@@ -140,6 +140,7 @@ public ModelIcePhoenix() {
 @Override
 public void render(Entity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float rotationYaw, float rotationPitch, float scale) {
         super.render(entity, limbSwing, limbSwingAmount, ageInTicks, rotationYaw, rotationPitch, scale);
+        GL11.glRotatef(rotationPitch, 1, 0, 0);
 
         this.WingL1.rotateAngleZ = -2.96705972839036F - (float)Math.sin(ageInTicks/3f)/2f;
         this.WingR1.rotateAngleZ = -0.17453292519943295F + (float)Math.sin(ageInTicks/3f)/2f;

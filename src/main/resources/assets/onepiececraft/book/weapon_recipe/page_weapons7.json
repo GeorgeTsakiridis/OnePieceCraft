@@ -1,0 +1,34 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Yubashiri",
+      "totalLines": 1,
+      "lines": [
+        "§lYubashiri§r was one of the fifty Ryo Wazamono grade swords. Roronoa Zoro obtained this sword for free from a sword shop owner."
+      ],
+      "attack" : 8,
+      "durability" : 502,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:yubashiri_cased"
+    },
+    {
+      "title": "Terry Sword",
+      "totalLines": 1,
+      "lines": [
+        "The §lTerry Sword§r is a gigantic longsword wielded by Dorry. It shattered during his and Brogy's assault on the Island Eater."
+      ],
+      "attack" : 5,
+      "durability" : 264,
+      "rightClickToRemove" : false,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:terry_sword"
+    }
+  ]
+}

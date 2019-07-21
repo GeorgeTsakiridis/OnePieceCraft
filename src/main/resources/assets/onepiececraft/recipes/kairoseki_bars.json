@@ -1,0 +1,16 @@
+{
+  "result": {
+    "item": "onepiececraft:kairoseki_bars",
+    "count": 16
+  },
+  "pattern": [
+    "GGG",
+    "GGG"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "onepiececraft:kairoseki_gem"
+    }
+  }
+}

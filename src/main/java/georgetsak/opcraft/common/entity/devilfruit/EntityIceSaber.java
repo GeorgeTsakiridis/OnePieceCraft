@@ -60,7 +60,7 @@ public class EntityIceSaber extends EntityFlying {
     {
         if(ep != entityIn && ep != null && entityIn.hurtResistantTime == 0){
             entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.damageCalculation(entityIn, 6F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 6F, true));
             entityIn.hurtResistantTime = 20;
             this.setDead();
         }

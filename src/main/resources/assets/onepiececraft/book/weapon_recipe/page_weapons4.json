@@ -1,0 +1,35 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Brook's Soul Solid Sword",
+      "totalLines": 1,
+      "lines": [
+        "§lSoul Solid§r is the name of Brook's cane sword. Since he only gave the name of the sword after the timeskip, it is unknown if his sword always carried this name."
+      ],
+      "attack" : 9,
+      "durability" : 3000,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:brook_sword_cased"
+    },
+    {
+      "title": "Crocodile's hook",
+      "totalLines": 2,
+      "lines": [
+        "It is a §lHook§r made from tough Gold alloy. Removing it's cover reveals a poisonous iron hook.",
+        "Poisons hit Player/Mob"
+      ],
+      "attack" : 6,
+      "durability" : 4000,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "$Crocodile"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:clima_simple"
+  },
+  "pattern": [
+    " LS",
+    "LSL",
+    "SL "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:dye",
+      "data": 4
+    }
+  }
+}

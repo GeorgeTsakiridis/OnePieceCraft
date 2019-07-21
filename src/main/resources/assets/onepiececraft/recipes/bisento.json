@@ -1,0 +1,28 @@
+{
+  "result": {
+    "item": "onepiececraft:bisento"
+  },
+  "pattern": [
+    "  B",
+    "RGW",
+    "SR "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "onepiececraft:dark_steel_block"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "W": {
+      "item": "onepiececraft:steel_ingot"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:flintlock_ammo",
+    "count": 16
+  },
+  "pattern": [
+    " I ",
+    "IGI",
+    " I "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "I": {
+      "item": "onepiececraft:steel_ingot"
+    }
+  }
+}

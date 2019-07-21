@@ -1,0 +1,34 @@
+{
+  "type": "devil_fruit",
+  "title" : "Hie Hie no Mi",
+  "prefix" : "Hie Hie no Mi (Ice)",
+  "powers": [
+    4,
+    {
+      "name" : "Ice Saber",
+      "cooldown" : 3,
+      "sideEffects" : "None",
+      "description" : "Launches ice spikes that will damage everything on touch."
+    },
+    {
+      "name" : "Ice Ball",
+      "cooldown" : 20,
+      "sideEffects" : "Slowness I, Weakness I",
+      "description" : "Creates a ball of hard ice around the mob/player the user is looking."
+    }
+  ,
+    {
+      "name" : "Ice Age",
+      "cooldown" : 60,
+      "sideEffects" : "None",
+      "description" : "Creates a long ice road in water. Useful when travelling on ocean."
+    }
+  ,
+    {
+      "name" : "Ice Block",
+      "cooldown" : 25,
+      "sideEffects" : "Slowness I, Weakness I, Hunger I",
+      "description" : "Creates an Ice Pheasant which moves forwards freezing and damaging everything it touches."
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "simple_recipe",
+  "size": 1,
+  "recipes": [
+    {
+      "title": "Ship Builder",
+      "totalLines": 2,
+      "lines": [
+        "The Ship Builder block can be used to build... ships!",
+        "(Recipes of the ships can be found in the next pages)"
+      ],
+      "itemOrBlock" : "block",
+      "result" : "onepiececraft:ship_builder_block"
+    }
+  ]
+}

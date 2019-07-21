@@ -1,0 +1,20 @@
+{
+  "type": "entity_info",
+  "title": "Pirates",
+  "entityToDisplay": [
+    "pirateStrong",
+    "pirateThin",
+    "pirateFat"
+  ],
+  "displaySize": 50,
+  "totalLines": 6,
+  "lines": [
+    "Pirates can be found anywhere in the world and usually spawn in groups of up to 6 pirates. They will always try to attack and kill you no matter your bounty.",
+    "Pirates besides you will also attack Bandits.",
+    "Pirates spawn in three variations;",
+    "Strong: Normal health, High attack damage, Normal speed, Normal knockback resistance",
+    "Thin: Low health, Low attack damage, High speed, No knockback resistance",
+    "Fat: High health, Normal attack damage, Low speed, Big knockback resistance",
+    "Killing a pirate reduces your bounty by 200 berries."
+  ]
+}

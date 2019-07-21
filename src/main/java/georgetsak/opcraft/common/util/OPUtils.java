@@ -1,8 +1,6 @@
 package georgetsak.opcraft.common.util;
 
 import com.google.common.base.Predicates;
-import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
@@ -11,16 +9,13 @@ import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.registry.OPBlocks;
-import javafx.geometry.Point3D;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.resources.Language;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -50,9 +45,9 @@ import java.util.UUID;
 public class OPUtils {
     private static UUID speedID = UUID.fromString("b36cb6dd-d15a-40a9-98b2-ec704a6ad645");
     private static UUID attackID = UUID.fromString("579c2c4c-ed00-4c57-b0b4-fac886c192b4");
-    static Random r = new Random();
+    private static Random random = new Random();
 
-    public static float damageCalculation(EntityPlayer target, float baseDamage, boolean isDFdamage) {
+    public static float calculateDamage(EntityPlayer target, float baseDamage, boolean isDFdamage) {
         if(target == null)return 0;
 
         float defensePoints = (float) target.getTotalArmorValue();
@@ -63,7 +58,7 @@ public class OPUtils {
 
         if (isDFdamage) {
             IHakiCap hakiCap = HakiCap.get(target);
-            int random = r.nextInt(100);
+            int random = OPUtils.random.nextInt(100);
 
             int dodge = hakiCap.getDodgeLevel();
             int defence = hakiCap.getDefenceLevel();
@@ -190,7 +185,7 @@ public class OPUtils {
     }
 
     @SideOnly(Side.CLIENT)
-    public static Entity findEntity(EntityPlayer ep, int range) {
+    public static Entity getLookingEntity(EntityPlayer ep, int range) {
         int partialTicks = 5;
         Entity pointedEntity = null;
         Entity entity = Minecraft.getMinecraft().getRenderViewEntity();
@@ -298,52 +293,37 @@ public class OPUtils {
     }
 
     public static List<Entity> getNearbyEntities(EntityPlayer player, double radius, Class get) {
-        /*
-        BlockPos center = player.getPosition();
-        World world = player.getServer().getEntityWorld();
-
-        double x1 = center.getX() - radius;
-        double x2 = center.getX() + radius;
-        double y1 = center.getY() - radius;
-        double y2 = center.getY() + radius;
-        double z1 = center.getZ() - radius;
-        double z2 = center.getZ() + radius;
-
-        List<Entity> entities = world.getEntitiesWithinAABB(get, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
-
-        return entities;*/
         return getNearbyEntities(player, player.getPosition(),radius,get);
     }
 
     public static List<Entity> getNearbyEntities(EntityPlayer player, BlockPos center,  double radius, Class get) {
         World world = player.getServer().getEntityWorld();
+        double[] coords = getRadiusCoords(center.getX(), center.getY(), center.getZ(), radius);
 
-        double x1 = center.getX() - radius;
-        double x2 = center.getX() + radius;
-        double y1 = center.getY() - radius;
-        double y2 = center.getY() + radius;
-        double z1 = center.getZ() - radius;
-        double z2 = center.getZ() + radius;
-
-        List<Entity> entities = world.getEntitiesWithinAABB(get, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
+        List<Entity> entities = world.getEntitiesWithinAABB(get, new AxisAlignedBB(coords[0], coords[2], coords[4], coords[1], coords[3], coords[5]));
 
         return entities;
     }
 
     public static List<Entity> getNearbyEntitiesExcluding(EntityPlayer player, double radius, Entity excluding) {
-        BlockPos center = player.getPosition();
         World world = player.getServer().getEntityWorld();
+        double[] coords = getRadiusCoords(player.posX, player.posY + 0.5D, player.posZ,radius);
 
-        double x1 = center.getX() - radius;
-        double x2 = center.getX() + radius;
-        double y1 = center.getY() - radius;
-        double y2 = center.getY() + radius;
-        double z1 = center.getZ() - radius;
-        double z2 = center.getZ() + radius;
-
-        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(excluding, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
+        List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(excluding, new AxisAlignedBB(coords[0], coords[2], coords[4], coords[1], coords[3], coords[5]));
 
         return entities;
+    }
+
+    public static double[] getRadiusCoords(double x, double y, double z, double radius){
+        double [] coords = new double[6];
+        coords[0] = x - radius;
+        coords[1] = x + radius;
+        coords[2] = y - radius;
+        coords[3] = y + radius;
+        coords[4] = z - radius;
+        coords[5] = z + radius;
+
+        return coords;
     }
 
     //Converts Yaw and Pitch to Vec3d. Used by projectiles for example to multiply speed.
@@ -359,8 +339,7 @@ public class OPUtils {
     }
 
     public static float getPercentage(int n, int total) {
-        float proportion = ((float) n) / ((float) total);
-        return proportion;
+        return ((float) n) / ((float) total);
     }
 
     public static void drawEntityOnScreen(int posX, int posY, int scale, int deg, EntityLivingBase ent)

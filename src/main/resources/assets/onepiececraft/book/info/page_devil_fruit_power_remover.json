@@ -1,0 +1,10 @@
+{
+  "type": "info",
+  "title": "Devil Fruit Power Remover",
+  "totalLines": 2,
+  "lines":[
+        "Devil Fruit Power Remover is a special fruit that removes your current Devil Fruit power. Upon eating your Devil Fruit powers will be immediately lost and you will gain Blindness and Slowness for 10 seconds.",
+        "It can be found in chests in Dungeons or Villages or alternately it can be purchased from Villagers."
+  ],
+  "icon":"onepiececraft:devil_fruit_power_remover"
+}

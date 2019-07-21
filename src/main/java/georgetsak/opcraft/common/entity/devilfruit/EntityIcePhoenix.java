@@ -50,9 +50,6 @@ public class EntityIcePhoenix extends EntityFlying {
 
         spawnParticles(rand);
 
-        if(this.collided){
-            this.setDead();
-        }
         this.motionX = direction.x;
         this.motionY = direction.y;
         this.motionZ = direction.z;
@@ -62,7 +59,7 @@ public class EntityIcePhoenix extends EntityFlying {
     {
         if(ep != entityIn && ep != null && entityIn.hurtResistantTime == 0){
             entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 2));
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.damageCalculation(entityIn, 12f, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 12f, true));
             entityIn.hurtResistantTime = 20;
         }
     }

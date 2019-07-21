@@ -1,0 +1,6 @@
+{
+  "type":"ship_recipe",
+  "title":"Striker",
+  "description":"This raft is x2 times faster than a normal boat but it can only be ridden by a Mera Mera no mi user.",
+  "result":"onepiececraft:ace_boat"
+}

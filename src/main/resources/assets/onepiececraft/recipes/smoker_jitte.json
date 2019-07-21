@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "onepiececraft:smoker_jitte"
+  },
+  "pattern": [
+    "  K",
+    " D ",
+    "S  "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "D": {
+      "item": "onepiececraft:dark_steel_ingot"
+    },
+    "K": {
+      "item": "onepiececraft:kairoseki_gem"
+    }
+  }
+}

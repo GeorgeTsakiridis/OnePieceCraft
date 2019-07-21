@@ -38,6 +38,7 @@ public class OPSoundEvent {
 	public static SoundEvent crocodile_laugh;
 	public static SoundEvent dark;
 	public static SoundEvent air_blast;
+	public static SoundEvent tamaito;
 
 	public static void registerSounds() {
 		clima_ice = registerSound("effects.iceeffect");
@@ -70,6 +71,7 @@ public class OPSoundEvent {
 		crocodile_laugh = registerSound("effects.crocodile.crocodilelaugh");
 		dark = registerSound("devilfruit.yami.dark");
 		air_blast = registerSound("effects.airblast");
+		tamaito = registerSound("devilfruit.ito.tamaito");
 	}
 
 	private static SoundEvent registerSound(String soundName) {

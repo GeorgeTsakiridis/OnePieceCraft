@@ -1,0 +1,12 @@
+{
+  "result": {
+    "item": "onepiececraft:cherry_tree_planks",
+    "count": 4
+  },
+  "ingredients": [
+    {
+      "item": "onepiececraft:cherry_tree_wood"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

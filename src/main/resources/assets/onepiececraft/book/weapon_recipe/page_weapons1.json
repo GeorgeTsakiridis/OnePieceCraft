@@ -1,0 +1,34 @@
+{
+  "type": "weapon_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Wado Ichimonji Sword",
+      "totalLines": 1,
+      "lines": [
+        "The §lWado Ichimonji§r is a sword of great personal importance to Roronoa Zoro, and it was once Kuina and her family's sword. It is also one of the 21 O Wazamono grade swords."
+      ],
+      "attack" : 8,
+      "durability" : 3000,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:wado_ichi_monji_cased"
+    },
+    {
+      "title": "Sandai Kitetsu Sword",
+      "totalLines": 1,
+      "lines": [
+        "The §lSandai Kitetsu§r is one of the Wazamono grade swords, a \"Sharp Sword\". Like all of its predecessor Kitetsu swords, this one is said to be cursed."
+      ],
+      "attack" : 7,
+      "durability" : 3000,
+      "rightClickToRemove" : true,
+      "range" : -1,
+      "reloadTime" : -1,
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:kitetsu_cased"
+    }
+  ]
+}

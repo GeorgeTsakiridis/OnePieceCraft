@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:senriku_ammo",
+    "count": 4
+  },
+  "pattern": [
+    " I ",
+    "IGI",
+    " I "
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "I": {
+      "item": "onepiececraft:dark_steel_nugget"
+    }
+  }
+}

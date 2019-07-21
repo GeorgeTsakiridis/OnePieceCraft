@@ -1,18 +1,11 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.common.util.OPUtils;
-import georgetsak.opcraft.common.capability.haki.HakiCap;
-import georgetsak.opcraft.dev_notUsed.OPLog;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityFlying;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class EntitySmokePunch extends EntitySimpleProjectile {
 
@@ -39,7 +32,7 @@ public class EntitySmokePunch extends EntitySimpleProjectile {
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         if (!isCollisionWithPlayerValid(entityIn))return;
 
-        float damage = OPUtils.damageCalculation(entityIn, 12F, true);
+        float damage = OPUtils.calculateDamage(entityIn, 12F, true);
         entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), damage);
         entityIn.hurtResistantTime = 20;
 
@@ -48,7 +41,7 @@ public class EntitySmokePunch extends EntitySimpleProjectile {
     public void collideWithEntity(Entity entityIn) {
         if(!isCollisionWithEntityValid(entityIn))return;
 
-        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.damageCalculation(owner, 12F, true));
+        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(owner, 12F, true));
     }
 
     @Override

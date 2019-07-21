@@ -1,0 +1,11 @@
+{
+  "type": "entity_info",
+  "title": "Bandits",
+  "entityToDisplay" : ["bandit"],
+  "displaySize" : 50,
+  "totalLines": 2,
+  "lines":[
+    "Bandits (unlike pirates) can only be found in villages. They will attack Villagers and you if your bounty is bellow 5000 berries",
+    "Killing a bandit reduces your bounty by 150 berries!"
+  ]
+}

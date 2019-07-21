@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "onepiececraft:marine_simple_boots"
+  },
+  "pattern": [
+    "B B",
+    "D D"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:wool",
+      "data": 11
+    },
+    "D": {
+      "item": "minecraft:wool",
+      "data": 15
+    }
+  }
+}

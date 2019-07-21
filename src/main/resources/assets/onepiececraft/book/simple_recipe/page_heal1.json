@@ -1,0 +1,28 @@
+{
+  "type": "simple_recipe",
+  "size": 2,
+  "recipes": [
+    {
+      "title": "Medical Items / Bandages",
+      "totalLines": 3,
+      "lines": [
+        "§lBandage§r is a medical item that can heal another player by right clicking it.",
+        "Heal Amount: §a4§r (§a2§r Hearts)",
+        "Heal Amount (if Doctor): §a8§r (§a4§r Hearts)"
+      ],
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:bandage"
+    },
+    {
+      "title": "Sutures",
+      "totalLines": 3,
+      "lines": [
+        "§lSutures§r are a medical item that can heal another player by right clicking it.",
+        "Heal Amount: §a6§r (§a3§r Hearts)",
+        "Heal Amount (if Doctor): §a12§r (§a6§r Hearts)"
+      ],
+      "itemOrBlock" : "item",
+      "result" : "onepiececraft:sutures"
+    }
+  ]
+}

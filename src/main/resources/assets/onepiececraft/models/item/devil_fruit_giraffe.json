@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "onepiececraft:items/devil_fruits/devil_fruit_giraffe"
+    }
+}

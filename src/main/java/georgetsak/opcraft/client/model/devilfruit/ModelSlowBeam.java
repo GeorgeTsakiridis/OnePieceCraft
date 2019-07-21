@@ -21,11 +21,12 @@ public class ModelSlowBeam extends ModelBase {
 		Cube.mirror = true;
 	}
 
-	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
-		super.render(entity, f, f1, f2, f3, f4, f5);
-		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+	public void render(Entity entityIn, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+		super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
+		setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
+		GL11.glRotatef(headPitch, 1, 0, 0);
 		GL11.glScalef(1F, 1F, 8.0F);
-		Cube.render(f5);
+		Cube.render(scale);
 	
 	}
 

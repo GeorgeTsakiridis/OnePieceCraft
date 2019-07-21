@@ -1,0 +1,19 @@
+{
+  "result": {
+    "item": "onepiececraft:pirate_simple_boots"
+  },
+  "pattern": [
+    "B B",
+    "D D"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "B": {
+      "item": "minecraft:wool",
+      "data": 12
+    },
+    "D": {
+      "item": "minecraft:leather"
+    }
+  }
+}

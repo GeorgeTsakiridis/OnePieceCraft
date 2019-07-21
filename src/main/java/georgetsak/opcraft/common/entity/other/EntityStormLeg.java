@@ -4,17 +4,10 @@ import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.Random;
 
 public class EntityStormLeg extends EntityFlying {
 
@@ -61,7 +54,7 @@ public class EntityStormLeg extends EntityFlying {
     public void onCollideWithPlayer(EntityPlayer entityIn)
     {
         if(ep != entityIn && ep != null){
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.damageCalculation(entityIn, 6, false));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 6, false));
         }
     }
 

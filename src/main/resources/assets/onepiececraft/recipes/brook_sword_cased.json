@@ -1,0 +1,26 @@
+{
+  "result": {
+    "item": "onepiececraft:brook_sword_cased"
+  },
+  "pattern": [
+    "MLI",
+    "LIL",
+    "SLM"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    },
+    "M": {
+      "item": "minecraft:dye",
+      "data": 5
+    }
+  }
+}
