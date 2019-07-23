@@ -1,6 +1,8 @@
 package georgetsak.opcraft.common.util;
 
 import com.google.common.base.Predicates;
+import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
@@ -8,6 +10,7 @@ import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
+import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -383,6 +386,21 @@ public class OPUtils {
             pointList.add(new Point3d(pos1.x + intervalX * i, pos1.y + intervalY*i, pos1.z + intervalZ*i));
         }
         return pointList;
+    }
+
+    /**
+     * Used to check if Griefing is allowed from the Config to adjust the explosion.
+     */
+    public static void newExplosion(Entity entity, World world, double posX, double posY, double posZ, float strength, boolean isFlaming, boolean isSmoking){
+        boolean flag = OPCraft.config.disableGriefing.getCurrentValue();
+
+        world.newExplosion(entity, posX, posY, posZ, strength, !flag && isFlaming, !flag && isSmoking);
+    }
+
+    public static void createExplosion(Entity entity, World world, double posX, double posY, double posZ, float strength, boolean isSmoking){
+        boolean flag = OPCraft.config.disableGriefing.getCurrentValue();
+
+        world.createExplosion(entity, posX, posY, posZ, strength, !flag && isSmoking);
     }
 
     public static Block[] nonMovableBlocks = new Block[]{OPBlocks.BlockLawDomeCenter, OPBlocks.BlockLawDome, Blocks.AIR, Blocks.BEDROCK, Blocks.PORTAL, Blocks.END_GATEWAY, Blocks.END_PORTAL, Blocks.END_PORTAL_FRAME,

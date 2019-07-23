@@ -43,37 +43,35 @@ public class EntityUrsusBubble extends EntityFlying {
         this.motionZ = 0;
     }
 
-    public void onUpdate(){
+    public void onUpdate() {
         super.onUpdate();
 
-        if((ep != null) && ticksExisted > 100){
-            world.createExplosion(ep, posX, posY, posZ, 15, true);
+        if ((ep != null) && ticksExisted > 100) {
+            OPUtils.createExplosion(ep, world, posX, posY, posZ, 15, true);
             double range = 30;
             float damage = 12F;
-            double x1 = posX-range;
-            double x2 = posX+range;
-            double y1 = posY-range;
-            double y2 = posY+range;
-            double z1 = posZ-range;
-            double z2 = posZ+range;
+            double x1 = posX - range;
+            double x2 = posX + range;
+            double y1 = posY - range;
+            double y2 = posY + range;
+            double z1 = posZ - range;
+            double z2 = posZ + range;
 
             List<Entity> entities = ep.world.getEntitiesWithinAABBExcludingEntity(ep, new AxisAlignedBB(x1, y1, z1, x2, y2, z2));
 
-            for(int i = 0; i < entities.size(); i++) {
+            for (int i = 0; i < entities.size(); i++) {
                 if (entities.get(i) != null) {
                     if (entities.get(i) instanceof EntityPlayer) {
                         EntityPlayer entityPlayer = (EntityPlayer) entities.get(i);
                         entityPlayer.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityPlayer, damage, true));
 
-                    }
-
-                    else if(entities.get(i) instanceof EntityLiving){
+                    } else if (entities.get(i) instanceof EntityLiving) {
                         Entity e = entities.get(i);
                         e.attackEntityFrom(DamageSource.causePlayerDamage(ep), damage);
                     }
 
-                    }
                 }
+            }
             this.setDead();
         }
     }

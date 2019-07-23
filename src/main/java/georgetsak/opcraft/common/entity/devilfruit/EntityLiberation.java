@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -67,8 +68,10 @@ public class EntityLiberation extends EntityFlying {
                 setDead();
                 System.out.println("Owner was null");
             }
+            boolean grief = !OPCraft.config.disableGriefing.getCurrentValue();
+
             if (!isDead) {
-                if (ticksExisted < 60) {
+                if (ticksExisted < 60 && grief) {
                     for (int i = 0; i < 6; i++) {
                         int triesLeft = 10;
                         boolean done = false;
@@ -101,16 +104,17 @@ public class EntityLiberation extends EntityFlying {
                 }
 
                 if (ticksExisted > 80) {
-                    for (IBlockState blockState : savedBlocks) {
-                        EntityFallingBlock fallingBlock = new EntityFallingBlock(world, posX, posY, posZ, blockState);
-                        fallingBlock.addVelocity(r.nextDouble()*2 - 1D, r.nextDouble()*4, r.nextDouble()*2 - 1D);
-                        fallingBlock.setHurtEntities(true);
-                        fallingBlock.fallTime = 1;
-                        fallingBlock.shouldDropItem = true;
-                        fallingBlock.hurtResistantTime = 40;
-                        world.spawnEntity(fallingBlock);
+                    if(grief) {
+                        for (IBlockState blockState : savedBlocks) {
+                            EntityFallingBlock fallingBlock = new EntityFallingBlock(world, posX, posY, posZ, blockState);
+                            fallingBlock.addVelocity(r.nextDouble() * 2 - 1D, r.nextDouble() * 4, r.nextDouble() * 2 - 1D);
+                            fallingBlock.setHurtEntities(true);
+                            fallingBlock.fallTime = 1;
+                            fallingBlock.shouldDropItem = true;
+                            fallingBlock.hurtResistantTime = 40;
+                            world.spawnEntity(fallingBlock);
+                        }
                     }
-
                     for (Entity entity : OPUtils.getNearbyEntitiesExcluding(owner, 20, owner)) {
                         if(entity == this)continue;
                         if (entity instanceof EntityPlayer) {

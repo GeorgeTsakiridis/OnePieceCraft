@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
@@ -71,16 +72,17 @@ public class EntityIcePhoenix extends EntityFlying {
         {
             this.setDead();
         }
-
-        for(int x = -4; x <= 4; x++){
-            for(int y = 4; y >= -4; y--){
-                for(int z = -4; z <= 4; z++){
-                    BlockPos pos = new BlockPos(this.posX, this.posY, this.posZ);
-                    if(world.getBlockState(pos.add(x, y + 1, z)).getBlock() == Blocks.AIR && world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.AIR && world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.SNOW_LAYER){
-                        world.setBlockState(pos.add(x, y + 1, z), Blocks.SNOW_LAYER.getDefaultState());
-                    }
-                    if(world.getBlockState(pos.add(x, y, z)).getBlock() == Blocks.WATER){
-                        world.setBlockState(pos.add(x, y, z), Blocks.ICE.getDefaultState());
+        if(!OPCraft.config.disableGriefing.getCurrentValue()) {
+            for (int x = -4; x <= 4; x++) {
+                for (int y = 4; y >= -4; y--) {
+                    for (int z = -4; z <= 4; z++) {
+                        BlockPos pos = new BlockPos(this.posX, this.posY, this.posZ);
+                        if (world.getBlockState(pos.add(x, y + 1, z)).getBlock() == Blocks.AIR && world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.AIR && world.getBlockState(pos.add(x, y, z)).getBlock() != Blocks.SNOW_LAYER) {
+                            world.setBlockState(pos.add(x, y + 1, z), Blocks.SNOW_LAYER.getDefaultState());
+                        }
+                        if (world.getBlockState(pos.add(x, y, z)).getBlock() == Blocks.WATER) {
+                            world.setBlockState(pos.add(x, y, z), Blocks.ICE.getDefaultState());
+                        }
                     }
                 }
             }

@@ -3,6 +3,7 @@ package georgetsak.opcraft.common.item.devilfruits;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapProvider;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,7 +32,7 @@ public class ItemDevilFruit extends ItemFood {
 		this.setMaxStackSize(1);
 	}
 
-	public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving)
+	public ItemStack onItemUseFinish(ItemStack stack, World world, EntityLivingBase entityLiving)
     {
         stack.setCount(stack.getCount()-1);
 
@@ -42,10 +43,10 @@ public class ItemDevilFruit extends ItemFood {
 
             if(df.hasPower()) {
 				entityplayer.attackEntityFrom(new EntityDamageSource("ate more than one Devil Fruit", entityplayer), Float.MAX_VALUE);
-				if (!worldIn.isRemote) {
-					worldIn.createExplosion(entityLiving, entityLiving.posX, entityLiving.posY, entityLiving.posZ, 1, true);
+				if (!world.isRemote) {
+					OPUtils.createExplosion(entityLiving, world, entityLiving.posX, entityLiving.posY, entityLiving.posZ, 1, true);
 				}
-				if (worldIn.isRemote && Minecraft.getMinecraft().player.isCreative()) {
+				if (world.isRemote && Minecraft.getMinecraft().player.isCreative()) {
 					entityplayer.sendMessage(new TextComponentString("You cannot eat more than one devil fruit!"));
 					entityplayer.sendMessage(new TextComponentString("Try eating a \"Devil Fruit Power Remover\" !"));
 					stack.setCount(stack.getCount() - 1);

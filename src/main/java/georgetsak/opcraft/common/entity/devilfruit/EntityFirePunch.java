@@ -38,7 +38,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	        boolean flag1 = getType() != 1 && getType() != 0;
 
         	if(this.collided && flag1){
-	        	world.newExplosion(owner, posX, posY, posZ, getExplosionSize(), true, true);
+	        	OPUtils.newExplosion(owner, world, posX, posY, posZ, getExplosionSize(), true, true);
 	        	this.setDead();
 	        }
 

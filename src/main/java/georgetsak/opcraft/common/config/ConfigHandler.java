@@ -47,6 +47,8 @@ public class ConfigHandler {
     public ConfigEntryBoolean enableMorganFortress;
     public ConfigEntryInt morganFortressSpawnChance;
 
+    public ConfigEntryBoolean disableGriefing;
+
     public ConfigHandler(FMLPreInitializationEvent event){
         configuration = new Configuration(event.getSuggestedConfigurationFile());
         configuration.load();
@@ -59,7 +61,7 @@ public class ConfigHandler {
         final String CATEGORY_GENERATION = "world_generation";
         final String CATEGORY_FRUITS = "devil_fruits";
         final String CATEGORY_POWERS = "powers";
-
+        final String CATEGORY_MISC = "misc";
         configuration.addCustomCategoryComment(CATEGORY_FRUITS, "If you change spawning options, changes will apply only to the new generated chunks. Creating a new world is recommended.");
 
         configEntries.add(enableDevilFruitsSpawning = new ConfigEntryBoolean(configuration, "allowDevilFruitsSpawning", "", CATEGORY_GENERATION, true));
@@ -97,6 +99,7 @@ public class ConfigHandler {
         configEntries.add(enableMorganFortress = new ConfigEntryBoolean(configuration, "enableMorganFortressGeneration", "Enables or Disables Morgan's fortress generation", CATEGORY_GENERATION, true));
         configEntries.add(morganFortressSpawnChance = new ConfigEntryInt(configuration, "morganFortressSpawnChance", "Chance 1/x per chunk (Only for plain biome chunks)", CATEGORY_GENERATION, 800,200,Integer.MAX_VALUE));
 
+        configEntries.add(disableGriefing = new ConfigEntryBoolean(configuration,"disableGriefing","Disables the griefing from the mod. E.g. The explosion from Gear 3 won't destroy any blocks. WARNING! Enabling this will make some powers useless.", CATEGORY_MISC, false));
     }
 
     public void restoreConfig(){

@@ -80,7 +80,7 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 		 super.onLivingUpdate();
 
 		 if (this.collided && isGear3()) {
-			 this.world.newExplosion(owner, posX, posY, posZ, 3.5F, false, true);
+			 OPUtils.newExplosion(owner, world, posX, posY, posZ, 3.5F, false, true);
 			 this.setDead();
 		 }
 	 }

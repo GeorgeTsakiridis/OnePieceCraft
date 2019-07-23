@@ -336,7 +336,7 @@ public class OPClientEventHooks {
             }
             return;
         }
-        //Ope Ope no Mi keys handler. Only execute if the Player is an Ope Ope no Mi used and is in a dome.
+        //Ope Ope no Mi keys handler. Only execute if the Player is in a dome and is an Ope Ope no Mi Devil Fruit User.
         if (isInRoom && id == OPDevilFruits.OPE) {
             if (ClientProxy.key1.isPressed()) {
                 performAction("Shambles");
