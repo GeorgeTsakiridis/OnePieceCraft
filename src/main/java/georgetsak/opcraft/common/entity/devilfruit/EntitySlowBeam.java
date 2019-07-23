@@ -23,11 +23,11 @@ public class EntitySlowBeam extends EntitySimpleProjectile {
 	}
 
 	public EntitySlowBeam(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner) {
-		super(worldIn, x, y, z, 1f, 1f, owner);
+		super(worldIn, x, y, z, yaw, pitch, 1f, 1f, owner);
 	}
 
 	public EntitySlowBeam(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner, boolean highSpeed) {
-		super(worldIn, x, y, z, 1f, 1f, owner);
+		super(worldIn, x, y, z, yaw, pitch, 1f, 1f, owner);
 		this.highSpeed = highSpeed;
 	}
 

@@ -8,7 +8,6 @@ import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -20,15 +19,19 @@ public class EntitySimpleProjectile extends EntityFlying {
 
     public static final DataParameter<Vector3Double> DIRECTION = EntityDataManager.createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
     public static final DataParameter<Vector3Double> START_POS = EntityDataManager.createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
+    public static final DataParameter<Float> PITCH = EntityDataManager.createKey(EntitySimpleProjectile.class, DataSerializers.FLOAT);
+    public static final DataParameter<Float> YAW = EntityDataManager.createKey(EntitySimpleProjectile.class, DataSerializers.FLOAT);
 
     EntityPlayer owner;
 
-    public EntitySimpleProjectile(World world, double x, double y, double z, float width, float height, EntityPlayer owner){
+    public EntitySimpleProjectile(World world, double x, double y, double z, float yaw, float pitch, float width, float height, EntityPlayer owner){
         super(world);
         this.owner = owner;
         this.dataManager.register(START_POS, new Vector3Double(new Vec3d(x, y, z)));
-        this.dataManager.register(DIRECTION, new Vector3Double(OPUtils.convertRotation(owner.rotationYaw, owner.rotationPitch)));
-        setPositionAndRotation(x, y, z, owner.rotationYaw, owner.rotationPitch);
+        this.dataManager.register(DIRECTION, new Vector3Double(OPUtils.convertRotation(yaw, pitch)));
+        this.dataManager.register(YAW, yaw);
+        this.dataManager.register(PITCH, pitch);
+        setPositionAndRotation(x, y, z, yaw, pitch);
         setSize(width, height);
     }
 
@@ -36,6 +39,8 @@ public class EntitySimpleProjectile extends EntityFlying {
         super(worldIn);
         this.dataManager.register(START_POS, new Vector3Double(0, 0, 0));
         this.dataManager.register(DIRECTION, new Vector3Double(0, 0, 0));
+        this.dataManager.register(YAW, 0f);
+        this.dataManager.register(PITCH, 0f);
     }
 
     public Vec3d getDirection() {
@@ -46,10 +51,28 @@ public class EntitySimpleProjectile extends EntityFlying {
         return dataManager.get(START_POS).toVec3D();
     }
 
+    public float getYaw(){
+        return dataManager.get(YAW);
+    }
+
+    public float getPitch(){
+        return dataManager.get(PITCH);
+    }
+
+    public void setYaw(float f){
+        dataManager.set(YAW, f);
+    }
+
+    public void setPitch(float f){
+        dataManager.set(PITCH,f);
+    }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setTag("StartPos", dataManager.get(START_POS).writeToNBT());
         compound.setTag("Direction", dataManager.get(DIRECTION).writeToNBT());
+        compound.setFloat("Yaw", getYaw());
+        compound.setFloat("Pitch", getPitch());
         return super.writeToNBT(compound);
     }
 
@@ -58,6 +81,8 @@ public class EntitySimpleProjectile extends EntityFlying {
         super.readFromNBT(compound);
         dataManager.set(START_POS,new Vector3Double(compound.getTagList("StartPos",6)));
         dataManager.set(DIRECTION,new Vector3Double(compound.getTagList("Direction",6)));
+        setYaw(compound.getFloat("Yaw"));
+        setPitch(compound.getFloat("Pitch"));
 
     }
 
@@ -65,7 +90,7 @@ public class EntitySimpleProjectile extends EntityFlying {
     public void onUpdate() {
         super.onUpdate();
         spawnParticles();
-
+        setRotation(getYaw(),getPitch());
         if(ticksExisted > getMaxTicks()){
             onExpired();
         }
@@ -78,7 +103,6 @@ public class EntitySimpleProjectile extends EntityFlying {
         if(Math.sqrt((getStartPos().x - posX)*(getStartPos().x - posX)) > getMaxDistance() || Math.sqrt((getStartPos().z - posZ)*(getStartPos().z - posZ)) > getMaxDistance()){
             onMaxDistanceCovered();
         }else {
-
             setVelocity(getDirection().x * getSpeedMultiplier(), getDirection().y * getSpeedMultiplier(), getDirection().z * getSpeedMultiplier());
         }
     }

@@ -18,12 +18,14 @@ public class EntityLongLine extends EntitySimpleProjectile{
 
     private static final DataParameter<Integer> LENGTH = EntityDataManager.<Integer>createKey(EntityLongLine.class, DataSerializers.VARINT);
     private static final DataParameter<Boolean> EXTEND = EntityDataManager.createKey(EntityLongLine.class,DataSerializers.BOOLEAN);
+    private static final DataParameter<Boolean> EXTENDED = EntityDataManager.createKey(EntityLongLine.class,DataSerializers.BOOLEAN);
 
-    public EntityLongLine(World world, double x, double y, double z, int length, EntityPlayer owner, boolean extend) {
-        super(world, x, y, z, 1, 1, owner);
+    public EntityLongLine(World world, double x, double y, double z, float yaw, float pitch, int length, EntityPlayer owner, boolean extend) {
+        super(world, x, y, z, yaw, pitch, 1, 1, owner);
         this.ignoreFrustumCheck = true;
         dataManager.register(LENGTH, length);
         dataManager.register(EXTEND, extend);
+        dataManager.register(EXTENDED, false);
     }
 
     public EntityLongLine(World worldIn) {
@@ -31,19 +33,21 @@ public class EntityLongLine extends EntitySimpleProjectile{
         this.ignoreFrustumCheck = true;
         dataManager.register(LENGTH, 0);
         dataManager.register(EXTEND, false);
+        dataManager.register(EXTENDED, false);
     }
 
     @Override
-    public void onLivingUpdate() {
-        super.onLivingUpdate();
+    public void onUpdate() {
+        super.onUpdate();
 
-        if(!world.isRemote && shouldExtend() && ticksExisted == 1) {
+        if(!world.isRemote && !hasExtended() && shouldExtend() && ticksExisted == 1) {
+            setHasExtended(true);
             Vec3d vec = getDirection().scale(getLength());
             Vec3d posVec = new Vec3d(posX, posY, posZ);
             ArrayList<Point3d> points = OPUtils.getIntermediatePoints(posVec, new Vec3d(posVec.x + vec.x, posVec.y + vec.y, posVec.z + vec.z), (int)(getLength()/20f));
 
             for (Point3d point : points) {
-                extendTo(point.x,point.y,point.z, owner);
+                extendTo(point.x,point.y,point.z, rotationYaw, rotationPitch, owner);
             }
         }
     }
@@ -64,10 +68,19 @@ public class EntityLongLine extends EntitySimpleProjectile{
         dataManager.set(EXTEND, bool);
     }
 
+    public boolean hasExtended(){
+        return dataManager.get(EXTENDED);
+    }
+
+    public void setHasExtended(boolean bool){
+        dataManager.set(EXTENDED, bool);
+    }
+
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound compound) {
         compound.setInteger("LineLength", getLength());
         compound.setBoolean("Extend", shouldExtend());
+        compound.setBoolean("Extended", hasExtended());
         return super.writeToNBT(compound);
     }
 
@@ -76,6 +89,7 @@ public class EntityLongLine extends EntitySimpleProjectile{
         super.readFromNBT(compound);
         setLength(compound.getInteger("LineLength"));
         setShouldExtend(compound.getBoolean("Extend"));
+        setHasExtended(compound.getBoolean("Extended"));
     }
 
     @Override
@@ -83,8 +97,8 @@ public class EntityLongLine extends EntitySimpleProjectile{
         return 0f;
     }
 
-    public void extendTo(double x, double y, double z, EntityPlayer owner){
-        world.spawnEntity(new EntityLongLine(world, x, y, z, 0, owner, false));
+    public void extendTo(double x, double y, double z, float yaw, float pitch, EntityPlayer owner){
+        world.spawnEntity(new EntityLongLine(world, x, y, z, yaw, pitch, 0, owner, false));
     }
 
 }

@@ -9,8 +9,8 @@ public class EntityOverheat extends EntityLongLine{
         super(worldIn);
     }
 
-    public EntityOverheat(World world, double x, double y, double z, boolean extend, EntityPlayer owner) {
-        super(world, x, y, z, 300, owner, extend);
+    public EntityOverheat(World world, double x, double y, double z, float yaw, float pitch, boolean extend, EntityPlayer owner) {
+        super(world, x, y, z, yaw, pitch, 300, owner, extend);
     }
 
     @Override
@@ -19,7 +19,7 @@ public class EntityOverheat extends EntityLongLine{
     }
 
     @Override
-    public void extendTo(double x, double y, double z, EntityPlayer owner) {
-        world.spawnEntity(new EntityOverheat(world, x, y, z, false, owner));
+    public void extendTo(double x, double y, double z, float yaw, float pitch, EntityPlayer owner) {
+        world.spawnEntity(new EntityOverheat(world, x, y, z, yaw, pitch,false, owner));
     }
 }

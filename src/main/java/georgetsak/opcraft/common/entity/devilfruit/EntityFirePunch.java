@@ -22,7 +22,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	}
 
 	public EntityFirePunch(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner, int type) {
-		super(worldIn, x, y, z, 0.5f, 0.5f, owner);
+		super(worldIn, x, y, z, yaw, pitch, 0.5f, 0.5f, owner);
 		this.getDataManager().register(TYPE, type);
 		this.getDataManager().setDirty(TYPE);
 	}

@@ -15,7 +15,7 @@ public class EntityTamaito extends EntitySimpleProjectile {
     }
 
     public EntityTamaito(World world, double x, double y, double z, float yaw, float pitch, EntityPlayer owner){
-        super(world, x, y, z, 1f, 0.5f, owner);
+        super(world, x, y, z, yaw, pitch, 1f, 0.5f, owner);
         setSize(1f,0.5f);
         this.ignoreFrustumCheck = true;
     }

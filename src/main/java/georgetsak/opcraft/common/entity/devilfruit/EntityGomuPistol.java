@@ -24,7 +24,7 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 	}
 	
 	public EntityGomuPistol(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner, boolean isGear3) {
-		super(worldIn, x, y, z, 1.5f, 1.5f, owner);
+		super(worldIn, x, y, z, yaw, pitch,1.5f, 1.5f, owner);
 		this.dataManager.register(IS_GEAR_3, isGear3);
 
 		if(isGear3){
@@ -48,7 +48,7 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 
 	@Override
 	public int getMaxTicks() {
-		return isGear3() ? 100 : 8000;
+		return isGear3() ? 100 : 800;
 	}
 
 	@Override
