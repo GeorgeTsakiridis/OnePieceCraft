@@ -22,9 +22,11 @@ import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCapStorage;
 import georgetsak.opcraft.common.potioneffect.PotionOP;
 import georgetsak.opcraft.common.registry.*;
+import georgetsak.opcraft.common.util.OPDataSerializers;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.village.MerchantRecipeList;
@@ -70,6 +72,7 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
+		DataSerializers.registerSerializer(OPDataSerializers.VECTOR3DOUBLE);
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) {

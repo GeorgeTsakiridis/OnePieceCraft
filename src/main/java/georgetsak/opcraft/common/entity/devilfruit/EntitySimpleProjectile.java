@@ -1,42 +1,72 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.util.OPDataSerializers;
 import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.Vector3Double;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class EntitySimpleProjectile extends EntityFlying {
 
-    private double startX;
-    private double startY;
-    private double startZ;
+    public static final DataParameter<Vector3Double> DIRECTION = EntityDataManager.<Vector3Double>createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
+    public static final DataParameter<Vector3Double> START_POS = EntityDataManager.<Vector3Double>createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
 
-    private Vec3d direction = new Vec3d(0, 0, 0);
     EntityPlayer owner;
 
     public EntitySimpleProjectile(World world, double x, double y, double z, float yaw, float pitch, float width, float height, EntityPlayer owner){
         super(world);
-        startX = x;
-        startY = y;
-        startZ = z;
-        direction = OPUtils.convertRotation(yaw, pitch);
+
+        this.dataManager.register(START_POS,new Vector3Double(new Vec3d(x, y, z)));
+        this.dataManager.register(DIRECTION,new Vector3Double(OPUtils.convertRotation(yaw, pitch)));
+        this.owner = owner;
         setPositionAndRotation(x, y, z, yaw, pitch);
         setSize(width, height);
-        this.owner = owner;
     }
 
     public EntitySimpleProjectile(World worldIn) {
         super(worldIn);
+        this.dataManager.register(START_POS,new Vector3Double(0, 0, 0));
+        this.dataManager.register(DIRECTION,new Vector3Double(0, 0, 0));
+    }
+
+    public Vec3d getDirection() {
+        return dataManager.get(DIRECTION).toVec3D();
+    }
+
+    public Vec3d getStartPos(){
+        return dataManager.get(START_POS).toVec3D();
+    }
+
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        compound.setTag("StartPos", dataManager.get(START_POS).writeToNBT());
+        compound.setTag("Direction", dataManager.get(DIRECTION).writeToNBT());
+        return super.writeToNBT(compound);
+    }
+
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
+        dataManager.set(START_POS,new Vector3Double(compound.getTagList("StartPos",6)));
+        dataManager.set(DIRECTION,new Vector3Double(compound.getTagList("Direction",6)));
+
     }
 
     @Override
     public void onUpdate() {
         super.onUpdate();
         spawnParticles();
+
         if(ticksExisted > getMaxTicks()){
             onExpired();
         }
@@ -45,23 +75,13 @@ public class EntitySimpleProjectile extends EntityFlying {
     @Override
     public void onLivingUpdate() {
         super.onLivingUpdate();
-        if(Math.sqrt((startX - posX)*(startX - posX)) > getMaxDistance() || Math.sqrt((startZ - posZ)*(startZ - posZ)) > getMaxDistance()){
+
+        if(Math.sqrt((getStartPos().x - posX)*(getStartPos().x - posX)) > getMaxDistance() || Math.sqrt((getStartPos().z - posZ)*(getStartPos().z - posZ)) > getMaxDistance()){
             onMaxDistanceCovered();
         }else {
-            setVelocity(direction.x * getSpeedMultiplier(), direction.y * getSpeedMultiplier(), direction.z * getSpeedMultiplier());
+
+            setVelocity(getDirection().x * getSpeedMultiplier(), getDirection().y * getSpeedMultiplier(), getDirection().z * getSpeedMultiplier());
         }
-    }
-
-    public double getStartX() {
-        return startX;
-    }
-
-    public double getStartY() {
-        return startY;
-    }
-
-    public double getStartZ() {
-        return startZ;
     }
 
     public int getMaxTicks(){
