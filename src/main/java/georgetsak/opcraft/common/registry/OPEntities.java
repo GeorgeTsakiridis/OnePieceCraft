@@ -53,14 +53,16 @@ public class OPEntities {
         registerEntity(EntityAceBoat.class, "ace_boat", id++, OPCraft.MODID, 48, 20, true);
         registerEntity(EntitySailBoat.class, "sail_boat", id++, OPCraft.MODID, 48, 20, true);
         registerEntity(EntityPirate.class, "pirate", id++, OPCraft.MODID, 48, 3, true, toRGB(Color.BLUE), toRGB(Color.BLUE));
-        //registerEntity2(EntitySeaKing.class, "sea_king", id++, OPCraft.MODID, 48, 3, true);
         registerEntity(EntityCrocodile.class, "crocodile", id++, OPCraft.MODID, 48, 3, true, toRGB(197, 164, 131), Color.BLACK.getRGB());
         registerEntity(EntityTonta.class, "tonta", id++, OPCraft.MODID, 48, 3, true, toRGB(178, 150, 120), toRGB(107, 224, 96));
         registerEntity(EntityLiberation.class, "liberation", id++, OPCraft.MODID, 48, 3, true);
         registerEntity(EntityRayleigh.class, "rayleigh", id++, OPCraft.MODID, 48, 3, true, toRGB(244, 167, 66), toRGB(239, 239, 239));
         registerEntity(EntityStormLeg.class, "storm_leg", id++, OPCraft.MODID, 48, 3, false);
         registerEntity(EntityTamaito.class,"tamaito", id++, OPCraft.MODID, 200, 3, true);
-        registerEntity(EntityLongLine.class,"test",id++,OPCraft.MODID,200, 3, true);
+        registerEntity(EntityLongLine.class,"long_ling", id++, OPCraft.MODID, 200, 3, true);
+        registerEntity(EntityOverheat.class,"overheat", id++, OPCraft.MODID,200, 3, true);
+
+        //registerEntity2(EntitySeaKing.class, "sea_king", id++, OPCraft.MODID, 48, 3, true);
 
         EnumCreatureType crocodile = EnumHelper.addCreatureType("crocodile", EntityCrocodile.class, 1, Material.AIR, false, false);
         EnumCreatureType rayleigh = EnumHelper.addCreatureType("rayleigh", EntityRayleigh.class, 1, Material.AIR, true, false);

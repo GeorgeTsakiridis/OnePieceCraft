@@ -3,6 +3,7 @@ package georgetsak.opcraft.common.entity.devilfruit;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -12,7 +13,7 @@ import net.minecraft.world.World;
 
 public class EntityFirePunch extends EntitySimpleProjectile {
 
-    private static final DataParameter<Integer> TYPE = EntityDataManager.<Integer>createKey(EntityFirePunch.class, DataSerializers.VARINT);//used to send the TYPE to the ModelFireFist.
+    private static final DataParameter<Integer> TYPE = EntityDataManager.<Integer>createKey(EntityFirePunch.class, DataSerializers.VARINT);
 
     public EntityFirePunch(World world){
 		super(world);
@@ -21,7 +22,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	}
 
 	public EntityFirePunch(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner, int type) {
-		super(worldIn, x, y, z, yaw, pitch, 0.5f, 0.5f, owner);
+		super(worldIn, x, y, z, 0.5f, 0.5f, owner);
 		this.getDataManager().register(TYPE, type);
 		this.getDataManager().setDirty(TYPE);
 	}
@@ -78,8 +79,20 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	}
 
 	@Override
-	public int getMaxTicks() {
-		return 160000;
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
+		dataManager.set(TYPE,compound.getInteger("FireType"));
+	}
+
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		compound.setInteger("FireType",getType());
+    	return super.writeToNBT(compound);
+	}
+
+	@Override
+	public int getMaxTicks()	{
+		return 160;
 	}
 
 	private float getExplosionSize() {

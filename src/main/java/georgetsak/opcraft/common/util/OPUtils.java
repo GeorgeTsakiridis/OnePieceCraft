@@ -367,11 +367,11 @@ public class OPUtils {
         GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
     }
 
-    public static ArrayList<Point3d> getIntermediatePoints(BlockPos pos1, BlockPos pos2, int points){
+    public static ArrayList<Point3d> getIntermediatePoints(Vec3d pos1, Vec3d pos2, int points){
 
-        int diffX = pos2.getX() - pos1.getX();
-        int diffY = pos2.getY() - pos1.getY();
-        int diffZ = pos2.getZ() - pos1.getZ();
+        double diffX = pos2.x - pos1.x;
+        double diffY = pos2.y - pos1.y;
+        double diffZ = pos2.z - pos1.z;
 
         double intervalX = diffX / ((double)points + 1d);
         double intervalY = diffY / ((double)points + 1d);
@@ -380,7 +380,7 @@ public class OPUtils {
         ArrayList<Point3d> pointList = new ArrayList<>();
         for (int i = 1; i <= points; i++)
         {
-            pointList.add(new Point3d(pos1.getX() + intervalX * i, pos1.getY() + intervalY*i, pos1.getZ() + intervalZ*i));
+            pointList.add(new Point3d(pos1.x + intervalX * i, pos1.y + intervalY*i, pos1.z + intervalZ*i));
         }
         return pointList;
     }

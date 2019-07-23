@@ -18,25 +18,24 @@ import net.minecraft.world.World;
 
 public class EntitySimpleProjectile extends EntityFlying {
 
-    public static final DataParameter<Vector3Double> DIRECTION = EntityDataManager.<Vector3Double>createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
-    public static final DataParameter<Vector3Double> START_POS = EntityDataManager.<Vector3Double>createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
+    public static final DataParameter<Vector3Double> DIRECTION = EntityDataManager.createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
+    public static final DataParameter<Vector3Double> START_POS = EntityDataManager.createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
 
     EntityPlayer owner;
 
-    public EntitySimpleProjectile(World world, double x, double y, double z, float yaw, float pitch, float width, float height, EntityPlayer owner){
+    public EntitySimpleProjectile(World world, double x, double y, double z, float width, float height, EntityPlayer owner){
         super(world);
-
-        this.dataManager.register(START_POS,new Vector3Double(new Vec3d(x, y, z)));
-        this.dataManager.register(DIRECTION,new Vector3Double(OPUtils.convertRotation(yaw, pitch)));
         this.owner = owner;
-        setPositionAndRotation(x, y, z, yaw, pitch);
+        this.dataManager.register(START_POS, new Vector3Double(new Vec3d(x, y, z)));
+        this.dataManager.register(DIRECTION, new Vector3Double(OPUtils.convertRotation(owner.rotationYaw, owner.rotationPitch)));
+        setPositionAndRotation(x, y, z, owner.rotationYaw, owner.rotationPitch);
         setSize(width, height);
     }
 
     public EntitySimpleProjectile(World worldIn) {
         super(worldIn);
-        this.dataManager.register(START_POS,new Vector3Double(0, 0, 0));
-        this.dataManager.register(DIRECTION,new Vector3Double(0, 0, 0));
+        this.dataManager.register(START_POS, new Vector3Double(0, 0, 0));
+        this.dataManager.register(DIRECTION, new Vector3Double(0, 0, 0));
     }
 
     public Vec3d getDirection() {

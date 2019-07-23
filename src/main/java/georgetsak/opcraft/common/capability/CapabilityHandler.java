@@ -72,7 +72,7 @@ public class CapabilityHandler {
         if(!OPCraft.IS_RELEASE_VERSION){
             player.sendMessage(new TextComponentString(TextFormatting.GOLD + "==============================="));
             player.sendMessage(new TextComponentString(TextFormatting.RED + "Unreleased Version of OPCraft (V" + OPCraft.VERSION + ")"));
-            player.sendMessage(new TextComponentString(TextFormatting.GOLD + "You are using an unreleased version of OPCraft. Some debug chat messages may be displayed. These will not be displayed in the released version."));
+            player.sendMessage(new TextComponentString(TextFormatting.GOLD + "You are using an unreleased version of OPCraft! Some features may not work or even crash the game!"));
             player.sendMessage(new TextComponentString(TextFormatting.GOLD + "==============================="));
         }
 

@@ -16,7 +16,7 @@ public class EntitySmokePunch extends EntitySimpleProjectile {
     }
 
     public EntitySmokePunch(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner) {
-        super(worldIn, x, y, z, yaw, pitch, 1f, 1f, owner);
+        super(worldIn, x, y, z, 1f, 1f, owner);
     }
 
     @Override

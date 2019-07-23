@@ -3,13 +3,8 @@ package georgetsak.opcraft.common.entity.devilfruit;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import javax.vecmath.Point3d;
 
 public class EntityTamaito extends EntitySimpleProjectile {
 
@@ -20,7 +15,7 @@ public class EntityTamaito extends EntitySimpleProjectile {
     }
 
     public EntityTamaito(World world, double x, double y, double z, float yaw, float pitch, EntityPlayer owner){
-        super(world, x, y, z, yaw, pitch, 1f, 0.5f, owner);
+        super(world, x, y, z, 1f, 0.5f, owner);
         setSize(1f,0.5f);
         this.ignoreFrustumCheck = true;
     }
@@ -32,7 +27,7 @@ public class EntityTamaito extends EntitySimpleProjectile {
 
     @Override
     public float getSpeedMultiplier() {
-        return 0*2.0f;
+        return 2.0f;
     }
 
     @Override

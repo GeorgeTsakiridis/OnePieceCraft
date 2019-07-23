@@ -72,7 +72,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityMorgan.class, RenderMorgan::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityBandit.class, RenderBandit::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityOPVillager.class, RenderOPVillager::new);
-		//TileEntityRendererDispatcher.instance.mapSpecialRenderers.put(SnailTileEntity.class, new RenderSnail());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAceBoat.class, RenderAceBoat::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySailBoat.class, RenderSailBoat::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySmokePunch.class, RenderSmokePunch::new);
@@ -87,7 +86,7 @@ public class ClientProxy extends CommonProxy {
 		//RenderingRegistry.registerEntityRenderingHandler(EntityChristos.class, RenderChristos::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityStormLeg.class, RenderStormLeg::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityTamaito.class,RenderTamaito::new);
-
+		RenderingRegistry.registerEntityRenderingHandler(EntityOverheat.class,RenderOverheat::new);
 	}
 
 	@Override
