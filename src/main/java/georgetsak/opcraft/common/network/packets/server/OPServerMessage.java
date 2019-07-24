@@ -67,12 +67,13 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
             int multiplier = OPCraft.config.cooldownSpeed.getCurrentValue();
             World world = ep.world;
 
-            if (text.equals("GomuPistolA")) {
+            if(text.equals("GomuPistolA")) {
                 EntityGomuPistol elp = new EntityGomuPistol(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, false);
                 world.spawnEntity(elp);
                 world.playSound(null, ep.posX, ep.posY, ep.posZ, OPSoundEvent.gomu_stretch, SoundCategory.NEUTRAL, 10.0F, 1.0F);
             }
-            if (text.equals("GomuGear2A")) {
+
+            else if(text.equals("GomuGear2A")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.gomu_gear2, SoundCategory.NEUTRAL, 1.0F, 1.0F);
                 ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) (10F * multiplier), 2));
                 ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, (int) (10F * multiplier), 1));
@@ -82,54 +83,60 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                     world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, ep.posX, ep.posY + 1, ep.posZ, (Math.random() - 0.5) * 0.2, (Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.2);
                 }
             }
-            if (text.equals("GomuGear3A")) {
-                EntityGomuPistol elp = new EntityGomuPistol(world, ep.posX, ep.posY + 0.5 + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true);
+
+            else if(text.equals("GomuGear3A")) {
+                EntityGomuPistol elp = new EntityGomuPistol(world, ep.posX, ep.posY + 1.1, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true);
                 world.spawnEntity(elp);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.gomu_stretch, SoundCategory.NEUTRAL, 10.0F, 1.0F);
             }
-            if (text.equals("GomuGear4A")) {
+
+            else if(text.equals("GomuGear4A")) {
                 ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, (int) (20F * multiplier), 2));
                 ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) (20F * multiplier), 2));
                 ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) (20F * multiplier), 2));
             }
 
-            if (text.equals("MeraHiganA")) {
+            else if(text.equals("MeraHiganA")) {
                 EntityFirePunch eff = new EntityFirePunch(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 1);
                 world.spawnEntity(eff);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
 
             }
-            if (text.equals("MeraShinkaA")) {
-                world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY + 2, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
-                world.spawnEntity(new EntityFirePunch(world, ep.posX + 0.5, ep.posY + 0.5 + 2, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
-                world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY + 0.5 + 2, ep.posZ + 1, ep.rotationYaw, ep.rotationPitch, ep, 2));
-                world.spawnEntity(new EntityFirePunch(world, ep.posX - 0.5, ep.posY - 0.5 + 2, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
-                world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY - 0.5 + 2, ep.posZ - 1, ep.rotationYaw, ep.rotationPitch, ep, 2));
-                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
 
+            else if(text.equals("MeraShinkaA")) {
+                world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY + 2, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
+                world.spawnEntity(new EntityFirePunch(world, ep.posX + 0.5, ep.posY + 2.5, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
+                world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY + 2.5, ep.posZ + 1, ep.rotationYaw, ep.rotationPitch, ep, 2));
+                world.spawnEntity(new EntityFirePunch(world, ep.posX - 0.5, ep.posY + 1.5, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
+                world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY + 1.5, ep.posZ - 1, ep.rotationYaw, ep.rotationPitch, ep, 2));
+                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
+                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
+                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
+                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
+                world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
             }
-            if (text.equals("MeraHikenA")) {
+
+            else if(text.equals("MeraHikenA")) {
                 EntityFirePunch eff = new EntityFirePunch(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 4);
                 world.spawnEntity(eff);
             }
-            if (text.equals("MeraEnteiA")) {
+
+            else if(text.equals("MeraEnteiA")) {
                 EntityEntei ee = new EntityEntei(world, ep.posX, ep.posY + 5, ep.posZ, ep);
                 world.spawnEntity(ee);
                 world.playSound(null, ep.posX, ep.posY + 5, ep.posZ, OPSoundEvent.entei_charge, SoundCategory.NEUTRAL, 15.0F, 1.0F);
 
             }
-            if (text.equals("SlowBeamA")) {
+
+            else if(text.equals("SlowBeamA")) {
                 EntitySlowBeam esb = new EntitySlowBeam(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
 
                 world.playSound(null, ep.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 10.0F, 1.0F);
                 world.spawnEntity(esb);
 
             }
-            if (text.equals("SlowBallA")) {
+
+            else if(text.equals("SlowBallA")) {
                 EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true, 60, 10);
                 List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, 20, ep);
                 for (Entity entity : entities) {
@@ -147,39 +154,39 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 world.spawnEntity(esb);
             }
 
-            if (text.equals("SlowMashiA")) {
+            else if(text.equals("SlowMashiA")) {
                 EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, false, 120, 5);
                 world.spawnEntity(esb);
             }
 
-            if (text.equals("ClearSkatingA")) {
+            else if(text.equals("ClearSkatingA")) {
                 ep.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, (int) (25F * multiplier), 0));
 
             }
 
-            if (text.equals("RoomA")) {
+            else if(text.equals("RoomA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.dome_appear, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                 world.setBlockState(new BlockPos(ep.getPosition().getX(), ep.getPosition().getY(), ep.getPosition().getZ()), OPBlocks.BlockLawDomeCenter.getDefaultState());
             }
 
-            if (text.equals("Shambles")) {
+            else if(text.equals("Shambles")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                 OPShambles(ep);
             }
 
-            if (text.equals("InjectionShot")) {
+            else if(text.equals("InjectionShot")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                 OPInjectionShot(ep);
             }
 
-            if (text.equals("Takt")) {
+            else if(text.equals("Takt")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.takt, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                 if(!OPCraft.config.disableGriefing.getCurrentValue()) {//if griefing is disabled do not execute this power.
                     OPTakt(ep);
                 }
             }
 
-            if (text.equals("IceSaberA")) {
+            else if(text.equals("IceSaberA")) {
                 destroyNearbyCropsAndGrass(ep, 5);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ice_saber, SoundCategory.NEUTRAL, 20, 1.0F);
                 EntityIceSaber e = new EntityIceSaber(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
@@ -198,193 +205,193 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
 
             }
 
-            if (text.equals("IceAgeA")) {
+            else if(text.equals("IceAgeA")) {
                 if(!OPCraft.config.disableGriefing.getCurrentValue()) {
                     createIceSeaRoad(ep.getHorizontalFacing(), new BlockPos(ep.posX, ep.posY, ep.posZ), ep);
                 }
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ice_age, SoundCategory.NEUTRAL, 50.0F, 1.0F);
             }
 
-            if (text.equals("IceBlockPhBeakA")) {
+            else if(text.equals("IceBlockPhBeakA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ice_phoenix, SoundCategory.NEUTRAL, 20.0F, 1.0F);
                 EntityIcePhoenix e = new EntityIcePhoenix(world, ep.posX, ep.posY + 1, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(e);
             }
 
-            if (text.equals("PadHoA")) {
+            else if(text.equals("PadHoA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 15, 1.0F);
                 damageNearbyPlayers(ep, 15, 6F, 0.2F);
             }
 
-            if (text.equals("TsuppariPadHoA")) {
+            else if(text.equals("TsuppariPadHoA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 30, 1.0F);
                 damageNearbyPlayers(ep, 30, 12F, 0.5F);
             }
 
-            if (text.equals("UrsusShockA")) {
+            else if(text.equals("UrsusShockA")) {
                 EntityUrsusBubble e = new EntityUrsusBubble(world, ep.posX, ep.posY + 1, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ursus_shock, SoundCategory.NEUTRAL, 90, 1.0F);
                 world.spawnEntity(e);
             }
 
-            if (text.equals("SangoA")) {
+            else if(text.equals("SangoA")) {
                 createLightnings(ep, 150, 80D);
             }
 
-            if (text.equals("DeathpieaA")) {
+            else if(text.equals("DeathpieaA")) {
                 createLightnings(ep, 400, 100D);
             }
 
-            if (text.equals("WhiteBlowA")) {
+            else if(text.equals("WhiteBlowA")) {
                 EntitySmokePunch smokePunch = new EntitySmokePunch(world, ep.posX, ep.posY + 0.6, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(smokePunch);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.smoke_whoosh, SoundCategory.NEUTRAL, 10.0F, 1.0F);
             }
 
-            if (text.equals("WhiteOutA")) {
+            else if(text.equals("WhiteOutA")) {
                 world.setBlockState(ep.getPosition(), OPBlocks.BlockSmokeCloud.getDefaultState());
                 world.playSound(null, ep.getPosition(), OPSoundEvent.smoke_ambient, SoundCategory.NEUTRAL, 20.0F, 1.0F);
             }
 
-            if (text.equals("BlackHoleA") || text.equals("LiberationA")) {
+            else if(text.equals("BlackHoleA") || text.equals("LiberationA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.dark, SoundCategory.NEUTRAL, 30f, 1f);
             }
 
-            if (text.equals("TamaitoA")) {
+            else if(text.equals("TamaitoA")) {
                 EntityTamaito et = new EntityTamaito(world, ep.posX, ep.posY + 1.35f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(et);
                 world.playSound(null, ep.posX, ep.posY, ep.posZ, OPSoundEvent.tamaito, SoundCategory.NEUTRAL, 20.0F, 1.0F);
             }
 
-            if(text.equals("OverheatA")){
+            else if(text.equals("OverheatA")){
                 EntityOverheat overheat = new EntityOverheat(world, ep.posX,ep.posY,ep.posZ, ep.rotationYaw, ep.rotationPitch, true, ep);
                 world.spawnEntity(overheat);
             }
 
             //CONSEQUENCES
             if (OPCraft.config.enableSideEffects.getCurrentValue()) {
-                if (text.equals("GomuGear2B")) {
+                if(text.equals("GomuGear2B")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (5F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (5F * multiplier), 1));
                     world.playSound(null, ep.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 3.0F, 1.0F);
                 }
-                if (text.equals("GomuGear3B")) {
+                else if(text.equals("GomuGear3B")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (10F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (10F * multiplier), 2));
                 }
-                if (text.equals("GomuGear4B")) {
+                else if(text.equals("GomuGear4B")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (17F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (17F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (17F * multiplier), 1));
                     world.playSound(null, ep.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 3.0F, 1.0F);
                 }
-
-                if (text.equals("MeraShinkaB")) {
+                else if(text.equals("MeraShinkaB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (8F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (8F * multiplier), 0));
                 }
-                if (text.equals("MeraHikenB")) {
+                else if(text.equals("MeraHikenB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (8F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (8F * multiplier), 1));
 
                 }
-                if (text.equals("MeraEnteiB")) {
+                else if(text.equals("MeraEnteiB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (19F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (19F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (19F * multiplier), 0));
 
                 }
-                if (text.equals("SlowBallB")) {
+                else if(text.equals("SlowBallB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 0));
                 }
-                if (text.equals("SlowMashiB")) {
+                else if(text.equals("SlowMashiB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 0));
 
                 }
-                if (text.equals("IceBallB")) {
+                else if(text.equals("IceBallB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (10F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (10F * multiplier), 0));
 
                 }
-                if (text.equals("IceBlockPhBeakB")) {
+                else if(text.equals("IceBlockPhBeakB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (10F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (10F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (10F * multiplier), 1));
                 }
-                if (text.equals("TsuppariPadHoB")) {
+                else if(text.equals("TsuppariPadHoB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (5F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (5F * multiplier), 0));
                 }
-                if (text.equals("UrsusShockB")) {
+                else if(text.equals("UrsusShockB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (20F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (20F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (20F * multiplier), 2));
                 }
-                if (text.equals("SangoB")) {
+                else if(text.equals("SangoB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (4F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (4F * multiplier), 1));
                 }
-                if (text.equals("DeathpieaB")) {
+                else if(text.equals("DeathpieaB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (15F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (15F * multiplier), 2));
                 }
 
-                if (text.equals("WhiteSnakeB")) {
+                else if(text.equals("WhiteSnakeB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (6F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (6F * multiplier), 1));
                 }
 
-                if (text.equals("WhiteOutB")) {
+                else if(text.equals("WhiteOutB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (15F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (15F * multiplier), 1));
                 }
 
-                if (text.equals("WhiteLauncherB")) {
+                else if(text.equals("WhiteLauncherB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (17F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (17F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (17F * multiplier), 1));
                     //world.playSound((EntityPlayer) null, ep.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 3.0F, 1.0F);
                 }
 
-                if (text.equals("KurouzuB")) {
+                else if(text.equals("KurouzuB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (7F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (7F * multiplier), 0));
                 }
 
-                if (text.equals("LiberationB")) {
+                else if(text.equals("LiberationB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (18F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (18F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (18F * multiplier), 1));
                 }
 
             }
-            if (text.equals("DISABLEDAMAGE")) {
+
+            if(text.equals("DISABLEDAMAGE")) {
                 ep.setEntityInvulnerable(true);
                 if (!OPCraft.IS_RELEASE_VERSION) {
                     ep.sendMessage(new TextComponentString("DISABLED DAMAGE"));
                 }
             }
-            if (text.equals("ENABLEDAMAGE")) {
+            else if(text.equals("ENABLEDAMAGE")) {
                 ep.setEntityInvulnerable(false);
                 if (!OPCraft.IS_RELEASE_VERSION) {
                     ep.sendMessage(new TextComponentString("ENABLED DAMAGE"));
                 }
             }
 
-            if (text.equals("KairosekiItem")) {
+            else if(text.equals("KairosekiItem")) {
                 ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 3));
                 ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 40, 1));
             }
 
-            if (text.equals("StormLeg")) {
+            else if(text.equals("StormLeg")) {
                 EntityStormLeg entityStormLeg = new EntityStormLeg(world, ep.posX, ep.posY, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(entityStormLeg);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.PLAYERS, 1f, 1f);
             }
 
-            if (text.equals("KingGun")) {
+            else if(text.equals("KingGun")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.air_blast, SoundCategory.NEUTRAL, 50f, 1f);
                 //50 blocks range
                 Vec3d vec3d = ep.getPositionEyes(0);
@@ -427,12 +434,12 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
             AttributeModifier attackSpeedMod = new AttributeModifier(attackUUID, "OPShaveAttackSpeedMod", attackSpeedAttribute.getBaseValue() * 4, 2);
             AttributeModifier moveSpeedMod = new AttributeModifier(speedUUID, "OPMoveShaveSpeedMod", moveSpeedAttribute.getBaseValue() * 4, 2);
 
-            if (text.equals("SixPowersShaveEnable")) {
+            if(text.equals("SixPowersShaveEnable")) {
                 attackSpeedAttribute.applyModifier(attackSpeedMod);
                 moveSpeedAttribute.applyModifier(moveSpeedMod);
             }
 
-            if (text.equals("SixPowersShaveDisable")) {
+            else if(text.equals("SixPowersShaveDisable")) {
                 if (attackSpeedAttribute.hasModifier(attackSpeedMod)) {
                     attackSpeedAttribute.removeModifier(attackSpeedMod);
                 }
