@@ -9,6 +9,7 @@ import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.PowerUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -45,7 +46,8 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
 
     private String text = null;
 
-    public OPServerMessage() { }
+    public OPServerMessage() {
+    }
 
     public OPServerMessage(String text) {
         this.text = text;
@@ -67,13 +69,11 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
             int multiplier = OPCraft.config.cooldownSpeed.getCurrentValue();
             World world = ep.world;
 
-            if(text.equals("GomuPistolA")) {
+            if (text.equals("GomuPistolA")) {
                 EntityGomuPistol elp = new EntityGomuPistol(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, false);
                 world.spawnEntity(elp);
                 world.playSound(null, ep.posX, ep.posY, ep.posZ, OPSoundEvent.gomu_stretch, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-            }
-
-            else if(text.equals("GomuGear2A")) {
+            } else if (text.equals("GomuGear2A")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.gomu_gear2, SoundCategory.NEUTRAL, 1.0F, 1.0F);
                 ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) (10F * multiplier), 2));
                 ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, (int) (10F * multiplier), 1));
@@ -82,28 +82,20 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 for (int i = 0; i < 50; i++) {
                     world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, ep.posX, ep.posY + 1, ep.posZ, (Math.random() - 0.5) * 0.2, (Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.2);
                 }
-            }
-
-            else if(text.equals("GomuGear3A")) {
+            } else if (text.equals("GomuGear3A")) {
                 EntityGomuPistol elp = new EntityGomuPistol(world, ep.posX, ep.posY + 1.1, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true);
                 world.spawnEntity(elp);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.gomu_stretch, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-            }
-
-            else if(text.equals("GomuGear4A")) {
+            } else if (text.equals("GomuGear4A")) {
                 ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, (int) (20F * multiplier), 2));
                 ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) (20F * multiplier), 2));
                 ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) (20F * multiplier), 2));
-            }
-
-            else if(text.equals("MeraHiganA")) {
+            } else if (text.equals("MeraHiganA")) {
                 EntityFirePunch eff = new EntityFirePunch(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 1);
                 world.spawnEntity(eff);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
 
-            }
-
-            else if(text.equals("MeraShinkaA")) {
+            } else if (text.equals("MeraShinkaA")) {
                 world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY + 2, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
                 world.spawnEntity(new EntityFirePunch(world, ep.posX + 0.5, ep.posY + 2.5, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 2));
                 world.spawnEntity(new EntityFirePunch(world, ep.posX, ep.posY + 2.5, ep.posZ + 1, ep.rotationYaw, ep.rotationPitch, ep, 2));
@@ -114,29 +106,21 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-            }
-
-            else if(text.equals("MeraHikenA")) {
+            } else if (text.equals("MeraHikenA")) {
                 EntityFirePunch eff = new EntityFirePunch(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, 4);
                 world.spawnEntity(eff);
-            }
-
-            else if(text.equals("MeraEnteiA")) {
+            } else if (text.equals("MeraEnteiA")) {
                 EntityEntei ee = new EntityEntei(world, ep.posX, ep.posY + 5, ep.posZ, ep);
                 world.spawnEntity(ee);
                 world.playSound(null, ep.posX, ep.posY + 5, ep.posZ, OPSoundEvent.entei_charge, SoundCategory.NEUTRAL, 15.0F, 1.0F);
 
-            }
-
-            else if(text.equals("SlowBeamA")) {
+            } else if (text.equals("SlowBeamA")) {
                 EntitySlowBeam esb = new EntitySlowBeam(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
 
                 world.playSound(null, ep.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 10.0F, 1.0F);
                 world.spawnEntity(esb);
 
-            }
-
-            else if(text.equals("SlowBallA")) {
+            } else if (text.equals("SlowBallA")) {
                 EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true, 60, 10);
                 List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, 20, ep);
                 for (Entity entity : entities) {
@@ -152,42 +136,28 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                     }
                 }
                 world.spawnEntity(esb);
-            }
-
-            else if(text.equals("SlowMashiA")) {
+            } else if (text.equals("SlowMashiA")) {
                 EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, false, 120, 5);
                 world.spawnEntity(esb);
-            }
-
-            else if(text.equals("ClearSkatingA")) {
+            } else if (text.equals("ClearSkatingA")) {
                 ep.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, (int) (25F * multiplier), 0));
 
-            }
-
-            else if(text.equals("RoomA")) {
+            } else if (text.equals("RoomA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.dome_appear, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                 world.setBlockState(new BlockPos(ep.getPosition().getX(), ep.getPosition().getY(), ep.getPosition().getZ()), OPBlocks.BlockLawDomeCenter.getDefaultState());
-            }
-
-            else if(text.equals("Shambles")) {
+            } else if (text.equals("Shambles")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.NEUTRAL, 40.0F, 1.0F);
-                OPShambles(ep);
-            }
-
-            else if(text.equals("InjectionShot")) {
+                PowerUtils.OPShambles(ep);
+            } else if (text.equals("InjectionShot")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.NEUTRAL, 40.0F, 1.0F);
-                OPInjectionShot(ep);
-            }
-
-            else if(text.equals("Takt")) {
+                PowerUtils.OPInjectionShot(ep);
+            } else if (text.equals("Takt")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.takt, SoundCategory.NEUTRAL, 40.0F, 1.0F);
-                if(!OPCraft.config.disableGriefing.getCurrentValue()) {//if griefing is disabled do not execute this power.
-                    OPTakt(ep);
+                if (!OPCraft.config.disableGriefing.getCurrentValue()) {//if griefing is disabled do not execute this power.
+                    PowerUtils.OPTakt(ep);
                 }
-            }
-
-            else if(text.equals("IceSaberA")) {
-                destroyNearbyCropsAndGrass(ep, 5);
+            } else if (text.equals("IceSaberA")) {
+                PowerUtils.destroyNearbyCropsAndGrass(ep, 5);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ice_saber, SoundCategory.NEUTRAL, 20, 1.0F);
                 EntityIceSaber e = new EntityIceSaber(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 EntityIceSaber e1 = new EntityIceSaber(world, ep.posX, ep.posY + 2.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
@@ -203,163 +173,116 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 world.spawnEntity(e4);
                 world.spawnEntity(e5);
 
-            }
-
-            else if(text.equals("IceAgeA")) {
-                if(!OPCraft.config.disableGriefing.getCurrentValue()) {
-                    createIceSeaRoad(ep.getHorizontalFacing(), new BlockPos(ep.posX, ep.posY, ep.posZ), ep);
+            } else if (text.equals("IceAgeA")) {
+                if (!OPCraft.config.disableGriefing.getCurrentValue()) {
+                    PowerUtils.createIceSeaRoad(ep.getHorizontalFacing(), new BlockPos(ep.posX, ep.posY, ep.posZ), ep);
                 }
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ice_age, SoundCategory.NEUTRAL, 50.0F, 1.0F);
-            }
-
-            else if(text.equals("IceBlockPhBeakA")) {
+            } else if (text.equals("IceBlockPhBeakA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ice_phoenix, SoundCategory.NEUTRAL, 20.0F, 1.0F);
                 EntityIcePhoenix e = new EntityIcePhoenix(world, ep.posX, ep.posY + 1, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(e);
-            }
-
-            else if(text.equals("PadHoA")) {
+            } else if (text.equals("PadHoA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 15, 1.0F);
-                damageNearbyPlayers(ep, 15, 6F, 0.2F);
-            }
-
-            else if(text.equals("TsuppariPadHoA")) {
+                OPUtils.damageNearbyPlayers(ep, 15, 6F, 0.2F);
+            } else if (text.equals("TsuppariPadHoA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 30, 1.0F);
-                damageNearbyPlayers(ep, 30, 12F, 0.5F);
-            }
-
-            else if(text.equals("UrsusShockA")) {
+                OPUtils.damageNearbyPlayers(ep, 30, 12F, 0.5F);
+            } else if (text.equals("UrsusShockA")) {
                 EntityUrsusBubble e = new EntityUrsusBubble(world, ep.posX, ep.posY + 1, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.ursus_shock, SoundCategory.NEUTRAL, 90, 1.0F);
                 world.spawnEntity(e);
-            }
-
-            else if(text.equals("SangoA")) {
-                createLightnings(ep, 150, 80D);
-            }
-
-            else if(text.equals("DeathpieaA")) {
-                createLightnings(ep, 400, 100D);
-            }
-
-            else if(text.equals("WhiteBlowA")) {
+            } else if (text.equals("SangoA")) {
+                PowerUtils.createLightnings(ep, 150, 80D);
+            } else if (text.equals("DeathpieaA")) {
+                PowerUtils.createLightnings(ep, 400, 100D);
+            } else if (text.equals("WhiteBlowA")) {
                 EntitySmokePunch smokePunch = new EntitySmokePunch(world, ep.posX, ep.posY + 0.6, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(smokePunch);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.smoke_whoosh, SoundCategory.NEUTRAL, 10.0F, 1.0F);
-            }
-
-            else if(text.equals("WhiteOutA")) {
+            } else if (text.equals("WhiteOutA")) {
                 world.setBlockState(ep.getPosition(), OPBlocks.BlockSmokeCloud.getDefaultState());
                 world.playSound(null, ep.getPosition(), OPSoundEvent.smoke_ambient, SoundCategory.NEUTRAL, 20.0F, 1.0F);
-            }
-
-            else if(text.equals("BlackHoleA") || text.equals("LiberationA")) {
+            } else if (text.equals("BlackHoleA") || text.equals("LiberationA")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.dark, SoundCategory.NEUTRAL, 30f, 1f);
-            }
-
-            else if(text.equals("TamaitoA")) {
+            } else if (text.equals("TamaitoA")) {
                 EntityTamaito et = new EntityTamaito(world, ep.posX, ep.posY + 1.35f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(et);
                 world.playSound(null, ep.posX, ep.posY, ep.posZ, OPSoundEvent.tamaito, SoundCategory.NEUTRAL, 20.0F, 1.0F);
-            }
-
-            else if(text.equals("OverheatA")){
-                EntityOverheat overheat = new EntityOverheat(world, ep.posX,ep.posY,ep.posZ, ep.rotationYaw, ep.rotationPitch, true, ep);
+            } else if (text.equals("OverheatA")) {
+                EntityOverheat overheat = new EntityOverheat(world, ep.posX, ep.posY, ep.posZ, ep.rotationYaw, ep.rotationPitch, true, ep);
                 world.spawnEntity(overheat);
             }
 
             //CONSEQUENCES
             if (OPCraft.config.enableSideEffects.getCurrentValue()) {
-                if(text.equals("GomuGear2B")) {
+                if (text.equals("GomuGear2B")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (5F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (5F * multiplier), 1));
                     world.playSound(null, ep.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 3.0F, 1.0F);
-                }
-                else if(text.equals("GomuGear3B")) {
+                } else if (text.equals("GomuGear3B")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (10F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (10F * multiplier), 2));
-                }
-                else if(text.equals("GomuGear4B")) {
+                } else if (text.equals("GomuGear4B")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (17F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (17F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (17F * multiplier), 1));
                     world.playSound(null, ep.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 3.0F, 1.0F);
-                }
-                else if(text.equals("MeraShinkaB")) {
+                } else if (text.equals("MeraShinkaB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (8F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (8F * multiplier), 0));
-                }
-                else if(text.equals("MeraHikenB")) {
+                } else if (text.equals("MeraHikenB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (8F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (8F * multiplier), 1));
 
-                }
-                else if(text.equals("MeraEnteiB")) {
+                } else if (text.equals("MeraEnteiB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (19F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (19F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (19F * multiplier), 0));
 
-                }
-                else if(text.equals("SlowBallB")) {
+                } else if (text.equals("SlowBallB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 0));
-                }
-                else if(text.equals("SlowMashiB")) {
+                } else if (text.equals("SlowMashiB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 0));
 
-                }
-                else if(text.equals("IceBallB")) {
+                } else if (text.equals("IceBallB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (10F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (10F * multiplier), 0));
 
-                }
-                else if(text.equals("IceBlockPhBeakB")) {
+                } else if (text.equals("IceBlockPhBeakB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (10F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (10F * multiplier), 0));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (10F * multiplier), 1));
-                }
-                else if(text.equals("TsuppariPadHoB")) {
+                } else if (text.equals("TsuppariPadHoB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (5F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (5F * multiplier), 0));
-                }
-                else if(text.equals("UrsusShockB")) {
+                } else if (text.equals("UrsusShockB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (20F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (20F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (20F * multiplier), 2));
-                }
-                else if(text.equals("SangoB")) {
+                } else if (text.equals("SangoB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (4F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (4F * multiplier), 1));
-                }
-                else if(text.equals("DeathpieaB")) {
+                } else if (text.equals("DeathpieaB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (15F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (15F * multiplier), 2));
-                }
-
-                else if(text.equals("WhiteSnakeB")) {
+                } else if (text.equals("WhiteSnakeB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (6F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (6F * multiplier), 1));
-                }
-
-                else if(text.equals("WhiteOutB")) {
+                } else if (text.equals("WhiteOutB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (15F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (15F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (15F * multiplier), 1));
-                }
-
-                else if(text.equals("WhiteLauncherB")) {
+                } else if (text.equals("WhiteLauncherB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (17F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (17F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (17F * multiplier), 1));
                     //world.playSound((EntityPlayer) null, ep.getPosition(), SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.NEUTRAL, 3.0F, 1.0F);
-                }
-
-                else if(text.equals("KurouzuB")) {
+                } else if (text.equals("KurouzuB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (7F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (7F * multiplier), 0));
-                }
-
-                else if(text.equals("LiberationB")) {
+                } else if (text.equals("LiberationB")) {
                     ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, (int) (18F * multiplier), 2));
                     ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, (int) (18F * multiplier), 1));
                     ep.addPotionEffect(new PotionEffect(MobEffects.HUNGER, (int) (18F * multiplier), 1));
@@ -367,31 +290,24 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
 
             }
 
-            if(text.equals("DISABLEDAMAGE")) {
+            if (text.equals("DISABLEDAMAGE")) {
                 ep.setEntityInvulnerable(true);
                 if (!OPCraft.IS_RELEASE_VERSION) {
                     ep.sendMessage(new TextComponentString("DISABLED DAMAGE"));
                 }
-            }
-            else if(text.equals("ENABLEDAMAGE")) {
+            } else if (text.equals("ENABLEDAMAGE")) {
                 ep.setEntityInvulnerable(false);
                 if (!OPCraft.IS_RELEASE_VERSION) {
                     ep.sendMessage(new TextComponentString("ENABLED DAMAGE"));
                 }
-            }
-
-            else if(text.equals("KairosekiItem")) {
+            } else if (text.equals("KairosekiItem")) {
                 ep.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 3));
                 ep.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 40, 1));
-            }
-
-            else if(text.equals("StormLeg")) {
+            } else if (text.equals("StormLeg")) {
                 EntityStormLeg entityStormLeg = new EntityStormLeg(world, ep.posX, ep.posY, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
                 world.spawnEntity(entityStormLeg);
                 world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.PLAYERS, 1f, 1f);
-            }
-
-            else if(text.equals("KingGun")) {
+            } else if (text.equals("KingGun")) {
                 world.playSound(null, ep.getPosition(), OPSoundEvent.air_blast, SoundCategory.NEUTRAL, 50f, 1f);
                 //50 blocks range
                 Vec3d vec3d = ep.getPositionEyes(0);
@@ -401,7 +317,7 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 int i1 = MathHelper.floor(vec3d2.y);
                 int j1 = MathHelper.floor(vec3d2.z);
 
-                ArrayList<Point3d> points = MathUtils.getIntermediatePoints(new Vec3d(ep.posX, ep.posY+1d, ep.posZ), new Vec3d(l, i1, j1), 100);
+                ArrayList<Point3d> points = MathUtils.getIntermediatePoints(new Vec3d(ep.posX, ep.posY + 1d, ep.posZ), new Vec3d(l, i1, j1), 100);
                 Random r = new Random();
                 for (Point3d point : points) {
                     List<Entity> players = OPUtils.getNearbyEntities(ep, new BlockPos(point.x, point.y, point.z), 2d, EntityPlayer.class);
@@ -415,9 +331,9 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                         entity.attackEntityFrom(DamageSource.causePlayerDamage(ep), 32);
                     }
                     for (int i = 0; i < 5; i++) {
-                        double offsetX = r.nextDouble()/2d-0.5d;
-                        double offsetY = r.nextDouble()/2d-0.5d;
-                        double offsetZ = r.nextDouble()/2d-0.5d;
+                        double offsetX = r.nextDouble() / 2d - 0.5d;
+                        double offsetY = r.nextDouble() / 2d - 0.5d;
+                        double offsetZ = r.nextDouble() / 2d - 0.5d;
                         world.spawnParticle(EnumParticleTypes.CLOUD, point.x + offsetX, point.y + offsetY, point.z + offsetZ, 0, 0.05d, 0);
                     }
 
@@ -434,12 +350,10 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
             AttributeModifier attackSpeedMod = new AttributeModifier(attackUUID, "OPShaveAttackSpeedMod", attackSpeedAttribute.getBaseValue() * 4, 2);
             AttributeModifier moveSpeedMod = new AttributeModifier(speedUUID, "OPMoveShaveSpeedMod", moveSpeedAttribute.getBaseValue() * 4, 2);
 
-            if(text.equals("SixPowersShaveEnable")) {
+            if (text.equals("SixPowersShaveEnable")) {
                 attackSpeedAttribute.applyModifier(attackSpeedMod);
                 moveSpeedAttribute.applyModifier(moveSpeedMod);
-            }
-
-            else if(text.equals("SixPowersShaveDisable")) {
+            } else if (text.equals("SixPowersShaveDisable")) {
                 if (attackSpeedAttribute.hasModifier(attackSpeedMod)) {
                     attackSpeedAttribute.removeModifier(attackSpeedMod);
                 }
@@ -450,315 +364,4 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
 
         }
     }
-
-
-    static void createLightnings(EntityPlayer ep, int repeatTimes, double radius){
-
-        double x = ep.posX;
-        double z = ep.posZ;
-
-        Random r = new Random();
-        World world = ep.getServer().getEntityWorld();
-        List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, radius, ep);
-
-        for(int i = 0; i < repeatTimes; i++){
-            //Has 1/20 to hit an entity or player per loop. If 100 loops then the chance of hitting an entity is (1/20)*100 = 5 times.
-            if(r.nextInt(20) == 1){
-                if(r.nextBoolean()) {
-                    int num = r.nextInt(entities.size());
-                    if (entities.get(num) instanceof EntityLiving) {
-                        EntityLiving entity = (EntityLiving)entities.get(num);
-                        world.addWeatherEffect(new EntityLightningBolt(world, entity.posX, entity.posY, entity.posZ, OPCraft.config.disableGriefing.getCurrentValue()));
-                    }
-                }
-                continue;
-            }
-
-            double finalX = x + (r.nextDouble() * (radius * 2D) - radius);
-            double finalZ = z + (r.nextDouble() * (radius * 2D) - radius);
-            double finalY = world.getTopSolidOrLiquidBlock(new BlockPos(finalX, 255, finalZ)).getY();
-
-             world.addWeatherEffect(new EntityLightningBolt(world, finalX, finalY, finalZ, false));
-        }
-    }
-
-    static void damageNearbyPlayers(EntityPlayer ep, int range, float damage, float velMul){
-        List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, range, ep);
-
-        for(int i = 0; i < entities.size(); i++) {
-            if (entities.get(i) != null) {
-                if (entities.get(i) instanceof EntityPlayer) {
-                    EntityPlayer entityPlayer = (EntityPlayer) entities.get(i);
-                    entityPlayer.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityPlayer, damage, true));
-
-                }
-
-                else if(entities.get(i) instanceof EntityLiving){
-                    Entity e = entities.get(i);
-                    e.attackEntityFrom(DamageSource.causePlayerDamage(ep), damage);
-                }
-
-                if(entities.get(i) instanceof EntityLiving || entities.get(i) instanceof EntityPlayer) {
-
-                    double distanceX = entities.get(i).posX - ep.posX;
-                    double distanceY = entities.get(i).posY - ep.posY;
-                    double distanceZ = entities.get(i).posZ - ep.posZ;
-
-                    double velocityX = (range / distanceX) * velMul;
-                    double velocityY = (range / distanceY) * velMul;
-                    double velocityZ = (range / distanceZ) * velMul;
-
-                    if (distanceX == 0D) {
-                        velocityX = 0;
-                    }
-                    if (distanceY == 0D) {
-                        velocityY = 0;
-                    }
-                    if (distanceZ == 0D) {
-                        velocityZ = 0;
-                    }
-                    if (velocityX > range) {
-                        velocityX = range;
-                    }
-                    if (velocityX < -range) {
-                        velocityX = -range;
-                    }
-                    if (velocityY > range) {
-                        velocityY = range;
-                    }
-                    if (velocityY < -range) {
-                        velocityY = -range;
-                    }
-                    if (velocityZ > range) {
-                        velocityZ = range;
-                    }
-                    if (velocityZ < -range) {
-                        velocityZ = -range;
-                    }
-
-                    entities.get(i).addVelocity(velocityX, velocityY, velocityZ);
-
-                }
-            }
-        }
-     }
-
-    static void createIceSeaRoad(EnumFacing ef, BlockPos startPoint, EntityPlayer ep){
-
-        Block roadMat = OPBlocks.BlockIceAge;
-        World world = ep.world;
-
-        switch(ef){
-            case EAST:
-                for(int i = 0; i < 200; i++){
-                    for(int h = -2; h<2; h++) {
-                        if (isBlockWater(ep, startPoint.add(i, h, 0))) {
-                            world.setBlockState(startPoint.add(i, h, 0), roadMat.getDefaultState());
-                        }
-                        if(isBlockWater(ep, startPoint.add(i, h, 1))) {
-                            world.setBlockState(startPoint.add(i, h, 1), roadMat.getDefaultState());
-                        }
-                        if (isBlockWater(ep, startPoint.add(i, h, -1))) {
-                            world.setBlockState(startPoint.add(i, h, -1), roadMat.getDefaultState());
-                        }
-                    }
-                }
-                break;
-            case WEST:
-                for(int i = 0; i < 200; i++){
-                    for(int h = -2; h<2; h++) {
-                        if (isBlockWater(ep, startPoint.add(-i, h, 0))) {
-                            world.setBlockState(startPoint.add(-i, h, 0), roadMat.getDefaultState());
-                        }
-                        if (isBlockWater(ep, startPoint.add(-i, h, 1))) {
-                            world.setBlockState(startPoint.add(-i, h, 1), roadMat.getDefaultState());
-                        }
-                        if (isBlockWater(ep, startPoint.add(-i, h, -1))) {
-                            world.setBlockState(startPoint.add(-i, h, -1), roadMat.getDefaultState());
-                        }
-                    }
-                }
-                break;
-
-            case SOUTH:
-                for(int i = 0; i < 200; i++){
-                    for(int h = -2; h<2; h++) {
-                        if (isBlockWater(ep, startPoint.add(0, h, i))) {
-                            world.setBlockState(startPoint.add(0, h, i), roadMat.getDefaultState());
-                        }
-                        if (isBlockWater(ep, startPoint.add(1, h, i))) {
-                            world.setBlockState(startPoint.add(1, h, i), roadMat.getDefaultState());
-                        }
-                        if (isBlockWater(ep, startPoint.add(-1, h, i))) {
-                            world.setBlockState(startPoint.add(-1, h, i), roadMat.getDefaultState());
-                        }
-                    }
-                }
-                break;
-
-            case NORTH:
-                for(int i = 0; i < 200; i++){
-                    for(int h = -2; h<2; h++) {
-                        if (isBlockWater(ep, startPoint.add(0, h, -i))) {
-                            world.setBlockState(startPoint.add(0, h, -i), roadMat.getDefaultState());
-                        }
-                        if (isBlockWater(ep, startPoint.add(1, h, -i))) {
-                            world.setBlockState(startPoint.add(1, h, -i), roadMat.getDefaultState());
-                        }
-                        if (isBlockWater(ep, startPoint.add(-1, h, -i))) {
-                            world.setBlockState(startPoint.add(-1, h, -i), roadMat.getDefaultState());
-                        }
-                    }
-                }
-                break;
-        }
-
-    }
-
-    private static boolean isBlockWater(EntityPlayer ep, BlockPos blockPos) {
-        World world = ep.getServer().getEntityWorld();
-        return world.getBlockState(blockPos).getBlock() == Blocks.WATER || world.getBlockState(blockPos).getBlock() == Blocks.FLOWING_WATER;
-    }
-
-    static void destroyNearbyCropsAndGrass(EntityPlayer ep, int radius){
-        BlockPos playerPos = new BlockPos(ep.posX, ep.posY, ep.posZ);
-        World world = ep.getServer().getEntityWorld();
-
-        for(int x = -radius; x < radius; x++){
-            for(int y = -radius; y < radius; y++){
-                for(int z = -radius; z < radius; z++){
-                    BlockPos pos = playerPos.add(x, y, z);
-                    Block blockFound = world.getBlockState(pos).getBlock();
-                    if(blockFound == Blocks.DEADBUSH || blockFound == Blocks.DOUBLE_PLANT || blockFound == Blocks.YELLOW_FLOWER || blockFound == Blocks.RED_FLOWER
-                            || blockFound == Blocks.SAPLING || blockFound == Blocks.WHEAT || blockFound == Blocks.CARROTS || blockFound == Blocks.POTATOES
-                            || blockFound == Blocks.BEETROOTS || blockFound == Blocks.BROWN_MUSHROOM || blockFound == Blocks.RED_MUSHROOM || blockFound == Blocks.VINE
-                            || blockFound == Blocks.WATERLILY){
-                            world.destroyBlock(pos, false);
-                    }
-                }
-            }
-        }
-
-     }
-
-    static BlockPos findCenterOfDome(EntityPlayer ep) {
-         BlockPos DomeCenter = new BlockPos(0, 0, 0);
-         boolean foundCenter = false;
-
-         BlockPos center = new BlockPos(ep.posX, ep.posY, ep.posZ);
-         int x = center.getX();
-         int y = center.getY();
-         int z = center.getZ();
-
-         int radius = 40;
-
-         for (int i = x - radius; i < x + radius; i++) {
-             for (int j = y - radius; j < y + radius; j++) {
-                 for (int k = z - radius; k < z + radius; k++) {
-                     if (ep.getServer().getEntityWorld().getBlockState(new BlockPos(i, j, k)).getBlock() == OPBlocks.BlockLawDomeCenter) {
-                         foundCenter = true;
-                         DomeCenter = new BlockPos(i, j, k);
-                         break;
-                     }
-                 }
-             }
-         }
-         if(foundCenter) return DomeCenter;
-         else{
-             return null;
-         }
-
-     }
-
-    static void OPTakt(EntityPlayer ep){
-		 BlockPos DomeCenter = findCenterOfDome(ep);
-		 if(DomeCenter != null) {
-			 Random r = new Random();
-			 int radius = 6;
-			 int x = DomeCenter.getX();
-			 int y = DomeCenter.getY();
-			 int z = DomeCenter.getZ();
-
-             World world = ep.getServer().getEntityWorld();
-
-			 for (int i = x - radius; i < x + radius; i++) {
-				 for (int j = y - 4; j < y + 4; j++) {
-                     for (int k = z - radius; k < z + radius; k++) {
-                         Block blockFound = world.getBlockState(new BlockPos(i, j, k)).getBlock();
-                         boolean allowed = true;
-                         for (Block block : OPUtils.nonMovableBlocks) {
-                             if (block == blockFound) allowed = false;
-                         }
-                         if (allowed) {
-                             if (canBlockSeeSky(new BlockPos(i, j, k), ep)) {
-
-
-                                 world.setBlockToAir(new BlockPos(i, j, k));
-                                 EntityFallingBlock entityFallingBlock = new EntityFallingBlock(world, i + (double) r.nextInt(radius * 5) - (double) r.nextInt(radius * 5), y + (double) r.nextInt(30), k + (double) r.nextInt(radius * 5) - (double) r.nextInt(radius * 5), blockFound.getBlockState().getBaseState());
-                                 entityFallingBlock.fallTime = 2;
-                                 // entityFallingBlock.addVelocity((r.nextInt(100) - 50) / 100, (r.nextInt(100) - 50) / 100, (r.nextInt(100) - 50) / 100);
-
-                                 world.spawnEntity(entityFallingBlock);
-
-                             }
-                         }
-                     }
-                 }
-			 }
-
-		 }
-	 }
-
-    static boolean canBlockSeeSky(BlockPos blockPos, EntityPlayer ep) {
-         int y = blockPos.getY();
-         int x = blockPos.getX();
-         int z = blockPos.getZ();
-         World world = ep.getServer().getEntityWorld();
-
-         for(int i = 256; i > y; i--){
-             if(world.getBlockState(new BlockPos(x, i, z)) != Blocks.AIR.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != Blocks.FIRE.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != OPBlocks.BlockLawDome.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != OPBlocks.BlockLawDomeCenter.getDefaultState()){
-                 return false;
-             }
-         }
-         return true;
-    }
-
-    static void OPShambles(EntityPlayer ep){
-        BlockPos DomeCenter = findCenterOfDome(ep);
-
-		 if(DomeCenter != null){
-             double distance = 19.0D;
-             Random r = new Random();
-			 List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, distance, ep);
-
-			 for(Entity entity : entities){
-                    int tpX = r.nextInt(37);
-                    int tpZ = r.nextInt(37);
-			        entity.setPosition(DomeCenter.getX() - distance + tpX, entity.getPosition().getY(), DomeCenter.getZ() - distance + tpZ);
-			 }
-		 }
-	 }
-
-    static void OPInjectionShot(EntityPlayer ep){
-
-         BlockPos DomeCenter = findCenterOfDome(ep);
-         if(DomeCenter != null){
-
-             double distance = 19.0D;
-
-             List<Entity> players = OPUtils.getNearbyEntities(ep, distance, EntityPlayer.class);
-
-             if (!players.isEmpty()) {
-                 for(Entity entity : players){
-                     EntityPlayer target = (EntityPlayer) entity;
-                     if(target != ep){
-                         ep.attemptTeleport(target.posX, target.posY, target.posZ);
-                         target.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(target, 12F, true));
-                         break;
-                     }
-                 }
-                 }
-             }
-         }
-
-    }
+}

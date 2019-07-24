@@ -19,6 +19,7 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -28,6 +29,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.*;
 import net.minecraft.world.World;
 
@@ -103,6 +105,67 @@ public class OPUtils {
         List<Entity> entities = world.getEntitiesWithinAABBExcludingEntity(excluding, new AxisAlignedBB(coords[0], coords[2], coords[4], coords[1], coords[3], coords[5]));
 
         return entities;
+    }
+
+    public static void damageNearbyPlayers(EntityPlayer ep, int range, float damage, float velMul){
+        List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, range, ep);
+
+        for(int i = 0; i < entities.size(); i++) {
+            if (entities.get(i) != null) {
+                if (entities.get(i) instanceof EntityPlayer) {
+                    EntityPlayer entityPlayer = (EntityPlayer) entities.get(i);
+                    entityPlayer.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityPlayer, damage, true));
+
+                }
+
+                else if(entities.get(i) instanceof EntityLiving){
+                    Entity e = entities.get(i);
+                    e.attackEntityFrom(DamageSource.causePlayerDamage(ep), damage);
+                }
+
+                if(entities.get(i) instanceof EntityLiving || entities.get(i) instanceof EntityPlayer) {
+
+                    double distanceX = entities.get(i).posX - ep.posX;
+                    double distanceY = entities.get(i).posY - ep.posY;
+                    double distanceZ = entities.get(i).posZ - ep.posZ;
+
+                    double velocityX = (range / distanceX) * velMul;
+                    double velocityY = (range / distanceY) * velMul;
+                    double velocityZ = (range / distanceZ) * velMul;
+
+                    if (distanceX == 0D) {
+                        velocityX = 0;
+                    }
+                    if (distanceY == 0D) {
+                        velocityY = 0;
+                    }
+                    if (distanceZ == 0D) {
+                        velocityZ = 0;
+                    }
+                    if (velocityX > range) {
+                        velocityX = range;
+                    }
+                    if (velocityX < -range) {
+                        velocityX = -range;
+                    }
+                    if (velocityY > range) {
+                        velocityY = range;
+                    }
+                    if (velocityY < -range) {
+                        velocityY = -range;
+                    }
+                    if (velocityZ > range) {
+                        velocityZ = range;
+                    }
+                    if (velocityZ < -range) {
+                        velocityZ = -range;
+                    }
+
+                    entities.get(i).addVelocity(velocityX, velocityY, velocityZ);
+
+                }
+            }
+        }
     }
 
     public static void drawEntityOnScreen(int posX, int posY, int scale, int deg, EntityLivingBase ent)
