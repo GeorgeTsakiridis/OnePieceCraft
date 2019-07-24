@@ -1,8 +1,8 @@
 package georgetsak.opcraft.common.entity.other;
 
+import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.OPSoundEvent;
 import georgetsak.opcraft.common.entity.EntityBounty;
-import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.common.registry.OPLootTables;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -14,7 +14,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -23,7 +22,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootTableList;
 
 public class EntityCrocodile extends EntityBounty
 {
@@ -143,7 +141,7 @@ public class EntityCrocodile extends EntityBounty
     public void onUpdate()
     {
         super.onUpdate();
-        if(!world.isRemote){
+        if(!world.isRemote && !OPCraft.config.disableGriefing.getCurrentValue()){
             Block block = world.getBlockState(getPosition().down()).getBlock();
             if(block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.GRASS_PATH){
                 world.setBlockState(getPosition().down(), Blocks.SAND.getDefaultState());

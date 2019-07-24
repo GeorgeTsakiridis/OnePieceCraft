@@ -38,7 +38,7 @@ public class BlockSnail extends Block{
 
     protected BlockStateContainer createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {FACING});
+        return new BlockStateContainer(this, FACING);
     }
 
     public IBlockState getStateFromMeta(int meta)
@@ -54,19 +54,19 @@ public class BlockSnail extends Block{
     public int getMetaFromState(IBlockState state)
     {
         int i = 0;
-        i = i | ((EnumFacing)state.getValue(FACING)).getIndex();
+        i = i | state.getValue(FACING).getIndex();
 
         return i;
     }
 
     public IBlockState withRotation(IBlockState state, Rotation rot)
     {
-        return state.withProperty(FACING, rot.rotate((EnumFacing)state.getValue(FACING)));
+        return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
     }
 
     public IBlockState withMirror(IBlockState state, Mirror mirrorIn)
     {
-        return state.withRotation(mirrorIn.toRotation((EnumFacing)state.getValue(FACING)));
+        return state.withRotation(mirrorIn.toRotation(state.getValue(FACING)));
     }
 
 
@@ -85,7 +85,7 @@ public class BlockSnail extends Block{
     {
         if (!worldIn.isRemote)
         {
-            EnumFacing enumfacing = (EnumFacing)state.getValue(FACING);
+            EnumFacing enumfacing = state.getValue(FACING);
             boolean flag = worldIn.getBlockState(pos.north()).isFullBlock();
             boolean flag1 = worldIn.getBlockState(pos.south()).isFullBlock();
 

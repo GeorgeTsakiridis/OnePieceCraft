@@ -35,11 +35,7 @@ import java.util.Random;
                  return true;
              }
 
-             if (block == this)
-             {
-                 return false;
-             }
-        return true;
+         return block != this;
      }
 
      @SideOnly(Side.CLIENT)

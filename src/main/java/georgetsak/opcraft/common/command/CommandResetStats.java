@@ -79,7 +79,7 @@ public class CommandResetStats extends CommandBase {
         resetStats(entity, sender, false);
         resetHaki(entity, sender, false);
         resetSixPowers(entity, sender, false);
-        notifyCommandListener(sender, this, "Reset all %s's stats", new Object[]{entity.getName()});
+        notifyCommandListener(sender, this, "Reset all %s's stats", entity.getName());
     }
 
     private void resetStats(Entity entity, ICommandSender sender, boolean notify) {
@@ -88,7 +88,7 @@ public class CommandResetStats extends CommandBase {
         PacketDispatcher.sendTo(new StatsNormalClientPacket(stats), (EntityPlayerMP) entity);
         OPUtils.updateStats((EntityPlayer) entity, stats);
         if (notify) {
-            notifyCommandListener(sender, this, "Reset %s's Stats", new Object[]{entity.getName()});
+            notifyCommandListener(sender, this, "Reset %s's Stats", entity.getName());
         }
     }
 
@@ -97,7 +97,7 @@ public class CommandResetStats extends CommandBase {
         haki.resetAll();
         PacketDispatcher.sendTo(new HakiPacket(haki), (EntityPlayerMP)entity);
         if (notify) {
-            notifyCommandListener(sender, this, "Reset %s's Haki", new Object[]{entity.getName()});
+            notifyCommandListener(sender, this, "Reset %s's Haki", entity.getName());
         }
     }
 
@@ -106,7 +106,7 @@ public class CommandResetStats extends CommandBase {
         sixPowers.resetAll();
         PacketDispatcher.sendTo(new SixPowersPacket(sixPowers), (EntityPlayerMP)entity);
         if (notify) {
-            notifyCommandListener(sender, this, "Reset %s's Six Powers", new Object[] {entity.getName()});
+            notifyCommandListener(sender, this, "Reset %s's Six Powers", entity.getName());
         }
     }
 
@@ -128,7 +128,7 @@ public class CommandResetStats extends CommandBase {
             return getListOfStringsMatchingLastWord(args, list2);
         }
 
-        return Collections.<String>emptyList();
+        return Collections.emptyList();
     }
 
     @Override

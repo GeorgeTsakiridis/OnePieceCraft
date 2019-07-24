@@ -22,7 +22,7 @@ public class HakiCapProvider implements ICapabilitySerializable<NBTBase> {
 
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == H_CAP ? H_CAP.<T> cast(this.instance) : null;
+        return capability == H_CAP ? H_CAP.cast(this.instance) : null;
     }
 
     @Override

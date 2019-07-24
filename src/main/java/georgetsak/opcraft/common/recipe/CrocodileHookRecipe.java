@@ -43,11 +43,7 @@ import net.minecraft.world.World;
 					boolean flag2a = PotionUtils.getEffectsFromStack(is3).equals(PotionTypes.LONG_POISON.getEffects());
 					boolean flag3a = PotionUtils.getEffectsFromStack(is3).equals(PotionTypes.STRONG_POISON.getEffects());
 
-					if (flag1a || flag2a || flag3a) {
-						return true;
-					} else {
-						return false;
-					}
+					return flag1a || flag2a || flag3a;
 				}
 
 			}
@@ -66,7 +62,7 @@ import net.minecraft.world.World;
 
 		@Override
 		public NonNullList<ItemStack> getRemainingItems(InventoryCrafting inv) {
-			NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>withSize(inv.getSizeInventory(), ItemStack.EMPTY);
+			NonNullList<ItemStack> nonnulllist = NonNullList.withSize(inv.getSizeInventory(), ItemStack.EMPTY);
 
 			for (int i = 0; i < nonnulllist.size(); ++i) {
 				ItemStack itemstack = inv.getStackInSlot(i);

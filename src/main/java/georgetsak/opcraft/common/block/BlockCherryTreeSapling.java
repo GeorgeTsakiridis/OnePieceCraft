@@ -44,11 +44,8 @@ public class BlockCherryTreeSapling extends Block{
     public boolean canPlaceBlockAt(World world, BlockPos pos)
     {
 		IBlockState block = world.getBlockState(pos.down());
-		
-		if(block.getBlock() == Blocks.GRASS || block.getBlock() == Blocks.DIRT){
-			return true;
-		}
-			return false;
+
+        return block.getBlock() == Blocks.GRASS || block.getBlock() == Blocks.DIRT;
     }
 
     @Override

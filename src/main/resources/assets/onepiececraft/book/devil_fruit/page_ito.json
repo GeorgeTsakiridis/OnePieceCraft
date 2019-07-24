@@ -1,0 +1,34 @@
+{
+  "type": "devil_fruit",
+  "title" : "Ito Ito no Mi - (String)",
+  "prefix" : "Ito Ito no Mi",
+  "powers": [
+    4,
+    {
+      "name" : "Tamaito",
+      "cooldown" : 5,
+      "sideEffects" : "None",
+      "description" : "Fires a small string like a bullet that damages the players it hits."
+    },
+    {
+      "name" : "Overheat",
+      "cooldown" : 60,
+      "sideEffects" : "WIP",
+      "description" : "WIP."
+    }
+  ,
+    {
+      "name" : "Goshikito",
+      "cooldown" : 50,
+      "sideEffects" : "WIP",
+      "description" : "WIP."
+    }
+  ,
+    {
+      "name" : "Sora No Michi",
+      "cooldown" : 35,
+      "sideEffects" : "WIP",
+      "description" : "WIP"
+    }
+  ]
+}

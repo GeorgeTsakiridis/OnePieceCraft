@@ -71,8 +71,8 @@ public class OPIWorldGenerator implements IWorldGenerator
 				Template morgan_fortress_stage2 = getTemplate("morgan_fortress_stage2", world);
 				Rotation rot = randomRot(rand);
 																											//rot
-				PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(true).setChunk((ChunkPos)null).setReplacedBlock((Block)null).setIgnoreStructureBlock(false);
-				PlacementSettings placementsettingsTorch = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk((ChunkPos)null).setReplacedBlock((Block)null).setIgnoreStructureBlock(false);
+				PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(true).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
+				PlacementSettings placementsettingsTorch = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
 
 				int finalY =  getAverageHeight(world, randX, randZ - 1, 109, false) + 1;
 

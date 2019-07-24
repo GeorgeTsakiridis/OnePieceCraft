@@ -1,14 +1,9 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import java.awt.List;
-
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityOpeDome extends EntityFlying {

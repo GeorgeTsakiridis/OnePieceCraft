@@ -11,10 +11,10 @@ public class OPLog {
      private static final String prefix = "[" + OPCraft.NAME + "]";
 
      public static void logWarning(Object message){
-          System.err.println((prefix + String.valueOf(message)));
+          System.err.println((prefix + message));
      }
      public static void logInfo(Object message){
-          System.out.println((prefix + String.valueOf(message)));
+          System.out.println((prefix + message));
      }
 
 }

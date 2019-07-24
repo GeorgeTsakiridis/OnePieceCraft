@@ -1,9 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import georgetsak.opcraft.common.util.OPUtils;
-import net.minecraft.entity.Entity;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
@@ -16,7 +14,7 @@ import java.util.ArrayList;
 
 public class EntityLongLine extends EntitySimpleProjectile{
 
-    private static final DataParameter<Integer> LENGTH = EntityDataManager.<Integer>createKey(EntityLongLine.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> LENGTH = EntityDataManager.createKey(EntityLongLine.class, DataSerializers.VARINT);
     private static final DataParameter<Boolean> EXTEND = EntityDataManager.createKey(EntityLongLine.class,DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> EXTENDED = EntityDataManager.createKey(EntityLongLine.class,DataSerializers.BOOLEAN);
 
@@ -44,7 +42,7 @@ public class EntityLongLine extends EntitySimpleProjectile{
             setHasExtended(true);
             Vec3d vec = getDirection().scale(getLength());
             Vec3d posVec = new Vec3d(posX, posY, posZ);
-            ArrayList<Point3d> points = OPUtils.getIntermediatePoints(posVec, new Vec3d(posVec.x + vec.x, posVec.y + vec.y, posVec.z + vec.z), (int)(getLength()/20f));
+            ArrayList<Point3d> points = MathUtils.getIntermediatePoints(posVec, new Vec3d(posVec.x + vec.x, posVec.y + vec.y, posVec.z + vec.z), (int)(getLength()/20f));
 
             for (Point3d point : points) {
                 extendTo(point.x,point.y,point.z, rotationYaw, rotationPitch, owner);

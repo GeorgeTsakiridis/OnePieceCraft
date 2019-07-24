@@ -25,7 +25,7 @@ public class BountyCapProvider implements ICapabilitySerializable<NBTBase>{
 
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == B_CAP ? B_CAP.<T> cast(this.instance) : null;
+        return capability == B_CAP ? B_CAP.cast(this.instance) : null;
     }
 
     @Override

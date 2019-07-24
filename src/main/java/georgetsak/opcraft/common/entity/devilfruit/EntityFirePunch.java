@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +14,7 @@ import net.minecraft.world.World;
 
 public class EntityFirePunch extends EntitySimpleProjectile {
 
-    private static final DataParameter<Integer> TYPE = EntityDataManager.<Integer>createKey(EntityFirePunch.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntityFirePunch.class, DataSerializers.VARINT);
 
     public EntityFirePunch(World world){
 		super(world);
@@ -52,7 +53,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	public void onCollideWithPlayer(EntityPlayer entityIn) {
 		if (!isCollisionWithPlayerValid(entityIn) || getType() == 0) return;
 
-		entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(entityIn, getDamageValue(), true));
+		entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn, getDamageValue(), true));
 		entityIn.setFire(getFireTimeValue());
 	}
 

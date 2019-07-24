@@ -182,7 +182,7 @@ public class StatsGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(mode == 0){
                 list.add(TextFormatting.RED + StatsGUI.insufficientLevels);
             }
@@ -206,7 +206,7 @@ public class StatsGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(mode == 0){
                 list.add(TextFormatting.RED + StatsGUI.insufficientLevels);
             }
@@ -234,7 +234,7 @@ public class StatsGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(mode == 0){
                 list.add(TextFormatting.RED + StatsGUI.insufficientLevels);
             }
@@ -258,7 +258,7 @@ public class StatsGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(mode == 0){
                 list.add(TextFormatting.RED + StatsGUI.insufficientLevels);
             }

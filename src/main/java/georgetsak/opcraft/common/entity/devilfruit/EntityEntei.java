@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.client.OPSoundEvent;
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
@@ -54,7 +54,7 @@ public class EntityEntei extends EntityFlying {
 
 				 if (result != null && result.typeOfHit != RayTraceResult.Type.MISS) {
 					 this.world.spawnEntity(new EntityFirePunch(world, posX, posY, posZ, e.rotationYaw, 90F - calculatePitch(e, result.getBlockPos()), ep, 3));
-					 this.world.playSound((EntityPlayer) null, posX, posY, posZ, OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
+					 this.world.playSound(null, posX, posY, posZ, OPSoundEvent.fire_fist, SoundCategory.NEUTRAL, 10.0F, 1.0F);
 				 }
 		 }
 	}
@@ -77,7 +77,7 @@ public class EntityEntei extends EntityFlying {
 	 public void onCollideWithPlayer(EntityPlayer entityIn)
 	    {
 		 if(ep != entityIn && ep != null){
-			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 10F, true));
+			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 10F, true));
 			 entityIn.setFire(10);
 		 }
 		 }

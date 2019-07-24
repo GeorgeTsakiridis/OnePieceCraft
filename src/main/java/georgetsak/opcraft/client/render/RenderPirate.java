@@ -46,7 +46,7 @@ public class RenderPirate extends RenderLiving<EntityPirate> {
 
     @Override
     protected ResourceLocation getEntityTexture(EntityPirate entity) {
-        return new ResourceLocation(OPCraft.MODID, "textures/entity/pirates/pirate" + String.valueOf(entity.getType()) + "_" + String.valueOf(entity.getTexture())+ ".png");
+        return new ResourceLocation(OPCraft.MODID, "textures/entity/pirates/pirate" + entity.getType() + "_" + entity.getTexture() + ".png");
     }
 
     @Override

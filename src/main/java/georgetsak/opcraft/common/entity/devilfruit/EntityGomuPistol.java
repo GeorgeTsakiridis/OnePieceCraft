@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,7 +16,7 @@ import javax.annotation.Nullable;
 
 public class EntityGomuPistol extends EntitySimpleProjectile {
 
-	public static final DataParameter<Boolean> IS_GEAR_3 = EntityDataManager.<Boolean>createKey(EntityGomuPistol.class, DataSerializers.BOOLEAN);
+	public static final DataParameter<Boolean> IS_GEAR_3 = EntityDataManager.createKey(EntityGomuPistol.class, DataSerializers.BOOLEAN);
 
 	public EntityGomuPistol(World world){
 		super(world);
@@ -89,9 +90,9 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 		 if (!isCollisionWithPlayerValid(entityIn)) return;
 
 		 if (isGear3()) {
-			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(entityIn, 12F, true));
+			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn, 12F, true));
 		 } else {
-			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(entityIn, 8F, true));
+			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn, 8F, true));
 		 }
 
 		 entityIn.hurtResistantTime = 20;
@@ -101,7 +102,7 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 	 public void collideWithEntity(Entity entityIn) {
 		 if (!isCollisionWithEntityValid(entityIn)) return;
 
-		 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(owner, 8F, true));
+		 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(owner, 8F, true));
 
 	 }
 
@@ -111,7 +112,7 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 	    }
 	 
 
-	public void setIsGear3(boolean b){
+	private void setIsGear3(boolean b){
 		this.dataManager.set(IS_GEAR_3, b);
 	}
 

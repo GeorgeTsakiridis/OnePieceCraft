@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
@@ -34,7 +34,7 @@ public class EntityIceSaber extends EntityFlying {
         this.z = z;
         this.yaw = yaw;
         this.pitch = pitch;
-        this.direction = OPUtils.convertRotation(yaw, pitch);
+        this.direction = MathUtils.convertRotation(yaw, pitch);
         direction.scale(2.5F);
         this.setPositionAndRotation(x, y, z, yaw, pitch);
         this.motionX = direction.x;
@@ -60,7 +60,7 @@ public class EntityIceSaber extends EntityFlying {
     {
         if(ep != entityIn && ep != null && entityIn.hurtResistantTime == 0){
             entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 6F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 6F, true));
             entityIn.hurtResistantTime = 20;
             this.setDead();
         }

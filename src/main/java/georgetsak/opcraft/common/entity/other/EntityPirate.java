@@ -23,8 +23,8 @@ import java.util.Random;
 
 public class EntityPirate extends EntityBounty
 {
-    private static final DataParameter<Integer> TYPE = EntityDataManager.<Integer>createKey(EntityPirate.class, DataSerializers.VARINT);
-    private static final DataParameter<Integer> TEXTURE = EntityDataManager.<Integer>createKey(EntityPirate.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntityPirate.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> TEXTURE = EntityDataManager.createKey(EntityPirate.class, DataSerializers.VARINT);
 
     public static final int STRONG = 1;
     public static final int THIN = 2;
@@ -77,7 +77,7 @@ public class EntityPirate extends EntityBounty
         this.tasks.addTask(3, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityMarine.class, true));
     }
 

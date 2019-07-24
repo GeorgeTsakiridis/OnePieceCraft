@@ -31,8 +31,8 @@ import java.util.Set;
 
 public class EntityChristos extends EntityAnimal
 {
-    private static final DataParameter<Boolean> SADDLED = EntityDataManager.<Boolean>createKey(EntityChristos.class, DataSerializers.BOOLEAN);
-    private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(new Item[] {Items.CARROT, Items.POTATO, Items.BEETROOT});
+    private static final DataParameter<Boolean> SADDLED = EntityDataManager.createKey(EntityChristos.class, DataSerializers.BOOLEAN);
+    private static final Set<Item> TEMPTATION_ITEMS = Sets.newHashSet(Items.CARROT, Items.POTATO, Items.BEETROOT);
     private boolean boosting;
     private int boostTime;
     private int totalBoostTime;
@@ -70,7 +70,7 @@ public class EntityChristos extends EntityAnimal
     @Nullable
     public Entity getControllingPassenger()
     {
-        return this.getPassengers().isEmpty() ? null : (Entity)this.getPassengers().get(0);
+        return this.getPassengers().isEmpty() ? null : this.getPassengers().get(0);
     }
 
     /**
@@ -193,7 +193,7 @@ public class EntityChristos extends EntityAnimal
      */
     public boolean getSaddled()
     {
-        return ((Boolean)this.dataManager.get(SADDLED)).booleanValue();
+        return this.dataManager.get(SADDLED).booleanValue();
     }
 
     /**

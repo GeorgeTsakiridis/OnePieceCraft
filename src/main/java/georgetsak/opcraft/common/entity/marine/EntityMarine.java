@@ -29,7 +29,7 @@ import java.util.Random;
 public class EntityMarine extends EntityBounty
 {
     private int lifetime = 0;
-    private static final DataParameter<Integer> TYPE = EntityDataManager.<Integer>createKey(EntityMarine.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> TYPE = EntityDataManager.createKey(EntityMarine.class, DataSerializers.VARINT);
 
 
     public EntityMarine(World worldIn)
@@ -67,7 +67,7 @@ public class EntityMarine extends EntityBounty
         this.tasks.addTask(3, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(8, new EntityAILookIdle(this));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityBandit.class, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntityPirate.class, true));

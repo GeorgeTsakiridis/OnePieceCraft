@@ -51,7 +51,7 @@ public class LawDomeTileEntity extends TileEntity implements ITickable {
         }
 
         if(ticksExisted > 400){
-            this.world.playSound((EntityPlayer)null,  this.getPos(), OPSoundEvent.dome_disappear, SoundCategory.NEUTRAL, 40.0F, 1.0F);
+            this.world.playSound(null,  this.getPos(), OPSoundEvent.dome_disappear, SoundCategory.NEUTRAL, 40.0F, 1.0F);
             GenerateDome gd = new GenerateDome();
             gd.generate(world, pos.getX() - 25, pos.getY() - 15, pos.getZ() -20, true);
 

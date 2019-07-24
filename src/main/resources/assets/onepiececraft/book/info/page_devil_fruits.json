@@ -1,0 +1,9 @@
+{
+  "type": "info",
+  "title": "Devil Fruits",
+  "totalLines": 1,
+  "lines":[
+    "//TODO add description"
+  ],
+  "icon":"onepiececraft:devil_fruit_gomu"
+}

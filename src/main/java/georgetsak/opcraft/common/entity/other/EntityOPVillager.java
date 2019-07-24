@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.entity.other;
 
-import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
+import georgetsak.opcraft.common.registry.OPItems;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
@@ -21,7 +21,6 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -115,7 +114,7 @@ public class EntityOPVillager extends EntityCreature implements IMerchant
 
     protected boolean canEquipItem(ItemStack stack)
     {
-        return stack.getItem() == Items.EGG && this.isChild() && this.isRiding() ? false : super.canEquipItem(stack);
+        return (stack.getItem() != Items.EGG || !this.isChild() || !this.isRiding()) && super.canEquipItem(stack);
     }
 
     protected boolean canDespawn()

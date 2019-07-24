@@ -25,7 +25,7 @@ public class SixPowersCapProvider implements ICapabilitySerializable<NBTBase>{
 
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == SP_CAP ? SP_CAP.<T> cast(this.instance) : null;
+        return capability == SP_CAP ? SP_CAP.cast(this.instance) : null;
     }
 
     @Override

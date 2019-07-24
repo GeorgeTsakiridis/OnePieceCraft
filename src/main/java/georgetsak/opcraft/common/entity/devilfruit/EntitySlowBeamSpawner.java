@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.client.OPSoundEvent;
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,7 +35,7 @@ public class EntitySlowBeamSpawner extends EntityFlying {
 		this.z = z;
 		this.yaw = yaw;
 		this.pitch = pitch;
-		this.direction = OPUtils.convertRotation(yaw, pitch);
+		this.direction = MathUtils.convertRotation(yaw, pitch);
 		direction.scale(2.5F);
 		this.motionX = 0;
 		this.motionY = 0;
@@ -60,7 +60,7 @@ public class EntitySlowBeamSpawner extends EntityFlying {
 				 for(int o = yaw; o > 0; o--){
 					 for(int k = pitch; k > 0; k--){
 						 EntitySlowBeam esb = new EntitySlowBeam(world, posX, posY, posZ, (o * (360/yaw)) - 180, (k * (180 / pitch)) - 90, ep);
-						 world.playSound((EntityPlayer)null, this.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 5, 1);
+						 world.playSound(null, this.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 5, 1);
 						 world.spawnEntity(esb);
 					 }
 					 EntitySlowBeam esb = new EntitySlowBeam(world, posX, posY, posZ, o * (360/yaw), 0, ep);
@@ -73,7 +73,7 @@ public class EntitySlowBeamSpawner extends EntityFlying {
 							 EntityPlayer e = (EntityPlayer) this.world.getEntityByID(ep.getEntityId());
 							 this.world.spawnEntity(new EntitySlowBeam(world, e.posX, e.posY+0.8f, e.posZ, e.rotationYaw, e.rotationPitch, ep, true));
 							 if(this.ticksExisted % 2 == 0){
-								 world.playSound((EntityPlayer)null, this.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 5, 1);
+								 world.playSound(null, this.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 5, 1);
 							 }
 						 }}
 					 }

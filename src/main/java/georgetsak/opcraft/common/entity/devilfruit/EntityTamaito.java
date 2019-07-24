@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
@@ -39,14 +39,14 @@ public class EntityTamaito extends EntitySimpleProjectile {
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         if(!isCollisionWithPlayerValid(entityIn))return;
 
-        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner),OPUtils.calculateDamage(entityIn,8f,true));
+        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn,8f,true));
     }
 
     @Override
     public void collideWithEntity(Entity entityIn) {
         if (!isCollisionWithEntityValid(entityIn)) return;
 
-        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(owner, 8F, true));
+        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(owner, 8F, true));
     }
 
     public float getCollisionBorderSize()

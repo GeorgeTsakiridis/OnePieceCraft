@@ -1,26 +1,19 @@
 package georgetsak.opcraft.common.entity.other;
 
-import georgetsak.opcraft.common.entity.EntityBounty;
-import georgetsak.opcraft.common.entity.other.EntityBandit;
-import georgetsak.opcraft.common.registry.OPItems;
 import net.minecraft.block.Block;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootTableList;
-
-import javax.annotation.Nullable;
 
 public class EntityTonta extends EntityCreature
 {
@@ -52,7 +45,7 @@ public class EntityTonta extends EntityCreature
         this.tasks.addTask(3, new EntityAIWander(this, 1.5D));
         this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, 20.0F));
         this.tasks.addTask(5, new EntityAILookIdle(this));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityBandit.class, true));
 
     }

@@ -48,7 +48,7 @@ public class PageShipRecipe extends Page{
 
         screen.drawCenteredString(fontRenderer, TITLE, middleX, posY, new Color(255, 110, 0).getRGB());
 
-        List<String> shipDes = fontRenderer.listFormattedStringToWidth(DESCRIPTION, (int)(screen.width - 2*marginX));
+        List<String> shipDes = fontRenderer.listFormattedStringToWidth(DESCRIPTION, (screen.width - 2*marginX));
         posY += fontRenderer.FONT_HEIGHT * 3;
         for(int i = 0; i < shipDes.size(); i++){
             screen.drawCenteredString(fontRenderer, shipDes.get(i), middleX , posY, Color.WHITE.getRGB());

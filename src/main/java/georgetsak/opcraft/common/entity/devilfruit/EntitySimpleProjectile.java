@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPDataSerializers;
-import georgetsak.opcraft.common.util.OPUtils;
 import georgetsak.opcraft.common.util.Vector3Double;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
@@ -28,7 +28,7 @@ public class EntitySimpleProjectile extends EntityFlying {
         super(world);
         this.owner = owner;
         this.dataManager.register(START_POS, new Vector3Double(new Vec3d(x, y, z)));
-        this.dataManager.register(DIRECTION, new Vector3Double(OPUtils.convertRotation(yaw, pitch)));
+        this.dataManager.register(DIRECTION, new Vector3Double(MathUtils.convertRotation(yaw, pitch)));
         this.dataManager.register(YAW, yaw);
         this.dataManager.register(PITCH, pitch);
         setPositionAndRotation(x, y, z, yaw, pitch);

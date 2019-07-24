@@ -35,9 +35,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityAceBoat extends Entity
 {
-    private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAceBoat.class, DataSerializers.VARINT);
-    private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAceBoat.class, DataSerializers.VARINT);
-    private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAceBoat.class, DataSerializers.FLOAT);
+    private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.createKey(EntityAceBoat.class, DataSerializers.VARINT);
+    private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.createKey(EntityAceBoat.class, DataSerializers.VARINT);
+    private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.createKey(EntityAceBoat.class, DataSerializers.FLOAT);
     private float momentum;
     private float outOfControlTicks;
     private float deltaRotation;
@@ -391,7 +391,7 @@ public class EntityAceBoat extends Entity
         int l = MathHelper.ceil(axisalignedbb1.maxY) + 1;
         int i1 = MathHelper.floor(axisalignedbb1.minZ) - 1;
         int j1 = MathHelper.ceil(axisalignedbb1.maxZ) + 1;
-        List<AxisAlignedBB> list = Lists.<AxisAlignedBB>newArrayList();
+        List<AxisAlignedBB> list = Lists.newArrayList();
         float f = 0.0F;
         int k1 = 0;
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
@@ -504,7 +504,7 @@ public class EntityAceBoat extends Entity
 
                         if (iblockstate.getMaterial() == Material.WATER && d0 < (double)BlockLiquid.getLiquidHeight(iblockstate, this.world, blockpos$pooledmutableblockpos))
                         {
-                            if (((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue() != 0)
+                            if (iblockstate.getValue(BlockLiquid.LEVEL).intValue() != 0)
                             {
                                 Status EntityAceBoat$status = Status.UNDER_FLOWING_WATER;
                                 return EntityAceBoat$status;
@@ -758,7 +758,7 @@ public class EntityAceBoat extends Entity
 
     public float getDamageTaken()
     {
-        return ((Float)this.dataManager.get(DAMAGE_TAKEN)).floatValue();
+        return this.dataManager.get(DAMAGE_TAKEN).floatValue();
     }
 
     public void setTimeSinceHit(int timeSinceHit)
@@ -768,7 +768,7 @@ public class EntityAceBoat extends Entity
 
     public int getTimeSinceHit()
     {
-        return ((Integer)this.dataManager.get(TIME_SINCE_HIT)).intValue();
+        return this.dataManager.get(TIME_SINCE_HIT).intValue();
     }
 
     public void setForwardDirection(int forwardDirection)
@@ -778,7 +778,7 @@ public class EntityAceBoat extends Entity
 
     public int getForwardDirection()
     {
-        return ((Integer)this.dataManager.get(FORWARD_DIRECTION)).intValue();
+        return this.dataManager.get(FORWARD_DIRECTION).intValue();
     }
 
     protected boolean canFitPassenger(Entity passenger)
@@ -790,7 +790,7 @@ public class EntityAceBoat extends Entity
     public Entity getControllingPassenger()
     {
         List<Entity> list = this.getPassengers();
-        return list.isEmpty() ? null : (Entity)list.get(0);
+        return list.isEmpty() ? null : list.get(0);
     }
 
     @SideOnly(Side.CLIENT)
@@ -808,7 +808,7 @@ public class EntityAceBoat extends Entity
         UNDER_WATER,
         UNDER_FLOWING_WATER,
         ON_LAND,
-        IN_AIR;
+        IN_AIR
     }
 
     @Override

@@ -1,23 +1,16 @@
 package georgetsak.opcraft.client.gui.overlay;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.client.power.PowerHandler;
+import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.GuiIngameForge;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -34,7 +27,7 @@ public class DevilFruitRenderOverlay {
         resolutionY = scaledResolution.getScaledHeight();
         resolutionX = scaledResolution.getScaledWidth();
 
-        int i = (int) (OPUtils.getPercentage(cooldown, cooldownMax)*85f);
+        int i = (int) (MathUtils.getPercentage(cooldown, cooldownMax)*85f);
         int rx = resolutionX / 200 + (resolutionX / 190);
         int ry = resolutionY - resolutionY / 16;
 
@@ -85,7 +78,7 @@ public class DevilFruitRenderOverlay {
         mc.getTextureManager().bindTexture(BAR_TEXTURE);
 
         mc.ingameGUI.drawTexturedModalRect(x, l, 0, 15, 182, 5);
-        mc.ingameGUI.drawTexturedModalRect(x, l, 0, 20, (int)(OPUtils.getPercentage(energy, 200)*182f), 5);
+        mc.ingameGUI.drawTexturedModalRect(x, l, 0, 20, (int)(MathUtils.getPercentage(energy, 200)*182f), 5);
         mc.ingameGUI.drawTexturedModalRect(x, l, 0, 25, 182, 5);
     }
 

@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
@@ -32,7 +32,7 @@ public class EntitySmokePunch extends EntitySimpleProjectile {
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         if (!isCollisionWithPlayerValid(entityIn))return;
 
-        float damage = OPUtils.calculateDamage(entityIn, 12F, true);
+        float damage = MathUtils.calculateDamage(entityIn, 12F, true);
         entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), damage);
         entityIn.hurtResistantTime = 20;
 
@@ -41,7 +41,7 @@ public class EntitySmokePunch extends EntitySimpleProjectile {
     public void collideWithEntity(Entity entityIn) {
         if(!isCollisionWithEntityValid(entityIn))return;
 
-        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(owner, 12F, true));
+        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(owner, 12F, true));
     }
 
     @Override

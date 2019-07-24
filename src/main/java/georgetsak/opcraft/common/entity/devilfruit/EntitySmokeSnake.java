@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
@@ -53,7 +53,7 @@ public class EntitySmokeSnake extends EntityFlying {
 
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         if (ep != entityIn && ep != null && !this.world.isRemote) {
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 12F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 12F, true));
             entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
             entityIn.hurtResistantTime = 40;
         }
@@ -76,7 +76,7 @@ public class EntitySmokeSnake extends EntityFlying {
 
     public void collideWithEntity(Entity entityIn) {
         if (ep != null && entityIn instanceof EntityLiving && !this.world.isRemote) {
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(ep, 12F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(ep, 12F, true));
             ((EntityLiving)(entityIn)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
 
         }

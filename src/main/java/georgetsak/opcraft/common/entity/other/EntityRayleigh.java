@@ -40,7 +40,7 @@ public class EntityRayleigh extends EntityMob {
         this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
         this.tasks.addTask(4, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
         this.tasks.addTask(5, new EntityAIWander(this, 0.6D));
-        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
+        this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false));
     }
 
     protected void applyEntityAttributes()

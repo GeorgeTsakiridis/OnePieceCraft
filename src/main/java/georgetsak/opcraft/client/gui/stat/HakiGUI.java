@@ -185,7 +185,7 @@ public class HakiGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(mode == 0){
                 list.add(TextFormatting.RED + HakiGUI.insufficientLevels);
             }
@@ -209,7 +209,7 @@ public class HakiGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(!haki.isEmperorHakiUnlocked()){
                 list.add(TextFormatting.RED + "You haven't learned this Haki yet!");
                 list.add(TextFormatting.RED + "Find and talk to Rayleigh to unlock!");
@@ -240,7 +240,7 @@ public class HakiGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(mode == 0){
                 list.add(TextFormatting.RED + HakiGUI.insufficientLevels);
             }
@@ -264,7 +264,7 @@ public class HakiGUI extends GuiScreen{
 
         @Override
         public void drawButtonForegroundLayer(int mouseX, int mouseY) {
-            java.util.List<String> list = Lists.<String>newArrayList();
+            java.util.List<String> list = Lists.newArrayList();
             if(mode == 0){
                 list.add(TextFormatting.RED + HakiGUI.insufficientLevels);
             }

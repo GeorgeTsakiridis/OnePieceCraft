@@ -29,7 +29,7 @@ public class RenderHardMarine extends RenderBiped<EntityHardMarine> {
 	@Override
 	protected ResourceLocation getEntityTexture(EntityHardMarine entity) {
 		type = entity.getMarineType();
-		return new ResourceLocation(OPCraft.MODID, "textures/entity/hardmarines/hardmarine" + String.valueOf(type) + ".png");
+		return new ResourceLocation(OPCraft.MODID, "textures/entity/hardmarines/hardmarine" + type + ".png");
 	}
     
 }

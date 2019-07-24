@@ -37,17 +37,17 @@ public class CommandGetBounty extends CommandBase {
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         if(args.length < 1){
-            throw new WrongUsageException("/getbounty <player>", new Object[0]);
+            throw new WrongUsageException("/getbounty <player>");
         }
 
         Entity entity = getEntity(server, sender, args[0]);
         IBountyCap bountyCap = entity.getCapability(BountyCapProvider.B_CAP, null);
-        notifyCommandListener(sender, this, "%s's bounty is %s", new Object[] {entity.getName(), bountyCap.getBounty()});
+        notifyCommandListener(sender, this, "%s's bounty is %s", entity.getName(), bountyCap.getBounty());
     }
 
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
-        return args.length == 1 ? getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames()) : Collections.<String>emptyList();
+        return args.length == 1 ? getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames()) : Collections.emptyList();
     }
 
     @Override

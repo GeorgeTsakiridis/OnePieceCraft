@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -80,7 +80,7 @@ public class EntityDark extends EntityLiving {
                     player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 9));
                     player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 80, 9));
 
-                    entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), OPUtils.calculateDamage(player, 12.0f, true));
+                    entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(player, 12.0f, true));
                 }
                 entityIn.hurtResistantTime = 60;
             }

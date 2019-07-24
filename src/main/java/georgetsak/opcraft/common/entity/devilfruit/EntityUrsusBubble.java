@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
@@ -63,7 +64,7 @@ public class EntityUrsusBubble extends EntityFlying {
                 if (entities.get(i) != null) {
                     if (entities.get(i) instanceof EntityPlayer) {
                         EntityPlayer entityPlayer = (EntityPlayer) entities.get(i);
-                        entityPlayer.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityPlayer, damage, true));
+                        entityPlayer.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityPlayer, damage, true));
 
                     } else if (entities.get(i) instanceof EntityLiving) {
                         Entity e = entities.get(i);

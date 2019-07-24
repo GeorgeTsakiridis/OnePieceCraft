@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.entity.other;
 
-import georgetsak.opcraft.common.util.OPUtils;
+import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
@@ -26,7 +26,7 @@ public class EntityStormLeg extends EntityFlying {
         this.posX = x;
         this.posY = y+1.8;
         this.posZ = z;
-        this.direction = OPUtils.convertRotation(yaw, pitch);
+        this.direction = MathUtils.convertRotation(yaw, pitch);
         this.setPositionAndRotation(x, y, z, yaw, pitch);
         this.setSize(0.5F, 0.5F);
 
@@ -54,7 +54,7 @@ public class EntityStormLeg extends EntityFlying {
     public void onCollideWithPlayer(EntityPlayer entityIn)
     {
         if(ep != entityIn && ep != null){
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), OPUtils.calculateDamage(entityIn, 6, false));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 6, false));
         }
     }
 

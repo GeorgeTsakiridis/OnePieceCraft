@@ -25,7 +25,7 @@ public class DevilFruitsCapProvider implements ICapabilitySerializable<NBTBase>{
 
     @Override
     public <T> T getCapability(Capability<T> capability, @Nullable EnumFacing facing) {
-        return capability == DF_CAP ? DF_CAP.<T> cast(this.instance) : null;
+        return capability == DF_CAP ? DF_CAP.cast(this.instance) : null;
     }
 
     @Override

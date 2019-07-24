@@ -36,7 +36,7 @@ public class CommandAddBounty extends CommandBase {
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
         if (args.length < 2)
         {
-            throw new WrongUsageException("/addbounty <player> <amount>", new Object[0]);
+            throw new WrongUsageException("/addbounty <player> <amount>");
         }
         else
         {
@@ -47,14 +47,14 @@ public class CommandAddBounty extends CommandBase {
                 int bounty = parseInt(args[1]);
                 bountyCap.changeBountyBy(bounty);
                 PacketDispatcher.sendTo(new BountyClientPacket(bountyCap),(EntityPlayerMP)entity);
-                notifyCommandListener(sender, this, "Added %s to %s's bounty", new Object[]{String.valueOf(bounty), entity.getName()});
+                notifyCommandListener(sender, this, "Added %s to %s's bounty", String.valueOf(bounty), entity.getName());
             }
         }
     }
 
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
-        return args.length == 1 ? getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames()) : Collections.<String>emptyList();
+        return args.length == 1 ? getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames()) : Collections.emptyList();
     }
 
     @Override

@@ -190,7 +190,7 @@ public class ItemDial extends Item {
 
 					for (int k = 0; k < 8; ++k) {
 						pos.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (double) l + Math.random(),
-								(double) i + Math.random(), (double) j + Math.random(), 0.0D, 0.0D, 0.0D, new int[0]);
+								(double) i + Math.random(), (double) j + Math.random(), 0.0D, 0.0D, 0.0D);
 					}
 				} else {
 					if (!pos.isRemote && (flag || flag1) && !material.isLiquid()) {

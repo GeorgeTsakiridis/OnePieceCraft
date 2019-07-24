@@ -43,11 +43,7 @@ public class ManualBookGUI extends GuiScreen {
         this.prevPage = this.addButton(new GuiButton(0, this.width / 2 - 100, height - 40, 98, 20, "Previous Page"));
         this.nextPage = this.addButton(new GuiButton(1, this.width / 2 + 2, height - 40, 98, 20, "Next Page"));
 
-        this.prevPage.enabled = false;
-
-        if(this.page != 0){
-            this.prevPage.enabled = true;
-        }
+        this.prevPage.enabled = this.page != 0;
         if(this.page == totalPages){
             this.nextPage.enabled = false;
         }

@@ -8,6 +8,7 @@ public class OPBook {
     @SideOnly(Side.CLIENT)
     public static void registerPages(){
         PageManager.addPage("null");
+        PageManager.addPage("info/page_devil_fruits");
         PageManager.addPage("devil_fruit/page_gomu");
         PageManager.addPage("devil_fruit/page_mera");
         PageManager.addPage("devil_fruit/page_noro");
@@ -20,6 +21,7 @@ public class OPBook {
         PageManager.addPage("devil_fruit/page_goro");
         PageManager.addPage("devil_fruit/page_moku");
         PageManager.addPage("devil_fruit/page_yami");
+        PageManager.addPage("devil_fruit/page_ito");
         PageManager.addPage("info/page_devil_fruit_power_remover");
         PageManager.addPage("info/page_berries");
         PageManager.addPage("simple_recipe/page_kairoseki");

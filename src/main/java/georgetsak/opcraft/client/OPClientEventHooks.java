@@ -1,11 +1,14 @@
 package georgetsak.opcraft.client;
 
 
+import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.gui.overlay.EnumSixPowers;
 import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
+import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
 import georgetsak.opcraft.common.crew.Crew;
@@ -14,17 +17,15 @@ import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.entity.boat.EntityAceBoat;
 import georgetsak.opcraft.common.entity.boat.EntitySailBoat;
 import georgetsak.opcraft.common.item.weapons.IExtendedReach;
-import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.network.packets.server.*;
+import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
+import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
 import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.common.util.CrewUtils;
-import georgetsak.opcraft.common.util.OPUtils;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
-import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.client.proxy.ClientProxy;
-import georgetsak.opcraft.common.network.proxy.CommonProxy;
+import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.RaytracingUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
@@ -56,8 +57,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 /**
- * Client based logic. All these function are executed in each individual player. Not safe because hacking using OPMessages is easy,
- * but changing the system will require complete rework of the code.
+ * Client based logic. All these function are executed in each individual player.
  */
 public class OPClientEventHooks {
 
@@ -199,7 +199,7 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("IceBallA")) {
-            Entity entity = OPUtils.getLookingEntity(ep, 50);
+            Entity entity = RaytracingUtils.getLookingEntity(ep, 50);
             if (entity != null) {
                 PacketDispatcher.sendToServer(new IceCageEntityServerPacket(entity));
                 return true;
@@ -207,7 +207,7 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("WhiteSnakeA")) {
-            Entity entity = OPUtils.getLookingEntity(ep, 50);
+            Entity entity = RaytracingUtils.getLookingEntity(ep, 50);
             if (entity != null) {
                 PacketDispatcher.sendToServer(new SmokeSnakeServerPacket(entity));
                 return true;
@@ -215,20 +215,20 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("ElThorA")) {
-            BlockPos spawnPosition = OPUtils.getBlockPlayerIsLooking(ep, 300);
+            BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 300);
             PacketDispatcher.sendToServer(new ElThorServerPacket(spawnPosition));
             return true;
         }
 
         if (action.equals("BlackHoleA")) {
-            BlockPos spawnPosition = OPUtils.getBlockPlayerIsLooking(ep, 30);
+            BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 30);
             PacketDispatcher.sendToServer(new BlackHoleServerPacket(spawnPosition));
             sendMessage("BlackHoleA");
             return true;
         }
 
         if (action.equals("KurouzuA")) {
-            Entity entity = OPUtils.getLookingEntity(ep,50);
+            Entity entity = RaytracingUtils.getLookingEntity(ep,50);
             if(entity != null){
                 PacketDispatcher.sendToServer(new KurouzuServerPacket(entity));
             }
@@ -237,7 +237,7 @@ public class OPClientEventHooks {
 
         if (action.equals("LiberationA")) {
             sendMessage("DISABLEDAMAGE");
-            BlockPos spawnPosition = OPUtils.getBlockPlayerIsLooking(ep, 30);
+            BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 30);
             if (spawnPosition != null) {
                 PacketDispatcher.sendToServer(new LiberationServerPacket(spawnPosition));
             }
@@ -305,7 +305,7 @@ public class OPClientEventHooks {
                     case FINGER_PISTOL:
                         if(checkAndSetEnergyBar(100f))break;
 
-                        Entity entity = OPUtils.getLookingEntity(p, 5);
+                        Entity entity = RaytracingUtils.getLookingEntity(p, 5);
                         if (entity instanceof EntityLiving) {
                             System.out.println(sixPowerLevel * 5f);
                             PacketDispatcher.sendToServer(new DamageEntityServerPacket(entity, sixPowerLevel * 4f));
@@ -484,7 +484,7 @@ public class OPClientEventHooks {
     private void performAction(String string) {
         if(string.equals("Gear4Jump") && cooldownFallDamage <= 0){
             cooldownFallDamage = 8;
-            Vec3d a = OPUtils.convertRotation(Minecraft.getMinecraft().player.rotationYaw, Minecraft.getMinecraft().player.rotationPitch);
+            Vec3d a = MathUtils.convertRotation(Minecraft.getMinecraft().player.rotationYaw, Minecraft.getMinecraft().player.rotationPitch);
             a.scale(3);
             EntityPlayerSP entity = Minecraft.getMinecraft().player;
             entity.addVelocity(a.x , 1, a.z);
@@ -568,7 +568,7 @@ public class OPClientEventHooks {
 
                     if (iExtendedReach != null) {
                         float reach = iExtendedReach.getReach();
-                        RayTraceResult mov = OPUtils.getMouseOverExtended(reach);
+                        RayTraceResult mov = RaytracingUtils.getMouseOverExtended(reach);
 
                         if (mov != null) {
 
