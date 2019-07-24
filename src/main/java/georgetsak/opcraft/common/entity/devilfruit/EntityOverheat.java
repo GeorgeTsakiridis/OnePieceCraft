@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
@@ -21,5 +22,6 @@ public class EntityOverheat extends EntityLongLine{
     @Override
     public void extendTo(double x, double y, double z, float yaw, float pitch, EntityPlayer owner) {
         world.spawnEntity(new EntityOverheat(world, x, y, z, yaw, pitch,false, owner));
+        OPUtils.createExplosion(this,world,x,y,z,10f,true);
     }
 }

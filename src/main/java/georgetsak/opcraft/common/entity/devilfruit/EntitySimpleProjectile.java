@@ -103,7 +103,10 @@ public class EntitySimpleProjectile extends EntityFlying {
         if(Math.sqrt((getStartPos().x - posX)*(getStartPos().x - posX)) > getMaxDistance() || Math.sqrt((getStartPos().z - posZ)*(getStartPos().z - posZ)) > getMaxDistance()){
             onMaxDistanceCovered();
         }else {
-            setVelocity(getDirection().x * getSpeedMultiplier(), getDirection().y * getSpeedMultiplier(), getDirection().z * getSpeedMultiplier());
+            motionX = getDirection().x * getSpeedMultiplier();
+            motionY = getDirection().y * getSpeedMultiplier();
+            motionZ = getDirection().z * getSpeedMultiplier();
+            //setVelocity(getDirection().x * getSpeedMultiplier(), getDirection().y * getSpeedMultiplier(), getDirection().z * getSpeedMultiplier());
         }
     }
 

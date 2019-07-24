@@ -36,7 +36,6 @@ public class OPEntities {
         registerEntity(EntityEntei.class, "entei", id++, OPCraft.MODID, 100, 3, true);
         registerEntity(EntitySlowBeam.class, "slow_beam", id++, OPCraft.MODID, 48, 3, true);
         registerEntity(EntitySlowBeamSpawner.class, "slow_beam_spawner", id++, OPCraft.MODID, 48, 3, false);
-        registerEntity(EntityOpeDome.class, "dome", id++, OPCraft.MODID, 64, 3, false);
         registerEntity(EntityIceSaber.class, "ice_saber", id++, OPCraft.MODID, 100, 3, true);
         registerEntity(EntityIcePhoenix.class, "ice_phoenix", id++, OPCraft.MODID, 100, 3, true);
         registerEntity(EntityUrsusBubble.class, "ursus_bubble", id++, OPCraft.MODID, 48, 3, false);
