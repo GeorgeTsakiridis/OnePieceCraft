@@ -106,7 +106,6 @@ public class EntitySimpleProjectile extends EntityFlying {
             motionX = getDirection().x * getSpeedMultiplier();
             motionY = getDirection().y * getSpeedMultiplier();
             motionZ = getDirection().z * getSpeedMultiplier();
-            //setVelocity(getDirection().x * getSpeedMultiplier(), getDirection().y * getSpeedMultiplier(), getDirection().z * getSpeedMultiplier());
         }
     }
 

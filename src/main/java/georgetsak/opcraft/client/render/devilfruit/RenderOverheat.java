@@ -4,6 +4,7 @@ import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.model.devilfruit.ModelOverheat;
 import georgetsak.opcraft.common.entity.devilfruit.EntityOverheat;
 import georgetsak.opcraft.common.entity.devilfruit.EntityOverheat;
+import net.minecraft.client.renderer.culling.ICamera;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
@@ -21,5 +22,10 @@ public class RenderOverheat extends RenderLiving<EntityOverheat> {
     @Override
     protected ResourceLocation getEntityTexture(EntityOverheat entity) {
         return texture;
+    }
+
+    @Override
+    public boolean shouldRender(EntityOverheat livingEntity, ICamera camera, double camX, double camY, double camZ) {
+        return true;
     }
 }

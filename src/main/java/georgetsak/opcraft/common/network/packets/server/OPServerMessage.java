@@ -259,6 +259,7 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 case "OverheatA": {
                     EntityOverheat overheat = new EntityOverheat(world, ep.posX, ep.posY, ep.posZ, ep.rotationYaw, ep.rotationPitch, true, ep);
                     world.spawnEntity(overheat);
+                    world.playSound(null,ep.posX,ep.posY,ep.posZ,OPSoundEvent.fire_fist,SoundCategory.NEUTRAL, 300f, 1f);
                     break;
                 }
             }

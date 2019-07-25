@@ -42,11 +42,21 @@ public class EntityLongLine extends EntitySimpleProjectile{
             setHasExtended(true);
             Vec3d vec = getDirection().scale(getLength());
             Vec3d posVec = new Vec3d(posX, posY, posZ);
+            //TODO length is not correct.
+
+            System.out.println(getDirection() + " * " + getLength() + " = " + vec);
+
             ArrayList<Point3d> points = MathUtils.getIntermediatePoints(posVec, new Vec3d(posVec.x + vec.x, posVec.y + vec.y, posVec.z + vec.z), (int)(getLength()/20f));
+            ArrayList<Point3d> allPoints = MathUtils.getIntermediatePoints(posVec, new Vec3d(posVec.x + vec.x, posVec.y + vec.y, posVec.z + vec.z), getLength()/4);
 
             for (Point3d point : points) {
                 extendTo(point.x,point.y,point.z, rotationYaw, rotationPitch, owner);
             }
+
+            for(Point3d point : allPoints){
+                touchedAt(point.x, point.y + 1d, point.z, owner);
+            }
+
         }
     }
 
@@ -97,6 +107,10 @@ public class EntityLongLine extends EntitySimpleProjectile{
 
     public void extendTo(double x, double y, double z, float yaw, float pitch, EntityPlayer owner){
         world.spawnEntity(new EntityLongLine(world, x, y, z, yaw, pitch, 0, owner, false));
+    }
+
+    public void touchedAt(double x, double y, double z, EntityPlayer owner){
+
     }
 
 }

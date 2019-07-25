@@ -50,8 +50,8 @@ public class OPIWorldGenerator implements IWorldGenerator
             int MAX = 2;
             int numBushes = MIN + rand.nextInt(MAX - MIN);
             for (int i = 0; i < numBushes; i++) {
-                int randX = blockX + rand.nextInt(16);
-                int randZ = blockZ + rand.nextInt(16);
+                int randX = blockX + rand.nextInt(10);
+                int randZ = blockZ + rand.nextInt(10);
 
                 if (rand.nextInt(700) == 0) {
                     worldGenAdamTree.generate(world, rand, new BlockPos(randX, getGroundFromAbove(world, randX + 2, randZ), randZ));
@@ -64,7 +64,7 @@ public class OPIWorldGenerator implements IWorldGenerator
         if(biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT && OPCraft.config.enableMorganFortress.getCurrentValue()){
             int randX = blockX + rand.nextInt(16);
             int randZ = blockZ + rand.nextInt(16);
-//rand.nextInt(OPCraft.config.morganFortressSpawnChance)
+
             if(rand.nextInt(OPCraft.config.morganFortressSpawnChance.getCurrentValue()) == 0){
 
 				Template morgan_fortress_stage1 = getTemplate("morgan_fortress_stage1", world);
@@ -93,8 +93,8 @@ public class OPIWorldGenerator implements IWorldGenerator
 			int kairosekiMAX = 3;
 			int kairoseki = kairosekiMIN + rand.nextInt(kairosekiMAX - kairosekiMIN);
 			for(int x = 0; x < kairoseki; x++){
-				int randX = blockX + rand.nextInt(16);
-				int randZ = blockZ + rand.nextInt(16);
+				int randX = blockX + rand.nextInt(10);
+				int randZ = blockZ + rand.nextInt(10);
 				int randY = rand.nextInt(15) + 5;
 				
 				worldGenMinable = new WorldGenMinable(OPBlocks.BlockKairosekiStone.getDefaultState(), 3);
@@ -109,8 +109,8 @@ public class OPIWorldGenerator implements IWorldGenerator
 			int steelMAX = 5;
 			int steel = steelMIN + rand.nextInt(steelMAX - steelMIN);
 			for(int x = 0; x < steel; x++){
-				int randX = blockX + rand.nextInt(16);
-				int randZ = blockZ + rand.nextInt(16);
+				int randX = blockX + rand.nextInt(10);
+				int randZ = blockZ + rand.nextInt(10);
 				int randY = rand.nextInt(40) + 5;
 				
 				if(rand.nextInt(3) <= 1){
