@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.block;
 
+import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapProvider;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
 import net.minecraft.block.BlockPane;
@@ -41,7 +42,7 @@ public class BlockKairosekiBars extends BlockPane{
 
     private void applyEffects(Entity entityIn){
         if (entityIn instanceof EntityPlayer) {
-
+            if(!OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getCurrentValue() || ((EntityPlayer) entityIn).isCreative())return;
             IDevilFruitsCap df = entityIn.getCapability(DevilFruitsCapProvider.DF_CAP, null);
             if(df.hasPower()) {
                 ((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 3));

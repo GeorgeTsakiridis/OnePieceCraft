@@ -25,6 +25,7 @@ import georgetsak.opcraft.common.registry.OPDevilFruits;
 import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.common.util.CrewUtils;
 import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import georgetsak.opcraft.common.util.RaytracingUtils;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -115,30 +116,33 @@ public class OPClientEventHooks {
             }
 
             isInRoom = mcPlayer.isPotionActive(CommonProxy.effectInsideDome);
-
             if (df.hasPower()) {
-                if (mcPlayer.isInWater() && !mcPlayer.capabilities.isCreativeMode) {
-                    mcPlayer.setVelocity(0, -0.1, 0);//TODO this movement normally should be done on the Server Side. Another alternative would be to disable Player's keys.
-                    if(cooldown < 40) {
+                if (!OPCraft.config.allowDevilFruitUsersToSwim.getCurrentValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
+                    if (cooldown < 40) {
                         cooldownMax = 40;
                         cooldown = 40;
                     }
-                }
-
-                //Kairoseki blocks/items check section.
-                Block standingBlock = Minecraft.getMinecraft().world.getBlockState(new BlockPos(mcPlayer.posX, mcPlayer.posY-1, mcPlayer.posZ)).getBlock();
-
-                if(!mcPlayer.capabilities.isCreativeMode && (standingBlock == OPBlocks.BlockKairosekiBlock || standingBlock == OPBlocks.BlockKairosekiStone || standingBlock == OPBlocks.BlockKairosekiBars)){
-                    sendMessage("KairosekiItem");
-                    if(cooldown < 40) {
-                        cooldownMax = cooldown = 40;
+                    if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {
+                        mcPlayer.setVelocity(0, -0.1, 0);//TODO this movement normally should be done on the Server Side. Another alternative would be to disable Player's keys.
                     }
                 }
-                if((mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBlock)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBars)) ||
-                        mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiStone)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPItems.ItemKairosekiGem))) && !mcPlayer.isCreative()){
-                    sendMessage("KairosekiItem");
-                    if(cooldown < 20){
-                        cooldownMax = cooldown = 20;
+
+                //Kairoseki blocks/items check section. //TODO devil fruit users still get negative effects when standing on kairoseki items no matter if in creative mode or config option is disabled.
+                if(!mcPlayer.isCreative() && OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getCurrentValue()) {
+                    Block standingBlock = Minecraft.getMinecraft().world.getBlockState(new BlockPos(mcPlayer.posX, mcPlayer.posY-1, mcPlayer.posZ)).getBlock();
+
+                    if (standingBlock == OPBlocks.BlockKairosekiBlock || standingBlock == OPBlocks.BlockKairosekiStone || standingBlock == OPBlocks.BlockKairosekiBars) {
+                        sendMessage("KairosekiItem");
+                        if (cooldown < 40) {
+                            cooldownMax = cooldown = 40;
+                        }
+                    }
+                    if (mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBlock)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBars)) ||
+                            mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiStone)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPItems.ItemKairosekiGem))) {
+                        sendMessage("KairosekiItem");
+                        if (cooldown < 20) {
+                            cooldownMax = cooldown = 20;
+                        }
                     }
                 }
 

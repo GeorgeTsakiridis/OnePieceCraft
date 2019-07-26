@@ -209,6 +209,22 @@ public class OPUtils {
         world.createExplosion(entity, posX, posY, posZ, strength, !flag && isSmoking);
     }
 
+    public static boolean isPlayerInOrOverDeepWater(EntityPlayer player){
+        BlockPos start = new BlockPos(player.posX, player.posY, player.posZ);
+        Block playerAboveBlock = player.world.getBlockState(start.up(2)).getBlock();
+        Block playerEyeBlock = player.world.getBlockState(start.up(1)).getBlock();
+        Block playerFeetBlock = player.world.getBlockState(start).getBlock();
+        Block playerBellowBlock = player.world.getBlockState(start.down()).getBlock();
+
+        boolean flag1 = playerAboveBlock == Blocks.WATER || playerAboveBlock == Blocks.FLOWING_WATER;
+        boolean flag2 = playerEyeBlock == Blocks.WATER || playerEyeBlock == Blocks.FLOWING_WATER;
+        boolean flag3 = playerFeetBlock == Blocks.WATER || playerFeetBlock == Blocks.FLOWING_WATER;
+        boolean flag4 = playerBellowBlock == Blocks.WATER || playerBellowBlock == Blocks.FLOWING_WATER;
+
+        return flag3 && (flag2 || (flag1 && flag2) || flag4);
+
+    }
+
     public static Block[] nonMovableBlocks = new Block[]{OPBlocks.BlockLawDomeCenter, OPBlocks.BlockLawDome, Blocks.AIR, Blocks.BEDROCK, Blocks.PORTAL, Blocks.END_GATEWAY, Blocks.END_PORTAL, Blocks.END_PORTAL_FRAME,
             Blocks.CHEST, Blocks.TRAPPED_CHEST, Blocks.ENDER_CHEST, Blocks.WATER, Blocks.FLOWING_WATER, Blocks.LAVA, Blocks.FLOWING_LAVA, Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.PUMPKIN_STEM, Blocks.MELON_STEM,
             Blocks.RAIL, Blocks.ACTIVATOR_RAIL, Blocks.DETECTOR_RAIL, Blocks.GOLDEN_RAIL, Blocks.CHORUS_FLOWER, Blocks.RED_FLOWER, Blocks.YELLOW_FLOWER, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM, Blocks.TALLGRASS, Blocks.SAPLING,

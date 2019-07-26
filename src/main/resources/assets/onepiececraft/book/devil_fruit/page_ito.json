@@ -28,7 +28,7 @@
       "name" : "Sora No Michi",
       "cooldown" : 35,
       "sideEffects" : "WIP",
-      "description" : "WIP"
+      "description" : "Player will become immune to any kind of damage (including Fall Damage) and by pressing [SPACE] player can jump in mid air."
     }
   ]
 }
