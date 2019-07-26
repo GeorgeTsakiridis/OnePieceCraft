@@ -1,10 +1,13 @@
 package georgetsak.opcraft.client.gui.overlay;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.OPClientEventHooks;
+import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
 import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -94,17 +97,36 @@ public class DevilFruitRenderOverlay {
             Gui.drawScaledCustomSizeModalRect(resolutionX - 69, resolutionY - 69, 0, 0, 64, 64, 44, 44, 64, 64);
             mc.getTextureManager().bindTexture(PowerSelector.getIcons().get(2));
             Gui.drawScaledCustomSizeModalRect(resolutionX - 67, resolutionY - 67, 0, 0, 64, 64, 40, 40, 64, 64);
+
+            Power selectedPower1 = PowerHandler.getPower(fruitID, PowerSelector.getPrevIndex());
+            Power selectedPower2 = PowerHandler.getPower(fruitID, PowerSelector.getNextIndex());
+
+            if (selectedPower1 != null) {
+                float percentage1 = MathUtils.getPercentage(selectedPower1.getCooldownTime() * 20 - selectedPower1.getCurrentCooldown(), selectedPower1.getCooldownTime() * 20);
+                Gui.drawRect(resolutionX - 35, resolutionY - 35 + (int) (44f * percentage1), resolutionX + 5, resolutionY + 5, new Color(255, 0, 0, 100).getRGB());
+            }
+            if (selectedPower2 != null) {
+                float percentage2 = MathUtils.getPercentage(selectedPower2.getCooldownTime() * 20 - selectedPower2.getCurrentCooldown(), selectedPower2.getCooldownTime() * 20);
+                Gui.drawRect(resolutionX - 69, resolutionY - 69 + (int) (44f * percentage2), resolutionX - 25, resolutionY - 25, new Color(255, 0, 0, 100).getRGB());
+            }
         }
-        float temp = transparency;
-        if (transparency * 1.45 > 1) {
-            temp = 1f;
+
+        float temp = 0.8f;
+        if(transparency == 1f){
+            temp = 1;
         }
+
+        GL11.glEnable(GL11.GL_BLEND);
         GL11.glColor4f(1f, 1f, 1f, temp);
         mc.getTextureManager().bindTexture(FRAME);
         Gui.drawScaledCustomSizeModalRect(resolutionX - 52, resolutionY - 52, 0, 0, 64, 64, 44, 44, 64, 64);
         mc.getTextureManager().bindTexture(PowerSelector.getIcons().get(1));
         Gui.drawScaledCustomSizeModalRect(resolutionX - 50, resolutionY - 50, 0, 0, 64, 64, 40, 40, 64, 64);
-        GL11.glColor4f(1f, 1f, 1f, 1f);
+        //GL11.glColor4f(1f, 1f, 1f, 1f);
+        Power selectedPower = PowerSelector.getSelectedPower();
+        float percentage = MathUtils.getPercentage(selectedPower.getCooldownTime()*20 - selectedPower.getCurrentCooldown(),selectedPower.getCooldownTime()*20);
+        Gui.drawRect(resolutionX - 52,resolutionY - 52 + (int)(44f*percentage),resolutionX - 8,resolutionY - 8, new Color(254,0,0,100).getRGB());
+        GL11.glColor4f(1f, 1f, 1f, temp);
 
     }
 

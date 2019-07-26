@@ -7,27 +7,23 @@
     {
       "name" : "White Blow",
       "cooldown" : 4,
-      "sideEffects" : "None",
       "description" : "Creates a smoke punch that damages entities."
     },
     {
       "name" : "White Snake",
       "cooldown" : 14,
-      "sideEffects" : "Slowness II, Weakness II",
       "description" : "Creates a smoke punch that will hunt an entity and damage it upon impact."
     }
   ,
     {
       "name" : "White Out",
       "cooldown" : 20,
-      "sideEffects" : "Slowness II, Weakness II, Hunger II",
       "description" : "Creates a smoke area around the player that will give slowness to everything inside."
     }
   ,
     {
       "name" : "White Launcher",
       "cooldown" : 35,
-      "sideEffects" : "Slowness III, Weakness III, Hunger I",
       "description" : "Player will become immune to any kind of damage (including Fall Damage) and by pressing [SPACE] player can jump in mid air. Also gives the player: Strength III, Speed III and Regeneration III."
     }
   ]

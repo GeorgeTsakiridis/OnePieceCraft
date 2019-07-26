@@ -4,14 +4,16 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 public class EntitySlowBeam extends EntitySimpleProjectile {
-
-	boolean highSpeed = false;
 
 	public EntitySlowBeam(World world) {
 		super(world);
@@ -20,11 +22,6 @@ public class EntitySlowBeam extends EntitySimpleProjectile {
 
 	public EntitySlowBeam(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner) {
 		super(worldIn, x, y, z, yaw, pitch, 1f, 1f, owner);
-	}
-
-	public EntitySlowBeam(World worldIn, double x, double y, double z, float yaw, float pitch, EntityPlayer owner, boolean highSpeed) {
-		super(worldIn, x, y, z, yaw, pitch, 1f, 1f, owner);
-		this.highSpeed = highSpeed;
 	}
 
 	@Override
@@ -38,9 +35,7 @@ public class EntitySlowBeam extends EntitySimpleProjectile {
 	}
 
 	@Override
-	public float getSpeedMultiplier() {
-		return highSpeed ? 1.5f : 0.8f;
-	}
+	public float getSpeedMultiplier(){return 0.8f; }
 
 	public void onCollideWithPlayer(EntityPlayer entityIn) {
 		if (!isCollisionWithPlayerValid(entityIn)) return;

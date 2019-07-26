@@ -41,8 +41,6 @@ public class ConfigHandler {
     public ConfigEntryBoolean disablePowersYami;
     public ConfigEntryBoolean disablePowersIto;
 
-    public ConfigEntryInt cooldownSpeed;
-
     public ConfigEntryBoolean enableMorganFortress;
     public ConfigEntryInt morganFortressSpawnChance;
 
@@ -93,8 +91,6 @@ public class ConfigHandler {
         configEntries.add(disablePowersMoku = new ConfigEntryBoolean(configuration, "disablePowersMoku", "Smoke Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.MOKU));
         configEntries.add(disablePowersYami = new ConfigEntryBoolean(configuration, "disablePowersYami", "Dark Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.YAMI));
         configEntries.add(disablePowersIto = new ConfigEntryBoolean(configuration, "disablePowersIto", "String Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.ITO));
-
-        configEntries.add(cooldownSpeed = new ConfigEntryInt(configuration, "cooldownSpeedMultiplier","Cooldown (wait time between powers) duration in ticks per second. 20 is normal. 40 is double, 10 is half", CATEGORY_POWERS,20,5,100));
 
         configEntries.add(enableMorganFortress = new ConfigEntryBoolean(configuration, "enableMorganFortressGeneration", "Enables or Disables Morgan's fortress generation", CATEGORY_GENERATION, true));
         configEntries.add(morganFortressSpawnChance = new ConfigEntryInt(configuration, "morganFortressSpawnChance", "Chance 1/x per chunk (Only for plain biome chunks)", CATEGORY_GENERATION, 800,200,Integer.MAX_VALUE));

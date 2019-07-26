@@ -26,6 +26,7 @@ public class ModelSlowBeam extends ModelBase {
 		setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 		GL11.glRotatef(headPitch, 1, 0, 0);
 		GL11.glScalef(1F, 1F, 8.0F);
+		GL11.glTranslatef(-0.25f,0f,0f);
 		Cube.render(scale);
 	
 	}

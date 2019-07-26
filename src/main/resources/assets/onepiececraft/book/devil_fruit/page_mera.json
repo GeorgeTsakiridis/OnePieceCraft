@@ -7,27 +7,23 @@
     {
       "name" : "Higan",
       "cooldown" : 3,
-      "sideEffects" : "None",
       "description" : "Creates a small fire punch that will cause a little damage on impact."
     },
     {
       "name" : "Shinka: Shiranui",
       "cooldown" : 8,
-      "sideEffects" : "Slowness I, Weakness I",
       "description" : "Creates small fire punches that will cause damage on impact and set fire to everything they touch. When they collide with a block they explode. When they collide with a block they explode."
     }
   ,
     {
       "name" : "Hiken",
       "cooldown" : 12,
-      "sideEffects" : "Slowness II, Weakness II",
       "description" : "A powerful focused fire beam will be created that will damage everything that comes across it."
     }
   ,
     {
       "name" : "Dai Enkai: Entei",
       "cooldown" : 27,
-      "sideEffects" : "Slowness III, Weakness III, Hunger I",
       "description" : "It will create a huge fireball above player that will spawn small fireballs that will move to the location player is looking. Small explosions occur on impact."
     }
   ]

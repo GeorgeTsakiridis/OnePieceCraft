@@ -63,15 +63,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class OPClientEventHooks {
 
     private int id = OPDevilFruits.NO_POWER; //Represents the Devil Fruit Power player has.
-    private String consequence = ""; //Keeps the consequence name e.g. "GomuGear4B".
-    private int consequencesWaitTime; //How much time should be passed before giving negative effects.
-    private boolean hasConsequences = false; //Whether or not a specific power has negative effects.
-    private int cooldown = 0; //How many ticks left before a power can be used again.
-    private int cooldownMax = 0; //Used for drawing the power bar.
-    private String action = ""; //Keeps the power name e.g. "GomuGear4A".
-    private int ticksPS = OPCraft.config.cooldownSpeed.getCurrentValue()/2; //How many ticks correspond to 1 real life second.
 
     private boolean isGear4Active = false;
+    private int gear4RemainingTime = 0;
     private boolean isInRoom = false; //Whether or not the player is inside the Law Dome (Room)
 
     private int cooldownEmperor = 0; //How many ticks left before Emperor Haki can be used again.
@@ -115,13 +109,14 @@ public class OPClientEventHooks {
 
             }
 
+
+
             isInRoom = mcPlayer.isPotionActive(CommonProxy.effectInsideDome);
             if (df.hasPower()) {
+                id = df.getPower();
+                PowerSelector.setFruitID(id);
                 if (!OPCraft.config.allowDevilFruitUsersToSwim.getCurrentValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
-                    if (cooldown < 40) {
-                        cooldownMax = 40;
-                        cooldown = 40;
-                    }
+                    setAllPowersCooldown(40);
                     if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {
                         mcPlayer.setVelocity(0, -0.1, 0);//TODO this movement normally should be done on the Server Side. Another alternative would be to disable Player's keys.
                     }
@@ -133,33 +128,18 @@ public class OPClientEventHooks {
 
                     if (standingBlock == OPBlocks.BlockKairosekiBlock || standingBlock == OPBlocks.BlockKairosekiStone || standingBlock == OPBlocks.BlockKairosekiBars) {
                         sendMessage("KairosekiItem");
-                        if (cooldown < 40) {
-                            cooldownMax = cooldown = 40;
-                        }
+                        setAllPowersCooldown(40);
                     }
                     if (mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBlock)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBars)) ||
                             mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiStone)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPItems.ItemKairosekiGem))) {
                         sendMessage("KairosekiItem");
-                        if (cooldown < 20) {
-                            cooldownMax = cooldown = 20;
-                        }
+                        setAllPowersCooldown(20);
                     }
                 }
 
-            }
-
-            this.id = df.getPower();
-            PowerSelector.setFruitID(id);
-
-            if(!OPCraft.config.isPowerDisabled(id)) {
-                if (cooldown <= consequencesWaitTime) {
-                    if (hasConsequences) {
-                        isGear4Active = false;
-                        executeConsequence();
-                    }
-                } else {
-                    executeAction(mcPlayer);
-                }
+            }else{
+                id = OPDevilFruits.NO_POWER;
+                PowerSelector.setFruitID(OPDevilFruits.NO_POWER);
             }
 
             if(fallDamageSendMessage) {//There was a problem where the "DISABLEDAMAGE" packet would occasionally be lost. This ensures the packet is sent multiple times.
@@ -180,14 +160,14 @@ public class OPClientEventHooks {
     /**
      * Checks if the current action is a special action that requires a specific code to be executed. If not it sends the packet to the Server.
      */
-    private void executeAction(EntityPlayer ep) {
-        if(checkForSendPacket(ep)){
+    private void executeAction(EntityPlayer ep, String action) {
+        action = action.concat("A");
+        if(checkForSendPacket(ep, action)){
             action = "";
         }
 
         if(!action.equals("")) {
             sendMessage(action);
-            action = "";
         }
 
     }
@@ -195,11 +175,12 @@ public class OPClientEventHooks {
     /**
      * Checks if the current action is a special action.
      */
-    private boolean checkForSendPacket(EntityPlayer ep) {
+    private boolean checkForSendPacket(EntityPlayer ep, String action) {
 
         if (action.equals("GomuGear4A") || action.equals("WhiteLauncherA") || action.equals("SoraNoMichiA")) {
             isGear4Active = true;
-            disableDamage();
+            gear4RemainingTime = toTicks(10);
+            disableAndEnableDamageAfter(toTicks(16));
             return !action.equals("GomuGear4A");//Gear 4 still needs the packet.
         }
 
@@ -254,29 +235,6 @@ public class OPClientEventHooks {
     }
 
     /**
-     * Executes the selected consequence.
-     */
-    private void executeConsequence() {
-        hasConsequences = false;
-
-        if(consequence.equals("GomuGear4B") || consequence.equals("WhiteLauncherB") || consequence.equals("SoraNoMichiB")){
-            disableAndEnableDamageAfter(100);
-        }
-
-        if(consequence.equals("LiberationB")){
-            sendMessage("ENABLEDAMAGE");
-        }
-
-        if(!consequence.equals("")) {
-            sendMessage(consequence);
-        }
-
-        consequencesWaitTime = 0;
-        consequence = "";
-    }
-
-
-    /**
      * Executed every time the Player pressed a key. Used to activate/change the powers, open menus etc.
      */
     @SubscribeEvent
@@ -312,7 +270,7 @@ public class OPClientEventHooks {
 
                         Entity entity = RaytracingUtils.getLookingEntity(p, 5);
                         if (entity instanceof EntityLiving) {
-                            System.out.println(sixPowerLevel * 5f);
+
                             PacketDispatcher.sendToServer(new DamageEntityServerPacket(entity, sixPowerLevel * 4f));
                         }
                         break;
@@ -358,22 +316,21 @@ public class OPClientEventHooks {
         //Powers keys handler.
         if(!gameSettings.keyBindSneak.isKeyDown() && id != OPDevilFruits.NO_POWER && id != OPDevilFruits.YOMI) {
             if (ClientProxy.key1.isPressed()) {//X
-                if (cooldown <= 0) {
                     PowerSelector.buttonPressed(false);
                     cooldownTransparency = 200;
-                }
             }
 
             if (ClientProxy.key2.isPressed()) {
-                if (cooldown <= 0) {//C
                     PowerSelector.buttonPressed(true);
                     cooldownTransparency = 200;
-                }
             }
 
             if (ClientProxy.key3.isPressed()) {
-                if (cooldown <= 0 && PowerSelector.getSelectedPower() != null) {//V
-                    setVariables(PowerSelector.getSelectedPower().getKey());
+                Power power = PowerSelector.getSelectedPower();
+
+                if (power != null && power.getCurrentCooldown() == 0) {//V
+                    power.setCurrentCooldown(toTicks(power.getCooldownTime()));
+                    executeAction(Minecraft.getMinecraft().player, power.getActionMessage());
                 }
             }
 
@@ -407,6 +364,7 @@ public class OPClientEventHooks {
     @SideOnly(Side.CLIENT)
     public void onClientTick(TickEvent.ClientTickEvent event) {
         if (!Minecraft.getMinecraft().isGamePaused() && event.phase == TickEvent.Phase.START) {
+            decreaseAllPowersCooldown();
 
             if (cooldownFallDamage > 0) {
                 cooldownFallDamage--;
@@ -420,16 +378,18 @@ public class OPClientEventHooks {
             if (cooldownEmperor > 0) {
                 cooldownEmperor--;
             }
-            if (cooldown > 0) {
-                cooldown--;
-            }
             if (cooldownTransparency > 0){
                 cooldownTransparency--;
             }
             if(sixPowersEnergyBar < 200){
                 sixPowersEnergyBar+=0.5f;
             }
-
+            if(gear4RemainingTime > 0){
+                gear4RemainingTime--;
+                if(gear4RemainingTime == 0 && isGear4Active){
+                    isGear4Active = false;
+                }
+            }
             if(ClientProxy.sixPowersMenuButton.isKeyDown()) {
                 focused = false;
                 Minecraft.getMinecraft().setIngameNotInFocus();
@@ -441,6 +401,24 @@ public class OPClientEventHooks {
                 }
             }
 
+        }
+    }
+
+    private void setAllPowersCooldown(int cooldown){
+            for(int i = 0; i < PowerHandler.getTotalPowersForFruit(id); i++){
+                Power power = PowerHandler.getPower(id, i+1);
+                if(power != null){
+                    power.setCurrentCooldown(cooldown);
+                }
+            }
+    }
+
+    private void decreaseAllPowersCooldown(){
+        for(int i = 0; i < PowerHandler.getTotalPowersForFruit(id); i++){
+            Power power = PowerHandler.getPower(id, i+1);
+            if(power != null){
+                power.decreaseCooldown();
+            }
         }
     }
 
@@ -461,26 +439,6 @@ public class OPClientEventHooks {
      */
     private void sendMessage(String message){
         PacketDispatcher.sendToServer(new OPServerMessage(message));
-    }
-
-    /**
-     * Sets the cooldown, action and consequence related variables to the appropriate values of the power that corresponds to the pressed key.
-     * Does nothing if no power is selected.
-     */
-    private void setVariables(int key) {
-        Power power = PowerHandler.getPower(id, key);
-
-        if (power != null) {
-            String action = power.getActionMessage();
-            this.cooldown = toTicks(power.getCooldownTime());
-            this.cooldownMax = cooldown;
-            this.action = action.concat("A");
-            if (power.getHasConsequence()) {
-                this.hasConsequences = true;
-                this.consequence = action.concat("B");
-                this.consequencesWaitTime = toTicks(power.getConsequenceWaitTime());
-            }
-        }
     }
 
     /**
@@ -511,14 +469,6 @@ public class OPClientEventHooks {
     }
 
     /**
-     * Makes the player invincible.
-     */
-    private void disableDamage(){
-        this.fallDamageDisabled = true;
-        this.fallDamageSendMessage = true;
-    }
-
-    /**
      * Disables the damage for the Player and enables it after a delay.
      * @param delay
      */
@@ -532,10 +482,8 @@ public class OPClientEventHooks {
      * Converts real-life seconds to ticks. If the player is in creative it returns the given seconds.
      */
     private int toTicks(int seconds){
-        int tickPStemp = ticksPS;
-        if(Minecraft.getMinecraft().player.isCreative()){
-            tickPStemp = 1;
-        }
+        int tickPStemp = Minecraft.getMinecraft().player.isCreative() ? 1 : 20;
+
         return seconds * tickPStemp;
     }
 
@@ -699,8 +647,12 @@ public class OPClientEventHooks {
                 ClientProxy.devilFruitRenderOverlay.resetTransparency();
             }
 
-            if(DevilFruitsCap.get(Minecraft.getMinecraft().player).hasPower() || !OPCraft.IS_RELEASE_VERSION){
-                ClientProxy.devilFruitRenderOverlay.render(id, cooldown, cooldownMax, event.getResolution(), (int)sixPowersEnergyBar);
+            if(DevilFruitsCap.get(Minecraft.getMinecraft().player).hasPower() || !OPCraft.IS_RELEASE_VERSION) {
+                Power power = PowerSelector.getSelectedPower();
+                if (power != null) {
+
+                    ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), toTicks(power.getCooldownTime()), event.getResolution(), (int) sixPowersEnergyBar);
+                }
             }
 
             if (ClientProxy.sixPowersMenuButton.isKeyDown()) {

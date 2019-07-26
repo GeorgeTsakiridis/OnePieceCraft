@@ -17,7 +17,6 @@ import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -61,7 +60,6 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
     @Override
     public void process(EntityPlayer ep, Side side) {
         if (side.isServer()) {
-            int multiplier = OPCraft.config.cooldownSpeed.getCurrentValue();
             World world = ep.world;
 
             switch (text) {
@@ -73,10 +71,10 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 }
                 case "GomuGear2A": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.gomu_gear2, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-                    ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) (10F * multiplier), 2));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, (int) (10F * multiplier), 1));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, (int) (10F * multiplier), 1));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) (10F * multiplier), 1));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, 200, 2));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 200, 1));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 200, 1));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 1));
                     for (int i = 0; i < 50; i++) {
                         world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, ep.posX, ep.posY + 1, ep.posZ, (Math.random() - 0.5) * 0.2, (Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.2);
                     }
@@ -89,9 +87,9 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                     break;
                 }
                 case "GomuGear4A": {
-                    ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, (int) (20F * multiplier), 2));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, (int) (20F * multiplier), 2));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, (int) (20F * multiplier), 2));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 400, 2));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, 400, 2));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 2));
                     break;
                 }
                 case "MeraHiganA": {
@@ -132,7 +130,7 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                     break;
                 }
                 case "SlowBallA": {
-                    EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true, 60, 10);
+                    EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true, 60, 20);
                     List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, 20, ep);
                     for (Entity entity : entities) {
                         if (entity instanceof EntityLiving) {
@@ -150,12 +148,12 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                     break;
                 }
                 case "SlowMashiA": {
-                    EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, false, 120, 5);
+                    EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, false, 120, 10);
                     world.spawnEntity(esb);
                     break;
                 }
                 case "ClearSkatingA": {
-                    ep.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, (int) (25F * multiplier), 0));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.INVISIBILITY, 500, 0));
                     break;
                 }
                 case "RoomA": {

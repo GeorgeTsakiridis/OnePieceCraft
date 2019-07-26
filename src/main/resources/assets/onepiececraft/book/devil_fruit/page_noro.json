@@ -7,20 +7,17 @@
     {
       "name" : "Slow Slow Beam",
       "cooldown" : 8,
-      "sideEffects" : "None",
       "description" : "Launches a beam that will Freeze completely whatever it hits making it unable to hit or move."
     },
     {
       "name" : "High Speed Rotation Mirror Ball",
       "cooldown" : 18,
-      "sideEffects" : "Slowness I",
       "description" : "Launches Slow Slow Beams in every direction."
     }
   ,
     {
       "name" : "Mashi Mashi",
       "cooldown" : 19,
-      "sideEffects" : "Slowness I",
       "description" : "Launches Slow Slow Beams fast in the direction player is looking."
     }
   ]

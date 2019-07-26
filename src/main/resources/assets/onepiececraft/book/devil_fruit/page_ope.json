@@ -7,27 +7,23 @@
     {
       "name" : "Room",
       "cooldown" : 20,
-      "sideEffects" : "None",
       "description" : "Creates the dome that is necessary to use any other power."
     },
     {
       "name" : "Shambles",
       "cooldown" : 2,
-      "sideEffects" : "None",
       "description" : "Moves all entities inside the dome (room) in random locations inside the dome."
     }
   ,
     {
       "name" : "Injection",
       "cooldown" : 6,
-      "sideEffects" : "None",
       "description" : "Quicly moves player towards another player. Upon impact causes great damage."
     }
   ,
     {
       "name" : "Takt",
       "cooldown" : 7,
-      "sideEffects" : "None",
       "description" : "Makes blocks float and throws them in random directions."
     }
   ]

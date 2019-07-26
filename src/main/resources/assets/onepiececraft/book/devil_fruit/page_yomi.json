@@ -7,7 +7,6 @@
     {
       "name" : "Revive",
       "cooldown" : 0,
-      "sideEffects" : "Devil Fruit Power is lost",
       "description" : "Prevents the player from dying heals it and teleports it within 1000 in a random location."
     }
   ]

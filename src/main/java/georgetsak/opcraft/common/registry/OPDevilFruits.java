@@ -90,40 +90,40 @@ public class OPDevilFruits {
 
     @SideOnly(Side.CLIENT)
     public static void registerPowers(){
-        PowerHandler.addPower(3, 0, "GomuPistol", false, "Gomu Gomu no: Pistol", GOMU,1, "pistol");
-        PowerHandler.addPower(16, 6, "GomuGear2", true, "Gomu Gomu no: Gear 2", GOMU, 2, "gear2");
-        PowerHandler.addPower(15, 13, "GomuGear3", true, "Gomu Gomu no: Gear 3", GOMU, 3, "gear3");
-        PowerHandler.addPower(35, 15, "GomuGear4", true, "Gomu Gomu no: Gear 4", GOMU, 4, "gear4");
-        PowerHandler.addPower(3, 0, "MeraHigan", false,"Higan", MERA, 1, "fire_fist");
-        PowerHandler.addPower(8, 8, "MeraShinka", true,"Shinka: Shiranui", MERA, 2, "fire_lance");
-        PowerHandler.addPower(12, 8, "MeraHiken", true,"Hiken", MERA, 3, "hiken");
-        PowerHandler.addPower(27, 19, "MeraEntei", true,"Dai Enkai: Entei",MERA, 4, "entei");
-        PowerHandler.addPower(9, 0, "SlowBeam", false,"Slow Slow Beam", NORO, 1, "slow_beam");
-        PowerHandler.addPower(18, 15, "SlowBall", true,"High Speed Rotation Mirror Ball", NORO, 2, "slow_ball");
-        PowerHandler.addPower(19, 15, "SlowMashi", true,"Mashi Mashi", NORO, 3, "slow_mashi");
-        PowerHandler.addPower(30, 0, "ClearSkating", false,"Skating (Invisibility)", SUKE, 1, "skating");
-        PowerHandler.addPower(20, 0, "Room", false,"Room", OPE, 1, "room");
-        PowerHandler.addPower(3, 0, "IceSaber", false,"Ice Saber", HIE, 1, "ice_saber");
-        PowerHandler.addPower(20, 19, "IceBall", true,"Ice Ball", HIE, 2, "ice_ball");
-        PowerHandler.addPower(60, 0, "IceAge", true,"Ice Age", HIE, 3, "ice_age");
-        PowerHandler.addPower(25, 10, "IceBlockPhBeak", true,"Ice Block: Pheasant Beak", HIE, 4, "ice_phoenix");
-        PowerHandler.addPower(5, 0, "PadHo", false,"Pad Ho", NIKYU, 1, "pad_ho_small");
-        PowerHandler.addPower(20, 10, "TsuppariPadHo", true,"Tsuppari Pad Ho", NIKYU, 2, "pad_ho_big");
-        PowerHandler.addPower(60, 20, "UrsusShock", true,"Ursus Shock", NIKYU, 3, "ursus_shock");
-        PowerHandler.addPower(5, 0, "ElThor", false,"El Thor", GORO, 1, "el_thor");
-        PowerHandler.addPower(10, 4, "Sango", true,"Sango", GORO, 2, "sango");
-        PowerHandler.addPower(30, 15, "Deathpiea", true,"Deathpiea", GORO, 3, "deathpiea");
-        PowerHandler.addPower(5, 0, "WhiteBlow", false, "White Blow", MOKU, 1, "white_blow");
-        PowerHandler.addPower(14, 6, "WhiteSnake", true, "White Snake", MOKU, 2, "smoke_snake");
-        PowerHandler.addPower(20, 5, "WhiteOut", true, "White Out", MOKU, 3, "white_out");
-        PowerHandler.addPower(35, 15, "WhiteLauncher", true, "White Launcher", MOKU, 4, "white_launcher");
-        PowerHandler.addPower(16, 0, "BlackHole", false, "Black Hole", YAMI, 1, "dark");
-        PowerHandler.addPower(20, 15, "Kurouzu", true, "Kurouzu", YAMI, 2, "kurouzu");
-        PowerHandler.addPower(60, 20, "Liberation", true, "Liberation", YAMI, 3, "liberation");
-        PowerHandler.addPower(3, 0, "Tamaito", false, "Tamaito", ITO, 1, "tamaito");
-        PowerHandler.addPower(60, 0, "Overheat", true, "Overheat", ITO, 2, "overheat");
-        PowerHandler.addPower(50, 0, "Goshikito", true, "Goshikito", ITO, 3, "goshikito");
-        PowerHandler.addPower(35, 0, "SoraNoMichi", true, "Sora no Michi", ITO, 4, "sora_no_michi");
+        PowerHandler.addPower(3, "GomuPistol", "Gomu Gomu no: Pistol", GOMU,1, "pistol");
+        PowerHandler.addPower(16, "GomuGear2", "Gomu Gomu no: Gear 2", GOMU, 2, "gear2");
+        PowerHandler.addPower(15, "GomuGear3", "Gomu Gomu no: Gear 3", GOMU, 3, "gear3");
+        PowerHandler.addPower(35, "GomuGear4", "Gomu Gomu no: Gear 4", GOMU, 4, "gear4");
+        PowerHandler.addPower(3, "MeraHigan","Higan", MERA, 1, "fire_fist");
+        PowerHandler.addPower(8, "MeraShinka","Shinka: Shiranui", MERA, 2, "fire_lance");
+        PowerHandler.addPower(12, "MeraHiken","Hiken", MERA, 3, "hiken");
+        PowerHandler.addPower(27, "MeraEntei","Dai Enkai: Entei",MERA, 4, "entei");
+        PowerHandler.addPower(9, "SlowBeam","Slow Slow Beam", NORO, 1, "slow_beam");
+        PowerHandler.addPower(18, "SlowBall","High Speed Rotation Mirror Ball", NORO, 2, "slow_ball");
+        PowerHandler.addPower(19, "SlowMashi","Mashi Mashi", NORO, 3, "slow_mashi");
+        PowerHandler.addPower(30, "ClearSkating","Skating (Invisibility)", SUKE, 1, "skating");
+        PowerHandler.addPower(30, "Room","Room", OPE, 1, "room");
+        PowerHandler.addPower(3, "IceSaber","Ice Saber", HIE, 1, "ice_saber");
+        PowerHandler.addPower(20, "IceBall","Ice Ball", HIE, 2, "ice_ball");
+        PowerHandler.addPower(60, "IceAge","Ice Age", HIE, 3, "ice_age");
+        PowerHandler.addPower(25, "IceBlockPhBeak","Ice Block: Pheasant Beak", HIE, 4, "ice_phoenix");
+        PowerHandler.addPower(5, "PadHo","Pad Ho", NIKYU, 1, "pad_ho_small");
+        PowerHandler.addPower(20, "TsuppariPadHo","Tsuppari Pad Ho", NIKYU, 2, "pad_ho_big");
+        PowerHandler.addPower(60, "UrsusShock","Ursus Shock", NIKYU, 3, "ursus_shock");
+        PowerHandler.addPower(5, "ElThor","El Thor", GORO, 1, "el_thor");
+        PowerHandler.addPower(10, "Sango","Sango", GORO, 2, "sango");
+        PowerHandler.addPower(30, "Deathpiea","Deathpiea", GORO, 3, "deathpiea");
+        PowerHandler.addPower(5, "WhiteBlow", "White Blow", MOKU, 1, "white_blow");
+        PowerHandler.addPower(14, "WhiteSnake", "White Snake", MOKU, 2, "smoke_snake");
+        PowerHandler.addPower(20, "WhiteOut", "White Out", MOKU, 3, "white_out");
+        PowerHandler.addPower(35, "WhiteLauncher", "White Launcher", MOKU, 4, "white_launcher");
+        PowerHandler.addPower(16, "BlackHole", "Black Hole", YAMI, 1, "dark");
+        PowerHandler.addPower(20, "Kurouzu", "Kurouzu", YAMI, 2, "kurouzu");
+        PowerHandler.addPower(60, "Liberation", "Liberation", YAMI, 3, "liberation");
+        PowerHandler.addPower(3, "Tamaito", "Tamaito", ITO, 1, "tamaito");
+        PowerHandler.addPower(60, "Overheat", "Overheat", ITO, 2, "overheat");
+        PowerHandler.addPower(50, "Goshikito", "Goshikito", ITO, 3, "goshikito");
+        PowerHandler.addPower(35, "SoraNoMichi", "Sora no Michi", ITO, 4, "sora_no_michi");
     }
 
 
