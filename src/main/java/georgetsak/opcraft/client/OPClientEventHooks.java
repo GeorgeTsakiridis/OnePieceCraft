@@ -179,8 +179,8 @@ public class OPClientEventHooks {
 
         if (action.equals("GomuGear4A") || action.equals("WhiteLauncherA") || action.equals("SoraNoMichiA")) {
             isGear4Active = true;
-            gear4RemainingTime = toTicks(10);
-            disableAndEnableDamageAfter(toTicks(16));
+            gear4RemainingTime = adjustTicks(200);
+            disableAndEnableDamageAfter(adjustTicks(320));
             return !action.equals("GomuGear4A");//Gear 4 still needs the packet.
         }
 
@@ -258,7 +258,7 @@ public class OPClientEventHooks {
                         if(checkAndSetEnergyBar((10f/(float)sixPowerLevel)* 20f))break;
 
                         performAction("Gear4Jump");
-                        disableAndEnableDamageAfter(toTicks(5));
+                        disableAndEnableDamageAfter(adjustTicks(100));
                         break;
                     case IRON_BUDDY:
                         if(checkAndSetEnergyBar(200f))break;
@@ -329,7 +329,7 @@ public class OPClientEventHooks {
                 Power power = PowerSelector.getSelectedPower();
 
                 if (power != null && power.getCurrentCooldown() == 0) {//V
-                    power.setCurrentCooldown(toTicks(power.getCooldownTime()));
+                    power.setCurrentCooldown(adjustTicks(power.getCooldownTime()));
                     executeAction(Minecraft.getMinecraft().player, power.getActionMessage());
                 }
             }
@@ -350,7 +350,7 @@ public class OPClientEventHooks {
         }
         //Emperor Haki key handler.
         if(ClientProxy.emperorHakiButton.isPressed() && cooldownEmperor == 0) {
-                cooldownEmperor = toTicks(60);
+                cooldownEmperor = adjustTicks(1200);
                 PacketDispatcher.sendToServer(new EmperorServerPacket());
         }
     }
@@ -481,10 +481,8 @@ public class OPClientEventHooks {
     /**
      * Converts real-life seconds to ticks. If the player is in creative it returns the given seconds.
      */
-    private int toTicks(int seconds){
-        int tickPStemp = Minecraft.getMinecraft().player.isCreative() ? 1 : 20;
-
-        return seconds * tickPStemp;
+    private int adjustTicks(int ticks){
+        return Minecraft.getMinecraft().player.isCreative() ? 20 : ticks;
     }
 
     /**
@@ -651,7 +649,7 @@ public class OPClientEventHooks {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null) {
 
-                    ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), toTicks(power.getCooldownTime()), event.getResolution(), (int) sixPowersEnergyBar);
+                    ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), adjustTicks(power.getCooldownTime()), event.getResolution(), (int) sixPowersEnergyBar);
                 }
             }
 

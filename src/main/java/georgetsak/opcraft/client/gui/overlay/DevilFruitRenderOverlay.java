@@ -102,11 +102,11 @@ public class DevilFruitRenderOverlay {
             Power selectedPower2 = PowerHandler.getPower(fruitID, PowerSelector.getNextIndex());
 
             if (selectedPower1 != null) {
-                float percentage1 = MathUtils.getPercentage(selectedPower1.getCooldownTime() * 20 - selectedPower1.getCurrentCooldown(), selectedPower1.getCooldownTime() * 20);
+                float percentage1 = MathUtils.getPercentage(selectedPower1.getCooldownTime() - selectedPower1.getCurrentCooldown(), selectedPower1.getCooldownTime());
                 Gui.drawRect(resolutionX - 35, resolutionY - 35 + (int) (44f * percentage1), resolutionX + 5, resolutionY + 5, new Color(255, 0, 0, 100).getRGB());
             }
             if (selectedPower2 != null) {
-                float percentage2 = MathUtils.getPercentage(selectedPower2.getCooldownTime() * 20 - selectedPower2.getCurrentCooldown(), selectedPower2.getCooldownTime() * 20);
+                float percentage2 = MathUtils.getPercentage(selectedPower2.getCooldownTime() - selectedPower2.getCurrentCooldown(), selectedPower2.getCooldownTime());
                 Gui.drawRect(resolutionX - 69, resolutionY - 69 + (int) (44f * percentage2), resolutionX - 25, resolutionY - 25, new Color(255, 0, 0, 100).getRGB());
             }
         }
@@ -124,7 +124,7 @@ public class DevilFruitRenderOverlay {
         Gui.drawScaledCustomSizeModalRect(resolutionX - 50, resolutionY - 50, 0, 0, 64, 64, 40, 40, 64, 64);
         //GL11.glColor4f(1f, 1f, 1f, 1f);
         Power selectedPower = PowerSelector.getSelectedPower();
-        float percentage = MathUtils.getPercentage(selectedPower.getCooldownTime()*20 - selectedPower.getCurrentCooldown(),selectedPower.getCooldownTime()*20);
+        float percentage = MathUtils.getPercentage(selectedPower.getCooldownTime() - selectedPower.getCurrentCooldown(),selectedPower.getCooldownTime());
         Gui.drawRect(resolutionX - 52,resolutionY - 52 + (int)(44f*percentage),resolutionX - 8,resolutionY - 8, new Color(254,0,0,100).getRGB());
         GL11.glColor4f(1f, 1f, 1f, temp);
 
