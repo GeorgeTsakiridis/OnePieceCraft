@@ -1,7 +1,6 @@
 package georgetsak.opcraft.common.generator.structures.village.components;
 
 import georgetsak.opcraft.common.entity.other.EntityBandit;
-import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPLootTables;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;

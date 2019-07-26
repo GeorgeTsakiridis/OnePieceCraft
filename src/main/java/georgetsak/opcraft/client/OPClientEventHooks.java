@@ -192,10 +192,11 @@ public class OPClientEventHooks {
      * Checks if the current action is a special action.
      */
     private boolean checkForSendPacket(EntityPlayer ep) {
-        if (action.equals("GomuGear4A") || action.equals("WhiteLauncherA")) {//TODO does not give positive effects. Fix this by sending the OPServerMessage to server.
+
+        if (action.equals("GomuGear4A") || action.equals("WhiteLauncherA") || action.equals("SoraNoMichiA")) {
             isGear4Active = true;
             disableDamage();
-            return true;
+            return !action.equals("GomuGear4A");//Gear 4 still needs the packet.
         }
 
         if (action.equals("IceBallA")) {
@@ -254,7 +255,7 @@ public class OPClientEventHooks {
     private void executeConsequence() {
         hasConsequences = false;
 
-        if(consequence.equals("GomuGear4B") || consequence.equals("WhiteLauncherB")){
+        if(consequence.equals("GomuGear4B") || consequence.equals("WhiteLauncherB") || consequence.equals("SoraNoMichiB")){
             disableAndEnableDamageAfter(100);
         }
 

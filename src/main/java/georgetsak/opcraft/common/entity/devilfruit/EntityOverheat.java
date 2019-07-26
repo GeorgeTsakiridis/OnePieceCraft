@@ -22,7 +22,7 @@ public class EntityOverheat extends EntityLongLine{
 
     @Override
     public int getMaxTicks() {
-        return 60*1000;
+        return 60;
     }
 
     @Override

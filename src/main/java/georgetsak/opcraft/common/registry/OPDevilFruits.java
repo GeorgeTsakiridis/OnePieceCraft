@@ -123,7 +123,7 @@ public class OPDevilFruits {
         PowerHandler.addPower(3, 0, "Tamaito", false, "Tamaito", ITO, 1, "tamaito");
         PowerHandler.addPower(60, 0, "Overheat", true, "Overheat", ITO, 2, "overheat");
         PowerHandler.addPower(50, 0, "Goshikito", true, "Goshikito", ITO, 3, "goshikito");
-        PowerHandler.addPower(35, 0, "Sora no Michi", true, "Sora no Michi", ITO, 4, "sora_no_michi");
+        PowerHandler.addPower(35, 0, "SoraNoMichi", true, "Sora no Michi", ITO, 4, "sora_no_michi");
     }
 
 
