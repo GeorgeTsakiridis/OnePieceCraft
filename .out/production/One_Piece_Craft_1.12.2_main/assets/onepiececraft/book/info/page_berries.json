@@ -10,9 +10,9 @@
     "A bounty is a reward placed on an individual and is awarded to whoever can kill that player.",
     "The player that manages to kill another player with bounty will get the 30% of his bounty, while the killed player will lose 35% of his bounty.",
     "In case the player is not killed by another player the player will lose 10% of his bounty.",
-    "For instance if a player with 15000B bounty is killed, the killer's bounty will raise by 4500B, while the killed player's new bounty will be 9750B",
-    "A bounty over 1000B will cause you to be targeted by Marines, while a bounty of bellow 5000B will cause you to be targeted by Pirates.",
-    "Bounty is also required to start your own Crew as well as increase the maximum crew number."
+    "For instance if a player with 15000B bounty is killed, the killer's bounty will be raises by 4500B, while the killed player's new bounty will be 9750B",
+    "A bounty of over 1000B will cause you to be targeted by Marines, while a bounty of bellow 5000B will cause you to be targeted by Bandits.",
+    "Bounty is also required to start your own Crew."
   ],
   "icon":"onepiececraft:berry_coin"
 }

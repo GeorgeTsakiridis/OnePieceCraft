@@ -59,13 +59,10 @@ public class OPEntities {
         registerEntity(EntityRayleigh.class, "rayleigh", id++, OPCraft.MODID, 48, 3, true, toRGB(244, 167, 66), toRGB(239, 239, 239));
         registerEntity(EntityStormLeg.class, "storm_leg", id++, OPCraft.MODID, 48, 3, false);
         registerEntity(EntityTamaito.class,"tamaito", id++, OPCraft.MODID, 200, 3, true);
-        registerEntity(EntityLongLine.class,"long_ling", id++, OPCraft.MODID, 200, 3, true);
+        registerEntity(EntityLongLine.class,"long_line", id++, OPCraft.MODID, 200, 3, true);
         registerEntity(EntityOverheat.class,"overheat", id++, OPCraft.MODID,200, 3, true);
 
         //registerEntity2(EntitySeaKing.class, "sea_king", id++, OPCraft.MODID, 48, 3, true);
-
-        EnumCreatureType crocodile = EnumHelper.addCreatureType("crocodile", EntityCrocodile.class, 1, Material.AIR, false, false);
-        EnumCreatureType rayleigh = EnumHelper.addCreatureType("rayleigh", EntityRayleigh.class, 1, Material.AIR, true, false);
 
         EnumCreatureType crocodile = EnumHelper.addCreatureType("crocodile", EntityCrocodile.class, 1, Material.AIR, false, false);
         EnumCreatureType rayleigh = EnumHelper.addCreatureType("rayleigh", EntityRayleigh.class, 1, Material.AIR, true, false);
