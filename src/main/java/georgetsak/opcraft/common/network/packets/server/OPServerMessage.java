@@ -71,10 +71,10 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 }
                 case "GomuGear2A": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.gomu_gear2, SoundCategory.NEUTRAL, 1.0F, 1.0F);
-                    ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, 200, 2));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 200, 1));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 200, 1));
-                    ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 200, 1));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.SPEED, 160, 2));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 160, 1));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.JUMP_BOOST, 160, 1));
+                    ep.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 160, 1));
                     for (int i = 0; i < 50; i++) {
                         world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, ep.posX, ep.posY + 1, ep.posZ, (Math.random() - 0.5) * 0.2, (Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.2);
                     }

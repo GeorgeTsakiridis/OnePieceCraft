@@ -116,8 +116,8 @@ public class OPClientEventHooks {
                 id = df.getPower();
                 PowerSelector.setFruitID(id);
                 if (!OPCraft.config.allowDevilFruitUsersToSwim.getCurrentValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
-                    setAllPowersCooldown(40);
-                    if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {
+                    setAllPowersCooldown(adjustTicks(20));
+                    if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {// TODO: 7/27/2019 Fix water not disabling powers
                         mcPlayer.setVelocity(0, -0.1, 0);//TODO this movement normally should be done on the Server Side. Another alternative would be to disable Player's keys.
                     }
                 }
@@ -327,9 +327,9 @@ public class OPClientEventHooks {
 
             if (ClientProxy.key3.isPressed()) {
                 Power power = PowerSelector.getSelectedPower();
-
                 if (power != null && power.getCurrentCooldown() == 0) {//V
                     power.setCurrentCooldown(adjustTicks(power.getCooldownTime()));
+                    System.out.println(power.getCooldownTime());
                     executeAction(Minecraft.getMinecraft().player, power.getActionMessage());
                 }
             }
@@ -482,7 +482,7 @@ public class OPClientEventHooks {
      * Converts real-life seconds to ticks. If the player is in creative it returns the given seconds.
      */
     private int adjustTicks(int ticks){
-        return Minecraft.getMinecraft().player.isCreative() ? 20 : ticks;
+        return Minecraft.getMinecraft().player.capabilities.isCreativeMode ? 20 : ticks;
     }
 
     /**

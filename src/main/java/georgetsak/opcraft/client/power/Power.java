@@ -24,7 +24,7 @@ public class Power {
     public int getCurrentCooldown(){return currentCooldown;}
 
     public void setCurrentCooldown(int cooldown){
-        if(cooldown >= 0 && cooldown > cooldownTime) {
+        if(cooldown >= 0 && cooldown > currentCooldown) {
             currentCooldown = cooldown;
         }
     }

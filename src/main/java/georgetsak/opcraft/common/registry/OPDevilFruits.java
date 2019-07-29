@@ -92,12 +92,12 @@ public class OPDevilFruits {
     public static void registerPowers(){
         PowerHandler.addPower(60, "GomuPistol", "Gomu Gomu no: Pistol", GOMU,1, "pistol");
         PowerHandler.addPower(320, "GomuGear2", "Gomu Gomu no: Gear 2", GOMU, 2, "gear2");
-        PowerHandler.addPower(300, "GomuGear3", "Gomu Gomu no: Gear 3", GOMU, 3, "gear3");
-        PowerHandler.addPower(700, "GomuGear4", "Gomu Gomu no: Gear 4", GOMU, 4, "gear4");
+        PowerHandler.addPower(180, "GomuGear3", "Gomu Gomu no: Gear 3", GOMU, 3, "gear3");
+        PowerHandler.addPower(1600, "GomuGear4", "Gomu Gomu no: Gear 4", GOMU, 4, "gear4");
         PowerHandler.addPower(60, "MeraHigan","Higan", MERA, 1, "fire_fist");
         PowerHandler.addPower(160, "MeraShinka","Shinka: Shiranui", MERA, 2, "fire_lance");
         PowerHandler.addPower(240, "MeraHiken","Hiken", MERA, 3, "hiken");
-        PowerHandler.addPower(540, "MeraEntei","Dai Enkai: Entei",MERA, 4, "entei");
+        PowerHandler.addPower(1200, "MeraEntei","Dai Enkai: Entei",MERA, 4, "entei");
         PowerHandler.addPower(180, "SlowBeam","Slow Slow Beam", NORO, 1, "slow_beam");
         PowerHandler.addPower(360, "SlowBall","High Speed Rotation Mirror Ball", NORO, 2, "slow_ball");
         PowerHandler.addPower(380, "SlowMashi","Mashi Mashi", NORO, 3, "slow_mashi");

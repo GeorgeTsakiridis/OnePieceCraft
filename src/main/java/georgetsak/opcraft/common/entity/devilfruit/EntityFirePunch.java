@@ -58,7 +58,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	}
 
 	public void collideWithEntity(Entity entityIn) {
-		if (!isCollisionWithEntityValid(entityIn) || getType() == 0) return;
+    	if (!isCollisionWithEntityValid(entityIn) || getType() == 0) return;
 
 		entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), getDamageValue());
 		entityIn.setFire(getFireTimeValue());
@@ -97,7 +97,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	}
 
 	private float getExplosionSize() {
-
+        System.out.println(getType());
 		 switch(getType()){
 		 case 1: return 0F;
 		 case 2: return 1.5F;
@@ -110,7 +110,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	private int getFireTimeValue(){
 
 		switch(getType()){
-		case 1: return 3;
+		case 1: return 2;
 		case 2: return 5;
 		case 3: return 8;
 		case 4: return 10;
@@ -121,7 +121,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	private float getDamageValue() {
 
 		switch(getType()){
-		case 1: return 3F;
+		case 1: return 2F;
 		case 2: return 7F;
 		case 3: return 5F;
 		case 4: return 10F;
@@ -144,7 +144,7 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 
 		 switch(getType()){
 		 case 1: return 1f;
-		 case 2: return 1f;
+		 case 2: return 1.2f;
 		 case 3: return 1.5f;
 		 case 4: return 3.5f;
 		 default: return 0f;
