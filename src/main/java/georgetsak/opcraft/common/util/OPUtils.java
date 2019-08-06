@@ -26,6 +26,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -102,7 +103,7 @@ public class OPUtils {
         return entities;
     }
 
-    public static void damageNearbyPlayers(EntityPlayer ep, int range, float damage, float velMul){
+    public static void damageAndPushNearbyPlayers(EntityPlayer ep, int range, float damage, double velocityMultiplier, double maxVelocity){
         List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, range, ep);
 
         for(int i = 0; i < entities.size(); i++) {
@@ -120,43 +121,34 @@ public class OPUtils {
 
                 if(entities.get(i) instanceof EntityLiving || entities.get(i) instanceof EntityPlayer) {
 
-                    double distanceX = entities.get(i).posX - ep.posX;
-                    double distanceY = entities.get(i).posY - ep.posY;
-                    double distanceZ = entities.get(i).posZ - ep.posZ;
+                    double x1 = entities.get(i).posX;
+                    double z1 = entities.get(i).posZ;
+                    double x2 = ep.posX;
+                    double z2 = ep.posZ;
 
-                    double velocityX = (range / distanceX) * velMul;
-                    double velocityY = (range / distanceY) * velMul;
-                    double velocityZ = (range / distanceZ) * velMul;
+                    double angle = Math.toDegrees(Math.atan2(z1 - z2, x2 - x1));
+                    double distance = Math.sqrt((x1-x2)*(x1-x2)+(z1-z2)*(z1-z2));
+                    double perc = 1/(distance/range);
 
-                    if (distanceX == 0D) {
-                        velocityX = 0;
-                    }
-                    if (distanceY == 0D) {
-                        velocityY = 0;
-                    }
-                    if (distanceZ == 0D) {
-                        velocityZ = 0;
-                    }
-                    if (velocityX > range) {
-                        velocityX = range;
-                    }
-                    if (velocityX < -range) {
-                        velocityX = -range;
-                    }
-                    if (velocityY > range) {
-                        velocityY = range;
-                    }
-                    if (velocityY < -range) {
-                        velocityY = -range;
-                    }
-                    if (velocityZ > range) {
-                        velocityZ = range;
-                    }
-                    if (velocityZ < -range) {
-                        velocityZ = -range;
+                    if(angle < 0){
+                        angle += 360;
                     }
 
-                    entities.get(i).addVelocity(velocityX, velocityY, velocityZ);
+                    angle = Math.toRadians(angle);
+
+                    // TODO: 7/29/2019 add a number to the distanceXYZ in order to prevent small values that lead to very big velocities.
+                    double velocityX = -Math.cos(angle) * (perc/100d) * maxVelocity * velocityMultiplier;
+                    double velocityZ = Math.sin(angle) * (perc/100d) * maxVelocity * velocityMultiplier;
+
+                    System.out.println("Max range: " + range + " | Distance: " + distance + " | Percentage: " + perc);
+                    System.out.println(velocityX + " // " + velocityZ + " BEFORE");
+
+                    velocityX = MathHelper.clamp(velocityX, -maxVelocity, maxVelocity);
+                    velocityZ = MathHelper.clamp(velocityZ, -maxVelocity, maxVelocity);
+
+                    System.out.println(velocityX + " // " + velocityZ + " AFTER");
+
+                    entities.get(i).addVelocity(velocityX, 0, velocityZ);
 
                 }
             }
@@ -206,15 +198,10 @@ public class OPUtils {
 
     public static boolean isPlayerInOrOverDeepWater(EntityPlayer player){
         BlockPos start = new BlockPos(player.posX, player.posY, player.posZ);
-        Block playerAboveBlock = player.world.getBlockState(start.up(2)).getBlock();
-        Block playerEyeBlock = player.world.getBlockState(start.up(1)).getBlock();
-        Block playerFeetBlock = player.world.getBlockState(start).getBlock();
-        Block playerBellowBlock = player.world.getBlockState(start.down()).getBlock();
-
-        boolean flag1 = playerAboveBlock == Blocks.WATER || playerAboveBlock == Blocks.FLOWING_WATER;
-        boolean flag2 = playerEyeBlock == Blocks.WATER || playerEyeBlock == Blocks.FLOWING_WATER;
-        boolean flag3 = playerFeetBlock == Blocks.WATER || playerFeetBlock == Blocks.FLOWING_WATER;
-        boolean flag4 = playerBellowBlock == Blocks.WATER || playerBellowBlock == Blocks.FLOWING_WATER;
+        boolean flag1 = PowerUtils.isBlockWater(player,start.up(2));
+        boolean flag2 = PowerUtils.isBlockWater(player,start.up(1));
+        boolean flag3 = PowerUtils.isBlockWater(player,start);
+        boolean flag4 = PowerUtils.isBlockWater(player,start.down());
 
         return flag3 && (flag2 || (flag1 && flag2) || flag4);
 

@@ -87,9 +87,6 @@ public class EntityUrsusBubble extends EntityFlying {
     public void applyEntityCollision(Entity entityIn){
     }
 
-    //@#@#@#@#@#@#@#@#@#@#@##@#@#@#@
-
-
     public boolean isEntityInvulnerable(DamageSource source){
         return true;
     }

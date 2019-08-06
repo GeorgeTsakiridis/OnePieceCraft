@@ -12,8 +12,7 @@ public class DevilFruitAssetsManager {
     private static ArrayList<DevilFruitAsset> devilFruitAssets = new ArrayList<>();
 
     public static void addDevilFruitAsset(int id, String resName, String tooltip, String fullName){
-        ResourceLocation resourceLocation = null;
-        resourceLocation = new ResourceLocation(OPCraft.MODID, "textures/items/devil_fruits/devil_fruit_" + resName + ".png");
+        ResourceLocation resourceLocation = new ResourceLocation(OPCraft.MODID, "textures/items/devil_fruits/devil_fruit_" + resName + ".png");
         devilFruitAssets.add(new DevilFruitAsset(id, resourceLocation, tooltip, fullName));
     }
 

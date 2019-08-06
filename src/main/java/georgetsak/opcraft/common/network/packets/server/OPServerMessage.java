@@ -211,12 +211,12 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                 }
                 case "PadHoA": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 15, 1.0F);
-                    OPUtils.damageNearbyPlayers(ep, 15, 6F, 0.2F);
+                    OPUtils.damageAndPushNearbyPlayers(ep, 15, 6F, 11, 7);
                     break;
                 }
                 case "TsuppariPadHoA": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 30, 1.0F);
-                    OPUtils.damageNearbyPlayers(ep, 30, 12F, 0.5F);
+                    OPUtils.damageAndPushNearbyPlayers(ep, 30, 12F, 5, 10);
                     break;
                 }
                 case "UrsusShockA": {
