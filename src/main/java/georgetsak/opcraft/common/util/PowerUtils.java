@@ -122,7 +122,7 @@ public class PowerUtils {
     }
 
     public static boolean isBlockWater(EntityPlayer ep, BlockPos blockPos) {
-        World world = ep.getServer().getEntityWorld();
+        World world = ep.world;
         return world.getBlockState(blockPos).getBlock() == Blocks.WATER || world.getBlockState(blockPos).getBlock() == Blocks.FLOWING_WATER;
     }
 

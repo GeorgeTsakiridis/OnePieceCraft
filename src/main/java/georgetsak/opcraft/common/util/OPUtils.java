@@ -136,7 +136,6 @@ public class OPUtils {
 
                     angle = Math.toRadians(angle);
 
-                    // TODO: 7/29/2019 add a number to the distanceXYZ in order to prevent small values that lead to very big velocities.
                     double velocityX = -Math.cos(angle) * (perc/100d) * maxVelocity * velocityMultiplier;
                     double velocityZ = Math.sin(angle) * (perc/100d) * maxVelocity * velocityMultiplier;
 

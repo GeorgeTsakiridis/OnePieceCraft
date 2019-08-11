@@ -131,8 +131,9 @@ public class EntityOPVillager extends EntityCreature implements IMerchant
     public void onDeath(DamageSource cause)
     {
         super.onDeath(cause);
-        this.entityDropItem(new ItemStack(OPItems.ItemBerryCoin, rand.nextInt(10)), 0.0F);
-
+        if(!world.isRemote) {
+            this.entityDropItem(new ItemStack(OPItems.ItemBerryCoin, rand.nextInt(10)), 0.0F);
+        }
     }
 
     public boolean isTrading()

@@ -117,12 +117,12 @@ public class OPClientEventHooks {
                 PowerSelector.setFruitID(id);
                 if (!OPCraft.config.allowDevilFruitUsersToSwim.getCurrentValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
                     setAllPowersCooldown(adjustTicks(20));
-                    if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {// TODO: 7/27/2019 Fix water not disabling powers
+                    if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {
                         mcPlayer.setVelocity(0, -0.1, 0);//TODO this movement normally should be done on the Server Side. Another alternative would be to disable Player's keys.
                     }
                 }
 
-                //Kairoseki blocks/items check section. //TODO devil fruit users still get negative effects when standing on kairoseki items no matter if in creative mode or config option is disabled.
+                //Kairoseki blocks/items check section.
                 if(!mcPlayer.isCreative() && OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getCurrentValue()) {
                     Block standingBlock = Minecraft.getMinecraft().world.getBlockState(new BlockPos(mcPlayer.posX, mcPlayer.posY-1, mcPlayer.posZ)).getBlock();
 
@@ -222,7 +222,7 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("LiberationA")) {
-            sendMessage("DISABLEDAMAGE");
+            disableAndEnableDamageAfter(220);
             BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 30);
             if (spawnPosition != null) {
                 PacketDispatcher.sendToServer(new LiberationServerPacket(spawnPosition));
@@ -329,7 +329,7 @@ public class OPClientEventHooks {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null && power.getCurrentCooldown() == 0) {//V
                     power.setCurrentCooldown(adjustTicks(power.getCooldownTime()));
-                    System.out.println(power.getCooldownTime());
+
                     executeAction(Minecraft.getMinecraft().player, power.getActionMessage());
                 }
             }

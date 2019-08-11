@@ -88,6 +88,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityStormLeg.class, RenderStormLeg::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityTamaito.class,RenderTamaito::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityOverheat.class,RenderOverheat::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityGoshikito.class,RenderGoshikito::new);
 	}
 
 	@Override

@@ -1,9 +1,23 @@
 {
   "type": "info",
   "title": "Devil Fruits",
-  "totalLines": 1,
+  "totalLines": 15,
   "lines":[
-    "//TODO add description"
+    "§lDevil Fruits§r are mystical fruits found in chests inside dungeons. When consumed, they provide the eater a special ability, depending on the type and variation of the fruit itself.",
+    "There are currently 12 Devil Fruits;",
+    "",
+    "§6Gomu Gomu no Mi - Rubber Fruit§r",
+    "§eMera Mera no Mi - Fire Fruit§r",
+    "§6Noro Noro no Mi - Slow Fruit§r",
+    "§eSuke Suke no Mi - Clear Fruit§r",
+    "§6Ope Ope no Mi - Operation Fruit§r",
+    "§eHie Hie no Mi - Ice Fruit§r",
+    "§6Nikyu Nikyu no Mi - Paw Fruit§r",
+    "§eYomi Yomi no Mi - Revive Fruit§r",
+    "§6Goro Goro no Mi - Thunder Fruit§r",
+    "§eMoku Moku no Mi - Slow Fruit§r",
+    "§6Yami Yami no Mi - Dark Fruit§r",
+    "§eIto Ito no Mi - String Fruit§r"
   ],
   "icon":"onepiececraft:devil_fruit_gomu"
 }

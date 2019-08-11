@@ -260,6 +260,12 @@ public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPSer
                     world.playSound(null,ep.posX,ep.posY,ep.posZ,OPSoundEvent.fire_fist,SoundCategory.NEUTRAL, 300f, 1f);
                     break;
                 }
+                case "GoshikitoA": {
+                    EntityGoshikito goshikito = new EntityGoshikito(world, ep.posX, ep.posY, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
+                    world.spawnEntity(goshikito);
+                    world.playSound(null,ep.posX,ep.posY,ep.posZ,OPSoundEvent.tamaito,SoundCategory.NEUTRAL, 300f, 1f);
+                    break;
+                }
             }
 
             //OTHERS

@@ -61,6 +61,7 @@ public class OPEntities {
         registerEntity(EntityTamaito.class,"tamaito", id++, OPCraft.MODID, 200, 3, true);
         registerEntity(EntityLongLine.class,"long_line", id++, OPCraft.MODID, 200, 3, true);
         registerEntity(EntityOverheat.class,"overheat", id++, OPCraft.MODID,200, 3, true);
+        registerEntity(EntityGoshikito.class,"goshikito", id++, OPCraft.MODID,48, 3, true);
 
         //registerEntity2(EntitySeaKing.class, "sea_king", id++, OPCraft.MODID, 48, 3, true);
 

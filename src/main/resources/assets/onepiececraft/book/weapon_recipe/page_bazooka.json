@@ -6,7 +6,7 @@
       "title": "Bazooka",
       "totalLines": 1,
       "lines": [
-        "Just a Bazooka!"
+        "BOOM!"
       ],
       "attack" : 19,
       "durability" : 500,
