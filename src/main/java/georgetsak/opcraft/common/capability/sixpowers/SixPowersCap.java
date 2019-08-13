@@ -5,6 +5,8 @@ import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.math.MathHelper;
+import scala.Int;
 
 /**
  * Created by GeorgeProgramming on 7/11/2017.
@@ -108,31 +110,37 @@ public class SixPowersCap implements ISixPowersCap {
 
     @Override
     public void addStillJumps(int stillJumps) {
+        if(this.stillJumps + stillJumps > 100000) return;
         this.stillJumps += stillJumps;
     }
 
     @Override
     public void addIronDamage(int ironDamage) {
+        if(this.ironDamageReceived + ironDamageReceived > 100000) return;
         ironDamageReceived += ironDamage;
     }
 
     @Override
     public void addPunchDamage(int punchDamage) {
+        if(this.punchDamageGiven + punchDamageGiven > 100000) return;
         punchDamageGiven += punchDamage;
     }
 
     @Override
     public void addRunningJumps(int runningJumps) {
+        if(this.runningJumps + runningJumps > 100000) return;
         this.runningJumps += runningJumps;
     }
 
     @Override
     public void addDistanceRun(int distanceRun) {
+        if(this.distanceRun + distanceRun > 100000) return;
         this.distanceRun += distanceRun;
     }
 
     @Override
     public void addDistanceRunInPlants(int distanceRunInPlants) {
+        if(this.distanceRunInPlants + distanceRunInPlants > 100000) return;
         this.distanceRunInPlants += distanceRunInPlants;
     }
 

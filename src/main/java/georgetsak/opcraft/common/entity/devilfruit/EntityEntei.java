@@ -20,14 +20,14 @@ public class EntityEntei extends EntityFlying {
 
 	public EntityEntei(World world){
 		super(world);
-		this.setSize(10F, 10F);
+		this.setSize(1F, 1F);
 	}
 	
 	 public EntityEntei(World worldIn, double x, double y, double z, EntityPlayer owner) {
 			super(worldIn);
 			this.ep = owner;
 			this.setPositionAndRotation(x, y, z, 0, 0);
-			this.setSize(10F, 10F);
+			this.setSize(1F, 1F);
 	}
 
 	public void onLivingUpdate(){

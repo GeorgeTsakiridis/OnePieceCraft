@@ -97,7 +97,6 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	}
 
 	private float getExplosionSize() {
-        System.out.println(getType());
 		 switch(getType()){
 		 case 1: return 0F;
 		 case 2: return 1.5F;
