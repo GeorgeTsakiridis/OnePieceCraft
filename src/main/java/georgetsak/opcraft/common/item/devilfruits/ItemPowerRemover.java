@@ -1,9 +1,8 @@
 package georgetsak.opcraft.common.item.devilfruits;
 
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapProvider;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
-import georgetsak.opcraft.common.network.packets.client.DevilFruitCapClientPacket;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
+import georgetsak.opcraft.common.network.packets.client.DevilFruitClientPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,9 +32,9 @@ public class ItemPowerRemover extends ItemFood {
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer player, EnumHand hand) {
         ItemStack stack = player.getHeldItem(hand);
         if(!worldIn.isRemote && player.isCreative()){
-            IDevilFruitsCap df = DevilFruitsCap.get(player);
+            IDevilFruitCap df = DevilFruitCap.get(player);
             df.setPower(0);
-            PacketDispatcher.sendTo(new DevilFruitCapClientPacket(df), (EntityPlayerMP) player);
+            PacketDispatcher.sendTo(new DevilFruitClientPacket(df), (EntityPlayerMP) player);
         }
         return super.onItemRightClick(worldIn, player, hand);
     }
@@ -44,9 +43,9 @@ public class ItemPowerRemover extends ItemFood {
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if(!worldIn.isRemote){
-            IDevilFruitsCap df = DevilFruitsCap.get(player);
+            IDevilFruitCap df = DevilFruitCap.get(player);
             df.setPower(0);
-            PacketDispatcher.sendTo(new DevilFruitCapClientPacket(df), (EntityPlayerMP) player);
+            PacketDispatcher.sendTo(new DevilFruitClientPacket(df), (EntityPlayerMP) player);
             player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 200, 0));
             player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 1));
         }

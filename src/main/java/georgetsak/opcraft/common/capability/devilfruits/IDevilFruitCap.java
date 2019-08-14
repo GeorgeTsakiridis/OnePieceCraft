@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 /**
  * Created by GeorgeProgramming on 7/11/2017.
  */
-public interface IDevilFruitsCap {
+public interface IDevilFruitCap {
 
     boolean hasPower();
 
@@ -13,6 +13,6 @@ public interface IDevilFruitsCap {
 
     int getPower();
 
-    void copy(IDevilFruitsCap df, EntityPlayer ep);
+    void copy(IDevilFruitCap df, EntityPlayer ep);
 
 }

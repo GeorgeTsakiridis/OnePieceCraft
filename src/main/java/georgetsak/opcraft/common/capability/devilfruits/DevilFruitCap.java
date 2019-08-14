@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.capability.devilfruits;
 
-import georgetsak.opcraft.common.network.packets.client.DevilFruitCapClientPacket;
+import georgetsak.opcraft.common.network.packets.client.DevilFruitClientPacket;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,13 +9,13 @@ import net.minecraft.entity.player.EntityPlayerMP;
 /**
  * Created by GeorgeProgramming on 7/11/2017.
  */
-public class DevilFruitsCap implements IDevilFruitsCap {
+public class DevilFruitCap implements IDevilFruitCap {
 
     private int powerID = OPDevilFruits.NO_POWER;
 
-    public static IDevilFruitsCap get(EntityPlayer player)
+    public static IDevilFruitCap get(EntityPlayer player)
     {
-        return player.getCapability(DevilFruitsCapProvider.DF_CAP, null);
+        return player.getCapability(DevilFruitCapProvider.DF_CAP, null);
     }
 
     @Override
@@ -34,8 +34,8 @@ public class DevilFruitsCap implements IDevilFruitsCap {
     }
 
     @Override
-    public void copy(IDevilFruitsCap df, EntityPlayer ep) {
+    public void copy(IDevilFruitCap df, EntityPlayer ep) {
         this.setPower(df.getPower());
-        PacketDispatcher.sendTo(new DevilFruitCapClientPacket(df), (EntityPlayerMP)ep);
+        PacketDispatcher.sendTo(new DevilFruitClientPacket(df), (EntityPlayerMP)ep);
     }
 }

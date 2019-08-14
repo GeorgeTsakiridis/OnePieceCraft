@@ -7,8 +7,8 @@ import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.client.proxy.ClientProxy;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
 import georgetsak.opcraft.common.crew.Crew;
@@ -94,7 +94,7 @@ public class OPClientEventHooks {
 
         if (entity == Minecraft.getMinecraft().player) {
             EntityPlayerSP mcPlayer = Minecraft.getMinecraft().player;
-            IDevilFruitsCap df = DevilFruitsCap.get(mcPlayer);
+            IDevilFruitCap df = DevilFruitCap.get(mcPlayer);
 
             if(mcPlayer.getRidingEntity() != null){ //Check for boat riding
                 Entity ridingEntity = mcPlayer.getRidingEntity();
@@ -645,7 +645,7 @@ public class OPClientEventHooks {
                 ClientProxy.devilFruitRenderOverlay.resetTransparency();
             }
 
-            if(DevilFruitsCap.get(Minecraft.getMinecraft().player).hasPower() || !OPCraft.IS_RELEASE_VERSION) {
+            if(DevilFruitCap.get(Minecraft.getMinecraft().player).hasPower() || !OPCraft.IS_RELEASE_VERSION) {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null) {
 

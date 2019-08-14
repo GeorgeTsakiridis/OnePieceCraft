@@ -3,16 +3,22 @@ package georgetsak.opcraft.client.power;
 import net.minecraft.util.ResourceLocation;
 
 public class Power {
-    private int cooldownTime;
+    private int[] cooldownTimes;
+    private int[] usesToReduceCooldown;
+    private int[] hitsToUpgradePower;
+
     private int currentCooldown;
+
     private String actionMessage;
     private String actionName;
     private ResourceLocation resourceLocation;
 
     private int devilFruitID, key;
 
-    public Power(int cooldownTime, String actionMessage, String actionName, int devilFruitID, int key, ResourceLocation resourceLocation) {
-        this.cooldownTime = cooldownTime;
+    public Power(int[] cooldownTimes, int[] usesToReduceCooldown, int[] hitsToUpgradePower, String actionMessage, String actionName, int devilFruitID, int key, ResourceLocation resourceLocation) {
+        this.cooldownTimes = cooldownTimes;
+        this.usesToReduceCooldown = usesToReduceCooldown;
+        this.hitsToUpgradePower = hitsToUpgradePower;
         this.actionMessage = actionMessage;
         this.actionName = actionName;
         this.devilFruitID = devilFruitID;
@@ -33,8 +39,16 @@ public class Power {
         if(currentCooldown > 0)currentCooldown--;
     }
 
-    public int getCooldownTime() {
-        return cooldownTime;
+    public int getCooldownTime(int level) {
+        return cooldownTimes[level];
+    }
+
+    public int[] getUsesToReduceCooldown() {
+        return usesToReduceCooldown;
+    }
+
+    public int[] getHitsToUpgradePower() {
+        return hitsToUpgradePower;
     }
 
     public String getActionMessage() {

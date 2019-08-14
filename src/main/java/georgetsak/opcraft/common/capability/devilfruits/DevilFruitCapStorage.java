@@ -8,9 +8,9 @@ import net.minecraftforge.common.capabilities.Capability;
 /**
  * Created by GeorgeProgramming on 7/11/2017.
  */
-public class DevilFruitsCapStorage implements Capability.IStorage<IDevilFruitsCap> {
+public class DevilFruitCapStorage implements Capability.IStorage<IDevilFruitCap> {
     @Override
-    public NBTBase writeNBT(Capability<IDevilFruitsCap> capability, IDevilFruitsCap instance, EnumFacing side) {
+    public NBTBase writeNBT(Capability<IDevilFruitCap> capability, IDevilFruitCap instance, EnumFacing side) {
         NBTTagCompound compound = new NBTTagCompound();
 
         compound.setInteger("powerID", instance.getPower());
@@ -18,7 +18,7 @@ public class DevilFruitsCapStorage implements Capability.IStorage<IDevilFruitsCa
     }
 
     @Override
-    public void readNBT(Capability<IDevilFruitsCap> capability, IDevilFruitsCap instance, EnumFacing side, NBTBase nbt) {
+    public void readNBT(Capability<IDevilFruitCap> capability, IDevilFruitCap instance, EnumFacing side, NBTBase nbt) {
         if(nbt != null && nbt instanceof NBTTagCompound){
             NBTTagCompound compound = (NBTTagCompound)nbt;
             instance.setPower(compound.getInteger("powerID"));

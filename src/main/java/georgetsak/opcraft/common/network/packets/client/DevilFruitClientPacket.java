@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.network.packets.client;
 
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
@@ -10,13 +10,13 @@ import net.minecraftforge.fml.relauncher.Side;
 /**
  * Created by GeorgeProgramming on 7/11/2017.
  */
-public class DevilFruitCapClientPacket extends AbstractMessage.AbstractClientMessage<DevilFruitCapClientPacket>{
+public class DevilFruitClientPacket extends AbstractMessage.AbstractClientMessage<DevilFruitClientPacket>{
 
     private int powerID;
 
-    public DevilFruitCapClientPacket(){}
+    public DevilFruitClientPacket(){}
 
-    public DevilFruitCapClientPacket(IDevilFruitsCap df) {
+    public DevilFruitClientPacket(IDevilFruitCap df) {
         this.powerID = df.getPower();
     }
 
@@ -34,7 +34,7 @@ public class DevilFruitCapClientPacket extends AbstractMessage.AbstractClientMes
     @Override
     public void process(EntityPlayer player, Side side) {
         if(side.isClient()){
-            IDevilFruitsCap devilFruitsCap = DevilFruitsCap.get(player);
+            IDevilFruitCap devilFruitsCap = DevilFruitCap.get(player);
             devilFruitsCap.setPower(powerID);
         }
     }

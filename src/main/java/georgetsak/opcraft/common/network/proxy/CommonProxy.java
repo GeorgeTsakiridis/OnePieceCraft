@@ -8,9 +8,12 @@ import georgetsak.opcraft.common.capability.CapabilityHandler;
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
 import georgetsak.opcraft.common.capability.bounty.BountyCapStorage;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapStorage;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCapStorage;
+import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCapStorage;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.HakiCapStorage;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
@@ -104,11 +107,12 @@ public class CommonProxy {
 	}
 
 	private void registerCapabilities(){
-		CapabilityManager.INSTANCE.register(IDevilFruitsCap.class, new DevilFruitsCapStorage(), DevilFruitsCap::new);
+		CapabilityManager.INSTANCE.register(IDevilFruitCap.class, new DevilFruitCapStorage(), DevilFruitCap::new);
 		CapabilityManager.INSTANCE.register(IBountyCap.class, new BountyCapStorage(), BountyCap::new);
 		CapabilityManager.INSTANCE.register(IStatsNormalCap.class, new StatsNormalCapStorage(), StatsNormalCap::new);
 		CapabilityManager.INSTANCE.register(IHakiCap.class, new HakiCapStorage(), HakiCap::new);
 		CapabilityManager.INSTANCE.register(ISixPowersCap.class, new SixPowersCapStorage(), SixPowersCap::new);
+		CapabilityManager.INSTANCE.register(IDevilFruitLevelsCap.class,new DevilFruitLevelsCapStorage(), DevilFruitLevelsCap::new);
 
 		CapabilityHandler capabilityHandler = new CapabilityHandler();
 		MinecraftForge.EVENT_BUS.register(capabilityHandler);

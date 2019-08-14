@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.block.tile;
 
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -43,7 +43,7 @@ public class SmokeCloudTileEntity extends TileEntity implements ITickable {
                 if (players.get(i) != null && players.get(i) instanceof EntityPlayer) {
                     EntityPlayer player = (EntityPlayer) players.get(i);
 
-                    IDevilFruitsCap devilFruitsCap = DevilFruitsCap.get(player);
+                    IDevilFruitCap devilFruitsCap = DevilFruitCap.get(player);
                     if (devilFruitsCap.getPower() != 11) {//Players with moku moku (smoke) won't be affected
                         player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 3));
                     }

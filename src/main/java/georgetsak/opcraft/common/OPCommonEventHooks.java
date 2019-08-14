@@ -1,11 +1,10 @@
 package georgetsak.opcraft.common;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
@@ -19,7 +18,7 @@ import georgetsak.opcraft.common.entity.other.EntityBandit;
 import georgetsak.opcraft.common.item.weapons.swords.ItemSimpleSword;
 import georgetsak.opcraft.common.item.weapons.swords.ItemSwordWithCase;
 import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
-import georgetsak.opcraft.common.network.packets.client.DevilFruitCapClientPacket;
+import georgetsak.opcraft.common.network.packets.client.DevilFruitClientPacket;
 import georgetsak.opcraft.common.network.packets.client.SyncCrewClientPacket;
 import georgetsak.opcraft.common.network.packets.common.ConfigPacket;
 import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
@@ -141,12 +140,12 @@ public class OPCommonEventHooks {
             }
 
             if ((hurtPlayer.getHealth() - event.getAmount() <= 0)) {//Prevents the player from dying if DF#9 is equipped. Also TP to random location
-                IDevilFruitsCap devilFruitsCap = DevilFruitsCap.get(hurtPlayer);
+                IDevilFruitCap devilFruitsCap = DevilFruitCap.get(hurtPlayer);
                 if (devilFruitsCap.getPower() == OPDevilFruits.YOMI) {
 
                     hurtPlayer.sendMessage((new TextComponentString("You were revived by using Yomi Yomi no mi devil fruit power!")));
                     devilFruitsCap.setPower(0);
-                    PacketDispatcher.sendTo(new DevilFruitCapClientPacket(devilFruitsCap), (EntityPlayerMP) hurtPlayer);
+                    PacketDispatcher.sendTo(new DevilFruitClientPacket(devilFruitsCap), (EntityPlayerMP) hurtPlayer);
 
                     hurtPlayer.heal(20);
 
@@ -203,7 +202,7 @@ public class OPCommonEventHooks {
         }
 
         if (targetPlayer != null) {
-            IDevilFruitsCap targetDevilFruitsCap = DevilFruitsCap.get(targetPlayer);
+            IDevilFruitCap targetDevilFruitsCap = DevilFruitCap.get(targetPlayer);
 
             if ((source.equals(DamageSource.IN_FIRE) || source.equals(DamageSource.ON_FIRE)) && targetDevilFruitsCap.getPower() == OPDevilFruits.MERA) {//Cancels fire damage if Lightning DF is equipped.
                 event.setCanceled(true);
@@ -292,7 +291,7 @@ public class OPCommonEventHooks {
     @SubscribeEvent
     public void onPlayerInteractEvent(PlayerInteractEvent.EntityInteractSpecific event){
         EntityPlayer attacker = event.getEntityPlayer();
-        if(DevilFruitsCap.get(attacker).getPower() == OPDevilFruits.OPE && event.getTarget() instanceof EntityPlayer){
+        if(DevilFruitCap.get(attacker).getPower() == OPDevilFruits.OPE && event.getTarget() instanceof EntityPlayer){
             EntityPlayer target = (EntityPlayer)event.getTarget();
             if(attacker.isPotionActive(CommonProxy.effectInsideDome) && target.isPotionActive(CommonProxy.effectInsideDome) && attacker.inventory.getCurrentItem() != null
                     &&  attacker.inventory.getCurrentItem().getItem() == OPItems.ItemKikokuOpen) {

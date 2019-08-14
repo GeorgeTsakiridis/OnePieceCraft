@@ -139,13 +139,8 @@ public class OPUtils {
                     double velocityX = -Math.cos(angle) * (perc/100d) * maxVelocity * velocityMultiplier;
                     double velocityZ = Math.sin(angle) * (perc/100d) * maxVelocity * velocityMultiplier;
 
-                    System.out.println("Max range: " + range + " | Distance: " + distance + " | Percentage: " + perc);
-                    System.out.println(velocityX + " // " + velocityZ + " BEFORE");
-
                     velocityX = MathHelper.clamp(velocityX, -maxVelocity, maxVelocity);
                     velocityZ = MathHelper.clamp(velocityZ, -maxVelocity, maxVelocity);
-
-                    System.out.println(velocityX + " // " + velocityZ + " AFTER");
 
                     entities.get(i).addVelocity(velocityX, 0, velocityZ);
 

@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.item.weapons.swords;
 
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCap;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
@@ -19,7 +19,7 @@ public class ItemSmokerJitte extends ItemSimpleSword{
 
         if(target instanceof EntityPlayer){
             EntityPlayer player = (EntityPlayer)target;
-            IDevilFruitsCap devilFruitsCap = DevilFruitsCap.get(player);
+            IDevilFruitCap devilFruitsCap = DevilFruitCap.get(player);
             if(devilFruitsCap.hasPower()){
                 player.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 100));
                 player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 1));

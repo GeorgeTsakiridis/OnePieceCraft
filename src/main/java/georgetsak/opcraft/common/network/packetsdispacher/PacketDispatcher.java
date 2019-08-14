@@ -35,7 +35,7 @@ import net.minecraftforge.fml.relauncher.Side;
         registerMessage(OPServerMessage.class);
         registerMessage(RayTraceServerPacket.class);
         registerMessage(ConfigPacket.class);
-        registerMessage(DevilFruitCapClientPacket.class);
+        registerMessage(DevilFruitClientPacket.class);
         registerMessage(BountyClientPacket.class);
         registerMessage(StatsNormalClientPacket.class);
         registerMessage(StatsNormalServerPacket.class);
@@ -58,6 +58,7 @@ import net.minecraftforge.fml.relauncher.Side;
         registerMessage(SyncCrewClientPacket.class);
         registerMessage(EditCrewServerPacket.class);
         registerMessage(CrewInviteClientPacket.class);
+        registerMessage(DevilFruitClientPacket.class);
     }
 
     /**

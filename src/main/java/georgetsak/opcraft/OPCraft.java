@@ -19,7 +19,7 @@ import java.util.Map;
 @Mod(modid = OPCraft.MODID, version = OPCraft.VERSION, name = OPCraft.NAME)
 public class OPCraft {
     public static final String MODID = "onepiececraft";
-    public static final String VERSION = "2.4.1pre1";
+    public static final String VERSION = "2.4.1pre2";
     public static final String NAME = "One Piece Craft";
     public static final boolean IS_RELEASE_VERSION = false;
 

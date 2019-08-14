@@ -1,8 +1,8 @@
 package georgetsak.opcraft.common.block;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitsCapProvider;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCapProvider;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -29,7 +29,7 @@ public class BlockKairosekiBlock extends Block {
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
         if (entityIn instanceof EntityPlayer) {
             if(!OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getCurrentValue() || ((EntityPlayer) entityIn).isCreative())return;
-            IDevilFruitsCap df = entityIn.getCapability(DevilFruitsCapProvider.DF_CAP, null);
+            IDevilFruitCap df = entityIn.getCapability(DevilFruitCapProvider.DF_CAP, null);
             if(df.hasPower()) {
                 ((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 3));
                 ((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 20, 3));
