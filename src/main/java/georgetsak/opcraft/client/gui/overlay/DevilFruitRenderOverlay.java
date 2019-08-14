@@ -7,6 +7,8 @@ import georgetsak.opcraft.client.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
+import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
@@ -51,7 +53,7 @@ public class DevilFruitRenderOverlay {
             Gui.drawModalRectWithCustomSizedTexture(2, ry - mc.fontRenderer.FONT_HEIGHT, 0, 0, 18, 18, 18, 18);
 
             if (PowerSelector.getPrevIndex() != 0 && PowerSelector.getNextIndex() != 0) {
-                renderPowerSelector(fruitID);
+                renderPowerSelector(scaledResolution, fruitID);
             }
 
         }
@@ -87,7 +89,47 @@ public class DevilFruitRenderOverlay {
         mc.ingameGUI.drawTexturedModalRect(x, l, 0, 25, 182, 5);
     }
 
-    private void renderPowerSelector(int fruitID){
+    private void renderPowerSelector2(ScaledResolution scaledResolution, int fruitID){
+        Minecraft mc = Minecraft.getMinecraft();
+        IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(mc.player);
+
+        int totalPowers = PowerHandler.getTotalPowersForFruit(fruitID);
+        int startX = (int)(scaledResolution.getScaledWidth()/2f + 110);
+        startX = (scaledResolution.getScaledWidth()+startX)/2;
+        int spacing = 42;
+        int requiredSpace = spacing * totalPowers;
+
+        for(int i = 0; i < totalPowers; i++) {
+            Power selectedPower = PowerSelector.getSelectedPower();
+
+            GL11.glColor4f(1f, 1f, 1f, selectedPower.getKey() == i+1 ? 1f : 0.25f);
+            int x = startX + spacing*i - requiredSpace/2;
+            mc.getTextureManager().bindTexture(FRAME);
+            Gui.drawScaledCustomSizeModalRect(x, scaledResolution.getScaledHeight() - 40, 0, 0, 64, 64, 38, 38, 64, 64);
+            mc.getTextureManager().bindTexture(PowerHandler.getPower(fruitID,i+1).getResourceLocation());
+            Gui.drawScaledCustomSizeModalRect(x+2, scaledResolution.getScaledHeight() - 38, 0, 0, 64, 64, 34, 34, 64, 64);
+
+        }
+
+        for(int i = 0; i < totalPowers; i++){
+            Power power = PowerHandler.getPower(fruitID,i+1);
+            int x = startX + spacing*i - requiredSpace/2;
+
+            float percentage = MathUtils.getPercentage(dfl.getPowerCooldown(power.getKey()) - power.getCurrentCooldown(), dfl.getPowerCooldown(power.getKey()));
+            Gui.drawRect(x,scaledResolution.getScaledHeight() - 40 + (int)(percentage*38),x + 38,scaledResolution.getScaledHeight()-2, new Color(254,0,0,100).getRGB());
+            //GL11.glColor4f(1f, 1f, 1f, 1f);
+
+
+        }
+
+        GL11.glColor4f(1f, 1f, 1f, 1f);
+
+    }
+
+    private void renderPowerSelector(ScaledResolution scaledResolution, int fruitID){
+        renderPowerSelector2(scaledResolution, fruitID);
+        if(1+1 < 3)return;
+
         Minecraft mc = Minecraft.getMinecraft();
         IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(mc.player);
 

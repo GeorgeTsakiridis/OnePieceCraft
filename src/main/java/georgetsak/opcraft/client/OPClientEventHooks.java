@@ -116,10 +116,15 @@ public class OPClientEventHooks {
 
 
             isInRoom = mcPlayer.isPotionActive(CommonProxy.effectInsideDome);
+
+            if(dfl.getDevilFruitID() != df.getPower()) {
+                dfl.setDevilFruitID(df.getPower());
+                PacketDispatcher.sendToServer(new PacketDevilFruitLevelsServer(dfl));
+            }
+
             if (df.hasPower()) {
                 id = df.getPower();
                 PowerSelector.setFruitID(id);
-                dfl.setDevilFruitID(id);
 
                 if (!OPCraft.config.allowDevilFruitUsersToSwim.getCurrentValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
                     setAllPowersCooldown(adjustTicks(20));
