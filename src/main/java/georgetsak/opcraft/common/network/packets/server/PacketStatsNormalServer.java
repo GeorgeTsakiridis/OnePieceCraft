@@ -14,12 +14,12 @@ import java.io.IOException;
 /**
  * Created by GeorgeTsak on 7/15/2017.
  */
-public class StatsNormalServerPacket extends AbstractMessage.AbstractServerMessage<StatsNormalServerPacket> {
+public class PacketStatsNormalServer extends AbstractMessage.AbstractServerMessage<PacketStatsNormalServer> {
 
     int health, attack, defence, speed;
 
-    public StatsNormalServerPacket(){}
-    public StatsNormalServerPacket(IStatsNormalCap stats){
+    public PacketStatsNormalServer(){}
+    public PacketStatsNormalServer(IStatsNormalCap stats){
         health = stats.getHealthLevel();
         attack = stats.getAttackLevel();
         defence = stats.getDefenceLevel();

@@ -11,13 +11,13 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
-public class SmokeSnakeServerPacket extends AbstractMessage.AbstractServerMessage<SmokeSnakeServerPacket> {
+public class PacketSmokeSnakeServer extends AbstractMessage.AbstractServerMessage<PacketSmokeSnakeServer> {
 
     int targetID;
 
-    public SmokeSnakeServerPacket(){}
+    public PacketSmokeSnakeServer(){}
 
-    public SmokeSnakeServerPacket(Entity target){
+    public PacketSmokeSnakeServer(Entity target){
         this.targetID = target.getEntityId();
     }
 

@@ -3,7 +3,7 @@ package georgetsak.opcraft.common.command;
 import georgetsak.opcraft.client.gui.overlay.EnumSixPowers;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCapProvider;
-import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.command.*;
 import net.minecraft.entity.Entity;
@@ -90,7 +90,7 @@ public class CommandSetSixPowerLevel extends CommandBase {
                 }
             }
 
-            PacketDispatcher.sendTo(new SixPowersPacket(sixPowersCap),(EntityPlayerMP)entity);
+            PacketDispatcher.sendTo(new PacketSixPowers(sixPowersCap),(EntityPlayerMP)entity);
             notifyCommandListener(sender, this, "%s", "Done!");
 
         }

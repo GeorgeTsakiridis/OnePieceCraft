@@ -2,15 +2,15 @@ package georgetsak.opcraft.common.command;
 
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
-import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
 import georgetsak.opcraft.common.util.OPUtils;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.common.HakiPacket;
-import georgetsak.opcraft.common.network.packets.client.StatsNormalClientPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketHaki;
+import georgetsak.opcraft.common.network.packets.client.PacketStatsNormalClient;
 import net.minecraft.command.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -85,7 +85,7 @@ public class CommandResetStats extends CommandBase {
     private void resetStats(Entity entity, ICommandSender sender, boolean notify) {
         IStatsNormalCap stats = StatsNormalCap.get((EntityPlayer) entity);
         stats.resetAll();
-        PacketDispatcher.sendTo(new StatsNormalClientPacket(stats), (EntityPlayerMP) entity);
+        PacketDispatcher.sendTo(new PacketStatsNormalClient(stats), (EntityPlayerMP) entity);
         OPUtils.updateStats((EntityPlayer) entity, stats);
         if (notify) {
             notifyCommandListener(sender, this, "Reset %s's Stats", entity.getName());
@@ -95,7 +95,7 @@ public class CommandResetStats extends CommandBase {
     private void resetHaki(Entity entity, ICommandSender sender, boolean notify) {
         IHakiCap haki = HakiCap.get((EntityPlayer) entity);
         haki.resetAll();
-        PacketDispatcher.sendTo(new HakiPacket(haki), (EntityPlayerMP)entity);
+        PacketDispatcher.sendTo(new PacketHaki(haki), (EntityPlayerMP)entity);
         if (notify) {
             notifyCommandListener(sender, this, "Reset %s's Haki", entity.getName());
         }
@@ -104,7 +104,7 @@ public class CommandResetStats extends CommandBase {
     private void resetSixPowers(Entity entity, ICommandSender sender, boolean notify){
         ISixPowersCap sixPowers = SixPowersCap.get((EntityPlayer) entity);
         sixPowers.resetAll();
-        PacketDispatcher.sendTo(new SixPowersPacket(sixPowers), (EntityPlayerMP)entity);
+        PacketDispatcher.sendTo(new PacketSixPowers(sixPowers), (EntityPlayerMP)entity);
         if (notify) {
             notifyCommandListener(sender, this, "Reset %s's Six Powers", entity.getName());
         }

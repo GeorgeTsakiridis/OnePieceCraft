@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.network.packets.server;
 
+import georgetsak.opcraft.common.entity.devilfruit.EntityLiberation;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
@@ -9,19 +9,19 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
-public class ElThorServerPacket extends AbstractMessage.AbstractServerMessage<ElThorServerPacket> {
+public class PacketLiberationServer extends AbstractMessage.AbstractServerMessage<PacketLiberationServer> {
 
     BlockPos spawnPosition;
 
-    public ElThorServerPacket(){}
+    public PacketLiberationServer(){}
 
-    public ElThorServerPacket(BlockPos spawnPosition){
+    public PacketLiberationServer(BlockPos spawnPosition){
         this.spawnPosition = spawnPosition;
     }
 
     @Override
     protected void read(PacketBuffer buffer) throws IOException {
-        this.spawnPosition = buffer.readBlockPos();
+        spawnPosition = buffer.readBlockPos();
     }
 
     @Override
@@ -33,14 +33,9 @@ public class ElThorServerPacket extends AbstractMessage.AbstractServerMessage<El
     public void process(EntityPlayer player, Side side) {
         if (side.isServer()) {
             if (spawnPosition != null) {
-                double x = spawnPosition.getX();
-                double y = spawnPosition.getY();
-                double z = spawnPosition.getZ();
-                for (int i = 0; i < 6; i++) {
-                    EntityLightningBolt lightningBolt = new EntityLightningBolt(player.world, x, y, z, false);
-                    player.world.addWeatherEffect(lightningBolt);
-                }
+                player.world.spawnEntity(new EntityLiberation(player.world, spawnPosition, player));
             }
         }
+
     }
 }

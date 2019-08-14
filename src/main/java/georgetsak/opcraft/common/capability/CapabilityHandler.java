@@ -19,12 +19,12 @@ import georgetsak.opcraft.common.capability.sixpowers.SixPowersCapProvider;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCapProvider;
-import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
-import georgetsak.opcraft.common.network.packets.client.DevilFruitClientPacket;
-import georgetsak.opcraft.common.network.packets.client.DevilFruitLevelsClientPacket;
-import georgetsak.opcraft.common.network.packets.client.StatsNormalClientPacket;
-import georgetsak.opcraft.common.network.packets.common.HakiPacket;
-import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketBountyClient;
+import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitClient;
+import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitLevelsClient;
+import georgetsak.opcraft.common.network.packets.client.PacketStatsNormalClient;
+import georgetsak.opcraft.common.network.packets.common.PacketHaki;
+import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -69,12 +69,12 @@ public class CapabilityHandler {
         EntityPlayer player = event.player;
         EntityPlayerMP playerMP = (EntityPlayerMP)player;
         
-        PacketDispatcher.sendTo(new DevilFruitClientPacket(DevilFruitCap.get(player)), playerMP);
-        PacketDispatcher.sendTo(new BountyClientPacket(BountyCap.get(player)), (EntityPlayerMP)player);
-        PacketDispatcher.sendTo(new StatsNormalClientPacket(StatsNormalCap.get(player)), playerMP);
-        PacketDispatcher.sendTo(new HakiPacket(HakiCap.get(player)), playerMP);
-        PacketDispatcher.sendTo(new SixPowersPacket(SixPowersCap.get(player)), playerMP);
-        PacketDispatcher.sendTo(new DevilFruitLevelsClientPacket(DevilFruitLevelsCap.get(player)), playerMP);
+        PacketDispatcher.sendTo(new PacketDevilFruitClient(DevilFruitCap.get(player)), playerMP);
+        PacketDispatcher.sendTo(new PacketBountyClient(BountyCap.get(player)), (EntityPlayerMP)player);
+        PacketDispatcher.sendTo(new PacketStatsNormalClient(StatsNormalCap.get(player)), playerMP);
+        PacketDispatcher.sendTo(new PacketHaki(HakiCap.get(player)), playerMP);
+        PacketDispatcher.sendTo(new PacketSixPowers(SixPowersCap.get(player)), playerMP);
+        PacketDispatcher.sendTo(new PacketDevilFruitLevelsClient(DevilFruitLevelsCap.get(player)), playerMP);
 
         if(!OPCraft.IS_RELEASE_VERSION){
             player.sendMessage(new TextComponentString(TextFormatting.GOLD + "==============================="));
@@ -102,12 +102,12 @@ public class CapabilityHandler {
 
                 EntityPlayerMP playerMP = (EntityPlayerMP)player;
 
-                PacketDispatcher.sendTo(new DevilFruitClientPacket(devilFruitsCap), playerMP);
-                PacketDispatcher.sendTo(new BountyClientPacket(bountyCap), playerMP);
-                PacketDispatcher.sendTo(new StatsNormalClientPacket(statsNormalCap), playerMP);
-                PacketDispatcher.sendTo(new HakiPacket(hakiCap), playerMP);
-                PacketDispatcher.sendTo(new SixPowersPacket(sixPowersCap), playerMP);
-                PacketDispatcher.sendTo(new DevilFruitLevelsClientPacket(devilFruitLevelsCap), playerMP);
+                PacketDispatcher.sendTo(new PacketDevilFruitClient(devilFruitsCap), playerMP);
+                PacketDispatcher.sendTo(new PacketBountyClient(bountyCap), playerMP);
+                PacketDispatcher.sendTo(new PacketStatsNormalClient(statsNormalCap), playerMP);
+                PacketDispatcher.sendTo(new PacketHaki(hakiCap), playerMP);
+                PacketDispatcher.sendTo(new PacketSixPowers(sixPowersCap), playerMP);
+                PacketDispatcher.sendTo(new PacketDevilFruitLevelsClient(devilFruitLevelsCap), playerMP);
             }
         }
     }

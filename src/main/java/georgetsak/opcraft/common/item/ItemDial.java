@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.item;
 
-import georgetsak.opcraft.common.network.packets.server.DamageEntityServerPacket;
+import georgetsak.opcraft.common.network.packets.server.PacketDamageEntityServer;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -152,7 +152,7 @@ public class ItemDial extends Item {
 
 			Entity e = Minecraft.getMinecraft().pointedEntity;
 			if (e instanceof EntityLiving || e instanceof EntityPlayer) {
-				PacketDispatcher.sendToServer(new DamageEntityServerPacket(e, 4f));
+				PacketDispatcher.sendToServer(new PacketDamageEntityServer(e, 4f));
                 itemStack.setCount(itemStack.getCount()-1);
 				return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
 			}

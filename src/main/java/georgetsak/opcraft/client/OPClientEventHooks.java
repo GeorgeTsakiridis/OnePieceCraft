@@ -187,7 +187,7 @@ public class OPClientEventHooks {
         if (action.equals("IceBallA")) {
             Entity entity = RaytracingUtils.getLookingEntity(ep, 50);
             if (entity != null) {
-                PacketDispatcher.sendToServer(new IceCageEntityServerPacket(entity));
+                PacketDispatcher.sendToServer(new PacketIceCageEntityServer(entity));
                 return true;
             }
         }
@@ -195,20 +195,20 @@ public class OPClientEventHooks {
         if (action.equals("WhiteSnakeA")) {
             Entity entity = RaytracingUtils.getLookingEntity(ep, 50);
             if (entity != null) {
-                PacketDispatcher.sendToServer(new SmokeSnakeServerPacket(entity));
+                PacketDispatcher.sendToServer(new PacketSmokeSnakeServer(entity));
                 return true;
             }
         }
 
         if (action.equals("ElThorA")) {
             BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 300);
-            PacketDispatcher.sendToServer(new ElThorServerPacket(spawnPosition));
+            PacketDispatcher.sendToServer(new PacketElThorServer(spawnPosition));
             return true;
         }
 
         if (action.equals("BlackHoleA")) {
             BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 30);
-            PacketDispatcher.sendToServer(new BlackHoleServerPacket(spawnPosition));
+            PacketDispatcher.sendToServer(new PacketBlackHoleServer(spawnPosition));
             sendMessage("BlackHoleA");
             return true;
         }
@@ -216,7 +216,7 @@ public class OPClientEventHooks {
         if (action.equals("KurouzuA")) {
             Entity entity = RaytracingUtils.getLookingEntity(ep,50);
             if(entity != null){
-                PacketDispatcher.sendToServer(new KurouzuServerPacket(entity));
+                PacketDispatcher.sendToServer(new PacketKurouzuServer(entity));
             }
             return true;
         }
@@ -225,7 +225,7 @@ public class OPClientEventHooks {
             disableAndEnableDamageAfter(220);
             BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 30);
             if (spawnPosition != null) {
-                PacketDispatcher.sendToServer(new LiberationServerPacket(spawnPosition));
+                PacketDispatcher.sendToServer(new PacketLiberationServer(spawnPosition));
             }
             sendMessage("LiberationA");
             return true;
@@ -271,7 +271,7 @@ public class OPClientEventHooks {
                         Entity entity = RaytracingUtils.getLookingEntity(p, 5);
                         if (entity instanceof EntityLiving) {
 
-                            PacketDispatcher.sendToServer(new DamageEntityServerPacket(entity, sixPowerLevel * 4f));
+                            PacketDispatcher.sendToServer(new PacketDamageEntityServer(entity, sixPowerLevel * 4f));
                         }
                         break;
                     case STORM_LEG:
@@ -351,7 +351,7 @@ public class OPClientEventHooks {
         //Emperor Haki key handler.
         if(ClientProxy.emperorHakiButton.isPressed() && cooldownEmperor == 0) {
                 cooldownEmperor = adjustTicks(1200);
-                PacketDispatcher.sendToServer(new EmperorServerPacket());
+                PacketDispatcher.sendToServer(new PacketEmperorServer());
         }
     }
 
@@ -438,7 +438,7 @@ public class OPClientEventHooks {
      * Sends the given message to the server in an OPServerMessage packet.
      */
     private void sendMessage(String message){
-        PacketDispatcher.sendToServer(new OPServerMessage(message));
+        PacketDispatcher.sendToServer(new PacketToServerCommandsServer(message));
     }
 
     /**
@@ -524,13 +524,13 @@ public class OPClientEventHooks {
                         if (mov != null) {
 
                             if(mov.typeOfHit == RayTraceResult.Type.BLOCK && player.getCooldownTracker().getCooldown(itemstack.getItem(), 0f) <= 0 && itemstack.getItem().equals(OPItems.ItemBazooka)){
-                                PacketDispatcher.sendToServer(new CreateExplosionServerPacket(mov.getBlockPos(), 8));
+                                PacketDispatcher.sendToServer(new PacketCreateExplosionServer(mov.getBlockPos(), 8));
                             }
 
                             if (mov.entityHit != null && player.getCooldownTracker().getCooldown(iExtendedReach.getItem(), 0) <= 0F) {
                                 {
                                     if (mov.entityHit != player) {
-                                        PacketDispatcher.sendToServer(new RayTraceServerPacket(
+                                        PacketDispatcher.sendToServer(new PacketRayTraceServer(
                                                 mov.entityHit.getEntityId()));
                                     }
                                 }

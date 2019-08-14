@@ -18,14 +18,14 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class RayTraceServerPacket extends AbstractMessage.AbstractServerMessage<RayTraceServerPacket> {
+public class PacketRayTraceServer extends AbstractMessage.AbstractServerMessage<PacketRayTraceServer> {
 
     private int entityId;
 
-    public RayTraceServerPacket() {
+    public PacketRayTraceServer() {
     }
 
-    public RayTraceServerPacket(int parEntityId) {
+    public PacketRayTraceServer(int parEntityId) {
         entityId = parEntityId;
     }
 
@@ -68,9 +68,9 @@ public class RayTraceServerPacket extends AbstractMessage.AbstractServerMessage<
     }
 
 
-    public static class Handler implements IMessageHandler<RayTraceServerPacket, IMessage> {
+    public static class Handler implements IMessageHandler<PacketRayTraceServer, IMessage> {
 
-        public IMessage onMessage(RayTraceServerPacket message, MessageContext ctx) {
+        public IMessage onMessage(PacketRayTraceServer message, MessageContext ctx) {
             IThreadListener mainThread = (WorldServer) ctx.getServerHandler().player.world; // or Minecraft.getMinecraft() on the client
 
             final EntityPlayerMP thePlayer = (EntityPlayerMP) OPCraft.proxy.getPlayerEntityFromContext(ctx);

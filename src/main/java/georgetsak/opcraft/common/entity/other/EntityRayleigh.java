@@ -4,7 +4,7 @@ import georgetsak.opcraft.common.capability.bounty.BountyCap;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
-import georgetsak.opcraft.common.network.packets.common.HakiPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketHaki;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.*;
@@ -80,7 +80,7 @@ public class EntityRayleigh extends EntityMob {
                 }
                 if (bounty >= 50000) {
                     hakiCap.setUnlockedEmperorHaki(true);
-                    PacketDispatcher.sendTo(new HakiPacket(hakiCap), (EntityPlayerMP)player);
+                    PacketDispatcher.sendTo(new PacketHaki(hakiCap), (EntityPlayerMP)player);
                     player.sendStatusMessage((new TextComponentString(TextFormatting.GREEN + "You learned the Conqueror Haki!")), true);
                 }else {
                     player.sendStatusMessage((new TextComponentString(TextFormatting.RED + "You are not worthy to learn this Haki yet!")), true);

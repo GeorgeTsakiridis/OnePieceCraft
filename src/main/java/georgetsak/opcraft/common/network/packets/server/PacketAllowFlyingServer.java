@@ -5,13 +5,13 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class AllowFlyingServerPacket extends AbstractMessage.AbstractServerMessage<AllowFlyingServerPacket>{
+public class PacketAllowFlyingServer extends AbstractMessage.AbstractServerMessage<PacketAllowFlyingServer>{
 
     boolean allow;
 
-    public AllowFlyingServerPacket(){}
+    public PacketAllowFlyingServer(){}
 
-    public AllowFlyingServerPacket(boolean allow){
+    public PacketAllowFlyingServer(boolean allow){
         this.allow = allow;
     }
 

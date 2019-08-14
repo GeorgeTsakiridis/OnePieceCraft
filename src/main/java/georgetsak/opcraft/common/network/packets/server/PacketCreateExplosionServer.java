@@ -7,13 +7,13 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class CreateExplosionServerPacket extends AbstractMessage.AbstractServerMessage<CreateExplosionServerPacket> {
+public class PacketCreateExplosionServer extends AbstractMessage.AbstractServerMessage<PacketCreateExplosionServer> {
 
     BlockPos pos;
     int strength;
 
-    public CreateExplosionServerPacket(){}
-    public CreateExplosionServerPacket(BlockPos pos, int strength){
+    public PacketCreateExplosionServer(){}
+    public PacketCreateExplosionServer(BlockPos pos, int strength){
         this.pos = pos;
         this.strength = strength;
     }

@@ -13,12 +13,12 @@ import net.minecraftforge.fml.relauncher.Side;
 /**
  * Created by GeorgeProgramming on 7/12/2017.
  */
-public class BountyClientPacket extends AbstractMessage.AbstractClientMessage<BountyClientPacket>{
+public class PacketBountyClient extends AbstractMessage.AbstractClientMessage<PacketBountyClient>{
 
     int bounty;
 
-    public BountyClientPacket(){}
-    public BountyClientPacket(IBountyCap b){
+    public PacketBountyClient(){}
+    public PacketBountyClient(IBountyCap b){
         bounty = b.getBounty();
     }
 

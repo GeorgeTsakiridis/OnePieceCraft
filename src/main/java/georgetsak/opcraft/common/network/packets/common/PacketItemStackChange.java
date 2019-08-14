@@ -11,13 +11,13 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
-public class ItemStackChangePacket extends AbstractMessage<ItemStackChangePacket>{
+public class PacketItemStackChange extends AbstractMessage<PacketItemStackChange>{
 
     ItemStack itemStack;
 
-    public ItemStackChangePacket(){}
+    public PacketItemStackChange(){}
 
-    public ItemStackChangePacket(ItemStack itemStack){
+    public PacketItemStackChange(ItemStack itemStack){
         this.itemStack = itemStack;
     }
 
@@ -37,7 +37,7 @@ public class ItemStackChangePacket extends AbstractMessage<ItemStackChangePacket
             System.out.println("SERVER");
 
             player.inventory.setInventorySlotContents(9, itemStack);
-            PacketDispatcher.sendTo(new ItemStackChangePacket(itemStack), (EntityPlayerMP)player);
+            PacketDispatcher.sendTo(new PacketItemStackChange(itemStack), (EntityPlayerMP)player);
         }
         else if(side.isClient()){
             System.out.println("CLIENT");

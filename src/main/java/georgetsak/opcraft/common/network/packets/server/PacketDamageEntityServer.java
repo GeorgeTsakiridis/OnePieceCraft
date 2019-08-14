@@ -7,14 +7,14 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class DamageEntityServerPacket extends AbstractMessage.AbstractServerMessage<DamageEntityServerPacket> {
+public class PacketDamageEntityServer extends AbstractMessage.AbstractServerMessage<PacketDamageEntityServer> {
 
     int entityID;
     float amount;
 
-    public DamageEntityServerPacket(){}
+    public PacketDamageEntityServer(){}
 
-    public DamageEntityServerPacket(Entity entity, float amount) {
+    public PacketDamageEntityServer(Entity entity, float amount) {
         this.entityID = entity.getEntityId();
         this.amount = amount;
     }

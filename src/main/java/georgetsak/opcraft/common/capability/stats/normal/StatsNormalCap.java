@@ -2,8 +2,8 @@ package georgetsak.opcraft.common.capability.stats.normal;
 
 import georgetsak.opcraft.common.util.OPUtils;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.client.StatsNormalClientPacket;
-import georgetsak.opcraft.common.network.packets.server.StatsNormalServerPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketStatsNormalClient;
+import georgetsak.opcraft.common.network.packets.server.PacketStatsNormalServer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -98,7 +98,7 @@ public class StatsNormalCap implements IStatsNormalCap{
     }
 
     public void updateToSever(IStatsNormalCap stats){
-        PacketDispatcher.sendToServer(new StatsNormalServerPacket(stats));
+        PacketDispatcher.sendToServer(new PacketStatsNormalServer(stats));
     }
 
     public void copy(IStatsNormalCap old_ns, EntityPlayer ep) {
@@ -108,7 +108,7 @@ public class StatsNormalCap implements IStatsNormalCap{
         this.setSpeedLevel(old_ns.getSpeedLevel());
         OPUtils.updateStats(ep, this);
 
-        PacketDispatcher.sendTo(new StatsNormalClientPacket(old_ns), (EntityPlayerMP) ep);
+        PacketDispatcher.sendTo(new PacketStatsNormalClient(old_ns), (EntityPlayerMP) ep);
     }
 
 

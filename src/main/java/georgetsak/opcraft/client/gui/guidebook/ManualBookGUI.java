@@ -2,7 +2,7 @@ package georgetsak.opcraft.client.gui.guidebook;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.server.ManualBookPageServerPacket;
+import georgetsak.opcraft.common.network.packets.server.PacketManualBookPageServer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiButton;
@@ -80,7 +80,7 @@ public class ManualBookGUI extends GuiScreen {
     public void onGuiClosed() {
         if(player != null) {
             player.inventory.getCurrentItem().getTagCompound().setInteger("page", page);
-            PacketDispatcher.sendToServer(new ManualBookPageServerPacket(page));
+            PacketDispatcher.sendToServer(new PacketManualBookPageServer(page));
         }
         super.onGuiClosed();
     }

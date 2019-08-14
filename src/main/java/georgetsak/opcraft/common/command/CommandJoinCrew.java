@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.command;
 
 import georgetsak.opcraft.client.proxy.ClientProxy;
-import georgetsak.opcraft.common.network.packets.server.EditCrewServerPacket;
+import georgetsak.opcraft.common.network.packets.server.PacketEditCrewServer;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandBase;
@@ -42,7 +42,7 @@ public class CommandJoinCrew extends CommandBase {
         }
         else {
             if (ClientProxy.crewLastInviteName != null) {
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("addMember", ClientProxy.crewLastInviteName, 0));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("addMember", ClientProxy.crewLastInviteName, 0));
                 ClientProxy.crewLastInviteName = null;
             }else{
                 Minecraft.getMinecraft().player.sendMessage(new TextComponentString("You have no pending invite!"));

@@ -6,7 +6,7 @@ import georgetsak.opcraft.client.gui.shipbuilder.ShipBuilderGUI;
 import georgetsak.opcraft.client.gui.stat.HakiGUI;
 import georgetsak.opcraft.client.gui.stat.StatsGUI;
 import georgetsak.opcraft.common.crew.CrewSaveData;
-import georgetsak.opcraft.common.network.packets.client.SyncCrewClientPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketSyncCrewClient;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -24,7 +24,7 @@ public class GUIHandler implements IGuiHandler {
             case 2:
                 return new ContainerCraftingShipBuilder(player.inventory, world, new BlockPos(x, y, z));
             case 5:{
-                PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(world).getCrews()),(EntityPlayerMP)player);
+                PacketDispatcher.sendTo(new PacketSyncCrewClient(CrewSaveData.get(world).getCrews()),(EntityPlayerMP)player);
             }
                 default:return null;
         }

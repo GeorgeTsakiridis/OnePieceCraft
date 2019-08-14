@@ -8,14 +8,14 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.relauncher.Side;
 
 
-public class DevilFruitLevelsClientPacket extends AbstractMessage.AbstractClientMessage<DevilFruitLevelsClientPacket>{
+public class PacketDevilFruitLevelsClient extends AbstractMessage.AbstractClientMessage<PacketDevilFruitLevelsClient>{
 
     int devilFruitID;
     int[] uses;
     int[] hits;
 
-    public DevilFruitLevelsClientPacket(){}
-    public DevilFruitLevelsClientPacket(IDevilFruitLevelsCap dfl){
+    public PacketDevilFruitLevelsClient(){}
+    public PacketDevilFruitLevelsClient(IDevilFruitLevelsCap dfl){
         devilFruitID = dfl.getDevilFruitID();
         uses = dfl.getAllPowersUses();
         hits = dfl.getAllPowersHits();

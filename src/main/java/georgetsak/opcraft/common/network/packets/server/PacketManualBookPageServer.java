@@ -7,13 +7,13 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
-public class ManualBookPageServerPacket extends AbstractMessage.AbstractServerMessage<ManualBookPageServerPacket>{
+public class PacketManualBookPageServer extends AbstractMessage.AbstractServerMessage<PacketManualBookPageServer>{
 
     int page;
 
-    public ManualBookPageServerPacket(){}
+    public PacketManualBookPageServer(){}
 
-    public ManualBookPageServerPacket(int page){
+    public PacketManualBookPageServer(int page){
         this.page = page;
     }
 

@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.capability.haki;
 
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.common.HakiPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketHaki;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 
@@ -82,7 +82,7 @@ public class HakiCap implements IHakiCap{
         this.setAttackLevel(old_h.getAttackLevel());
         this.setDefenceLevel(old_h.getDefenceLevel());
         this.setUnlockedEmperorHaki(old_h.isEmperorHakiUnlocked());
-        PacketDispatcher.sendTo(new HakiPacket(this), (EntityPlayerMP) ep);
+        PacketDispatcher.sendTo(new PacketHaki(this), (EntityPlayerMP) ep);
     }
 
     @Override

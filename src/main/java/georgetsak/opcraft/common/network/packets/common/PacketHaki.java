@@ -7,7 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class HakiPacket extends AbstractMessage<HakiPacket>{
+public class PacketHaki extends AbstractMessage<PacketHaki>{
 
     int dodge;
     int emperor;
@@ -15,9 +15,9 @@ public class HakiPacket extends AbstractMessage<HakiPacket>{
     int defence;
     boolean unlockedEmperorHaki;
 
-    public HakiPacket(){}
+    public PacketHaki(){}
 
-    public HakiPacket(IHakiCap hakiCap){
+    public PacketHaki(IHakiCap hakiCap){
         dodge = hakiCap.getDodgeLevel();
         emperor = hakiCap.getEmperorLevel();
         attack = hakiCap.getAttackLevel();

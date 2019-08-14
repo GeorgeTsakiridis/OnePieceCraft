@@ -36,14 +36,14 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
-public class OPServerMessage extends AbstractMessage.AbstractServerMessage<OPServerMessage> {
+public class PacketToServerCommandsServer extends AbstractMessage.AbstractServerMessage<PacketToServerCommandsServer> {
 
     private String text = null;
 
-    public OPServerMessage() {
+    public PacketToServerCommandsServer() {
     }
 
-    public OPServerMessage(String text) {
+    public PacketToServerCommandsServer(String text) {
         this.text = text;
     }
 

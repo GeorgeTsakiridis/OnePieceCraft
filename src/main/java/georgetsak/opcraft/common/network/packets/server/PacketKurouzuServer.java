@@ -9,13 +9,13 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class KurouzuServerPacket extends AbstractMessage.AbstractServerMessage<KurouzuServerPacket> {
+public class PacketKurouzuServer extends AbstractMessage.AbstractServerMessage<PacketKurouzuServer> {
 
     int targetID;
 
-    public KurouzuServerPacket(){}
+    public PacketKurouzuServer(){}
 
-    public KurouzuServerPacket(Entity target){
+    public PacketKurouzuServer(Entity target){
         this.targetID = target.getEntityId();
     }
 

@@ -2,7 +2,7 @@ package georgetsak.opcraft.common.capability.devilfruitlevels;
 
 import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
-import georgetsak.opcraft.common.network.packets.client.DevilFruitLevelsClientPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitLevelsClient;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
 import net.minecraft.entity.player.EntityPlayer;
@@ -128,7 +128,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
         this.setDevilFruitID(getDevilFruitID());
         this.setPowerUses(uses);
         this.setPowerHits(hits);
-        PacketDispatcher.sendTo(new DevilFruitLevelsClientPacket(dfl), (EntityPlayerMP)ep);
+        PacketDispatcher.sendTo(new PacketDevilFruitLevelsClient(dfl), (EntityPlayerMP)ep);
     }
 
 }

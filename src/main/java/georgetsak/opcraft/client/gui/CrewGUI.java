@@ -4,21 +4,17 @@ import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
-import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.crew.Crew;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
-import georgetsak.opcraft.common.network.packets.server.EditCrewServerPacket;
+import georgetsak.opcraft.common.network.packets.server.PacketEditCrewServer;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.util.CrewUtils;
-import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.attributes.IAttributeInstance;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -221,44 +217,44 @@ public class CrewGUI extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         switch (button.id){
             case 1:{
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("create", createCrewNameTextField.getText(), 0));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("create", createCrewNameTextField.getText(), 0));
                 break;
             }
             case 3:{
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("setRole", mc.player.getPersistentID().toString(), 1));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("setRole", mc.player.getPersistentID().toString(), 1));
                 break;
             }
             case 4:{
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("setRole", mc.player.getPersistentID().toString(), 2));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("setRole", mc.player.getPersistentID().toString(), 2));
                 break;
             }
             case 5:{
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("setRole", mc.player.getPersistentID().toString(), 3));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("setRole", mc.player.getPersistentID().toString(), 3));
                 break;
             }
             case 6:{
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("setRole", mc.player.getPersistentID().toString(), 4));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("setRole", mc.player.getPersistentID().toString(), 4));
                 break;
             }
             case 7:{
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("setRole", mc.player.getPersistentID().toString(), 0));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("setRole", mc.player.getPersistentID().toString(), 0));
                 break;
             }
             case 8:{
-                PacketDispatcher.sendToServer(new EditCrewServerPacket("removeMember", mc.player.getPersistentID().toString(), 0));
+                PacketDispatcher.sendToServer(new PacketEditCrewServer("removeMember", mc.player.getPersistentID().toString(), 0));
                 break;
             }
             case 9: {
                 EntityPlayer player = mc.world.getPlayerEntityByName(invitePlayerNameTextField.getText());
                 if (player != null) {
-                    PacketDispatcher.sendToServer(new EditCrewServerPacket("inviteMember", player.getPersistentID().toString(), 0));
+                    PacketDispatcher.sendToServer(new PacketEditCrewServer("inviteMember", player.getPersistentID().toString(), 0));
                 }
                 break;
             }
             case 11: {
                 EntityPlayer player = mc.world.getPlayerEntityByName(invitePlayerNameTextField.getText());
                 if(player != null && !player.getPersistentID().equals(mc.player.getPersistentID())){
-                    PacketDispatcher.sendToServer(new EditCrewServerPacket("removeMember", player.getPersistentID().toString(), 0));
+                    PacketDispatcher.sendToServer(new PacketEditCrewServer("removeMember", player.getPersistentID().toString(), 0));
                 }
             }
         }

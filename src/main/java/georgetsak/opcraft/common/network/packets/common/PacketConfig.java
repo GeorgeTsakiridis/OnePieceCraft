@@ -4,7 +4,6 @@ import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.config.ConfigEntry;
 import georgetsak.opcraft.common.config.ConfigEntryBoolean;
 import georgetsak.opcraft.common.config.ConfigEntryInt;
-import georgetsak.opcraft.common.util.OPUtils;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
@@ -12,9 +11,9 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
-public class ConfigPacket extends AbstractMessage<ConfigPacket> {
+public class PacketConfig extends AbstractMessage<PacketConfig> {
 
-    public ConfigPacket() {
+    public PacketConfig() {
         System.out.println("CONFIG PACKET");
     }
 

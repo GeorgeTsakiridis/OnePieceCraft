@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.network.packets.server;
 
 import georgetsak.opcraft.common.crew.CrewSaveData;
-import georgetsak.opcraft.common.network.packets.client.SyncCrewClientPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketSyncCrewClient;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,9 +10,9 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
-public class RequestCrewUpdateServerPacket extends AbstractMessage.AbstractServerMessage<RequestCrewUpdateServerPacket> {
+public class PacketRequestCrewUpdateServer extends AbstractMessage.AbstractServerMessage<PacketRequestCrewUpdateServer> {
 
-    public RequestCrewUpdateServerPacket(){}
+    public PacketRequestCrewUpdateServer(){}
 
     @Override
     protected void read(PacketBuffer buffer) throws IOException {
@@ -27,7 +27,7 @@ public class RequestCrewUpdateServerPacket extends AbstractMessage.AbstractServe
     @Override
     public void process(EntityPlayer player, Side side) {
         if (side.isServer()) {
-            PacketDispatcher.sendToAll(new SyncCrewClientPacket(CrewSaveData.get(player.world).getCrews()));
+            PacketDispatcher.sendToAll(new PacketSyncCrewClient(CrewSaveData.get(player.world).getCrews()));
         }
     }
 }

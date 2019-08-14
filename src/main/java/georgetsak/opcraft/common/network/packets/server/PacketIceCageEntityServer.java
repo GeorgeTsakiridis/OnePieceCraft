@@ -15,12 +15,12 @@ import net.minecraftforge.fml.relauncher.Side;
 /**
  * Created by GeorgeTsak on 7/29/2017.
  */
-public class IceCageEntityServerPacket extends AbstractMessage.AbstractServerMessage<IceCageEntityServerPacket>{
+public class PacketIceCageEntityServer extends AbstractMessage.AbstractServerMessage<PacketIceCageEntityServer>{
 
     int targetID;
 
-    public IceCageEntityServerPacket(){}
-    public IceCageEntityServerPacket(Entity target){
+    public PacketIceCageEntityServer(){}
+    public PacketIceCageEntityServer(Entity target){
         this.targetID = target.getEntityId();
     }
 

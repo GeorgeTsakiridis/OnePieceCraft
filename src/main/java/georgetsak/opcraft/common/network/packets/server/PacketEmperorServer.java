@@ -17,9 +17,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.io.IOException;
 import java.util.List;
 
-public class EmperorServerPacket extends AbstractMessage.AbstractServerMessage<EmperorServerPacket>{
+public class PacketEmperorServer extends AbstractMessage.AbstractServerMessage<PacketEmperorServer>{
 
-    public EmperorServerPacket(){}
+    public PacketEmperorServer(){}
 
     @Override
     protected void read(PacketBuffer buffer) throws IOException {

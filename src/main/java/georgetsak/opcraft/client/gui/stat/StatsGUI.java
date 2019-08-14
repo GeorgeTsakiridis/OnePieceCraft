@@ -5,7 +5,7 @@ import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.server.UpdateXPLevelsServerPacket;
+import georgetsak.opcraft.common.network.packets.server.PacketUpdateXPLevelsServer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -155,7 +155,7 @@ public class StatsGUI extends GuiScreen{
                 break;
         }
 
-        PacketDispatcher.sendToServer(new UpdateXPLevelsServerPacket(ep.experienceLevel));
+        PacketDispatcher.sendToServer(new PacketUpdateXPLevelsServer(ep.experienceLevel));
         stats.updateToSever(stats);
     }
 

@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.network.packets.server;
 
-import georgetsak.opcraft.common.network.packets.client.UpdateXPLevelsClientPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketUpdateXPLevelsClient;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,12 +13,12 @@ import java.io.IOException;
 /**
  * Created by GeorgeTsak on 7/15/2017.
  */
-public class UpdateXPLevelsServerPacket extends AbstractMessage.AbstractServerMessage<UpdateXPLevelsServerPacket>{
+public class PacketUpdateXPLevelsServer extends AbstractMessage.AbstractServerMessage<PacketUpdateXPLevelsServer>{
 
     int xp;
 
-    public UpdateXPLevelsServerPacket(){}
-    public UpdateXPLevelsServerPacket(int xp){
+    public PacketUpdateXPLevelsServer(){}
+    public PacketUpdateXPLevelsServer(int xp){
         this.xp = xp;
     }
 
@@ -36,7 +36,7 @@ public class UpdateXPLevelsServerPacket extends AbstractMessage.AbstractServerMe
     public void process(EntityPlayer player, Side side) {
         if(side.isServer()){
             player.experienceLevel = this.xp;
-            PacketDispatcher.sendTo(new UpdateXPLevelsClientPacket(this.xp), (EntityPlayerMP)player);
+            PacketDispatcher.sendTo(new PacketUpdateXPLevelsClient(this.xp), (EntityPlayerMP)player);
         }
     }
 

@@ -5,8 +5,8 @@ import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
-import georgetsak.opcraft.common.network.packets.common.HakiPacket;
-import georgetsak.opcraft.common.network.packets.server.UpdateXPLevelsServerPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketHaki;
+import georgetsak.opcraft.common.network.packets.server.PacketUpdateXPLevelsServer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -158,8 +158,8 @@ public class HakiGUI extends GuiScreen{
                 break;
         }
 
-        PacketDispatcher.sendToServer(new UpdateXPLevelsServerPacket(ep.experienceLevel));
-        PacketDispatcher.sendToServer(new HakiPacket(haki));
+        PacketDispatcher.sendToServer(new PacketUpdateXPLevelsServer(ep.experienceLevel));
+        PacketDispatcher.sendToServer(new PacketHaki(haki));
     }
 
     @Override

@@ -12,13 +12,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class SyncCrewClientPacket extends AbstractMessage.AbstractClientMessage<SyncCrewClientPacket> {
+public class PacketSyncCrewClient extends AbstractMessage.AbstractClientMessage<PacketSyncCrewClient> {
 
     ArrayList<Crew> crew;
 
-    public SyncCrewClientPacket(){}
+    public PacketSyncCrewClient(){}
 
-    public SyncCrewClientPacket(ArrayList<Crew> crew){
+    public PacketSyncCrewClient(ArrayList<Crew> crew){
         this.crew = crew;
     }
 

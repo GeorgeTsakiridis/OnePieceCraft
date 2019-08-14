@@ -17,11 +17,11 @@ import georgetsak.opcraft.common.entity.marine.EntityMarine;
 import georgetsak.opcraft.common.entity.other.EntityBandit;
 import georgetsak.opcraft.common.item.weapons.swords.ItemSimpleSword;
 import georgetsak.opcraft.common.item.weapons.swords.ItemSwordWithCase;
-import georgetsak.opcraft.common.network.packets.client.BountyClientPacket;
-import georgetsak.opcraft.common.network.packets.client.DevilFruitClientPacket;
-import georgetsak.opcraft.common.network.packets.client.SyncCrewClientPacket;
-import georgetsak.opcraft.common.network.packets.common.ConfigPacket;
-import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketBountyClient;
+import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitClient;
+import georgetsak.opcraft.common.network.packets.client.PacketSyncCrewClient;
+import georgetsak.opcraft.common.network.packets.common.PacketConfig;
+import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
@@ -72,15 +72,15 @@ public class OPCommonEventHooks {
     public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
 
         if (event.player != null) {
-            PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
+            PacketDispatcher.sendTo(new PacketSyncCrewClient(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
         }
 
     }
 
     @SubscribeEvent
     public void onPlayerLoggedIn2(PlayerEvent.PlayerLoggedInEvent event) {
-        PacketDispatcher.sendTo(new SyncCrewClientPacket(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
-        PacketDispatcher.sendTo(new ConfigPacket(), (EntityPlayerMP) event.player);
+        PacketDispatcher.sendTo(new PacketSyncCrewClient(CrewSaveData.get(event.player.world).getCrews()), (EntityPlayerMP)event.player);
+        PacketDispatcher.sendTo(new PacketConfig(), (EntityPlayerMP) event.player);
 
         NBTTagCompound playerData = event.player.getEntityData();//Gives the manual on first login.
         NBTTagCompound data;
@@ -135,7 +135,7 @@ public class OPCommonEventHooks {
                 if (!hurtPlayer.world.isRemote) {
                     ISixPowersCap hurtSixPowersCap = SixPowersCap.get(hurtPlayer);
                     hurtSixPowersCap.addIronDamage((int) event.getAmount());
-                    PacketDispatcher.sendTo(new SixPowersPacket(hurtSixPowersCap), (EntityPlayerMP) hurtPlayer);
+                    PacketDispatcher.sendTo(new PacketSixPowers(hurtSixPowersCap), (EntityPlayerMP) hurtPlayer);
                 }
             }
 
@@ -145,7 +145,7 @@ public class OPCommonEventHooks {
 
                     hurtPlayer.sendMessage((new TextComponentString("You were revived by using Yomi Yomi no mi devil fruit power!")));
                     devilFruitsCap.setPower(0);
-                    PacketDispatcher.sendTo(new DevilFruitClientPacket(devilFruitsCap), (EntityPlayerMP) hurtPlayer);
+                    PacketDispatcher.sendTo(new PacketDevilFruitClient(devilFruitsCap), (EntityPlayerMP) hurtPlayer);
 
                     hurtPlayer.heal(20);
 
@@ -177,7 +177,7 @@ public class OPCommonEventHooks {
                 if (!attackerPlayer.world.isRemote) {
                     ISixPowersCap attackerSixPowersCap = SixPowersCap.get(attackerPlayer);
                     attackerSixPowersCap.addPunchDamage(1);
-                    PacketDispatcher.sendTo(new SixPowersPacket(attackerSixPowersCap), (EntityPlayerMP) attackerPlayer);
+                    PacketDispatcher.sendTo(new PacketSixPowers(attackerSixPowersCap), (EntityPlayerMP) attackerPlayer);
                 }
             }
         }
@@ -279,12 +279,12 @@ public class OPCommonEventHooks {
             sourceBountyCap.changeBountyBy((int)(victimBountyCap.getBounty() * 0.30f));
             victimBountyCap.changeBountyBy((int)(-victimBountyCap.getBounty() * 0.35f));
 
-            PacketDispatcher.sendTo(new BountyClientPacket(victimBountyCap), (EntityPlayerMP)victimPlayer);
-            PacketDispatcher.sendTo(new BountyClientPacket(sourceBountyCap), (EntityPlayerMP)killerPlayer);
+            PacketDispatcher.sendTo(new PacketBountyClient(victimBountyCap), (EntityPlayerMP)victimPlayer);
+            PacketDispatcher.sendTo(new PacketBountyClient(sourceBountyCap), (EntityPlayerMP)killerPlayer);
 
         }else {
             victimBountyCap.changeBountyBy((int) (-victimBountyCap.getBounty() * 0.1f));
-            PacketDispatcher.sendTo(new BountyClientPacket(victimBountyCap), (EntityPlayerMP) victimPlayer);
+            PacketDispatcher.sendTo(new PacketBountyClient(victimBountyCap), (EntityPlayerMP) victimPlayer);
         }
     }
 
@@ -321,11 +321,11 @@ public class OPCommonEventHooks {
             if (entity.world.isRemote) {
                 if (player.isSprinting()) {
                     sixPowersCap.addRunningJumps(1);
-                    PacketDispatcher.sendToServer(new SixPowersPacket(sixPowersCap));
+                    PacketDispatcher.sendToServer(new PacketSixPowers(sixPowersCap));
                 }
                 else if(player.moveForward == 0 && player.moveStrafing == 0) {//moveForward & moveStrafing fields only work in remote worlds, so sending a packet will sync the server to the correct value.
                     sixPowersCap.addStillJumps(1);
-                    PacketDispatcher.sendToServer(new SixPowersPacket(sixPowersCap));
+                    PacketDispatcher.sendToServer(new PacketSixPowers(sixPowersCap));
                 }
             }
         }
@@ -349,7 +349,7 @@ public class OPCommonEventHooks {
                     if (distanceWalkedInPlants > 10d || distanceWalkedInPlants < 0d) {
                         distanceWalkedInPlants = 0d;
                         sixPowersCap.addDistanceRunInPlants(10);
-                        PacketDispatcher.sendToServer(new SixPowersPacket(sixPowersCap));
+                        PacketDispatcher.sendToServer(new PacketSixPowers(sixPowersCap));
                     }
                 }
                 else {
@@ -357,7 +357,7 @@ public class OPCommonEventHooks {
                     if (distanceWalkedNormal > 10d || distanceWalkedNormal < 0d) {
                         distanceWalkedNormal = 0d;
                         sixPowersCap.addDistanceRun(10);
-                        PacketDispatcher.sendToServer(new SixPowersPacket(sixPowersCap));
+                        PacketDispatcher.sendToServer(new PacketSixPowers(sixPowersCap));
                     }
                 }
 

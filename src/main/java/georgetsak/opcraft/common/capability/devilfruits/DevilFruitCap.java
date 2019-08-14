@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.capability.devilfruits;
 
-import georgetsak.opcraft.common.network.packets.client.DevilFruitClientPacket;
+import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitClient;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
 import net.minecraft.entity.player.EntityPlayer;
@@ -36,6 +36,6 @@ public class DevilFruitCap implements IDevilFruitCap {
     @Override
     public void copy(IDevilFruitCap df, EntityPlayer ep) {
         this.setPower(df.getPower());
-        PacketDispatcher.sendTo(new DevilFruitClientPacket(df), (EntityPlayerMP)ep);
+        PacketDispatcher.sendTo(new PacketDevilFruitClient(df), (EntityPlayerMP)ep);
     }
 }

@@ -10,13 +10,13 @@ import net.minecraftforge.fml.relauncher.Side;
 /**
  * Created by GeorgeProgramming on 7/11/2017.
  */
-public class DevilFruitClientPacket extends AbstractMessage.AbstractClientMessage<DevilFruitClientPacket>{
+public class PacketDevilFruitClient extends AbstractMessage.AbstractClientMessage<PacketDevilFruitClient>{
 
     private int powerID;
 
-    public DevilFruitClientPacket(){}
+    public PacketDevilFruitClient(){}
 
-    public DevilFruitClientPacket(IDevilFruitCap df) {
+    public PacketDevilFruitClient(IDevilFruitCap df) {
         this.powerID = df.getPower();
     }
 

@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.relauncher.Side;
 
-public class SixPowersPacket extends AbstractMessage<SixPowersPacket>{
+public class PacketSixPowers extends AbstractMessage<PacketSixPowers>{
 
     private int stillJumps;
     private int ironDamageReceived;
@@ -18,9 +18,9 @@ public class SixPowersPacket extends AbstractMessage<SixPowersPacket>{
     private int distanceRun;
     private int distanceRunInPlants;
 
-    public SixPowersPacket(){}
+    public PacketSixPowers(){}
 
-    public SixPowersPacket(ISixPowersCap sixPowersCap){
+    public PacketSixPowers(ISixPowersCap sixPowersCap){
 
         stillJumps = sixPowersCap.getStillJumps();
         ironDamageReceived = sixPowersCap.getIronDamageReceived();
@@ -62,7 +62,7 @@ public class SixPowersPacket extends AbstractMessage<SixPowersPacket>{
         sixPowersCap.setDistanceRunInPlants(distanceRunInPlants);
 
         if(side.isServer()){
-            PacketDispatcher.sendTo(new SixPowersPacket(sixPowersCap), (EntityPlayerMP)player);
+            PacketDispatcher.sendTo(new PacketSixPowers(sixPowersCap), (EntityPlayerMP)player);
         }
     }
 }

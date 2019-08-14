@@ -9,13 +9,13 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import java.io.IOException;
 
-public class BlackHoleServerPacket extends AbstractMessage.AbstractServerMessage<BlackHoleServerPacket> {
+public class PacketBlackHoleServer extends AbstractMessage.AbstractServerMessage<PacketBlackHoleServer> {
 
     BlockPos spawnPosition;
 
-    public BlackHoleServerPacket(){}
+    public PacketBlackHoleServer(){}
 
-    public BlackHoleServerPacket(BlockPos spawnPosition){
+    public PacketBlackHoleServer(BlockPos spawnPosition){
         this.spawnPosition = spawnPosition;
     }
 

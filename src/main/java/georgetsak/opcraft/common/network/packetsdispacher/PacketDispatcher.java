@@ -2,10 +2,10 @@ package georgetsak.opcraft.common.network.packetsdispacher;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.network.packets.client.*;
-import georgetsak.opcraft.common.network.packets.common.ConfigPacket;
-import georgetsak.opcraft.common.network.packets.common.HakiPacket;
-import georgetsak.opcraft.common.network.packets.common.ItemStackChangePacket;
-import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketConfig;
+import georgetsak.opcraft.common.network.packets.common.PacketHaki;
+import georgetsak.opcraft.common.network.packets.common.PacketItemStackChange;
+import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
 import georgetsak.opcraft.common.network.packets.server.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -32,33 +32,33 @@ import net.minecraftforge.fml.relauncher.Side;
      */
     public static final void registerPackets() {
 
-        registerMessage(OPServerMessage.class);
-        registerMessage(RayTraceServerPacket.class);
-        registerMessage(ConfigPacket.class);
-        registerMessage(DevilFruitClientPacket.class);
-        registerMessage(BountyClientPacket.class);
-        registerMessage(StatsNormalClientPacket.class);
-        registerMessage(StatsNormalServerPacket.class);
-        registerMessage(UpdateXPLevelsServerPacket.class);
-        registerMessage(UpdateXPLevelsClientPacket.class);
-        registerMessage(IceCageEntityServerPacket.class);
-        registerMessage(ItemStackChangePacket.class);
-        registerMessage(SmokeSnakeServerPacket.class);
-        registerMessage(ManualBookPageServerPacket.class);
-        registerMessage(HakiPacket.class);
-        registerMessage(EmperorServerPacket.class);
-        registerMessage(ElThorServerPacket.class);
-        registerMessage(BlackHoleServerPacket.class);
-        registerMessage(AllowFlyingServerPacket.class);
-        registerMessage(KurouzuServerPacket.class);
-        registerMessage(LiberationServerPacket.class);
-        registerMessage(SixPowersPacket.class);
-        registerMessage(DamageEntityServerPacket.class);
-        registerMessage(CreateExplosionServerPacket.class);
-        registerMessage(SyncCrewClientPacket.class);
-        registerMessage(EditCrewServerPacket.class);
-        registerMessage(CrewInviteClientPacket.class);
-        registerMessage(DevilFruitClientPacket.class);
+        registerMessage(PacketToServerCommandsServer.class);
+        registerMessage(PacketRayTraceServer.class);
+        registerMessage(PacketConfig.class);
+        registerMessage(PacketDevilFruitClient.class);
+        registerMessage(PacketBountyClient.class);
+        registerMessage(PacketStatsNormalClient.class);
+        registerMessage(PacketStatsNormalServer.class);
+        registerMessage(PacketUpdateXPLevelsServer.class);
+        registerMessage(PacketUpdateXPLevelsClient.class);
+        registerMessage(PacketIceCageEntityServer.class);
+        registerMessage(PacketItemStackChange.class);
+        registerMessage(PacketSmokeSnakeServer.class);
+        registerMessage(PacketManualBookPageServer.class);
+        registerMessage(PacketHaki.class);
+        registerMessage(PacketEmperorServer.class);
+        registerMessage(PacketElThorServer.class);
+        registerMessage(PacketBlackHoleServer.class);
+        registerMessage(PacketAllowFlyingServer.class);
+        registerMessage(PacketKurouzuServer.class);
+        registerMessage(PacketLiberationServer.class);
+        registerMessage(PacketSixPowers.class);
+        registerMessage(PacketDamageEntityServer.class);
+        registerMessage(PacketCreateExplosionServer.class);
+        registerMessage(PacketSyncCrewClient.class);
+        registerMessage(PacketEditCrewServer.class);
+        registerMessage(PacketCrewInviteClient.class);
+        registerMessage(PacketDevilFruitClient.class);
     }
 
     /**

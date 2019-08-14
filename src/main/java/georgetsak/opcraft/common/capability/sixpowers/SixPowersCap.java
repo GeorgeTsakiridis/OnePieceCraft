@@ -1,12 +1,10 @@
 package georgetsak.opcraft.common.capability.sixpowers;
 
 import georgetsak.opcraft.client.gui.overlay.EnumSixPowers;
-import georgetsak.opcraft.common.network.packets.common.SixPowersPacket;
+import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.util.math.MathHelper;
-import scala.Int;
 
 /**
  * Created by GeorgeProgramming on 7/11/2017.
@@ -194,7 +192,7 @@ public class SixPowersCap implements ISixPowersCap {
         this.setRunningJumps(oldCap.getRunningJumps());
         this.setDistanceRun(oldCap.getDistanceRun());
         this.setDistanceRunInPlants(oldCap.getDistanceRunInPlants());
-        PacketDispatcher.sendTo(new SixPowersPacket(this), (EntityPlayerMP) entityPlayer);
+        PacketDispatcher.sendTo(new PacketSixPowers(this), (EntityPlayerMP) entityPlayer);
     }
 
     @Override
