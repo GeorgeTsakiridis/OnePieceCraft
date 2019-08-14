@@ -112,7 +112,7 @@ public class CommonProxy {
 		CapabilityManager.INSTANCE.register(IStatsNormalCap.class, new StatsNormalCapStorage(), StatsNormalCap::new);
 		CapabilityManager.INSTANCE.register(IHakiCap.class, new HakiCapStorage(), HakiCap::new);
 		CapabilityManager.INSTANCE.register(ISixPowersCap.class, new SixPowersCapStorage(), SixPowersCap::new);
-		CapabilityManager.INSTANCE.register(IDevilFruitLevelsCap.class,new DevilFruitLevelsCapStorage(), DevilFruitLevelsCap::new);
+		CapabilityManager.INSTANCE.register(IDevilFruitLevelsCap.class, new DevilFruitLevelsCapStorage(), DevilFruitLevelsCap::new);
 
 		CapabilityHandler capabilityHandler = new CapabilityHandler();
 		MinecraftForge.EVENT_BUS.register(capabilityHandler);

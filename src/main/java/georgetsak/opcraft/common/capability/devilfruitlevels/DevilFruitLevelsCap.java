@@ -22,7 +22,10 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public void setDevilFruitID(int devilFruitID) {
-        this.devilFruitID = devilFruitID;
+        if(devilFruitID != this.devilFruitID) {
+            this.devilFruitID = devilFruitID;
+            resetAll();
+        }
     }
 
     public int getDevilFruitID(){
@@ -36,7 +39,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
         int level = 0;
         for(int requiredHits : power.getHitsToUpgradePower()){
-            if(hits[id] < requiredHits){
+            if(hits[id-1] < requiredHits){
                 break;
             }
             level++;
@@ -87,12 +90,12 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public int getPowerCooldown(int id) {
-        Power power = PowerHandler.getPower(getDevilFruitID(),id);
+        Power power = PowerHandler.getPower(getDevilFruitID(), id);
         if(power == null)return 0;
 
         int i = 0;
         for(int requiredUses : power.getUsesToReduceCooldown()) {
-            if (uses[id] < requiredUses){
+            if (uses[id-1] < requiredUses){
                 break;
             }
             i++;
@@ -119,8 +122,8 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public void resetAll() {
-        uses = null;
-        hits = null;
+        uses = new int[PowerHandler.getTotalPowersForFruit(devilFruitID)];
+        hits = new int[PowerHandler.getTotalPowersForFruit(devilFruitID)];
     }
 
     @Override

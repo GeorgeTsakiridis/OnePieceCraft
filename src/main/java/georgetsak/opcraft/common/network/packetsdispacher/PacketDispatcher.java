@@ -58,7 +58,8 @@ import net.minecraftforge.fml.relauncher.Side;
         registerMessage(PacketSyncCrewClient.class);
         registerMessage(PacketEditCrewServer.class);
         registerMessage(PacketCrewInviteClient.class);
-        registerMessage(PacketDevilFruitClient.class);
+        registerMessage(PacketDevilFruitLevelsClient.class);
+        registerMessage(PacketDevilFruitLevelsServer.class);
     }
 
     /**

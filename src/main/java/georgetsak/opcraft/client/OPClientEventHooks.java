@@ -7,6 +7,8 @@ import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.client.proxy.ClientProxy;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
@@ -17,6 +19,7 @@ import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.entity.boat.EntityAceBoat;
 import georgetsak.opcraft.common.entity.boat.EntitySailBoat;
 import georgetsak.opcraft.common.item.weapons.IExtendedReach;
+import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitLevelsClient;
 import georgetsak.opcraft.common.network.packets.server.*;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
@@ -95,6 +98,7 @@ public class OPClientEventHooks {
         if (entity == Minecraft.getMinecraft().player) {
             EntityPlayerSP mcPlayer = Minecraft.getMinecraft().player;
             IDevilFruitCap df = DevilFruitCap.get(mcPlayer);
+            IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(mcPlayer);
 
             if(mcPlayer.getRidingEntity() != null){ //Check for boat riding
                 Entity ridingEntity = mcPlayer.getRidingEntity();
@@ -115,6 +119,8 @@ public class OPClientEventHooks {
             if (df.hasPower()) {
                 id = df.getPower();
                 PowerSelector.setFruitID(id);
+                dfl.setDevilFruitID(id);
+
                 if (!OPCraft.config.allowDevilFruitUsersToSwim.getCurrentValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
                     setAllPowersCooldown(adjustTicks(20));
                     if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {
@@ -328,7 +334,21 @@ public class OPClientEventHooks {
             if (ClientProxy.key3.isPressed()) {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null && power.getCurrentCooldown() == 0) {//V
-                    power.setCurrentCooldown(adjustTicks(power.getCooldownTime()));
+                    IDevilFruitLevelsCap dfc = DevilFruitLevelsCap.get(Minecraft.getMinecraft().player);
+
+                    power.setCurrentCooldown(adjustTicks(dfc.getPowerCooldown(power.getKey())));
+
+                    dfc.addPowerUses(power.getKey() - 1);
+                    PacketDispatcher.sendToServer(new PacketDevilFruitLevelsServer(dfc));
+
+                    String message = "";
+                    int k = 1;
+                    int j = 1;
+                    for(int i : dfc.getAllPowersUses()){
+                        message += k + ":" + i + "(cld:" + dfc.getPowerCooldown(j++) + "), ";
+                        k++;
+                    }
+                    Minecraft.getMinecraft().player.sendChatMessage(message);
 
                     executeAction(Minecraft.getMinecraft().player, power.getActionMessage());
                 }
@@ -649,7 +669,7 @@ public class OPClientEventHooks {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null) {
 
-                    ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), adjustTicks(power.getCooldownTime()), event.getResolution(), (int) sixPowersEnergyBar);
+                    ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), adjustTicks(DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerCooldown(power.getKey())), event.getResolution(), (int) sixPowersEnergyBar);
                 }
             }
 

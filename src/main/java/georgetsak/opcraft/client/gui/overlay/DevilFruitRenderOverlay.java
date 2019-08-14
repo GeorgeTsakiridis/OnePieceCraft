@@ -5,6 +5,8 @@ import georgetsak.opcraft.client.OPClientEventHooks;
 import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
@@ -87,6 +89,8 @@ public class DevilFruitRenderOverlay {
 
     private void renderPowerSelector(int fruitID){
         Minecraft mc = Minecraft.getMinecraft();
+        IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(mc.player);
+
         if(PowerHandler.getTotalPowersForFruit(fruitID) > 1) {
             GL11.glColor4f(1f, 1f, 1f, transparency);
             mc.getTextureManager().bindTexture(FRAME);
@@ -102,11 +106,11 @@ public class DevilFruitRenderOverlay {
             Power selectedPower2 = PowerHandler.getPower(fruitID, PowerSelector.getNextIndex());
 
             if (selectedPower1 != null) {
-                float percentage1 = MathUtils.getPercentage(selectedPower1.getCooldownTime() - selectedPower1.getCurrentCooldown(), selectedPower1.getCooldownTime());
+                float percentage1 = MathUtils.getPercentage(dfl.getPowerCooldown(selectedPower1.getKey()) - selectedPower1.getCurrentCooldown(), dfl.getPowerCooldown(selectedPower1.getKey()));
                 Gui.drawRect(resolutionX - 35, resolutionY - 35 + (int) (44f * percentage1), resolutionX + 5, resolutionY + 5, new Color(255, 0, 0, 100).getRGB());
             }
             if (selectedPower2 != null) {
-                float percentage2 = MathUtils.getPercentage(selectedPower2.getCooldownTime() - selectedPower2.getCurrentCooldown(), selectedPower2.getCooldownTime());
+                float percentage2 = MathUtils.getPercentage(dfl.getPowerCooldown(selectedPower2.getKey()) - selectedPower2.getCurrentCooldown(), dfl.getPowerCooldown(selectedPower2.getKey()));
                 Gui.drawRect(resolutionX - 69, resolutionY - 69 + (int) (44f * percentage2), resolutionX - 25, resolutionY - 25, new Color(255, 0, 0, 100).getRGB());
             }
         }
@@ -124,7 +128,7 @@ public class DevilFruitRenderOverlay {
         Gui.drawScaledCustomSizeModalRect(resolutionX - 50, resolutionY - 50, 0, 0, 64, 64, 40, 40, 64, 64);
         //GL11.glColor4f(1f, 1f, 1f, 1f);
         Power selectedPower = PowerSelector.getSelectedPower();
-        float percentage = MathUtils.getPercentage(selectedPower.getCooldownTime() - selectedPower.getCurrentCooldown(),selectedPower.getCooldownTime());
+        float percentage = MathUtils.getPercentage(dfl.getPowerCooldown(selectedPower.getKey()) - selectedPower.getCurrentCooldown(), dfl.getPowerCooldown(selectedPower.getKey()));
         Gui.drawRect(resolutionX - 52,resolutionY - 52 + (int)(44f*percentage),resolutionX - 8,resolutionY - 8, new Color(254,0,0,100).getRGB());
         GL11.glColor4f(1f, 1f, 1f, temp);
 
