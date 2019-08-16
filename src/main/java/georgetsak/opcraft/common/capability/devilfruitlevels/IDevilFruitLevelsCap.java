@@ -19,6 +19,7 @@ public interface IDevilFruitLevelsCap {
     void setPowerHits(int[] hits);
 
     int getPowerCooldown(int id);
+    int getPowerCooldownLevel(int id);
 
     boolean canPowerLevelBeIncreased(int id);
     boolean canPowerCooldownBeReduced(int id);

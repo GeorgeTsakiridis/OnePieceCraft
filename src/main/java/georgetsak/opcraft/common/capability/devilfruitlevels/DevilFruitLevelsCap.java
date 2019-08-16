@@ -91,6 +91,13 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     @Override
     public int getPowerCooldown(int id) {
         Power power = PowerHandler.getPower(getDevilFruitID(), id);
+
+        return power.getCooldownTime(getPowerCooldown(id)-1);
+    }
+
+    @Override
+    public int getPowerCooldownLevel(int id) {
+        Power power = PowerHandler.getPower(getDevilFruitID(), id);
         if(power == null)return 0;
 
         int i = 0;
@@ -100,8 +107,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
             }
             i++;
         }
-
-        return power.getCooldownTime(i);
+        return i + 1;
     }
 
     @Override

@@ -48,6 +48,8 @@ import net.minecraft.util.MovementInput;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -346,14 +348,23 @@ public class OPClientEventHooks {
                     dfc.addPowerUses(power.getKey() - 1);
                     PacketDispatcher.sendToServer(new PacketDevilFruitLevelsServer(dfc));
 
-                    String message = "";
-                    int k = 1;
-                    int j = 1;
-                    for(int i : dfc.getAllPowersUses()){
-                        message += k + ":" + i + "(cld:" + dfc.getPowerCooldown(j++) + "), ";
-                        k++;
+                    if(!OPCraft.IS_RELEASE_VERSION) {
+                        String message = "";
+                        int k = 'A';
+                        int j = 1;
+                        for (int i : dfc.getAllPowersUses()) {
+                            String color;
+                            switch (j-1){
+                                default:
+                                case 0: color = TextFormatting.RED.toString(); break;
+                                case 1: color = TextFormatting.GREEN.toString(); break;
+                                case 2: color = TextFormatting.GOLD.toString(); break;
+                                case 3: color = TextFormatting.BLUE.toString(); break;
+                            }
+                            message += color + (char)k++ + ":" + i + " (cdn:" + dfc.getPowerCooldown(j++) + ") || " + TextFormatting.RESET.toString();
+                        }
+                        Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
                     }
-                    Minecraft.getMinecraft().player.sendChatMessage(message);
 
                     executeAction(Minecraft.getMinecraft().player, power.getActionMessage());
                 }

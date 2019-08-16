@@ -87,40 +87,40 @@ public class OPDevilFruits {
 
     @SideOnly(Side.CLIENT)
     public static void registerPowers(){
-        PowerHandler.addPower(new int[]{60, 55, 50, 45, 40}, new int[]{150, 300, 450, 600}, new int[]{1, 2, 3, 4}, "GomuPistol", "Gomu Gomu no: Pistol", GOMU,1, "pistol");
-        PowerHandler.addPower(new int[]{320, 310, 300, 290, 280}, new int[]{30, 60, 90, 120}, new int[]{1, 2, 3, 4}, "GomuGear2", "Gomu Gomu no: Gear 2", GOMU, 2, "gear2");
-        PowerHandler.addPower(new int[]{400, 360, 320, 280, 240}, new int[]{20, 40, 60, 80}, new int[]{1, 2, 3, 4}, "GomuGear3", "Gomu Gomu no: Gear 3", GOMU, 3, "gear3");
-        PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{10, 20, 30, 40}, new int[]{1, 2, 3, 4}, "GomuGear4", "Gomu Gomu no: Gear 4", GOMU, 4, "gear4");
-        PowerHandler.addPower(new int[]{80, 75, 70, 65, 60}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "MeraHigan","Higan", MERA, 1, "fire_fist");
-        PowerHandler.addPower(new int[]{300, 290, 280, 270, 260}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "MeraShinka","Shinka: Shiranui", MERA, 2, "fire_lance");
-        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "MeraHiken","Hiken", MERA, 3, "hiken");
-        PowerHandler.addPower(new int[]{2000, 1800, 1600, 1400, 1200}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "MeraEntei","Dai Enkai: Entei",MERA, 4, "entei");
-        PowerHandler.addPower(new int[]{180, 170, 160, 150, 140}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "SlowBeam","Slow Slow Beam", NORO, 1, "slow_beam");
-        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "SlowBall","High Speed Rotation Mirror Ball", NORO, 2, "slow_ball");
-        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "SlowMashi","Mashi Mashi", NORO, 3, "slow_mashi");
+        PowerHandler.addPower(new int[]{60, 55, 50, 45, 40}, new int[]{260, 540, 850, 1200}, new int[]{1, 2, 3, 4}, "GomuPistol", "Gomu Gomu no: Pistol", GOMU,1, "pistol");
+        PowerHandler.addPower(new int[]{320, 310, 300, 290, 280}, new int[]{50, 100, 150, 200}, new int[]{1, 2, 3, 4}, "GomuGear2", "Gomu Gomu no: Gear 2", GOMU, 2, "gear2");
+        PowerHandler.addPower(new int[]{400, 360, 320, 280, 240}, new int[]{50, 100, 160, 230}, new int[]{1, 2, 3, 4}, "GomuGear3", "Gomu Gomu no: Gear 3", GOMU, 3, "gear3");
+        PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{10, 20, 30, 45}, new int[]{1, 2, 3, 4}, "GomuGear4", "Gomu Gomu no: Gear 4", GOMU, 4, "gear4");
+        PowerHandler.addPower(new int[]{80, 75, 70, 65, 60}, new int[]{150, 310, 480, 665}, new int[]{1, 2, 3, 4}, "MeraHigan","Higan", MERA, 1, "fire_fist");
+        PowerHandler.addPower(new int[]{300, 290, 280, 270, 260}, new int[]{65, 130, 200, 270}, new int[]{1, 2, 3, 4}, "MeraShinka","Shinka: Shiranui", MERA, 2, "fire_lance");
+        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{65, 135, 210, 290}, new int[]{1, 2, 3, 4}, "MeraHiken","Hiken", MERA, 3, "hiken");
+        PowerHandler.addPower(new int[]{2000, 1800, 1600, 1400, 1200}, new int[]{10, 20, 30, 45}, new int[]{1, 2, 3, 4}, "MeraEntei","Dai Enkai: Entei",MERA, 4, "entei");
+        PowerHandler.addPower(new int[]{180, 170, 160, 150, 140}, new int[]{45, 100, 150, 200}, new int[]{1, 2, 3, 4}, "SlowBeam","Slow Slow Beam", NORO, 1, "slow_beam");
+        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{25, 50, 75, 100}, new int[]{1, 2, 3, 4}, "SlowBall","High Speed Rotation Mirror Ball", NORO, 2, "slow_ball");
+        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{30, 70, 100, 145}, new int[]{1, 2, 3, 4}, "SlowMashi","Mashi Mashi", NORO, 3, "slow_mashi");
         PowerHandler.addPower(new int[]{700, 700, 700 ,700, 700}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "ClearSkating","Skating (Invisibility)", SUKE, 1, "skating");
         PowerHandler.addPower(new int[]{600, 600, 600, 600, 600}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Room","Room", OPE, 1, "room");
-        PowerHandler.addPower(new int[]{80, 75, 70, 65, 60}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "IceSaber","Ice Saber", HIE, 1, "ice_saber");
-        PowerHandler.addPower(new int[]{400, 360, 320, 280, 240}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "IceBall","Ice Ball", HIE, 2, "ice_ball");
-        PowerHandler.addPower(new int[]{1200, 1100, 1000, 900, 800}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "IceAge","Ice Age", HIE, 3, "ice_age");
-        PowerHandler.addPower(new int[]{700, 640, 580, 520, 460}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "IceBlockPhBeak","Ice Block: Pheasant Beak", HIE, 4, "ice_phoenix");
-        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "PadHo","Pad Ho", NIKYU, 1, "pad_ho_small");
-        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "TsuppariPadHo","Tsuppari Pad Ho", NIKYU, 2, "pad_ho_big");
-        PowerHandler.addPower(new int[]{2800, 2600, 2400, 2200, 2000}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "UrsusShock","Ursus Shock", NIKYU, 3, "ursus_shock");
-        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "ElThor","El Thor", GORO, 1, "el_thor");
-        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Sango","Sango", GORO, 2, "sango");
-        PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Deathpiea","Deathpiea", GORO, 3, "deathpiea");
-        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "WhiteBlow", "White Blow", MOKU, 1, "white_blow");
-        PowerHandler.addPower(new int[]{520, 500, 480, 460, 440}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "WhiteSnake", "White Snake", MOKU, 2, "smoke_snake");
-        PowerHandler.addPower(new int[]{600, 550, 500, 450, 400}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "WhiteOut", "White Out", MOKU, 3, "white_out");
-        PowerHandler.addPower(new int[]{2200, 2000, 1800, 1600, 1400}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "WhiteLauncher", "White Launcher", MOKU, 4, "white_launcher");
-        PowerHandler.addPower(new int[]{600, 560, 520, 480, 440}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "BlackHole", "Black Hole", YAMI, 1, "dark");
-        PowerHandler.addPower(new int[]{380, 360, 340, 320, 300}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Kurouzu", "Kurouzu", YAMI, 2, "kurouzu");
-        PowerHandler.addPower(new int[]{1000, 960, 920, 880, 840}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Liberation", "Liberation", YAMI, 3, "liberation");
-        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Tamaito", "Tamaito", ITO, 1, "tamaito");
-        PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Overheat", "Overheat", ITO, 2, "overheat");
-        PowerHandler.addPower(new int[]{2800, 2400, 2000, 3600, 3200}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "Goshikito", "Goshikito", ITO, 3, "goshikito");
-        PowerHandler.addPower(new int[]{2200, 2000, 1800, 1600, 1400}, new int[]{1, 2, 3, 4}, new int[]{1, 2, 3, 4}, "SoraNoMichi", "Sora no Michi", ITO, 4, "sora_no_michi");
+        PowerHandler.addPower(new int[]{80, 75, 70, 65, 60}, new int[]{240, 500, 770, 1065}, new int[]{1, 2, 3, 4}, "IceSaber","Ice Saber", HIE, 1, "ice_saber");
+        PowerHandler.addPower(new int[]{400, 360, 320, 280, 240}, new int[]{30, 65, 100, 140}, new int[]{1, 2, 3, 4}, "IceBall","Ice Ball", HIE, 2, "ice_ball");
+        PowerHandler.addPower(new int[]{1200, 1100, 1000, 900, 800}, new int[]{10, 20, 30, 45}, new int[]{1, 2, 3, 4}, "IceAge","Ice Age", HIE, 3, "ice_age");
+        PowerHandler.addPower(new int[]{700, 640, 580, 520, 460}, new int[]{30, 60, 90, 125}, new int[]{1, 2, 3, 4}, "IceBlockPhBeak","Ice Block: Pheasant Beak", HIE, 4, "ice_phoenix");
+        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{155, 330, 525, 750}, new int[]{1, 2, 3, 4}, "PadHo","Pad Ho", NIKYU, 1, "pad_ho_small");
+        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{190, 400, 645, 920}, new int[]{1, 2, 3, 4}, "TsuppariPadHo","Tsuppari Pad Ho", NIKYU, 2, "pad_ho_big");
+        PowerHandler.addPower(new int[]{2800, 2600, 2400, 2200, 2000}, new int[]{10, 20, 30, 40}, new int[]{1, 2, 3, 4}, "UrsusShock","Ursus Shock", NIKYU, 3, "ursus_shock");
+        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{120, 250, 400, 575}, new int[]{1, 2, 3, 4}, "ElThor","El Thor", GORO, 1, "el_thor");
+        PowerHandler.addPower(new int[]{360, 340, 320, 300, 280}, new int[]{45, 90, 135, 190}, new int[]{1, 2, 3, 4}, "Sango","Sango", GORO, 2, "sango");
+        PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{5, 15, 25, 30}, new int[]{1, 2, 3, 4}, "Deathpiea","Deathpiea", GORO, 3, "deathpiea");
+        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{155, 330, 525, 750}, new int[]{1, 2, 3, 4}, "WhiteBlow", "White Blow", MOKU, 1, "white_blow");
+        PowerHandler.addPower(new int[]{520, 500, 480, 460, 440}, new int[]{30, 60, 95, 130}, new int[]{1, 2, 3, 4}, "WhiteSnake", "White Snake", MOKU, 2, "smoke_snake");
+        PowerHandler.addPower(new int[]{600, 550, 500, 450, 400}, new int[]{20, 40, 65, 90}, new int[]{1, 2, 3, 4}, "WhiteOut", "White Out", MOKU, 3, "white_out");
+        PowerHandler.addPower(new int[]{2200, 2000, 1800, 1600, 1400}, new int[]{10, 15, 25, 40}, new int[]{1, 2, 3, 4}, "WhiteLauncher", "White Launcher", MOKU, 4, "white_launcher");
+        PowerHandler.addPower(new int[]{600, 560, 520, 480, 440}, new int[]{30, 65, 100, 140}, new int[]{1, 2, 3, 4}, "BlackHole", "Black Hole", YAMI, 1, "dark");
+        PowerHandler.addPower(new int[]{380, 360, 340, 320, 300}, new int[]{50, 100, 160, 220}, new int[]{1, 2, 3, 4}, "Kurouzu", "Kurouzu", YAMI, 2, "kurouzu");
+        PowerHandler.addPower(new int[]{1000, 960, 920, 880, 840}, new int[]{25, 50, 75, 100}, new int[]{1, 2, 3, 4}, "Liberation", "Liberation", YAMI, 3, "liberation");
+        PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{190, 405, 645, 920}, new int[]{1, 2, 3, 4}, "Tamaito", "Tamaito", ITO, 1, "tamaito");
+        PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{10, 20, 30, 45}, new int[]{1, 2, 3, 4}, "Overheat", "Overheat", ITO, 2, "overheat");
+        PowerHandler.addPower(new int[]{2800, 2400, 2000, 3600, 3200}, new int[]{50, 105, 165, 230}, new int[]{1, 2, 3, 4}, "Goshikito", "Goshikito", ITO, 3, "goshikito");
+        PowerHandler.addPower(new int[]{2200, 2000, 1800, 1600, 1400}, new int[]{10, 15, 25, 40}, new int[]{1, 2, 3, 4}, "SoraNoMichi", "Sora no Michi", ITO, 4, "sora_no_michi");
     }
 
 

@@ -49,7 +49,7 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 
 	@Override
 	public int getMaxTicks() {
-		return isGear3() ? 100 : 800;
+		return isGear3() ? 80 : 20;
 	}
 
 	@Override
