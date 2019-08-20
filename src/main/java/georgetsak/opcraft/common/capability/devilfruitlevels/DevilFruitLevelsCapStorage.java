@@ -14,8 +14,9 @@ public class DevilFruitLevelsCapStorage implements Capability.IStorage<IDevilFru
         NBTTagCompound compound = new NBTTagCompound();
 
         compound.setInteger("devilFruitID", instance.getDevilFruitID());
+        compound.setInteger("xp", instance.getXP());
         compound.setIntArray("uses", instance.getAllPowersUses());
-        compound.setIntArray("hits", instance.getAllPowersHits());
+        compound.setIntArray("levels", instance.getAllPowersLevels());
 
         return compound;
     }
@@ -26,8 +27,9 @@ public class DevilFruitLevelsCapStorage implements Capability.IStorage<IDevilFru
             NBTTagCompound compound = (NBTTagCompound)nbt;
 
             instance.setDevilFruitID(compound.getInteger("devilFruitID"));
+            instance.setXP(compound.getInteger("xp"));
             instance.setPowerUses(compound.getIntArray("uses"));
-            instance.setPowerHits(compound.getIntArray("hits"));
+            instance.setPowersLevels(compound.getIntArray("levels"));
 
         }
     }

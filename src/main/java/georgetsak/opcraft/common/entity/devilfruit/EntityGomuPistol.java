@@ -85,26 +85,22 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 			 this.setDead();
 		 }
 	 }
-	
-	 public void onCollideWithPlayer(EntityPlayer entityIn) {
-		 if (!isCollisionWithPlayerValid(entityIn)) return;
 
-		 if (isGear3()) {
-			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn, 12F, true));
-		 } else {
-			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn, 8F, true));
-		 }
+	@Override
+	public void onValidPlayerCollision(EntityPlayer entityIn) {
+		float amount = isGear3() ? 12F : 8F;
 
-		 entityIn.hurtResistantTime = 20;
+		entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn, amount, true));
+		entityIn.hurtResistantTime = 20;
 
-	 }
-	
-	 public void collideWithEntity(Entity entityIn) {
-		 if (!isCollisionWithEntityValid(entityIn)) return;
+	}
 
-		 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(owner, 8F, true));
+	@Override
+	public void onValidEntityCollision(Entity entity) {
+		float amount = isGear3() ? 12F : 8F;
 
-	 }
+		entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner, true), MathUtils.calculateDamage(owner, amount, true));
+	}
 
 	 public float getCollisionBorderSize()
 	    {

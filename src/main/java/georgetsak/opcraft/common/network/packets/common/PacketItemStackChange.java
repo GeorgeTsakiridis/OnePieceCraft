@@ -34,13 +34,10 @@ public class PacketItemStackChange extends AbstractMessage<PacketItemStackChange
     @Override
     public void process(EntityPlayer player, Side side) {
         if(side.isServer()){
-            System.out.println("SERVER");
-
             player.inventory.setInventorySlotContents(9, itemStack);
             PacketDispatcher.sendTo(new PacketItemStackChange(itemStack), (EntityPlayerMP)player);
         }
         else if(side.isClient()){
-            System.out.println("CLIENT");
             Minecraft.getMinecraft().player.inventory.setInventorySlotContents(9, itemStack);
         }
     }

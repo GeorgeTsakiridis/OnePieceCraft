@@ -37,21 +37,18 @@ public class EntitySlowBeam extends EntitySimpleProjectile {
 	@Override
 	public float getSpeedMultiplier(){return 0.8f; }
 
-	public void onCollideWithPlayer(EntityPlayer entityIn) {
-		if (!isCollisionWithPlayerValid(entityIn)) return;
-
+	@Override
+	public void onValidPlayerCollision(EntityPlayer entityIn) {
 		entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 300, 9));
 		entityIn.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 300, 9));
 		entityIn.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 300, 9));
 		entityIn.sendMessage(new TextComponentString("You were hit by" + TextFormatting.LIGHT_PURPLE + " Slow Slow Beam" + TextFormatting.RESET + "."));
 		entityIn.hurtResistantTime = 20;
-
 	}
 
-	public void collideWithEntity(Entity entityIn) {
-		if (!isCollisionWithEntityValid(entityIn)) return;
-
-		EntityLiving e = (EntityLiving) entityIn;
+	@Override
+	public void onValidEntityCollision(Entity entity) {
+		EntityLiving e = (EntityLiving) entity;
 		e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 200, 10));
 		e.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 200, 10));
 		e.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 200, 10));

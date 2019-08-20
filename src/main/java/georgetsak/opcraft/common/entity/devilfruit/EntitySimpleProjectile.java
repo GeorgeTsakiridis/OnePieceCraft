@@ -15,7 +15,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
-public class EntitySimpleProjectile extends EntityFlying {
+public class EntitySimpleProjectile extends EntityFlying{
 
     public static final DataParameter<Vector3Double> DIRECTION = EntityDataManager.createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
     public static final DataParameter<Vector3Double> START_POS = EntityDataManager.createKey(EntitySimpleProjectile.class, OPDataSerializers.VECTOR3DOUBLE);
@@ -65,6 +65,10 @@ public class EntitySimpleProjectile extends EntityFlying {
 
     public void setPitch(float f){
         dataManager.set(PITCH,f);
+    }
+
+    public EntityPlayer getOwner(){
+        return owner;
     }
 
     @Override
@@ -134,11 +138,38 @@ public class EntitySimpleProjectile extends EntityFlying {
     }
 
     boolean isCollisionWithPlayerValid(EntityPlayer entityPlayer){
+
         return owner != null && entityPlayer != owner && entityPlayer.hurtResistantTime <= 0;
     }
 
     boolean isCollisionWithEntityValid(Entity entity){
+
         return !world.isRemote && entity instanceof EntityLiving;
+    }
+
+    @Override
+    public void onCollideWithPlayer(EntityPlayer player) {
+        if(!isCollisionWithPlayerValid(player))return;
+
+        onValidPlayerCollision(player);
+
+    }
+
+    public void onValidPlayerCollision(EntityPlayer entityIn){
+
+    }
+
+
+    @Override
+    public void collideWithEntity(Entity entity){
+        if(!isCollisionWithEntityValid(entity))return;
+
+        onValidEntityCollision(entity);
+
+    }
+
+    public void onValidEntityCollision(Entity entity){
+
     }
 
     @Override
@@ -155,5 +186,6 @@ public class EntitySimpleProjectile extends EntityFlying {
     public boolean canBeCollidedWith() {
         return true;
     }
+
 
 }

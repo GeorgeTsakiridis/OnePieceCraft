@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
@@ -28,19 +29,14 @@ public class EntityGoshikito extends EntitySimpleProjectile{
     }
 
     @Override
-    public void onCollideWithPlayer(EntityPlayer entityIn) {
-        if(!isCollisionWithPlayerValid(entityIn))return;
-
-        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn, 14f,true));
+    public void onValidPlayerCollision(EntityPlayer entityIn) {
+        entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn, 14f,true));
         entityIn.hurtResistantTime = 20;
-
     }
 
     @Override
-    public void collideWithEntity(Entity entityIn) {
-        if (!isCollisionWithEntityValid(entityIn)) return;
-
-        entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), 14f);
+    public void onValidEntityCollision(Entity entity) {
+        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 14f);
     }
 
 }

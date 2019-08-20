@@ -19,7 +19,7 @@ import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.entity.boat.EntityAceBoat;
 import georgetsak.opcraft.common.entity.boat.EntitySailBoat;
 import georgetsak.opcraft.common.item.weapons.IExtendedReach;
-import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitLevelsClient;
+import georgetsak.opcraft.common.network.packets.common.PacketDevilFruitLevels;
 import georgetsak.opcraft.common.network.packets.server.*;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
@@ -121,7 +121,7 @@ public class OPClientEventHooks {
 
             if(dfl.getDevilFruitID() != df.getPower()) {
                 dfl.setDevilFruitID(df.getPower());
-                PacketDispatcher.sendToServer(new PacketDevilFruitLevelsServer(dfl));
+                PacketDispatcher.sendToServer(new PacketDevilFruitLevels(dfl));
             }
 
             if (df.hasPower()) {
@@ -215,14 +215,18 @@ public class OPClientEventHooks {
 
         if (action.equals("ElThorA")) {
             BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 300);
-            PacketDispatcher.sendToServer(new PacketElThorServer(spawnPosition));
+            if(spawnPosition != null) {
+                PacketDispatcher.sendToServer(new PacketElThorServer(spawnPosition));// TODO: 8/16/2019 sending null spawnPosition crashes the game. Fix for other powers too.
+            }
             return true;
         }
 
         if (action.equals("BlackHoleA")) {
             BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 30);
-            PacketDispatcher.sendToServer(new PacketBlackHoleServer(spawnPosition));
-            sendMessage("BlackHoleA");
+            if(spawnPosition != null) {
+                PacketDispatcher.sendToServer(new PacketBlackHoleServer(spawnPosition));
+                sendMessage("BlackHoleA");
+            }
             return true;
         }
 
@@ -239,8 +243,8 @@ public class OPClientEventHooks {
             BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 30);
             if (spawnPosition != null) {
                 PacketDispatcher.sendToServer(new PacketLiberationServer(spawnPosition));
+                sendMessage("LiberationA");
             }
-            sendMessage("LiberationA");
             return true;
         }
 
@@ -346,7 +350,7 @@ public class OPClientEventHooks {
                     power.setCurrentCooldown(adjustTicks(dfc.getPowerCooldown(power.getKey())));
 
                     dfc.addPowerUses(power.getKey() - 1);
-                    PacketDispatcher.sendToServer(new PacketDevilFruitLevelsServer(dfc));
+                    PacketDispatcher.sendToServer(new PacketDevilFruitLevels(dfc));
 
                     if(!OPCraft.IS_RELEASE_VERSION) {
                         String message = "";
@@ -361,7 +365,7 @@ public class OPClientEventHooks {
                                 case 2: color = TextFormatting.GOLD.toString(); break;
                                 case 3: color = TextFormatting.BLUE.toString(); break;
                             }
-                            message += color + (char)k++ + ":" + i + " (cdn:" + dfc.getPowerCooldown(j++) + ") || " + TextFormatting.RESET.toString();
+                            message += color + (char)k++ + ":" + i + " (c:" + dfc.getPowerCooldown(j++) + ") | " + TextFormatting.RESET.toString();
                         }
                         Minecraft.getMinecraft().player.sendMessage(new TextComponentString(message));
                     }

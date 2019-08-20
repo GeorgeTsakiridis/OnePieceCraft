@@ -32,35 +32,34 @@ public class EntityFirePunch extends EntitySimpleProjectile {
         return this.getDataManager().get(TYPE);
     }
 
-	public void onUpdate()
-	    {
-	        super.onUpdate();
+	public void onUpdate() {
+		super.onUpdate();
 
-	        boolean flag1 = getType() != 1 && getType() != 0;
+		boolean flag1 = getType() != 1 && getType() != 0;
 
-        	if(this.collided && flag1){
-	        	OPUtils.newExplosion(owner, world, posX, posY, posZ, getExplosionSize(), true, true);
-	        	this.setDead();
-	        }
+		if (this.collided && flag1) {
+			OPUtils.newExplosion(owner, world, posX, posY, posZ, getExplosionSize(), true, true);
+			this.setDead();
+		}
 
-	        if(getType() != 0 && this.ticksExisted > getMaxTicks())
-	        {
-	            this.setDead();
-	        }
+		if (getType() != 0 && this.ticksExisted > getMaxTicks()) {
+			this.setDead();
+		}
+	}
 
-	    }
-	
+	@Override
 	public void onCollideWithPlayer(EntityPlayer entityIn) {
 		if (!isCollisionWithPlayerValid(entityIn) || getType() == 0) return;
 
-		entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(entityIn, getDamageValue(), true));
+		entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn, getDamageValue(), true));
 		entityIn.setFire(getFireTimeValue());
 	}
 
+	@Override
 	public void collideWithEntity(Entity entityIn) {
     	if (!isCollisionWithEntityValid(entityIn) || getType() == 0) return;
 
-		entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), getDamageValue());
+		entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), getDamageValue());
 		entityIn.setFire(getFireTimeValue());
 
 	}

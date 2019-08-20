@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.client.OPSoundEvent;
 import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
@@ -102,7 +103,7 @@ public class EntityEntei extends EntityFlying {
 
 	 public void collideWithEntity(Entity entityIn){
 		 if(entityIn instanceof EntityLiving){
-			 entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), 10F);
+			 entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), 10F);
 			 entityIn.setFire(10);
 		 }
 	 }

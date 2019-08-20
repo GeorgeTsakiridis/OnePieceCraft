@@ -21,6 +21,8 @@ import net.minecraft.util.text.TextFormatting;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class DevilFruitRenderOverlay {
 
@@ -104,8 +106,10 @@ public class DevilFruitRenderOverlay {
 
             GL11.glColor4f(1f, 1f, 1f, selectedPower.getKey() == i+1 ? 1f : 0.25f);
             int x = startX + spacing*i - requiredSpace/2;
+
             mc.getTextureManager().bindTexture(FRAME);
             Gui.drawScaledCustomSizeModalRect(x, scaledResolution.getScaledHeight() - 40, 0, 0, 64, 64, 38, 38, 64, 64);
+
             mc.getTextureManager().bindTexture(PowerHandler.getPower(fruitID,i+1).getResourceLocation());
             Gui.drawScaledCustomSizeModalRect(x+2, scaledResolution.getScaledHeight() - 38, 0, 0, 64, 64, 34, 34, 64, 64);
 
@@ -117,9 +121,30 @@ public class DevilFruitRenderOverlay {
 
             float percentage = MathUtils.getPercentage(dfl.getPowerCooldown(power.getKey()) - power.getCurrentCooldown(), dfl.getPowerCooldown(power.getKey()));
             Gui.drawRect(x,scaledResolution.getScaledHeight() - 40 + (int)(percentage*38),x + 38,scaledResolution.getScaledHeight()-2, new Color(254,0,0,100).getRGB());
-            //GL11.glColor4f(1f, 1f, 1f, 1f);
 
+            DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+            String string;
+            int cooldown = power.getCurrentCooldown();
+            if(cooldown > 200){
+                string = (int)(power.getCurrentCooldown()/20f) + "s";
+            }else if(cooldown > 0){
+                string = decimalFormat.format(power.getCurrentCooldown() / 20d) + "s";
+            }else{
+                string = "Ready!";
+            }
 
+            if(mc.player.isSneaking()) {
+                mc.fontRenderer.drawStringWithShadow("C:" + dfl.getPowerCooldownLevel(power.getKey()) + "/5", x+1, scaledResolution.getScaledHeight() - 10, Color.WHITE.getRGB());
+                mc.fontRenderer.drawStringWithShadow("P:" + dfl.getPowerLevel(power.getKey()) + "/5", x+1, scaledResolution.getScaledHeight() - 39, Color.WHITE.getRGB());
+                mc.fontRenderer.drawStringWithShadow("C: Cooldown Level", scaledResolution.getScaledWidth() - 200,scaledResolution.getScaledHeight() - 50, Color.WHITE.getRGB());
+                mc.fontRenderer.drawStringWithShadow("P: Power Level", scaledResolution.getScaledWidth() - 200,scaledResolution.getScaledHeight() - 60, Color.WHITE.getRGB());
+            }else{
+                if(cooldown == 0) {
+                    String s = decimalFormat.format(dfl.getPowerCooldown(power.getKey()) / 20d) + "s";
+                    mc.fontRenderer.drawStringWithShadow(s, x + 37 - mc.fontRenderer.getStringWidth(s), scaledResolution.getScaledHeight() - 39, Color.WHITE.getRGB());
+                }
+                mc.fontRenderer.drawStringWithShadow(string, x + 1,scaledResolution.getScaledHeight() - 11, cooldown == 0 ? Color.GREEN.darker().getRGB() : Color.WHITE.getRGB());
+            }
         }
 
         GL11.glColor4f(1f, 1f, 1f, 1f);

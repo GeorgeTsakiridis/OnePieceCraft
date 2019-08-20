@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +14,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class EntityDark extends EntityLiving {
+public class EntityDark extends EntityLiving{
 
     EntityPlayer owner;
 
@@ -72,7 +73,7 @@ public class EntityDark extends EntityLiving {
                     ((EntityLiving) (entityIn)).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 80, 9));
                     ((EntityLiving) (entityIn)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 9));
                     ((EntityLiving) (entityIn)).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 80, 9));
-                    entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), 12f);
+                    entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 12f);
 
                 } else if (entityIn instanceof EntityPlayer) {
                     EntityPlayer player = (EntityPlayer) entityIn;
@@ -80,7 +81,7 @@ public class EntityDark extends EntityLiving {
                     player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 9));
                     player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 80, 9));
 
-                    entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(player, 12.0f, true));
+                    entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(player, 12.0f, true));
                 }
                 entityIn.hurtResistantTime = 60;
             }
@@ -92,6 +93,7 @@ public class EntityDark extends EntityLiving {
     @Override
     public void onCollideWithPlayer(EntityPlayer player) {
     }
+
 
 }
 

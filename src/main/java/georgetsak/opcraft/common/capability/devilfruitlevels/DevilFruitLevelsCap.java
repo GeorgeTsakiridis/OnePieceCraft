@@ -2,7 +2,7 @@ package georgetsak.opcraft.common.capability.devilfruitlevels;
 
 import georgetsak.opcraft.client.power.Power;
 import georgetsak.opcraft.client.power.PowerHandler;
-import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitLevelsClient;
+import georgetsak.opcraft.common.network.packets.common.PacketDevilFruitLevels;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,8 +10,14 @@ import net.minecraft.entity.player.EntityPlayerMP;
 
 public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
+    final public static int PLAYER_KILLED_WITH_DF_XP = 15;
+    final public static int PLAYER_KILLED_WITHOUT_DF_XP = 10;
+    final public static int ENTITY_KILLED_WITH_DF_XP = 10;
+    final public static int ENTITY_KILLED_WITHOUT_DF_XP = 5;
+
     private int[] uses = {};
-    private int[] hits = {};
+    private int[] powersLevels = {};
+    private int xp = 0;
     private int devilFruitID = OPDevilFruits.NO_POWER;
 
     public static IDevilFruitLevelsCap get(EntityPlayer player)
@@ -34,18 +40,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public int getPowerLevel(int id) {
-        Power power = PowerHandler.getPower(getDevilFruitID(), id);
-        if(power == null)return 0;
-
-        int level = 0;
-        for(int requiredHits : power.getHitsToUpgradePower()){
-            if(hits[id-1] < requiredHits){
-                break;
-            }
-            level++;
-        }
-
-        return level;
+        return powersLevels[id-1];
     }
 
     @Override
@@ -69,30 +64,40 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     }
 
     @Override
-    public int getPowerHits(int id) {
-        return hits[id];
+    public int[] getAllPowersLevels(){
+        return powersLevels;
     }
 
     @Override
-    public int[] getAllPowersHits(){
-        return hits;
+    public void addPowerLevel(int id) {
+        powersLevels[id-1]++;
     }
 
     @Override
-    public void addPowerHit(int id) {
-        hits[id]++;
+    public void setPowersLevels(int[] powersLevels){
+        this.powersLevels = powersLevels;
     }
 
     @Override
-    public void setPowerHits(int[] hits){
-        this.hits = hits;
+    public void setXP(int xp) {
+        this.xp = xp;
+    }
+
+    @Override
+    public void addXP(int xp) {
+        this.xp += xp;
+    }
+
+    @Override
+    public int getXP() {
+        return xp;
     }
 
     @Override
     public int getPowerCooldown(int id) {
         Power power = PowerHandler.getPower(getDevilFruitID(), id);
 
-        return power.getCooldownTime(getPowerCooldown(id)-1);
+        return power.getCooldownTime(getPowerCooldownLevel(id)-1);
     }
 
     @Override
@@ -129,15 +134,16 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     @Override
     public void resetAll() {
         uses = new int[PowerHandler.getTotalPowersForFruit(devilFruitID)];
-        hits = new int[PowerHandler.getTotalPowersForFruit(devilFruitID)];
+        powersLevels = new int[PowerHandler.getTotalPowersForFruit(devilFruitID)];
     }
 
     @Override
     public void copy(IDevilFruitLevelsCap dfl, EntityPlayer ep) {
         this.setDevilFruitID(getDevilFruitID());
         this.setPowerUses(uses);
-        this.setPowerHits(hits);
-        PacketDispatcher.sendTo(new PacketDevilFruitLevelsClient(dfl), (EntityPlayerMP)ep);
+        this.setPowersLevels(powersLevels);
+        this.setXP(xp);
+        PacketDispatcher.sendTo(new PacketDevilFruitLevels(dfl), (EntityPlayerMP)ep);
     }
 
 }

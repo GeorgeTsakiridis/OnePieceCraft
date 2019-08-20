@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,10 +23,10 @@ public class EntityIceSaber extends EntitySimpleProjectile {
         this.setPositionAndRotation(x, y, z, yaw, pitch);
     }
 
-    public void onCollideWithPlayer(EntityPlayer player) {
-        if (!isCollisionWithPlayerValid(player)) return;
+    @Override
+    public void onValidPlayerCollision(EntityPlayer player) {
         player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
-        player.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(player, 6F, true));
+        player.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(player, 6F, true));
         player.hurtResistantTime = 20;
     }
 
@@ -34,12 +35,12 @@ public class EntityIceSaber extends EntitySimpleProjectile {
         return 80;
     }
 
-    public void collideWithEntity(Entity entityIn){
-        if(!isCollisionWithEntityValid(entityIn))return;
-            EntityLiving e = (EntityLiving)entityIn;
-            e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(owner), 6F);
-            entityIn.hurtResistantTime = 20;
+    @Override
+    public void onValidEntityCollision(Entity entity) {
+        EntityLiving e = (EntityLiving)entity;
+        e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
+        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 6F);
+        entity.hurtResistantTime = 20;
     }
 
     @Override

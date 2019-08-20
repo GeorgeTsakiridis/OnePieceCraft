@@ -6,6 +6,7 @@ import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
+import georgetsak.opcraft.common.damagesource.OPDamageSource;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -79,6 +80,10 @@ public class OPUtils {
         stack.getTagCompound().setString("owner", owner.getPersistentID().toString());
         stack.getTagCompound().setString("ownerDisplayName", owner.getDisplayNameString());
         return stack;
+    }
+
+    public static DamageSource causePlayerCustomDamage(EntityPlayer source, boolean isDevilFruit){
+        return new OPDamageSource("player", source, isDevilFruit);
     }
 
     public static List<Entity> getNearbyEntities(EntityPlayer player, double radius, Class get) {

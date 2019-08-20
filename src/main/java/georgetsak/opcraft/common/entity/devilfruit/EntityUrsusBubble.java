@@ -64,11 +64,11 @@ public class EntityUrsusBubble extends EntityFlying {
                 if (entities.get(i) != null) {
                     if (entities.get(i) instanceof EntityPlayer) {
                         EntityPlayer entityPlayer = (EntityPlayer) entities.get(i);
-                        entityPlayer.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityPlayer, damage, true));
+                        entityPlayer.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), MathUtils.calculateDamage(entityPlayer, damage, true));
 
                     } else if (entities.get(i) instanceof EntityLiving) {
                         Entity e = entities.get(i);
-                        e.attackEntityFrom(DamageSource.causePlayerDamage(ep), damage);
+                        e.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), damage);
                     }
 
                 }

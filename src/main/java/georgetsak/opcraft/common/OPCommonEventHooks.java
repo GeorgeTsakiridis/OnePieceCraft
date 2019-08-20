@@ -3,6 +3,8 @@ package georgetsak.opcraft.common;
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.capability.bounty.BountyCap;
 import georgetsak.opcraft.common.capability.bounty.IBountyCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
@@ -13,6 +15,8 @@ import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
+import georgetsak.opcraft.common.damagesource.OPDamageSource;
+import georgetsak.opcraft.common.entity.devilfruit.EntityGomuPistol;
 import georgetsak.opcraft.common.entity.marine.EntityMarine;
 import georgetsak.opcraft.common.entity.other.EntityBandit;
 import georgetsak.opcraft.common.item.weapons.swords.ItemSimpleSword;
@@ -21,6 +25,7 @@ import georgetsak.opcraft.common.network.packets.client.PacketBountyClient;
 import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitClient;
 import georgetsak.opcraft.common.network.packets.client.PacketSyncCrewClient;
 import georgetsak.opcraft.common.network.packets.common.PacketConfig;
+import georgetsak.opcraft.common.network.packets.common.PacketDevilFruitLevels;
 import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
@@ -237,7 +242,6 @@ public class OPCommonEventHooks {
                     }
                     else if(role == EnumRole.ARCHER){
                         if(heldItem instanceof ItemBow){
-                            System.out.println("BOW BOW BOW!");
                             float additionalDamage = event.getAmount() * 0.25f;
                             targetPlayer.attackEntityFrom(DamageSource.GENERIC, event.getAmount() + additionalDamage);
                         }
@@ -256,35 +260,71 @@ public class OPCommonEventHooks {
     }
 
     @SubscribeEvent
-    public void onPlayerDeath(LivingDeathEvent event){
+    public void onLivingEntityDeath(LivingDeathEvent event){
         Entity victimEntity = event.getEntity();
         Entity killerEntity = event.getSource().getTrueSource();
-        EntityPlayer victimPlayer;
+        EntityPlayer victimPlayer = null;
         EntityPlayer killerPlayer = null;
-        IBountyCap victimBountyCap;
+        IBountyCap victimBountyCap = null;
+        IDevilFruitLevelsCap killerLevelCap;
 
         if (victimEntity instanceof EntityPlayer) {
 
             victimPlayer = (EntityPlayer) victimEntity;
             victimBountyCap = BountyCap.get(victimPlayer);
-        }else{
-            return;
         }
+
         if (killerEntity instanceof EntityPlayer) {
             killerPlayer = (EntityPlayer) killerEntity;
         }
 
         if(killerPlayer != null){
-            IBountyCap sourceBountyCap = BountyCap.get(killerPlayer);
-            sourceBountyCap.changeBountyBy((int)(victimBountyCap.getBounty() * 0.30f));
-            victimBountyCap.changeBountyBy((int)(-victimBountyCap.getBounty() * 0.35f));
+            IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(killerPlayer);
 
-            PacketDispatcher.sendTo(new PacketBountyClient(victimBountyCap), (EntityPlayerMP)victimPlayer);
-            PacketDispatcher.sendTo(new PacketBountyClient(sourceBountyCap), (EntityPlayerMP)killerPlayer);
+            if(victimEntity instanceof EntityPlayer) {
 
+                IBountyCap sourceBountyCap = BountyCap.get(killerPlayer);
+
+                sourceBountyCap.changeBountyBy((int) (victimBountyCap.getBounty() * 0.30f));
+                victimBountyCap.changeBountyBy((int) (-victimBountyCap.getBounty() * 0.35f));
+
+                if(event.getSource() instanceof OPDamageSource){
+                    if(((OPDamageSource) event.getSource()).isDevilFruit()){
+                        dfl.addXP(DevilFruitLevelsCap.PLAYER_KILLED_WITH_DF_XP);
+                        System.out.println("Player killed another player using DF. Granting " + DevilFruitLevelsCap.PLAYER_KILLED_WITH_DF_XP + " XP");
+                    }else{
+                        dfl.addXP(DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP);
+                        System.out.println("Player killed another player without using DF. Granting " + DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP + " XP");
+                    }
+                }else{
+                    dfl.addXP(DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP);
+                    System.out.println("Player killed another player without using DF. Granting " + DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP + " XP");
+                }
+
+                PacketDispatcher.sendTo(new PacketBountyClient(victimBountyCap), (EntityPlayerMP) victimPlayer);
+                PacketDispatcher.sendTo(new PacketBountyClient(sourceBountyCap), (EntityPlayerMP) killerPlayer);
+                PacketDispatcher.sendTo(new PacketDevilFruitLevels(dfl),(EntityPlayerMP)killerEntity);
+
+            }else {
+                if (event.getSource() instanceof OPDamageSource) {
+                    if (((OPDamageSource) event.getSource()).isDevilFruit()) {
+                        dfl.addXP(DevilFruitLevelsCap.ENTITY_KILLED_WITH_DF_XP);
+                        System.out.println("Player killed another entity using DF. Granting " + DevilFruitLevelsCap.ENTITY_KILLED_WITH_DF_XP + " XP");
+                    } else {
+                        dfl.addXP(DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP);
+                        System.out.println("Player killed another entity without using DF. Granting " + DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP + " XP");
+                    }
+                }else{
+                    dfl.addXP(DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP);
+                    System.out.println("Player killed another entity without using DF. Granting " + DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP + " XP");
+                }
+                PacketDispatcher.sendTo(new PacketDevilFruitLevels(dfl),(EntityPlayerMP)killerEntity);
+            }
         }else {
-            victimBountyCap.changeBountyBy((int) (-victimBountyCap.getBounty() * 0.1f));
-            PacketDispatcher.sendTo(new PacketBountyClient(victimBountyCap), (EntityPlayerMP) victimPlayer);
+            if (victimEntity instanceof EntityPlayer) {
+                victimBountyCap.changeBountyBy((int) (-victimBountyCap.getBounty() * 0.1f));
+                PacketDispatcher.sendTo(new PacketBountyClient(victimBountyCap), (EntityPlayerMP) victimPlayer);
+            }
         }
     }
 
@@ -336,6 +376,7 @@ public class OPCommonEventHooks {
     @SubscribeEvent
     public void livingUpdateEvent(LivingEvent.LivingUpdateEvent event) {//Used to increase the six powers distanceRun and distanceRunInPlants fields.
         Entity entity = event.getEntity();
+
         if (entity instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) entity;
             ISixPowersCap sixPowersCap = SixPowersCap.get(player);

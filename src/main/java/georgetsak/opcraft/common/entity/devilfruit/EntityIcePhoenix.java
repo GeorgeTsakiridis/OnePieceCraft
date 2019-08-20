@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.EntityLiving;
@@ -60,7 +61,7 @@ public class EntityIcePhoenix extends EntityFlying {
     {
         if(ep != entityIn && ep != null && entityIn.hurtResistantTime == 0){
             entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 2));
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 12f, true));
+            entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), MathUtils.calculateDamage(entityIn, 12f, true));
             entityIn.hurtResistantTime = 20;
         }
     }
@@ -94,7 +95,7 @@ public class EntityIcePhoenix extends EntityFlying {
         if(entityIn instanceof EntityLiving){
             EntityLiving e = (EntityLiving)entityIn;
             e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 2));
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), 8F);
+            entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), 8F);
             entityIn.hurtResistantTime = 20;
         }
     }

@@ -1,46 +1,38 @@
-package georgetsak.opcraft.common.network.packets.server;
+package georgetsak.opcraft.common.network.packets.common;
 
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
-import georgetsak.opcraft.common.capability.stats.normal.IStatsNormalCap;
-import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCapProvider;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
-import georgetsak.opcraft.common.util.OPUtils;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.network.PacketBuffer;
 import net.minecraftforge.fml.relauncher.Side;
 
-import java.io.IOException;
 
-/**
- * Created by GeorgeTsak on 7/15/2017.
- */
-public class PacketDevilFruitLevelsServer extends AbstractMessage.AbstractServerMessage<PacketDevilFruitLevelsServer> {
+public class PacketDevilFruitLevels extends AbstractMessage<PacketDevilFruitLevels>{
 
     int devilFruitID;
     int[] uses;
-    int[] hits;
+    int[] levels;
 
-    public PacketDevilFruitLevelsServer(){}
-    public PacketDevilFruitLevelsServer(IDevilFruitLevelsCap dfl){
+    public PacketDevilFruitLevels(){}
+    public PacketDevilFruitLevels(IDevilFruitLevelsCap dfl){
         devilFruitID = dfl.getDevilFruitID();
         uses = dfl.getAllPowersUses();
-        hits = dfl.getAllPowersHits();
+        levels = dfl.getAllPowersLevels();
     }
 
     @Override
     protected void read(PacketBuffer buffer) {
         devilFruitID = buffer.readInt();
         uses = buffer.readVarIntArray();
-        hits = buffer.readVarIntArray();
+        levels = buffer.readVarIntArray();
     }
 
     @Override
     protected void write(PacketBuffer buffer) {
         buffer.writeInt(devilFruitID);
         buffer.writeVarIntArray(uses);
-        buffer.writeVarIntArray(hits);
+        buffer.writeVarIntArray(levels);
     }
 
     @Override
@@ -49,6 +41,6 @@ public class PacketDevilFruitLevelsServer extends AbstractMessage.AbstractServer
 
             dfl.setDevilFruitID(devilFruitID);
             dfl.setPowerUses(uses);
-            dfl.setPowerHits(hits);
+            dfl.setPowersLevels(levels);
     }
 }

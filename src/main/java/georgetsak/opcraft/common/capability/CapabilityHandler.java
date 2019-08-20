@@ -21,7 +21,7 @@ import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCap;
 import georgetsak.opcraft.common.capability.stats.normal.StatsNormalCapProvider;
 import georgetsak.opcraft.common.network.packets.client.PacketBountyClient;
 import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitClient;
-import georgetsak.opcraft.common.network.packets.client.PacketDevilFruitLevelsClient;
+import georgetsak.opcraft.common.network.packets.common.PacketDevilFruitLevels;
 import georgetsak.opcraft.common.network.packets.client.PacketStatsNormalClient;
 import georgetsak.opcraft.common.network.packets.common.PacketHaki;
 import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
@@ -74,7 +74,7 @@ public class CapabilityHandler {
         PacketDispatcher.sendTo(new PacketStatsNormalClient(StatsNormalCap.get(player)), playerMP);
         PacketDispatcher.sendTo(new PacketHaki(HakiCap.get(player)), playerMP);
         PacketDispatcher.sendTo(new PacketSixPowers(SixPowersCap.get(player)), playerMP);
-        PacketDispatcher.sendTo(new PacketDevilFruitLevelsClient(DevilFruitLevelsCap.get(player)), playerMP);
+        PacketDispatcher.sendTo(new PacketDevilFruitLevels(DevilFruitLevelsCap.get(player)), playerMP);
 
         if(!OPCraft.IS_RELEASE_VERSION){
             player.sendMessage(new TextComponentString(TextFormatting.GOLD + "==============================="));
@@ -107,7 +107,7 @@ public class CapabilityHandler {
                 PacketDispatcher.sendTo(new PacketStatsNormalClient(statsNormalCap), playerMP);
                 PacketDispatcher.sendTo(new PacketHaki(hakiCap), playerMP);
                 PacketDispatcher.sendTo(new PacketSixPowers(sixPowersCap), playerMP);
-                PacketDispatcher.sendTo(new PacketDevilFruitLevelsClient(devilFruitLevelsCap), playerMP);
+                PacketDispatcher.sendTo(new PacketDevilFruitLevels(devilFruitLevelsCap), playerMP);
             }
         }
     }

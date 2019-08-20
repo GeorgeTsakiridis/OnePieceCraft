@@ -8,15 +8,18 @@ public interface IDevilFruitLevelsCap {
     int getDevilFruitID();
     int getPowerLevel(int id);
 
-    int getPowerTotalUses(int id);
     int[] getAllPowersUses();
     void addPowerUses(int id);
     void setPowerUses(int[] uses);
+    int getPowerTotalUses(int id);
 
-    int getPowerHits(int id);
-    int[] getAllPowersHits();
-    void addPowerHit(int id);
-    void setPowerHits(int[] hits);
+    int[] getAllPowersLevels();
+    void addPowerLevel(int id);
+    void setPowersLevels(int[] levels);
+
+    void setXP(int xp);
+    void addXP(int xp);
+    int getXP();
 
     int getPowerCooldown(int id);
     int getPowerCooldownLevel(int id);

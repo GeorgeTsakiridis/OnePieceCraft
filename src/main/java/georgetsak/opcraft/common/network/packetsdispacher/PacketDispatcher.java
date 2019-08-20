@@ -2,10 +2,7 @@ package georgetsak.opcraft.common.network.packetsdispacher;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.network.packets.client.*;
-import georgetsak.opcraft.common.network.packets.common.PacketConfig;
-import georgetsak.opcraft.common.network.packets.common.PacketHaki;
-import georgetsak.opcraft.common.network.packets.common.PacketItemStackChange;
-import georgetsak.opcraft.common.network.packets.common.PacketSixPowers;
+import georgetsak.opcraft.common.network.packets.common.*;
 import georgetsak.opcraft.common.network.packets.server.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -58,8 +55,7 @@ import net.minecraftforge.fml.relauncher.Side;
         registerMessage(PacketSyncCrewClient.class);
         registerMessage(PacketEditCrewServer.class);
         registerMessage(PacketCrewInviteClient.class);
-        registerMessage(PacketDevilFruitLevelsClient.class);
-        registerMessage(PacketDevilFruitLevelsServer.class);
+        registerMessage(PacketDevilFruitLevels.class);
     }
 
     /**
