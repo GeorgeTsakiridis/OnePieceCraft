@@ -349,7 +349,7 @@ public class OPClientEventHooks {
 
                     power.setCurrentCooldown(adjustTicks(dfc.getPowerCooldown(power.getKey())));
 
-                    dfc.addPowerUses(power.getKey() - 1);
+                    dfc.addPowerUses(power.getKey());
                     PacketDispatcher.sendToServer(new PacketDevilFruitLevels(dfc));
 
                     if(!OPCraft.IS_RELEASE_VERSION) {
@@ -379,9 +379,15 @@ public class OPClientEventHooks {
         if(ClientProxy.statsButton.isPressed()) {
             Minecraft.getMinecraft().player.openGui(OPCraft.MODID, 1, Minecraft.getMinecraft().world, 0, 0, 0);
         }
+
         //Haki Stats button
         if(ClientProxy.hakiButton.isPressed()){
             Minecraft.getMinecraft().player.openGui(OPCraft.MODID, 4, Minecraft.getMinecraft().world, 0, 0, 0);
+        }
+
+        //Power Upgrade button
+        if(ClientProxy.powerUpgradeButton.isPressed()){
+            Minecraft.getMinecraft().player.openGui(OPCraft.MODID,6,Minecraft.getMinecraft().world,0,0,0);
         }
 
         //Jump key for Gear 4

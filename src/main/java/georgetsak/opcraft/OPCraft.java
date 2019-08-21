@@ -52,6 +52,8 @@ public class OPCraft {
         event.registerServerCommand(new CommandGetBounty());
         event.registerServerCommand(new CommandSetSixPowerLevel());
         event.registerServerCommand(new CommandCrewMessage());
+        event.registerServerCommand(new CommandSetDFPowerLevel());
+        event.registerServerCommand(new CommandSetDFXP());
     }
 
     @NetworkCheckHandler()

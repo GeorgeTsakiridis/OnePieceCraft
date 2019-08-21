@@ -129,6 +129,7 @@ public class ClientProxy extends CommonProxy {
 	public static KeyBinding emperorHakiButton;
 	public static KeyBinding sixPowersMenuButton;
 	public static KeyBinding sixPowersButton;
+	public static KeyBinding powerUpgradeButton;
 
 
 	private void registerKeyBindings() {
@@ -140,6 +141,7 @@ public class ClientProxy extends CommonProxy {
 		emperorHakiButton = new KeyBinding("key.emperorHakiButton", KeyConflictContext.IN_GAME, KeyModifier.SHIFT, Keyboard.KEY_X, "key.categories.onepiece");
 		sixPowersMenuButton = new KeyBinding("key.six_powers_menu_button", KeyConflictContext.IN_GAME, KeyModifier.CONTROL, Keyboard.KEY_Z, "key.categories.onepiece");
 		sixPowersButton = new KeyBinding("key.six_powers_button", KeyConflictContext.IN_GAME, KeyModifier.CONTROL, Keyboard.KEY_V, "key.categories.onepiece");
+		powerUpgradeButton = new KeyBinding("key.power_upgrade_button",KeyConflictContext.IN_GAME,KeyModifier.SHIFT, Keyboard.KEY_C, "key.categories.onepiece");
 
         ClientRegistry.registerKeyBinding(key1);
         ClientRegistry.registerKeyBinding(key2);
@@ -149,6 +151,7 @@ public class ClientProxy extends CommonProxy {
         ClientRegistry.registerKeyBinding(emperorHakiButton);
         ClientRegistry.registerKeyBinding(sixPowersMenuButton);
         ClientRegistry.registerKeyBinding(sixPowersButton);
+        ClientRegistry.registerKeyBinding(powerUpgradeButton);
 	}
 
 	private void registerItemRenderers() {

@@ -28,7 +28,7 @@ public class DevilFruitLevelsCapStorage implements Capability.IStorage<IDevilFru
 
             instance.setDevilFruitID(compound.getInteger("devilFruitID"));
             instance.setXP(compound.getInteger("xp"));
-            instance.setPowerUses(compound.getIntArray("uses"));
+            instance.setPowersUses(compound.getIntArray("uses"));
             instance.setPowersLevels(compound.getIntArray("levels"));
 
         }

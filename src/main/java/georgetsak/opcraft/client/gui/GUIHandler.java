@@ -5,8 +5,10 @@ import georgetsak.opcraft.client.gui.shipbuilder.ContainerCraftingShipBuilder;
 import georgetsak.opcraft.client.gui.shipbuilder.ShipBuilderGUI;
 import georgetsak.opcraft.client.gui.stat.HakiGUI;
 import georgetsak.opcraft.client.gui.stat.StatsGUI;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.network.packets.client.PacketSyncCrewClient;
+import georgetsak.opcraft.common.network.packets.common.PacketDevilFruitLevels;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -20,13 +22,17 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 public class GUIHandler implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-        switch (ID){
+        switch (ID) {
             case 2:
                 return new ContainerCraftingShipBuilder(player.inventory, world, new BlockPos(x, y, z));
-            case 5:{
-                PacketDispatcher.sendTo(new PacketSyncCrewClient(CrewSaveData.get(world).getCrews()),(EntityPlayerMP)player);
-            }
-                default:return null;
+            case 5:
+                PacketDispatcher.sendTo(new PacketSyncCrewClient(CrewSaveData.get(world).getCrews()), (EntityPlayerMP) player);
+                return null;
+            case 6:
+                PacketDispatcher.sendTo(new PacketDevilFruitLevels(DevilFruitLevelsCap.get(player)),(EntityPlayerMP)player);
+                return null;
+            default:
+                return null;
         }
     }
 
@@ -46,6 +52,8 @@ public class GUIHandler implements IGuiHandler {
                 return new HakiGUI();
             case 5:
                 return new CrewGUI();
+            case 6:
+                return new PowerUpgradeGUI();
             default:
                 return null;
         }

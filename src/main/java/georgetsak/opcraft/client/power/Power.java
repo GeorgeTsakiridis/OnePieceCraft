@@ -5,7 +5,6 @@ import net.minecraft.util.ResourceLocation;
 public class Power {
     private int[] cooldownTimes;
     private int[] usesToReduceCooldown;
-    private int[] hitsToUpgradePower;
 
     private int currentCooldown;
 
@@ -15,10 +14,9 @@ public class Power {
 
     private int devilFruitID, key;
 
-    public Power(int[] cooldownTimes, int[] usesToReduceCooldown, int[] hitsToUpgradePower, String actionMessage, String actionName, int devilFruitID, int key, ResourceLocation resourceLocation) {
+    public Power(int[] cooldownTimes, int[] usesToReduceCooldown, String actionMessage, String actionName, int devilFruitID, int key, ResourceLocation resourceLocation) {
         this.cooldownTimes = cooldownTimes;
         this.usesToReduceCooldown = usesToReduceCooldown;
-        this.hitsToUpgradePower = hitsToUpgradePower;
         this.actionMessage = actionMessage;
         this.actionName = actionName;
         this.devilFruitID = devilFruitID;
@@ -45,10 +43,6 @@ public class Power {
 
     public int[] getUsesToReduceCooldown() {
         return usesToReduceCooldown;
-    }
-
-    public int[] getHitsToUpgradePower() {
-        return hitsToUpgradePower;
     }
 
     public String getActionMessage() {

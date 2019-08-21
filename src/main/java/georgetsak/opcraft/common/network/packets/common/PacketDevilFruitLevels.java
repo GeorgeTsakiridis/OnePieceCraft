@@ -13,12 +13,14 @@ public class PacketDevilFruitLevels extends AbstractMessage<PacketDevilFruitLeve
     int devilFruitID;
     int[] uses;
     int[] levels;
+    int xp;
 
     public PacketDevilFruitLevels(){}
     public PacketDevilFruitLevels(IDevilFruitLevelsCap dfl){
         devilFruitID = dfl.getDevilFruitID();
         uses = dfl.getAllPowersUses();
         levels = dfl.getAllPowersLevels();
+        xp = dfl.getXP();
     }
 
     @Override
@@ -26,6 +28,7 @@ public class PacketDevilFruitLevels extends AbstractMessage<PacketDevilFruitLeve
         devilFruitID = buffer.readInt();
         uses = buffer.readVarIntArray();
         levels = buffer.readVarIntArray();
+        xp = buffer.readInt();
     }
 
     @Override
@@ -33,6 +36,7 @@ public class PacketDevilFruitLevels extends AbstractMessage<PacketDevilFruitLeve
         buffer.writeInt(devilFruitID);
         buffer.writeVarIntArray(uses);
         buffer.writeVarIntArray(levels);
+        buffer.writeInt(xp);
     }
 
     @Override
@@ -40,7 +44,8 @@ public class PacketDevilFruitLevels extends AbstractMessage<PacketDevilFruitLeve
             IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(player);
 
             dfl.setDevilFruitID(devilFruitID);
-            dfl.setPowerUses(uses);
+            dfl.setPowersUses(uses);
             dfl.setPowersLevels(levels);
+            dfl.setXP(xp);
     }
 }

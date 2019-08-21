@@ -45,7 +45,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public int getPowerTotalUses(int id) {
-        return uses[id];
+        return uses[id-1];
     }
 
     @Override
@@ -54,18 +54,28 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     }
 
     @Override
-    public void addPowerUses(int id) {
-        uses[id]++;
+    public void setPowerUses(int id, int uses) {
+        this.uses[id-1] = uses;
     }
 
     @Override
-    public void setPowerUses(int[] uses){
+    public void addPowerUses(int id) {
+        uses[id-1]++;
+    }
+
+    @Override
+    public void setPowersUses(int[] uses){
         this.uses = uses;
     }
 
     @Override
     public int[] getAllPowersLevels(){
         return powersLevels;
+    }
+
+    @Override
+    public void setPowerLevel(int id, int level) {
+        powersLevels[id-1] = level;
     }
 
     @Override
@@ -94,6 +104,16 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     }
 
     @Override
+    public void setPowerCooldown(int id, int level) {
+        if(level == 0){
+            uses[id-1] = 0;
+            return;
+        }
+
+        uses[id-1] = PowerHandler.getPower(getDevilFruitID(),id).getUsesToReduceCooldown()[level-1];
+    }
+
+    @Override
     public int getPowerCooldown(int id) {
         Power power = PowerHandler.getPower(getDevilFruitID(), id);
 
@@ -117,10 +137,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public boolean canPowerLevelBeIncreased(int id) {
-        Power power = PowerHandler.getPower(getDevilFruitID(),id);
-        if(power == null)return false;
-
-        return power.getHitsToUpgradePower() != null;
+        return true;
     }
 
     @Override
@@ -135,12 +152,13 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     public void resetAll() {
         uses = new int[PowerHandler.getTotalPowersForFruit(devilFruitID)];
         powersLevels = new int[PowerHandler.getTotalPowersForFruit(devilFruitID)];
+        xp = 0;
     }
 
     @Override
     public void copy(IDevilFruitLevelsCap dfl, EntityPlayer ep) {
         this.setDevilFruitID(getDevilFruitID());
-        this.setPowerUses(uses);
+        this.setPowersUses(uses);
         this.setPowersLevels(powersLevels);
         this.setXP(xp);
         PacketDispatcher.sendTo(new PacketDevilFruitLevels(dfl), (EntityPlayerMP)ep);

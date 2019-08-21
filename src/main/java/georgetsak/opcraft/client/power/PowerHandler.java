@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public class PowerHandler {
     private static ArrayList<Power> powers = new ArrayList<>();
 
-    public static void addPower(int[] cooldownTimes, int[] usesToReduceCooldown, int[] hitsToUpgradePower, String actionMessage, String actionName, int devilFruitID, int key){
-        powers.add(new Power(cooldownTimes, usesToReduceCooldown, hitsToUpgradePower, actionMessage, actionName, devilFruitID, key, new ResourceLocation(OPCraft.MODID, "null.png")));
+    public static void addPower(int[] cooldownTimes, int[] usesToReduceCooldown, String actionMessage, String actionName, int devilFruitID, int key){
+        powers.add(new Power(cooldownTimes, usesToReduceCooldown, actionMessage, actionName, devilFruitID, key, new ResourceLocation(OPCraft.MODID, "null.png")));
     }
 
-    public static void addPower(int[] cooldownTimes, int[] usesToReduceCooldown, int[] hitsToUpgradePower, String actionMessage, String actionName, int devilFruitID, int key, String resourceName){
+    public static void addPower(int[] cooldownTimes, int[] usesToReduceCooldown, String actionMessage, String actionName, int devilFruitID, int key, String resourceName){
         ResourceLocation resourceLocation = new ResourceLocation(OPCraft.MODID, "textures/gui/powers_icons/" + resourceName + ".png");
-        powers.add(new Power(cooldownTimes, usesToReduceCooldown, hitsToUpgradePower, actionMessage, actionName, devilFruitID, key, resourceLocation));
+        powers.add(new Power(cooldownTimes, usesToReduceCooldown, actionMessage, actionName, devilFruitID, key, resourceLocation));
     }
 
     public static Power getPower(int devilFruitID, int key){
