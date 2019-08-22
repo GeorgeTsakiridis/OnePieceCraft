@@ -96,7 +96,7 @@ public class ClientProxy extends CommonProxy {
 		super.init(event);
 		registerItemRenderers();
         registerKeyBindings();
-        OPDevilFruits.registerPowers();
+        //OPDevilFruits.registerPowers();
         OPBook.registerPages();
 	}
 

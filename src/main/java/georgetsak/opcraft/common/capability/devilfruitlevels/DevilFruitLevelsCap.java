@@ -1,7 +1,7 @@
 package georgetsak.opcraft.common.capability.devilfruitlevels;
 
-import georgetsak.opcraft.client.power.Power;
-import georgetsak.opcraft.client.power.PowerHandler;
+import georgetsak.opcraft.common.power.Power;
+import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.network.packets.common.PacketDevilFruitLevels;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.registry.OPDevilFruits;
@@ -116,6 +116,8 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     @Override
     public int getPowerCooldown(int id) {
         Power power = PowerHandler.getPower(getDevilFruitID(), id);
+
+        if(power == null)return 0;
 
         return power.getCooldownTime(getPowerCooldownLevel(id)-1);
     }

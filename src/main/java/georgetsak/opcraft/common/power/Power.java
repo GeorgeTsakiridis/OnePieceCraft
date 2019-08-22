@@ -1,4 +1,4 @@
-package georgetsak.opcraft.client.power;
+package georgetsak.opcraft.common.power;
 
 import net.minecraft.util.ResourceLocation;
 
@@ -42,6 +42,7 @@ public class Power {
     }
 
     public int[] getUsesToReduceCooldown() {
+        if(usesToReduceCooldown == null)return new int[]{10,20,30,40};
         return usesToReduceCooldown;
     }
 

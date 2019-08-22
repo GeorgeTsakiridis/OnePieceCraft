@@ -1,17 +1,13 @@
 package georgetsak.opcraft.client.gui.overlay;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.OPClientEventHooks;
-import georgetsak.opcraft.client.power.Power;
-import georgetsak.opcraft.client.power.PowerHandler;
+import georgetsak.opcraft.common.power.Power;
+import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
-import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
-import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
 import georgetsak.opcraft.common.util.MathUtils;
-import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
@@ -22,7 +18,6 @@ import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class DevilFruitRenderOverlay {
 

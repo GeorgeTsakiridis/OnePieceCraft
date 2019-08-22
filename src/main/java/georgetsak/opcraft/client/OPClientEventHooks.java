@@ -3,8 +3,8 @@ package georgetsak.opcraft.client;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.gui.overlay.EnumSixPowers;
-import georgetsak.opcraft.client.power.Power;
-import georgetsak.opcraft.client.power.PowerHandler;
+import georgetsak.opcraft.common.power.Power;
+import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
 import georgetsak.opcraft.client.proxy.ClientProxy;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
@@ -13,7 +13,6 @@ import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
-import georgetsak.opcraft.common.config.ConfigHandler;
 import georgetsak.opcraft.common.crew.Crew;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;

@@ -1,4 +1,4 @@
-package georgetsak.opcraft.client.power;
+package georgetsak.opcraft.common.power;
 
 import georgetsak.opcraft.OPCraft;
 import net.minecraft.util.ResourceLocation;

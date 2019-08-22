@@ -1,8 +1,7 @@
 package georgetsak.opcraft.client.power;
 
-import georgetsak.opcraft.client.power.Power;
-import georgetsak.opcraft.client.power.PowerHandler;
-import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
+import georgetsak.opcraft.common.power.Power;
+import georgetsak.opcraft.common.power.PowerHandler;
 import net.minecraft.util.ResourceLocation;
 
 import java.util.ArrayList;

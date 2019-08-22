@@ -1,6 +1,6 @@
 package georgetsak.opcraft.common.command;
 
-import georgetsak.opcraft.client.power.PowerHandler;
+import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
 import georgetsak.opcraft.common.network.packets.common.PacketDevilFruitLevels;
@@ -35,16 +35,17 @@ public class CommandSetDFPowerLevel extends CommandBase {
         if (args.length != 4) {
             throw new WrongUsageException("/setdfpowerlevel <player> <power #> <power/cooldown> <level>");
         }else{
-            EntityPlayer player = (EntityPlayer) getEntity(server,sender,args[0]);
+            EntityPlayer player = (EntityPlayer) getEntity(server, sender, args[0]);
             int powerID = parseInt(args[1]);
             String mode = args[2];
             int level = parseInt(args[3]);
 
             IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(player);
-            int totalPowers = PowerHandler.getTotalPowersForFruit(dfl.getDevilFruitID());
+            int totalPowers = dfl.getAllPowersUses().length;//This is used because server has no access to the registered powers, so PowerHandler#getTotalPowersForFruit() would return always 0.
+
             System.out.println(totalPowers + " // " + powerID);
             if(totalPowers < 1){
-                throw new WrongUsageException(sender.getName() + " has not any upgradable powers.");
+                throw new WrongUsageException(player.getName() + " has not any upgradable powers.");
             }
             if(powerID > totalPowers || powerID < 1){
                 throw new WrongUsageException("Not a valid power #.");

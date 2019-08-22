@@ -1,13 +1,11 @@
 package georgetsak.opcraft.common.registry;
 
-import georgetsak.opcraft.client.power.PowerHandler;
+import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
 import georgetsak.opcraft.common.item.devilfruits.ItemDevilFruit;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class OPDevilFruits {
 
@@ -85,7 +83,6 @@ public class OPDevilFruits {
         DevilFruitAssetsManager.addDevilFruitAsset(ITO,"ito", "String-String Fruit", "Ito Ito no Mi");
     }
 
-    @SideOnly(Side.CLIENT)
     public static void registerPowers(){
         PowerHandler.addPower(new int[]{60, 55, 50, 45, 40}, new int[]{260, 540, 850, 1200}, "GomuPistol", "Gomu Gomu no: Pistol", GOMU,1, "pistol");
         PowerHandler.addPower(new int[]{320, 310, 300, 290, 280}, new int[]{50, 100, 150, 200}, "GomuGear2", "Gomu Gomu no: Gear 2", GOMU, 2, "gear2");

@@ -1,7 +1,7 @@
 package georgetsak.opcraft.client.gui;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.power.PowerHandler;
+import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;

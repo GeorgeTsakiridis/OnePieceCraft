@@ -75,6 +75,7 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event) {
+		OPDevilFruits.registerPowers();
 		DataSerializers.registerSerializer(OPDataSerializers.VECTOR3DOUBLE);
 	}
 	

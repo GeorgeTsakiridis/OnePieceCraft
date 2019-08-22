@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
@@ -88,18 +89,15 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 
 	@Override
 	public void onValidPlayerCollision(EntityPlayer entityIn) {
-		float amount = isGear3() ? 12F : 8F;
-
-		entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn, amount, true));
+		entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn, getDamage(), true));
 		entityIn.hurtResistantTime = 20;
 
 	}
 
 	@Override
 	public void onValidEntityCollision(Entity entity) {
-		float amount = isGear3() ? 12F : 8F;
-
-		entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner, true), MathUtils.calculateDamage(owner, amount, true));
+		System.out.println(getDamage());
+		entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner, true), MathUtils.calculateDamage(owner, getDamage(), true));
 	}
 
 	 public float getCollisionBorderSize()
@@ -107,6 +105,11 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 	        return 2.0F;
 	    }
 	 
+	private float getDamage(){
+		int level = DevilFruitLevelsCap.get(owner).getPowerLevel(isGear3() ? 3 : 1);
+
+		return isGear3() ? (12F + 1.5F*level) : (6 + level);
+	}
 
 	private void setIsGear3(boolean b){
 		this.dataManager.set(IS_GEAR_3, b);
