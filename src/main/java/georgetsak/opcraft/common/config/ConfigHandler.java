@@ -108,7 +108,7 @@ public class ConfigHandler {
         return configEntries;
     }
 
-    public boolean isPowerDisabled(int id){
+    public boolean isDFDisabled(int id){
         for(ConfigEntry entry : configEntries){
             if(entry instanceof ConfigEntryBoolean && entry.getID() == id){
                 return ((ConfigEntryBoolean) entry).getCurrentValue();

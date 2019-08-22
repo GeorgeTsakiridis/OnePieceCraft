@@ -13,6 +13,7 @@ import georgetsak.opcraft.common.capability.devilfruits.DevilFruitCap;
 import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
+import georgetsak.opcraft.common.config.ConfigHandler;
 import georgetsak.opcraft.common.crew.Crew;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
@@ -344,7 +345,7 @@ public class OPClientEventHooks {
 
             if (ClientProxy.key3.isPressed()) {
                 Power power = PowerSelector.getSelectedPower();
-                if (power != null && power.getCurrentCooldown() == 0) {//V
+                if (power != null && power.getCurrentCooldown() == 0 && !OPCraft.config.isDFDisabled(id)) {//V
                     IDevilFruitLevelsCap dfc = DevilFruitLevelsCap.get(Minecraft.getMinecraft().player);
 
                     power.setCurrentCooldown(adjustTicks(dfc.getPowerCooldown(power.getKey())));
