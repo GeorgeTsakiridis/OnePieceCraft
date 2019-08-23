@@ -32,7 +32,7 @@ public class EntityOverheat extends EntityLongLine{
 
     @Override
     public void touchedAt(double x, double y, double z, EntityPlayer owner) {
-        OPUtils.newExplosion(owner,world,x,y,z,5f,true,true);
+        OPUtils.newExplosion(owner,world,x,y,z,3f + getLevel(2)*0.5f,true,true);
 
         List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(owner,6, owner);
         for(Entity entity : entities){
@@ -40,7 +40,7 @@ public class EntityOverheat extends EntityLongLine{
                 entity.attackEntityFrom(DamageSource.causePlayerDamage(owner), MathUtils.calculateDamage(owner, 14,true));
                 entity.setFire(5);
             }else if(entity instanceof EntityLiving && !(entity instanceof EntitySimpleProjectile)){
-                entity.attackEntityFrom(DamageSource.causePlayerDamage(owner),14);
+                entity.attackEntityFrom(DamageSource.causePlayerDamage(owner),6 + getLevel(2)*2);
                 entity.setFire(5);
             }
         }

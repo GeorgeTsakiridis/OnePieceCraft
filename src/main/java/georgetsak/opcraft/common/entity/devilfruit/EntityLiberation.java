@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.block.Block;
@@ -67,12 +68,11 @@ public class EntityLiberation extends EntityFlying {
         if (!world.isRemote) {
             if (owner == null) {
                 setDead();
-                System.out.println("Owner was null");
             }
             boolean grief = !OPCraft.config.disableGriefing.getCurrentValue();
 
             if (!isDead) {
-                if (ticksExisted < 60 && grief) {
+                if (ticksExisted < 60 + 60*DevilFruitLevelsCap.get(owner).getPowerLevel(3) && grief) {
                     for (int i = 0; i < 6; i++) {
                         int triesLeft = 10;
                         boolean done = false;

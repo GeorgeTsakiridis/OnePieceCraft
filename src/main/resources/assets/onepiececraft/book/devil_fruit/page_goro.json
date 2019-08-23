@@ -6,19 +6,19 @@
     3,
     {
       "name" : "El Thor",
-      "cooldown" : 5,
+      "cooldown" : "5s / 4.5s / 4s / 3.5s / 3s",
       "description" : "Creates a big lightning bolt to the location player is looking."
     },
     {
       "name" : "Sango",
-      "cooldown" : 10,
-      "description" : "Creates random lightning bolts in a 100 x 100 blocks radius area."
+      "cooldown" : "18s / 17s / 16s / 15s / 14s",
+      "description" : "Creates random lightning bolts in a small radius area."
     }
   ,
     {
       "name" : "Deathpiea",
-      "cooldown" : 30,
-      "description" : "Creates more random lightning bolts in a 150 x 150 block radius area."
+      "cooldown" : "120s / 110s / 100s / 90s / 80s",
+      "description" : "Creates more random lightning bolts in a large block radius area."
     }
   ]
 }

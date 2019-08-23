@@ -1,6 +1,7 @@
 package georgetsak.opcraft.client.gui;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.common.power.Power;
 import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
@@ -61,13 +62,14 @@ public class PowerUpgradeGUI extends GuiScreen {
 
         for (int i = 0; i < totalPowers; i++) {
             int y = height/2 + (i-totalPowers/2)*40 + 6;
+            Power power = PowerHandler.getPower(dfl.getDevilFruitID(),i+1);
 
             int cost = getCost(dfl.getPowerLevel(i+1)+1);
-            boolean isMax = dfl.getPowerLevel(i+1) == 4;
+            boolean isMax = dfl.getPowerLevel(i+1) == 4 || !power.canPowerBeUpgraded();
             boolean canUpgrade = (dfl.getXP() - cost) >= 0 && !isMax;
             TextFormatting textFormatting = canUpgrade ? TextFormatting.GREEN : TextFormatting.RED;
 
-            String powerLevelString = TextFormatting.GOLD + "Power Level: " + (dfl.getPowerLevel(i+1)+1) + "/5";
+            String powerLevelString = TextFormatting.GOLD + "Power Level: " + (dfl.getPowerLevel(i+1)+1) + "/" + (power.canPowerBeUpgraded()? "5":"1");
             String upgradeCostString = "";
             if(!isMax) {
                 upgradeCostString = TextFormatting.GOLD + "Cost to Upgrade: " + textFormatting + cost + TextFormatting.GOLD + "XP";

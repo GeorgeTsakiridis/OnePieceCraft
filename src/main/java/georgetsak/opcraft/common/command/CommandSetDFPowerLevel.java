@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.command;
 
+import georgetsak.opcraft.common.power.Power;
 import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
@@ -41,9 +42,8 @@ public class CommandSetDFPowerLevel extends CommandBase {
             int level = parseInt(args[3]);
 
             IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(player);
-            int totalPowers = dfl.getAllPowersUses().length;//This is used because server has no access to the registered powers, so PowerHandler#getTotalPowersForFruit() would return always 0.
+            int totalPowers = PowerHandler.getTotalPowersForFruit(dfl.getDevilFruitID());
 
-            System.out.println(totalPowers + " // " + powerID);
             if(totalPowers < 1){
                 throw new WrongUsageException(player.getName() + " has not any upgradable powers.");
             }
@@ -56,13 +56,21 @@ public class CommandSetDFPowerLevel extends CommandBase {
             if(level < 1 || level > 5){
                 throw new WrongUsageException("Level must be between 1 and 5");
             }
-
+            Power power = PowerHandler.getPower(dfl.getDevilFruitID(), powerID);
             switch (mode){
                 case "power":
-                    dfl.setPowerLevel(powerID,level-1);
+                    if(power.canPowerBeUpgraded()) {
+                        dfl.setPowerLevel(powerID, level - 1);
+                    }else{
+                        throw new WrongUsageException("This power is not upgradable.");
+                    }
                     break;
                 case "cooldown":
-                    dfl.setPowerCooldown(powerID,level-1);
+                    if(power.canCooldownBeUpgraded()) {
+                        dfl.setPowerCooldown(powerID, level - 1);
+                    }else{
+                        throw new WrongUsageException("This power's cooldown is not upgradable.");
+                    }
             }
             notifyCommandListener(sender,this,"Set %s %s level to %s for %s", PowerHandler.getPower(dfl.getDevilFruitID(),powerID).getActionName(), mode, String.valueOf(level), player.getName());
             PacketDispatcher.sendTo(new PacketDevilFruitLevels(dfl),(EntityPlayerMP)player);

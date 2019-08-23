@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
@@ -53,7 +54,7 @@ public class EntitySmokeSnake extends EntityFlying {
 
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         if (ep != entityIn && ep != null && !this.world.isRemote) {
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 12F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 4f + getLevel()*2f, true));
             entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
             entityIn.hurtResistantTime = 40;
         }
@@ -76,12 +77,19 @@ public class EntitySmokeSnake extends EntityFlying {
 
     public void collideWithEntity(Entity entityIn) {
         if (ep != null && entityIn instanceof EntityLiving && !this.world.isRemote) {
-            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(ep, 12F, true));
+            entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(ep, 4f + getLevel()*2f, true));
             ((EntityLiving)(entityIn)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
 
         }
     }
 
+    int getLevel(){
+        if(ep != null){
+            return DevilFruitLevelsCap.get(ep).getPowerLevel(2);
+        }
+
+        return 0;
+    }
 
     //@#@#@#@#@#@#@#@#@#@#@##@#@#@#@
     Random r = new Random();

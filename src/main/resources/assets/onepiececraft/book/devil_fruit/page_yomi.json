@@ -6,7 +6,7 @@
     1,
     {
       "name" : "Revive",
-      "cooldown" : 0,
+      "cooldown" : "No Cooldown",
       "description" : "Prevents the player from dying heals it and teleports it within 1000 in a random location."
     }
   ]

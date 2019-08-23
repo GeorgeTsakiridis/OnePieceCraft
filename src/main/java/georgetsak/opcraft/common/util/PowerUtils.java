@@ -1,6 +1,8 @@
 package georgetsak.opcraft.common.util;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -19,7 +21,7 @@ import java.util.Random;
 
 public class PowerUtils {
 
-    public static void createLightnings(EntityPlayer ep, int repeatTimes, double radius){
+    public static void createLightnings(EntityPlayer ep, int repeatTimes, double radius, int chance){
 
         double x = ep.posX;
         double z = ep.posZ;
@@ -29,8 +31,8 @@ public class PowerUtils {
         List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, radius, ep);
 
         for(int i = 0; i < repeatTimes; i++){
-            //Has 1/20 to hit an entity or player per loop. If 100 loops then the chance of hitting an entity is (1/20)*100 = 5 times.
-            if(r.nextInt(20) == 1){
+            //Has 1/chance to hit an entity or player per loop.
+            if(r.nextInt(chance) == 1){
                 if(r.nextBoolean()) {
                     int num = r.nextInt(entities.size());
                     if (entities.get(num) instanceof EntityLiving) {
@@ -54,9 +56,11 @@ public class PowerUtils {
         Block roadMat = OPBlocks.BlockIceAge;
         World world = ep.world;
 
+        int level = DevilFruitLevelsCap.get(ep).getPowerLevel(3);
+
         switch(ef){
             case EAST:
-                for(int i = 0; i < 200; i++){
+                for(int i = 0; i < 200 + level*50; i++){
                     for(int h = -2; h<2; h++) {
                         if (isBlockWater(ep, startPoint.add(i, h, 0))) {
                             world.setBlockState(startPoint.add(i, h, 0), roadMat.getDefaultState());
@@ -148,7 +152,7 @@ public class PowerUtils {
     }
 
     public static BlockPos findCenterOfDome(EntityPlayer ep) {
-        BlockPos DomeCenter = new BlockPos(0, 0, 0);
+        BlockPos domeCenter = new BlockPos(0, 0, 0);
         boolean foundCenter = false;
 
         BlockPos center = new BlockPos(ep.posX, ep.posY, ep.posZ);
@@ -163,13 +167,13 @@ public class PowerUtils {
                 for (int k = z - radius; k < z + radius; k++) {
                     if (ep.getServer().getEntityWorld().getBlockState(new BlockPos(i, j, k)).getBlock() == OPBlocks.BlockLawDomeCenter) {
                         foundCenter = true;
-                        DomeCenter = new BlockPos(i, j, k);
+                        domeCenter = new BlockPos(i, j, k);
                         break;
                     }
                 }
             }
         }
-        if(foundCenter) return DomeCenter;
+        if(foundCenter) return domeCenter;
         else{
             return null;
         }
@@ -258,8 +262,11 @@ public class PowerUtils {
                 for(Entity entity : players){
                     EntityPlayer target = (EntityPlayer) entity;
                     if(target != ep){
+
+                        IDevilFruitLevelsCap dfl = DevilFruitLevelsCap.get(ep);
+
                         ep.attemptTeleport(target.posX, target.posY, target.posZ);
-                        target.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(target, 12F, true));
+                        target.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(target, 12F + dfl.getPowerLevel(3)*2F, true));
                         break;
                     }
                 }

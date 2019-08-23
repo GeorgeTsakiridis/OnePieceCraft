@@ -11,6 +11,7 @@ import georgetsak.opcraft.common.util.MathUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
@@ -129,8 +130,8 @@ public class DevilFruitRenderOverlay {
             }
 
             if(mc.player.isSneaking()) {
-                mc.fontRenderer.drawStringWithShadow("C:" + dfl.getPowerCooldownLevel(power.getKey()) + "/5", x+1, scaledResolution.getScaledHeight() - 10, Color.WHITE.getRGB());
-                mc.fontRenderer.drawStringWithShadow("P:" + (dfl.getPowerLevel(power.getKey())+1) + "/5", x+1, scaledResolution.getScaledHeight() - 39, Color.WHITE.getRGB());
+                mc.fontRenderer.drawStringWithShadow("C:" + dfl.getPowerCooldownLevel(power.getKey()) + "/" + (power.canCooldownBeUpgraded()?"5":"1"), x+1, scaledResolution.getScaledHeight() - 10, Color.WHITE.getRGB());
+                mc.fontRenderer.drawStringWithShadow("P:" + (dfl.getPowerLevel(power.getKey())+1) + "/" + (power.canPowerBeUpgraded()?"5":"1"), x+1, scaledResolution.getScaledHeight() - 39, Color.WHITE.getRGB());
                 mc.fontRenderer.drawStringWithShadow("C: Cooldown Level", scaledResolution.getScaledWidth() - 200,scaledResolution.getScaledHeight() - 50, Color.WHITE.getRGB());
                 mc.fontRenderer.drawStringWithShadow("P: Power Level", scaledResolution.getScaledWidth() - 200,scaledResolution.getScaledHeight() - 60, Color.WHITE.getRGB());
             }else{

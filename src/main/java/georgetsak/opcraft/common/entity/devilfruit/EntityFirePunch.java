@@ -1,8 +1,11 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
+import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -98,9 +101,9 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	private float getExplosionSize() {
 		 switch(getType()){
 		 case 1: return 0F;
-		 case 2: return 1.5F;
-		 case 3: return 2F;
-		 case 4: return 4F;
+		 case 2: return 1.5F + getLevel(2)*0.5F;
+		 case 3: return 2F + getLevel(4)*0.5F;
+		 case 4: return 4F + getLevel(3)*0.5F;
 		 default: return 0;
 		 }
 	}
@@ -108,10 +111,10 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	private int getFireTimeValue(){
 
 		switch(getType()){
-		case 1: return 2;
-		case 2: return 5;
-		case 3: return 8;
-		case 4: return 10;
+		case 1: return 2 + (getLevel(1) > 2 ? 1 : 0);
+		case 2: return 3 + (getLevel(2) > 1 ? getLevel(2) > 3 ? 2 : 1 : 0);
+		case 3: return 2 + (getLevel(4) > 1 ? getLevel(4) > 3 ? 2 : 1 : 0);
+		case 4: return 4 + (getLevel(3) > 1 ? getLevel(3) > 3 ? 2 : 1 : 0);
 		default: return 0;
 		}
 	}
@@ -119,10 +122,10 @@ public class EntityFirePunch extends EntitySimpleProjectile {
 	private float getDamageValue() {
 
 		switch(getType()){
-		case 1: return 2F;
-		case 2: return 7F;
-		case 3: return 5F;
-		case 4: return 10F;
+		case 1: return 2F + getLevel(1);
+		case 2: return 2F + getLevel(2);
+		case 3: return 4F + getLevel(4);
+		case 4: return 6F + getLevel(3);
 		default: return 0F;
 		}
 	}

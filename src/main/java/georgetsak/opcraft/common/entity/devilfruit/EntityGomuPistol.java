@@ -81,8 +81,10 @@ public class EntityGomuPistol extends EntitySimpleProjectile {
 	 public void onLivingUpdate() {
 		 super.onLivingUpdate();
 
-		 if (this.collided && isGear3()) {
-			 OPUtils.newExplosion(owner, world, posX, posY, posZ, 3.5F, false, true);
+		 if (this.collided && isGear3() && owner != null && !isDead) {
+			 int level = DevilFruitLevelsCap.get(owner).getPowerLevel(3);
+
+			 OPUtils.newExplosion(owner, world, posX, posY, posZ, 3.5F + level*0.5F, false, true);
 			 this.setDead();
 		 }
 	 }

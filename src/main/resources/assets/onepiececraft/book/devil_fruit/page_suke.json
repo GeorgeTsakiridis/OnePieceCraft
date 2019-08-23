@@ -6,7 +6,7 @@
     1,
     {
       "name" : "Skating",
-      "cooldown" : 30,
+      "cooldown" : "35s",
       "description" : "Makes the player invisible."
     }
   ]

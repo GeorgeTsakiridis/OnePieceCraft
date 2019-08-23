@@ -30,13 +30,13 @@ public class EntityGoshikito extends EntitySimpleProjectile{
 
     @Override
     public void onValidPlayerCollision(EntityPlayer entityIn) {
-        entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn, 14f,true));
+        entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn, 12f + getLevel(3),true));
         entityIn.hurtResistantTime = 20;
     }
 
     @Override
     public void onValidEntityCollision(Entity entity) {
-        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 14f);
+        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 12f + getLevel(3));
     }
 
 }

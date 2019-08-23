@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPDataSerializers;
 import georgetsak.opcraft.common.util.Vector3Double;
@@ -166,6 +167,13 @@ public class EntitySimpleProjectile extends EntityFlying{
 
         onValidEntityCollision(entity);
 
+    }
+
+    int getLevel(int powerID){
+        if(owner != null){
+            return DevilFruitLevelsCap.get(owner).getPowerLevel(powerID);
+        }
+        return 0;
     }
 
     public void onValidEntityCollision(Entity entity){

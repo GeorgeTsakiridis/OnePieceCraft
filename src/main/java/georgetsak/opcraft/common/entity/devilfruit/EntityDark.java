@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
@@ -73,7 +74,7 @@ public class EntityDark extends EntityLiving{
                     ((EntityLiving) (entityIn)).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 80, 9));
                     ((EntityLiving) (entityIn)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 9));
                     ((EntityLiving) (entityIn)).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 80, 9));
-                    entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 12f);
+                    entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 6f + getLevel()*2f);
 
                 } else if (entityIn instanceof EntityPlayer) {
                     EntityPlayer player = (EntityPlayer) entityIn;
@@ -81,13 +82,20 @@ public class EntityDark extends EntityLiving{
                     player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 80, 9));
                     player.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 80, 9));
 
-                    entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(player, 12.0f, true));
+                    entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(player, 6f + getLevel()*2f, true));
                 }
                 entityIn.hurtResistantTime = 60;
             }
 
         }
 
+    }
+
+    int getLevel(){
+        if(owner != null){
+            return DevilFruitLevelsCap.get(owner).getPowerLevel(1);
+        }
+        return 0;
     }
 
     @Override

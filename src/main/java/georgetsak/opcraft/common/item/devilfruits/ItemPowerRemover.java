@@ -54,6 +54,6 @@ public class ItemPowerRemover extends ItemFood {
     @Override
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         tooltip.add("Eating this fruit will remove your current Devil Fruit.");
-        //tooltip.add("It will also reset your Devil Fruit powers' levels."); //TODO uncomment this once the leveling system is implemented.
+        tooltip.add("It will also reset your Devil Fruit powers' levels.");
     }
 }

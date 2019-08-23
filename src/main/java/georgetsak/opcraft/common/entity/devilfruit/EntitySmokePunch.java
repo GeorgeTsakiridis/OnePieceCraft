@@ -32,14 +32,14 @@ public class EntitySmokePunch extends EntitySimpleProjectile {
 
     @Override
     public void onValidPlayerCollision(EntityPlayer entityIn) {
-        float damage = MathUtils.calculateDamage(entityIn, 12F, true);
+        float damage = MathUtils.calculateDamage(entityIn, 4f + getLevel(1)*2f, true);
         entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), damage);
         entityIn.hurtResistantTime = 20;
     }
 
     @Override
     public void onValidEntityCollision(Entity entity) {
-        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(owner, 12F, true));
+        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(owner, 4f + getLevel(1)*2f, true));
     }
 
     @Override

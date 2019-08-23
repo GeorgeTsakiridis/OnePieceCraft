@@ -23,7 +23,7 @@ public class SmokeCloudTileEntity extends TileEntity implements ITickable {
 
     @Override
     public void update() {
-        double distance = 10.0D;
+        double distance = 12.0D;
         double x1 = pos.getX() - distance;
         double x2 = pos.getX() + distance;
         double y1 = pos.getY() - distance;

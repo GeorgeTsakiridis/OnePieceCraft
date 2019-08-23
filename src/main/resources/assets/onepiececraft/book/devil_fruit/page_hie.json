@@ -6,24 +6,24 @@
     4,
     {
       "name" : "Ice Saber",
-      "cooldown" : 3,
+      "cooldown" : "4s / 3.75s / 3.5s / 3.25s / 3s",
       "description" : "Launches ice spikes that will damage everything on touch."
     },
     {
       "name" : "Ice Ball",
-      "cooldown" : 20,
+      "cooldown" : "20s / 18s / 16s / 14s / 12s",
       "description" : "Creates a ball of hard ice around the mob/player the user is looking."
     }
   ,
     {
       "name" : "Ice Age",
-      "cooldown" : 60,
+      "cooldown" : "60s / 55s / 50s / 45s / 40s",
       "description" : "Creates a long ice road in water. Useful when travelling on ocean."
     }
   ,
     {
       "name" : "Ice Block",
-      "cooldown" : 25,
+      "cooldown" : "35s / 32s / 29s / 26s / 23s",
       "description" : "Creates an Ice Pheasant which moves forwards freezing and damaging everything it touches."
     }
   ]

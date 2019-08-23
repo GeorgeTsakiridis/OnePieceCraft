@@ -6,24 +6,24 @@
     4,
     {
       "name" : "Tamaito",
-      "cooldown" : 5,
+      "cooldown" : "5s / 4.5s / 4s / 3.5s / 3s",
       "description" : "Fires a small string like a bullet that damages the players it hits."
     },
     {
       "name" : "Overheat",
-      "cooldown" : 60,
+      "cooldown" : "120s / 110s / 100s / 90s / 80s",
       "description" : "WIP."
     }
   ,
     {
       "name" : "Goshikito",
-      "cooldown" : 50,
+      "cooldown" : "24s / 22s / 20s / 18s / 16s",
       "description" : "WIP."
     }
   ,
     {
       "name" : "Sora No Michi",
-      "cooldown" : 35,
+      "cooldown" : "110s / 100s / 90s / 80s / 70s",
       "description" : "Player will become immune to any kind of damage (including Fall Damage) and by pressing [SPACE] player can jump in mid air."
     }
   ]

@@ -42,7 +42,6 @@ public class EntityLongLine extends EntitySimpleProjectile{
             setHasExtended(true);
             Vec3d vec = getDirection().scale(getLength());
             Vec3d posVec = new Vec3d(posX, posY, posZ);
-            //TODO length is not correct.
 
             System.out.println(getDirection() + " * " + getLength() + " = " + vec);
 

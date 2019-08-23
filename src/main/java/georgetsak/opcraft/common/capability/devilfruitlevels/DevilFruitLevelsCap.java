@@ -40,6 +40,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public int getPowerLevel(int id) {
+        if(id > powersLevels.length)return 0;
         return powersLevels[id-1];
     }
 
@@ -118,14 +119,16 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
         Power power = PowerHandler.getPower(getDevilFruitID(), id);
 
         if(power == null)return 0;
+        if(!power.canCooldownBeUpgraded())return power.getCooldownTime(1);
 
-        return power.getCooldownTime(getPowerCooldownLevel(id)-1);
+        return power.getCooldownTime(getPowerCooldownLevel(id));
     }
 
     @Override
     public int getPowerCooldownLevel(int id) {
         Power power = PowerHandler.getPower(getDevilFruitID(), id);
-        if(power == null)return 0;
+        if(power == null || (id-1) < 0 || (id-1) >= uses.length)return 0;
+        if(!power.canCooldownBeUpgraded())return 1;
 
         int i = 0;
         for(int requiredUses : power.getUsesToReduceCooldown()) {
@@ -159,10 +162,10 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
 
     @Override
     public void copy(IDevilFruitLevelsCap dfl, EntityPlayer ep) {
-        this.setDevilFruitID(getDevilFruitID());
-        this.setPowersUses(uses);
-        this.setPowersLevels(powersLevels);
-        this.setXP(xp);
+        this.setDevilFruitID(dfl.getDevilFruitID());
+        this.setPowersUses(dfl.getAllPowersUses());
+        this.setPowersLevels(dfl.getAllPowersLevels());
+        this.setXP(dfl.getXP());
         PacketDispatcher.sendTo(new PacketDevilFruitLevels(dfl), (EntityPlayerMP)ep);
     }
 

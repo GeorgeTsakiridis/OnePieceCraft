@@ -3,6 +3,7 @@ package georgetsak.opcraft.common.network.packets.server;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.OPSoundEvent;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.entity.devilfruit.*;
 import georgetsak.opcraft.common.entity.other.EntityStormLeg;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
@@ -123,7 +124,7 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                     break;
                 }
                 case "SlowBeamA": {
-                    EntitySlowBeam esb = new EntitySlowBeam(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
+                    EntitySlowBeam esb = new EntitySlowBeam(world, 1, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep);
 
                     world.playSound(null, ep.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 10.0F, 1.0F);
                     world.spawnEntity(esb);
@@ -161,17 +162,17 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                     world.setBlockState(new BlockPos(ep.getPosition().getX(), ep.getPosition().getY(), ep.getPosition().getZ()), OPBlocks.BlockLawDomeCenter.getDefaultState());
                     break;
                 }
-                case "Shambles": {
+                case "ShamblesA": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                     PowerUtils.OPShambles(ep);
                     break;
                 }
-                case "InjectionShot": {
+                case "InjectionShotA": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.shambles, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                     PowerUtils.OPInjectionShot(ep);
                     break;
                 }
-                case "Takt": {
+                case "TaktA": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.takt, SoundCategory.NEUTRAL, 40.0F, 1.0F);
                     if (!OPCraft.config.disableGriefing.getCurrentValue()) {//if griefing is disabled do not execute this power.
                         PowerUtils.OPTakt(ep);
@@ -210,13 +211,15 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                     break;
                 }
                 case "PadHoA": {
+                    int level = getLevel(ep,1);
                     world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 15, 1.0F);
-                    OPUtils.damageAndPushNearbyPlayers(ep, 15, 6F, 11, 7);
+                    OPUtils.damageAndPushNearbyPlayers(ep, 15, 4F + level, 5 + level, 2f + level*0.5f);
                     break;
                 }
                 case "TsuppariPadHoA": {
+                    int level = getLevel(ep,2);
                     world.playSound(null, ep.getPosition(), OPSoundEvent.pad_ho, SoundCategory.NEUTRAL, 30, 1.0F);
-                    OPUtils.damageAndPushNearbyPlayers(ep, 30, 12F, 5, 10);
+                    OPUtils.damageAndPushNearbyPlayers(ep, 30, 4f + level*2f, 7 + level, 3f + level);
                     break;
                 }
                 case "UrsusShockA": {
@@ -226,11 +229,13 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                     break;
                 }
                 case "SangoA": {
-                    PowerUtils.createLightnings(ep, 150, 80D);
+                    int level = getLevel(ep,2);
+                    PowerUtils.createLightnings(ep, 10 + level * 5, 10D + level * 5, 10 - level);
                     break;
                 }
                 case "DeathpieaA": {
-                    PowerUtils.createLightnings(ep, 400, 100D);
+                    int level = getLevel(ep, 3);
+                    PowerUtils.createLightnings(ep, 300 + level*50, 80D + level*10, 20 - level*2);
                     break;
                 }
                 case "WhiteBlowA": {
@@ -343,5 +348,11 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
             }
 
         }
+    }
+    int getLevel(EntityPlayer ep, int powerID){
+        if(ep != null){
+            return DevilFruitLevelsCap.get(ep).getPowerLevel(powerID);
+        }
+        return 0;
     }
 }

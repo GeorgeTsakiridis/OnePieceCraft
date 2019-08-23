@@ -38,12 +38,12 @@ public class EntityTamaito extends EntitySimpleProjectile {
 
     @Override
     public void onValidPlayerCollision(EntityPlayer entityIn) {
-        entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn,8f,true));
+        entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(entityIn,8f + getLevel(1),true));
     }
 
     @Override
     public void onValidEntityCollision(Entity entity) {
-        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(owner, 8F, true));
+        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(owner, 8f + getLevel(1), true));
     }
 
     public float getCollisionBorderSize()

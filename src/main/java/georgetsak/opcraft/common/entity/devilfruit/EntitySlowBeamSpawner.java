@@ -62,8 +62,7 @@ public class EntitySlowBeamSpawner extends EntityFlying {
 				for (int o = yaw; o > 0; o--) {
 					for (int k = pitch; k > 0; k--) {
 						if((k * (180f / pitch) - 90f) == 90f)continue;
-						EntitySlowBeam esb = new EntitySlowBeam(world, posX, posY, posZ, (o * (360f / yaw)) - 180, (k * (180f / pitch)) - 90, ep);
-						System.out.println(((o * (360f / yaw)) - 180) + "//" + ((k * (180f / pitch)) - 90));
+						EntitySlowBeam esb = new EntitySlowBeam(world, 2, posX, posY, posZ, (o * (360f / yaw)) - 180, (k * (180f / pitch)) - 90, ep);
 						world.spawnEntity(esb);
 					}
 				}
@@ -71,7 +70,7 @@ public class EntitySlowBeamSpawner extends EntityFlying {
 				if (ep != null && this.world.getEntityByID(ep.getEntityId()) != null && this.world.getEntityByID(ep.getEntityId()) instanceof EntityPlayer) {
 					if (ep.getName().equals(this.world.getEntityByID(ep.getEntityId()).getName())) {
 						EntityPlayer e = (EntityPlayer) this.world.getEntityByID(ep.getEntityId());
-						this.world.spawnEntity(new EntitySlowBeamHighSpeed(world, e.posX, e.posY + 0.8f, e.posZ, e.rotationYaw, e.rotationPitch, ep));
+						this.world.spawnEntity(new EntitySlowBeam(world, 3, e.posX, e.posY + 0.8f, e.posZ, e.rotationYaw, e.rotationPitch, ep));
 						if (this.ticksExisted % 2 == 0) {
 							world.playSound(null, this.getPosition(), OPSoundEvent.slow_beam, SoundCategory.NEUTRAL, 5, 1);
 						}

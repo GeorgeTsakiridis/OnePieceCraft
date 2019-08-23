@@ -6,18 +6,18 @@
     3,
     {
       "name" : "Black Hole",
-      "cooldown" : 16,
+      "cooldown" : "30s / 28s / 26s / 24s / 22s",
       "description" : "Creates a black hole at the location player is looking. This hole will absorb other Entities and damage them."
     },
     {
       "name" : "Kurouzu",
-      "cooldown" : 20,
+      "cooldown" : "19s / 18s / 17s / 16s / 15s",
       "description" : "Teleports the aimed Entity at Player's location and makes it unable to move or attack."
     }
   ,
     {
       "name" : "Liberation",
-      "cooldown" : 60,
+      "cooldown" : "50s / 48s / 46s / 44s / 42s",
       "description" : "Creates a black sphere that will absorb the surrounding blocks and then release them. The falling blocks that are created cause damage to any hit Entity."
     }
   ]

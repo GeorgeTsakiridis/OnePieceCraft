@@ -66,7 +66,6 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityFirePunch.class, RenderFirePunch::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEntei.class, RenderEntei::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntitySlowBeam.class, RenderSlowBeam::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntitySlowBeamHighSpeed.class, RenderSlowBeam::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityIceSaber.class, RenderIceSaber::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityIcePhoenix.class, RenderIcePhoenix::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityUrsusBubble.class, RenderUrsusBubble::new);
@@ -96,7 +95,6 @@ public class ClientProxy extends CommonProxy {
 		super.init(event);
 		registerItemRenderers();
         registerKeyBindings();
-        //OPDevilFruits.registerPowers();
         OPBook.registerPages();
 	}
 

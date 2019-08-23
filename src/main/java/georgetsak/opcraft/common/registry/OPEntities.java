@@ -37,7 +37,6 @@ public class OPEntities {
         registerEntity(EntityFirePunch.class, "fire_fist", 48, 3, true);
         registerEntity(EntityEntei.class, "entei", 100, 3, true);
         registerEntity(EntitySlowBeam.class, "slow_beam", 48, 3, true);
-        registerEntity(EntitySlowBeamHighSpeed.class, "slow_beam_high_speed", 48, 3, true);
         registerEntity(EntitySlowBeamSpawner.class, "slow_beam_spawner", 48, 3, false);
         registerEntity(EntityIceSaber.class, "ice_saber", 100, 3, true);
         registerEntity(EntityIcePhoenix.class, "ice_phoenix", 100, 3, true);

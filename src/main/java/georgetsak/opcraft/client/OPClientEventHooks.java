@@ -77,7 +77,6 @@ public class OPClientEventHooks {
 
     private float sixPowersEnergyBar = 200; //Energy in Six Powers Energy Bar.
 
-    private int cooldownLaw = 0;
     private int cooldownFallDamage = 0;
     private boolean fallDamageDisabled = false;
     private int fallDamageDisabledDelay;
@@ -214,9 +213,10 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("ElThorA")) {
-            BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 300);
+            int level = DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerLevel(1);
+            BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 100 + level*50);
             if(spawnPosition != null) {
-                PacketDispatcher.sendToServer(new PacketElThorServer(spawnPosition));// TODO: 8/16/2019 sending null spawnPosition crashes the game. Fix for other powers too.
+                PacketDispatcher.sendToServer(new PacketElThorServer(spawnPosition));
             }
             return true;
         }
@@ -231,7 +231,7 @@ public class OPClientEventHooks {
         }
 
         if (action.equals("KurouzuA")) {
-            Entity entity = RaytracingUtils.getLookingEntity(ep,50);
+            Entity entity = RaytracingUtils.getLookingEntity(ep,10 + DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerLevel(2)*10);
             if(entity != null){
                 PacketDispatcher.sendToServer(new PacketKurouzuServer(entity));
             }
@@ -316,20 +316,6 @@ public class OPClientEventHooks {
             }
             return;
         }
-        //Ope Ope no Mi keys handler. Only execute if the Player is in a dome and is an Ope Ope no Mi Devil Fruit User.
-        if (isInRoom && id == OPDevilFruits.OPE) {
-            if (ClientProxy.key1.isPressed()) {
-                performAction("Shambles");
-            }
-            if (ClientProxy.key2.isPressed()) {
-                performAction("InjectionShot");
-            }
-            if (ClientProxy.key3.isPressed()) {
-                performAction("Takt");
-            }
-            return;
-        }
-
         //Powers keys handler.
         if(!gameSettings.keyBindSneak.isKeyDown() && id != OPDevilFruits.NO_POWER && id != OPDevilFruits.YOMI) {
             if (ClientProxy.key1.isPressed()) {//X
@@ -345,8 +331,10 @@ public class OPClientEventHooks {
             if (ClientProxy.key3.isPressed()) {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null && power.getCurrentCooldown() == 0 && !OPCraft.config.isDFDisabled(id)) {//V
-                    IDevilFruitLevelsCap dfc = DevilFruitLevelsCap.get(Minecraft.getMinecraft().player);
 
+                    if(id == OPDevilFruits.OPE && !isInRoom && power != PowerHandler.getPower(OPDevilFruits.OPE,1))return;
+
+                    IDevilFruitLevelsCap dfc = DevilFruitLevelsCap.get(Minecraft.getMinecraft().player);
                     power.setCurrentCooldown(adjustTicks(dfc.getPowerCooldown(power.getKey())));
 
                     dfc.addPowerUses(power.getKey());
@@ -414,9 +402,6 @@ public class OPClientEventHooks {
 
             if (cooldownFallDamage > 0) {
                 cooldownFallDamage--;
-            }
-            if (cooldownLaw > 0) {
-                cooldownLaw--;
             }
             if (fallDamageDisabledDelay > 0) {
                 fallDamageDisabledDelay--;
@@ -498,19 +483,6 @@ public class OPClientEventHooks {
             EntityPlayerSP entity = Minecraft.getMinecraft().player;
             entity.addVelocity(a.x , 1, a.z);
             //PacketDispatcher.sendToServer(new AllowFlyingServerPacket(entity.posX, entity.posY, entity.posZ));
-        }
-
-        if(string.equals("Shambles") && cooldownLaw <= 0){
-            sendMessage("Shambles");
-            cooldownLaw = 60;
-        }
-        if(string.equals("InjectionShot") && cooldownLaw <= 0){
-            sendMessage("InjectionShot");
-            cooldownLaw = 120;
-        }
-        if(string.equals("Takt") && cooldownLaw <= 0){
-            sendMessage("Takt");
-            cooldownLaw = 140;
         }
     }
 
@@ -694,8 +666,9 @@ public class OPClientEventHooks {
             if(DevilFruitCap.get(Minecraft.getMinecraft().player).hasPower() || !OPCraft.IS_RELEASE_VERSION) {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null) {
-
                     ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), adjustTicks(DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerCooldown(power.getKey())), event.getResolution(), (int) sixPowersEnergyBar);
+                }else if(id == OPDevilFruits.YOMI || id == OPDevilFruits.GIRAFFE){
+                    ClientProxy.devilFruitRenderOverlay.render(id,0,1,event.getResolution(),(int)sixPowersEnergyBar);
                 }
             }
 

@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common.network.packets.server;
 
 import georgetsak.opcraft.client.OPSoundEvent;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.generator.terrain.WorldGenIceBall;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
 import net.minecraft.entity.Entity;
@@ -45,7 +46,8 @@ public class PacketIceCageEntityServer extends AbstractMessage.AbstractServerMes
                 target.world.playSound(null, target.getPosition(), OPSoundEvent.ice_ball, SoundCategory.NEUTRAL, 20, 1.0F);
                 if(target instanceof EntityPlayer) {
                     EntityPlayer entityPlayer = (EntityPlayer)target;
-                    entityPlayer.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 3));
+                    int level = DevilFruitLevelsCap.get(user).getPowerLevel(2);
+                    entityPlayer.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60 + level*10, 3));
                 }
                 int posX = (int)target.posX;
                 int posY = (int)target.posY;

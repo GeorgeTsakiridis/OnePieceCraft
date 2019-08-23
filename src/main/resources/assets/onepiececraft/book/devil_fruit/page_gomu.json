@@ -6,24 +6,24 @@
     4,
     {
       "name" : "Pistol",
-      "cooldown" : 3,
+      "cooldown" : "3s / 2.75s / 2.5s / 2.25s / 2s",
       "description" : "Creates a Punch that will stretch and damage everything it touches."
     },
     {
       "name" : "Gear Second",
-      "cooldown" : 16,
+      "cooldown" : "16s / 15.5s / 15s / 14.5s / 14s",
       "description" : "Gives the player: Strength II, Speed III, Jump Boost II and Regeneration II."
     }
   ,
     {
       "name" : "Gear Third",
-      "cooldown" : 15,
+      "cooldown" : "20s / 18s / 16s / 14s / 12s",
       "description" : "Creates a big Punch that will damage everything it touches and it will create a small explosion if it collides with any block."
     }
   ,
     {
       "name" : "Gear Fourth",
-      "cooldown" : 35,
+      "cooldown" : "120s / 110s / 100s / 90s / 80s",
       "description" : "Player will become immune to any kind of damage (including Fall Damage) and by pressing [SPACE] player can jump in mid air. Also gives the player: Strength III, Speed III and Regeneration III."
     }
   ]

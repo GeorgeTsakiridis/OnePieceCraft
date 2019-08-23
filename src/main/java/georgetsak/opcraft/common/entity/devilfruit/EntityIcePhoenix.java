@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
@@ -57,15 +58,6 @@ public class EntityIcePhoenix extends EntityFlying {
         this.motionZ = direction.z;
     }
 
-    public void onCollideWithPlayer(EntityPlayer entityIn)
-    {
-        if(ep != entityIn && ep != null && entityIn.hurtResistantTime == 0){
-            entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 2));
-            entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), MathUtils.calculateDamage(entityIn, 12f, true));
-            entityIn.hurtResistantTime = 20;
-        }
-    }
-
     public void onUpdate()
     {
         super.onUpdate();
@@ -91,13 +83,31 @@ public class EntityIcePhoenix extends EntityFlying {
 
     }
 
+    public void onCollideWithPlayer(EntityPlayer entityIn)
+    {
+        if(ep != entityIn && ep != null && entityIn.hurtResistantTime == 0){
+            entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40 + getLevel()*20, 2));
+            entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), MathUtils.calculateDamage(entityIn, 10f + getLevel()*2f, true));
+            entityIn.hurtResistantTime = 20;
+        }
+    }
+
     public void collideWithEntity(Entity entityIn){
         if(entityIn instanceof EntityLiving){
             EntityLiving e = (EntityLiving)entityIn;
-            e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100, 2));
-            entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), 8F);
+            e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40 + getLevel()*20, 2));
+            entityIn.attackEntityFrom(OPUtils.causePlayerCustomDamage(ep,true), 10f + getLevel()*2f);
             entityIn.hurtResistantTime = 20;
         }
+    }
+
+    int getLevel(){
+
+        if(ep != null){
+            return DevilFruitLevelsCap.get(ep).getPowerLevel(4);
+        }
+
+        return 0;
     }
 
     public void applyEntityCollision(Entity entityIn)

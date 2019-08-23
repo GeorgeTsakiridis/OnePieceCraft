@@ -6,18 +6,18 @@
     3,
     {
       "name" : "Slow Slow Beam",
-      "cooldown" : 8,
+      "cooldown" : "9s / 8.5s / 8s / 7.5s / 7s",
       "description" : "Launches a beam that will Freeze completely whatever it hits making it unable to hit or move."
     },
     {
       "name" : "High Speed Rotation Mirror Ball",
-      "cooldown" : 18,
+      "cooldown" : "18s / 17s / 16s / 15s / 14s",
       "description" : "Launches Slow Slow Beams in every direction."
     }
   ,
     {
       "name" : "Mashi Mashi",
-      "cooldown" : 19,
+      "cooldown" : "18s / 17s / 16s / 15s / 14s",
       "description" : "Launches Slow Slow Beams fast in the direction player is looking."
     }
   ]

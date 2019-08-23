@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
@@ -48,9 +49,9 @@ public class EntityUrsusBubble extends EntityFlying {
         super.onUpdate();
 
         if ((ep != null) && ticksExisted > 100) {
-            OPUtils.createExplosion(ep, world, posX, posY, posZ, 15, true);
-            double range = 30;
-            float damage = 12F;
+            OPUtils.createExplosion(ep, world, posX, posY, posZ, 10 + getLevel(), true);
+            double range = 20 + getLevel()*2.5;
+            float damage = 6F + getLevel()*2f;
             double x1 = posX - range;
             double x2 = posX + range;
             double y1 = posY - range;
@@ -75,6 +76,13 @@ public class EntityUrsusBubble extends EntityFlying {
             }
             this.setDead();
         }
+    }
+
+    int getLevel(){
+        if(ep != null){
+            return DevilFruitLevelsCap.get(ep).getPowerLevel(3);
+        }
+        return 0;
     }
 
     public void onCollideWithPlayer(EntityPlayer entityIn){

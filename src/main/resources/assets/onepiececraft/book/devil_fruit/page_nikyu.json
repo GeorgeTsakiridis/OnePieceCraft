@@ -6,18 +6,18 @@
     3,
     {
       "name" : "Pad Ho",
-      "cooldown" : 5,
+      "cooldown" : "5s / 4.5s / 4s / 3.5s / 3s",
       "description" : "Damages and pushes players and mobs like a TNT does."
     },
     {
       "name" : "Tsuppari Pad Ho",
-      "cooldown" : 20,
+      "cooldown" : "5s / 4.5s / 4s / 3.5s / 3s",
       "description" : "A more powerful version of Pad Ho."
     }
   ,
     {
       "name" : "Tsuppari Ursus Shock",
-      "cooldown" : 60,
+      "cooldown" : "140s / 130s / 120s / 110s / 100s",
       "description" : "=Creates an air bubble that will contract and then erupt destroying blocks and damaging players and mobs."
     }
   ]

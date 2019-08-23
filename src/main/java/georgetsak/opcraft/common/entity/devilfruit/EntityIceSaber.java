@@ -1,5 +1,7 @@
 package georgetsak.opcraft.common.entity.devilfruit;
 
+import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
+import georgetsak.opcraft.common.capability.devilfruitlevels.IDevilFruitLevelsCap;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.entity.Entity;
@@ -25,8 +27,8 @@ public class EntityIceSaber extends EntitySimpleProjectile {
 
     @Override
     public void onValidPlayerCollision(EntityPlayer player) {
-        player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
-        player.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(player, 6F, true));
+        player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60 + getLevel(1)*5, 1));
+        player.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), MathUtils.calculateDamage(player, 6F + getLevel(1), true));
         player.hurtResistantTime = 20;
     }
 
@@ -39,7 +41,7 @@ public class EntityIceSaber extends EntitySimpleProjectile {
     public void onValidEntityCollision(Entity entity) {
         EntityLiving e = (EntityLiving)entity;
         e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
-        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 6F);
+        entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 6F + getLevel(1));
         entity.hurtResistantTime = 20;
     }
 

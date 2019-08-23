@@ -57,7 +57,7 @@ public class PagePower extends Page{
                 screen.drawCenteredString(fontRenderer, line, screen.width/2, y, Color.WHITE.getRGB());
                 y+=fontRenderer.FONT_HEIGHT;
             }
-            String info = "Cooldown: " + COOLDOWNS[i] + "s";
+            String info = "Cooldown: " + COOLDOWNS[i];
             screen.drawCenteredString(fontRenderer, info, screen.width/2, y, Color.WHITE.getRGB());
             y+=fontRenderer.FONT_HEIGHT*2;
         }
