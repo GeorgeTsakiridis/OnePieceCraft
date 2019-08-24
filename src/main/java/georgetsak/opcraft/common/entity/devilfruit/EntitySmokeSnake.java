@@ -55,8 +55,7 @@ public class EntitySmokeSnake extends EntityFlying {
     public void onCollideWithPlayer(EntityPlayer entityIn) {
         if (ep != entityIn && ep != null && !this.world.isRemote) {
             entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(entityIn, 4f + getLevel()*2f, true));
-            entityIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
-            entityIn.hurtResistantTime = 40;
+            entityIn.hurtResistantTime = 20;
         }
     }
 
@@ -78,8 +77,6 @@ public class EntitySmokeSnake extends EntityFlying {
     public void collideWithEntity(Entity entityIn) {
         if (ep != null && entityIn instanceof EntityLiving && !this.world.isRemote) {
             entityIn.attackEntityFrom(DamageSource.causePlayerDamage(ep), MathUtils.calculateDamage(ep, 4f + getLevel()*2f, true));
-            ((EntityLiving)(entityIn)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 60, 3));
-
         }
     }
 

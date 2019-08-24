@@ -214,7 +214,7 @@ public class OPClientEventHooks {
 
         if (action.equals("ElThorA")) {
             int level = DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerLevel(1);
-            BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 100 + level*50);
+            BlockPos spawnPosition = RaytracingUtils.getBlockPlayerIsLooking(ep, 15 + level*15);
             if(spawnPosition != null) {
                 PacketDispatcher.sendToServer(new PacketElThorServer(spawnPosition));
             }

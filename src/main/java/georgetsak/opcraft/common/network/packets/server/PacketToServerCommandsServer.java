@@ -133,16 +133,17 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                 case "SlowBallA": {
                     EntitySlowBeamSpawner esb = new EntitySlowBeamSpawner(world, ep.posX, ep.posY + 0.6f, ep.posZ, ep.rotationYaw, ep.rotationPitch, ep, true, 60, 20);
                     List<Entity> entities = OPUtils.getNearbyEntitiesExcluding(ep, 20, ep);
+                    int level = DevilFruitLevelsCap.get(ep).getPowerLevel(2);
                     for (Entity entity : entities) {
                         if (entity instanceof EntityLiving) {
-                            ((EntityLiving) (entity)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 300, 9));
-                            ((EntityLiving) (entity)).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 300, 9));
-                            ((EntityLiving) (entity)).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 300, 9));
+                            ((EntityLiving) (entity)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100 + level*10, 9));
+                            ((EntityLiving) (entity)).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 100 + level*10, 9));
+                            ((EntityLiving) (entity)).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 100 + level*10, 9));
                         }
                         if (entity instanceof EntityPlayer) {
-                            ((EntityPlayer) (entity)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 300, 9));
-                            ((EntityPlayer) (entity)).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 300, 9));
-                            ((EntityPlayer) (entity)).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 300, 9));
+                            ((EntityPlayer) (entity)).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 100 + level*10, 9));
+                            ((EntityPlayer) (entity)).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 100 + level*10, 9));
+                            ((EntityPlayer) (entity)).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 100 + level*10, 9));
                         }
                     }
                     world.spawnEntity(esb);

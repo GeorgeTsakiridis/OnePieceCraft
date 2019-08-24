@@ -12,13 +12,13 @@
     {
       "name" : "Overheat",
       "cooldown" : "120s / 110s / 100s / 90s / 80s",
-      "description" : "WIP."
+      "description" : "Shoots a long beam that creates explosions and sets Entities on fire."
     }
   ,
     {
       "name" : "Goshikito",
       "cooldown" : "24s / 22s / 20s / 18s / 16s",
-      "description" : "WIP."
+      "description" : "Fires 5 colored strings that will cause great damage upon impact."
     }
   ,
     {

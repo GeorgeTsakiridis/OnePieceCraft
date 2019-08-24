@@ -40,7 +40,7 @@ public class EntityIceSaber extends EntitySimpleProjectile {
     @Override
     public void onValidEntityCollision(Entity entity) {
         EntityLiving e = (EntityLiving)entity;
-        e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 40, 1));
+        e.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20 + getLevel(1)*5, 1));
         entity.attackEntityFrom(OPUtils.causePlayerCustomDamage(owner,true), 6F + getLevel(1));
         entity.hurtResistantTime = 20;
     }

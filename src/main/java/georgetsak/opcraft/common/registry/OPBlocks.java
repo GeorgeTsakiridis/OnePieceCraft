@@ -65,7 +65,7 @@ public class OPBlocks {
         BlockTemporaryIce = new BlockTemporaryIce(Material.ICE, 2.5F, 0.5F, true, 0).setRegistryName("temporary_ice");
         BlockLawDome = new BlockLawDome(Material.ROCK).setRegistryName("dome_block");
         BlockLawDomeCenter = new BlockLawDomeCenter(Material.ROCK).setRegistryName("dome_center_block");
-        BlockIceCage = new BlockTemporaryIce(Material.ICE, 10F, 10F, false, 1).setRegistryName("ice_cage");
+        BlockIceCage = new BlockTemporaryIce(Material.ICE, 2F, 10F, false, 1).setRegistryName("ice_cage");
         BlockIceAge = new BlockTemporaryIce(Material.ICE, 10F, 10F, true, 6).setRegistryName("ice_age");
         BlockSnail = new BlockSnail().setRegistryName("snail").setCreativeTab(OPTab);
         BlockShipBuilder = new BlockShipBuilder().setRegistryName("ship_builder_block").setCreativeTab(OPTab);
