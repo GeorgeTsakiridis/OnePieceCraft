@@ -102,7 +102,7 @@ public class OPDevilFruits {
         PowerHandler.addPower(new int[]{140, 130, 120, 110, 100}, new int[]{40, 60, 85, 120}, false, "Takt","Takt", OPE, 4, "takt");
         PowerHandler.addPower(new int[]{80, 75, 70, 65, 60}, new int[]{240, 500, 770, 1065}, "IceSaber","Ice Saber", HIE, 1, "ice_saber");
         PowerHandler.addPower(new int[]{400, 360, 320, 280, 240}, new int[]{30, 65, 100, 140}, "IceBall","Ice Ball", HIE, 2, "ice_ball");
-        PowerHandler.addPower(new int[]{1200, 1100, 1000, 900, 800}, new int[]{10, 20, 30, 45}, "IceAge","Ice Age", HIE, 3, "ice_age");// TODO: 8/24/2019 TEST ME
+        PowerHandler.addPower(new int[]{1200, 1100, 1000, 900, 800}, new int[]{10, 20, 30, 45}, "IceAge","Ice Age", HIE, 3, "ice_age");
         PowerHandler.addPower(new int[]{700, 640, 580, 520, 460}, new int[]{30, 60, 90, 125}, "IceBlockPhBeak","Ice Block: Pheasant Beak", HIE, 4, "ice_phoenix");
         PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{155, 330, 525, 750}, "PadHo","Pad Ho", NIKYU, 1, "pad_ho_small");
         PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{190, 400, 645, 920}, "TsuppariPadHo","Tsuppari Pad Ho", NIKYU, 2, "pad_ho_big");

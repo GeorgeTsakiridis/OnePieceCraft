@@ -11,6 +11,7 @@ import net.minecraft.entity.ai.*;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
@@ -94,9 +95,30 @@ public class EntityRayleigh extends EntityMob {
     @Override
     public void onUpdate() {
         super.onUpdate();
+
+        if(ticksExisted % 5 == 0) {
+            EntityLargeFireball f = new EntityLargeFireball(world, posX, posY + 10, posZ, 0d, 4d, 0d);
+            world.spawnEntity(f);
+        }
+
         if(ticksCooldown > 0){
             ticksCooldown--;
         }
+    }
+
+    @Override
+    protected boolean isValidLightLevel() {
+        return true;
+    }
+
+    @Override
+    public boolean getCanSpawnHere() {
+        return super.getCanSpawnHere() && world.canBlockSeeSky(getPosition()) && rand.nextInt(10) == 0;
+    }
+
+    @Override
+    public int getMaxSpawnedInChunk() {
+        return 1;
     }
 
     @Override

@@ -74,7 +74,15 @@ public class BlockTemporaryIce extends Block
     @Override
     public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos, EnumFacing side)
     {
-        return true;
+        IBlockState iblockstate = blockAccess.getBlockState(pos.offset(side));
+        Block block = iblockstate.getBlock();
+
+        if (blockState != iblockstate)
+        {
+            return true;
+        }
+
+        return block != this;
     }
 
 

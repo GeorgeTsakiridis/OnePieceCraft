@@ -112,6 +112,9 @@ public class OPItems {
     public static Item ItemBandage;
     public static Item ItemSutures;
     public static Item ItemFirstAidKit;
+    public static Item ItemThinCloud;
+    public static Item ItemDenseCloud;
+    public static Item ItemWaterCloud;
 
     public static void registerItems(){
 
@@ -136,6 +139,9 @@ public class OPItems {
         ItemSnail = new ItemBlock(BlockSnail);
         ItemKairosekiBlock = new ItemBlock(BlockKairosekiBlock);
         ItemKairosekiBars = new ItemBlock(BlockKairosekiBars);
+        ItemThinCloud = new ItemBlock(BlockThinCloud);
+        ItemDenseCloud = new ItemBlock(BlockDenseCloud);
+        ItemWaterCloud = new ItemBlock(BlockWaterCloud);
 
         registerItemBlock(ItemCherryTreeSapling, BlockCherryTreeSapling);
         registerItemBlock(ItemCherryTreeWood, BlockCherryTreeWood);
@@ -158,6 +164,9 @@ public class OPItems {
         registerItemBlock(ItemSnail, BlockSnail);
         registerItemBlock(ItemKairosekiBlock, BlockKairosekiBlock);
         registerItemBlock(ItemKairosekiBars, BlockKairosekiBars);
+        //registerItemBlock(ItemThinCloud,BlockThinCloud);
+        //registerItemBlock(ItemDenseCloud,BlockDenseCloud);
+        //registerItemBlock(ItemWaterCloud,BlockWaterCloud);
 
         //Standalone Items
 

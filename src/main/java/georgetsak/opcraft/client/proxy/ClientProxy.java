@@ -57,9 +57,9 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 
-        OBJLoader.INSTANCE.addDomain(OPCraft.MODID);
-        B3DLoader.INSTANCE.addDomain(OPCraft.MODID);
-        RenderingRegistry.registerEntityRenderingHandler(EntityKabutoAmmo.class, RenderKabutoAmmo::new);
+		OBJLoader.INSTANCE.addDomain(OPCraft.MODID);
+		B3DLoader.INSTANCE.addDomain(OPCraft.MODID);
+		RenderingRegistry.registerEntityRenderingHandler(EntityKabutoAmmo.class, RenderKabutoAmmo::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityMarine.class, RenderMarine::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHardMarine.class, RenderHardMarine::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGomuPistol.class, RenderGomuPistol::new);
@@ -85,17 +85,21 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityRayleigh.class, RenderRayleigh::new);
 		//RenderingRegistry.registerEntityRenderingHandler(EntityChristos.class, RenderChristos::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityStormLeg.class, RenderStormLeg::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityTamaito.class,RenderTamaito::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityOverheat.class,RenderOverheat::new);
-		RenderingRegistry.registerEntityRenderingHandler(EntityGoshikito.class,RenderGoshikito::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityTamaito.class, RenderTamaito::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityOverheat.class, RenderOverheat::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityGoshikito.class, RenderGoshikito::new);
+		//RenderingRegistry.registerEntityRenderingHandler(EntitySkypiean.class, RenderSkypiean::new);
+		//RenderingRegistry.registerEntityRenderingHandler(EntityKuro.class, RenderKuro::new);
+		//RenderingRegistry.registerEntityRenderingHandler(EntityPeacekeeper.class, RenderPeacekeeper::new);
+		//RenderingRegistry.registerEntityRenderingHandler(EntityHomieTree.class, RenderHomieTree::new);
 	}
 
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
 		registerItemRenderers();
-        registerKeyBindings();
-        OPBook.registerPages();
+		registerKeyBindings();
+		OPBook.registerPages();
 	}
 
 	@Override
@@ -109,8 +113,7 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	@Override
-	public EntityPlayer getPlayerEntityFromContext(MessageContext ctx)
-	{
+	public EntityPlayer getPlayerEntityFromContext(MessageContext ctx) {
 		return (ctx.side.isClient() ? Minecraft.getMinecraft().player : super.getPlayerEntityFromContext(ctx));
 	}
 
@@ -120,10 +123,10 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	public static KeyBinding key1;
-    public static KeyBinding key2;
-    public static KeyBinding key3;
-    public static KeyBinding statsButton;
-    public static KeyBinding hakiButton;
+	public static KeyBinding key2;
+	public static KeyBinding key3;
+	public static KeyBinding statsButton;
+	public static KeyBinding hakiButton;
 	public static KeyBinding emperorHakiButton;
 	public static KeyBinding sixPowersMenuButton;
 	public static KeyBinding sixPowersButton;
@@ -132,24 +135,24 @@ public class ClientProxy extends CommonProxy {
 
 	private void registerKeyBindings() {
 		key1 = new KeyBinding("key.power_decrease", KeyConflictContext.IN_GAME, Keyboard.KEY_X, "key.categories.onepiece");
-        key2 = new KeyBinding("key.power_increase", KeyConflictContext.IN_GAME, Keyboard.KEY_C, "key.categories.onepiece");
-        key3 = new KeyBinding("key.power_execute", KeyConflictContext.IN_GAME, Keyboard.KEY_V, "key.categories.onepiece");
+		key2 = new KeyBinding("key.power_increase", KeyConflictContext.IN_GAME, Keyboard.KEY_C, "key.categories.onepiece");
+		key3 = new KeyBinding("key.power_execute", KeyConflictContext.IN_GAME, Keyboard.KEY_V, "key.categories.onepiece");
 		statsButton = new KeyBinding("key.statsButton", KeyConflictContext.IN_GAME, Keyboard.KEY_Z, "key.categories.onepiece");
 		hakiButton = new KeyBinding("key.hakiButton", KeyConflictContext.IN_GAME, KeyModifier.SHIFT, Keyboard.KEY_Z, "key.categories.onepiece");
 		emperorHakiButton = new KeyBinding("key.emperorHakiButton", KeyConflictContext.IN_GAME, KeyModifier.SHIFT, Keyboard.KEY_X, "key.categories.onepiece");
 		sixPowersMenuButton = new KeyBinding("key.six_powers_menu_button", KeyConflictContext.IN_GAME, KeyModifier.CONTROL, Keyboard.KEY_Z, "key.categories.onepiece");
 		sixPowersButton = new KeyBinding("key.six_powers_button", KeyConflictContext.IN_GAME, KeyModifier.CONTROL, Keyboard.KEY_V, "key.categories.onepiece");
-		powerUpgradeButton = new KeyBinding("key.power_upgrade_button",KeyConflictContext.IN_GAME,KeyModifier.SHIFT, Keyboard.KEY_C, "key.categories.onepiece");
+		powerUpgradeButton = new KeyBinding("key.power_upgrade_button", KeyConflictContext.IN_GAME, KeyModifier.SHIFT, Keyboard.KEY_C, "key.categories.onepiece");
 
-        ClientRegistry.registerKeyBinding(key1);
-        ClientRegistry.registerKeyBinding(key2);
-        ClientRegistry.registerKeyBinding(key3);
-        ClientRegistry.registerKeyBinding(statsButton);
-        ClientRegistry.registerKeyBinding(hakiButton);
-        ClientRegistry.registerKeyBinding(emperorHakiButton);
-        ClientRegistry.registerKeyBinding(sixPowersMenuButton);
-        ClientRegistry.registerKeyBinding(sixPowersButton);
-        ClientRegistry.registerKeyBinding(powerUpgradeButton);
+		ClientRegistry.registerKeyBinding(key1);
+		ClientRegistry.registerKeyBinding(key2);
+		ClientRegistry.registerKeyBinding(key3);
+		ClientRegistry.registerKeyBinding(statsButton);
+		ClientRegistry.registerKeyBinding(hakiButton);
+		ClientRegistry.registerKeyBinding(emperorHakiButton);
+		ClientRegistry.registerKeyBinding(sixPowersMenuButton);
+		ClientRegistry.registerKeyBinding(sixPowersButton);
+		ClientRegistry.registerKeyBinding(powerUpgradeButton);
 	}
 
 	private void registerItemRenderers() {
@@ -237,7 +240,7 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemWeAreDisk, true);
 		mir(ItemSake, true);
 		mir(ItemSake, true);
-        mir(ItemShipBuilder, false);
+		mir(ItemShipBuilder, false);
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ItemSnail, 0, new ModelResourceLocation("onepiececraft:snail", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ItemAceBoat, 0, new ModelResourceLocation("onepiececraft:ace_boat", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ItemSailBoat, 0, new ModelResourceLocation("onepiececraft:sail_boat", "inventory"));
@@ -260,6 +263,9 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemBandage, true);
 		mir(ItemSutures, true);
 		mir(ItemFirstAidKit, true);
+		//mir(ItemThinCloud, false);
+		//mir(ItemDenseCloud, false);
+		//mir(ItemWaterCloud, false);
 
 		mir(ItemDevilFruitGomu, true);
 		mir(ItemDevilFruitMera, true);
@@ -274,17 +280,17 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemDevilFruitMoku, true);
 		mir(ItemDevilFruitYami, true);
 		mir(ItemDevilFruitIto, true);
+
 	}
 
 	//Minecraft Item Render (MIR)
 	private void mir(Item item, boolean isItem) {
-		if(isItem){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
+		if (isItem) {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
+		} else {
+			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString()));
 		}
-		else{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString()));
-		}
-		
+
 	}
 
 }

@@ -4,16 +4,22 @@ import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.OPSoundEvent;
 import georgetsak.opcraft.common.entity.EntityBounty;
 import georgetsak.opcraft.common.registry.OPLootTables;
+import georgetsak.opcraft.common.util.MathUtils;
+import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
+import net.minecraft.entity.item.EntityFireworkRocket;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityFireball;
+import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
@@ -141,6 +147,10 @@ public class EntityCrocodile extends EntityBounty
     public void onUpdate()
     {
         super.onUpdate();
+        if(ticksExisted % 5 == 0) {
+            EntityLargeFireball f = new EntityLargeFireball(world, posX, posY + 10, posZ, 0d, 4d, 0d);
+            world.spawnEntity(f);
+        }
         if(!world.isRemote && !OPCraft.config.disableGriefing.getCurrentValue()){
             Block block = world.getBlockState(getPosition().down()).getBlock();
             if(block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.GRASS_PATH){
@@ -149,6 +159,10 @@ public class EntityCrocodile extends EntityBounty
         }
     }
 
+    @Override
+    public int getMaxSpawnedInChunk() {
+        return 1;
+    }
 
     public double getYOffset()
     {
@@ -170,8 +184,7 @@ public class EntityCrocodile extends EntityBounty
     {
         if (super.getCanSpawnHere())
         {
-            EntityPlayer entityplayer = world.getClosestPlayerToEntity(this, 5.0D);
-            return entityplayer == null;
+            return world.canBlockSeeSky(getPosition());
         }
         else
         {

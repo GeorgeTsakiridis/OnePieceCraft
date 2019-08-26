@@ -14,6 +14,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
@@ -63,17 +64,18 @@ public class OPEntities {
         registerEntity(EntityLongLine.class,"long_line", 200, 3, true);
         registerEntity(EntityOverheat.class,"overheat",200, 3, true);
         registerEntity(EntityGoshikito.class,"goshikito",48, 3, true);
+        //registerEntity(EntitySkypiean.class,"skypiean",48,3,true, toRGB(Color.WHITE), toRGB(157,100,87));
+        //registerEntity(EntityKuro.class,"kuro",48,3,true, toRGB(Color.BLACK), toRGB(65,65,65));
+        //registerEntity(EntityPeacekeeper.class,"peacekeeper",48,3,true, toRGB(Color.WHITE), toRGB(Color.BLACK));
+        //registerEntity(EntityHomieTree.class,"homie_tree",48,3,true, toRGB(104, 84, 51), toRGB(37, 137, 0));
 
         //registerEntity2(EntitySeaKing.class, "sea_king", id++, OPCraft.MODID, 48, 3, true);
-
-        EnumCreatureType crocodile = EnumHelper.addCreatureType("crocodile", EntityCrocodile.class, 1, Material.AIR, false, false);
-        EnumCreatureType rayleigh = EnumHelper.addCreatureType("rayleigh", EntityRayleigh.class, 1, Material.AIR, true, false);
 
         EntityRegistry.addSpawn(EntityWildMarine.class, 20, 1, 5, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityWildHardMarine.class, 10, 1, 1, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityPirate.class, 5, 1, 6, EnumCreatureType.MONSTER, allSpawnableBiomes);
-        EntityRegistry.addSpawn(EntityCrocodile.class, 1, 0, 1, crocodile, hotBiomes);
-        EntityRegistry.addSpawn(EntityRayleigh.class, 1, 0, 1, rayleigh, allSpawnableBiomes);
+        EntityRegistry.addSpawn(EntityCrocodile.class, 1, 1, 1, EnumCreatureType.MONSTER, hotBiomes);
+        EntityRegistry.addSpawn(EntityRayleigh.class, 1, 1, 1, EnumCreatureType.AMBIENT, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityTonta.class, 1, 1, 6, EnumCreatureType.CREATURE, allSpawnableBiomes);
 
 

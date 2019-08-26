@@ -19,6 +19,8 @@ tile.onepiececraft:ship_builder_block.name=Ship Builder
 tile.onepiececraft:snail.name=Den Den Mushi
 tile.onepiececraft:kairoseki_block.name=Kairoseki Block
 tile.onepiececraft:kairoseki_bars.name=Kairoseki Bars
+tile.onepiececraft:cloud_thin.name=Thin Cloud
+tile.onepiececraft:cloud_dense.name=Dense Cloud
 
 item.onepiececraft:kairoseki_gem.name=Kairoseki Gem
 item.onepiececraft:steel_ingot.name=Steel Ingot
@@ -133,6 +135,10 @@ entity.pirate.name=Pirate
 entity.crocodile.name=Crocodile
 entity.tonta.name=Tonta
 entity.rayleigh.name=Rayleigh
+entity.skypiean.name=Skypiean
+entity.kuro.name=Kuro
+entity.peacekeeper.name=Peacekeeper
+entity.homie_tree.name=Homie Tree
 
 effect.onepiececraft:insideDome=Inside Dome
 

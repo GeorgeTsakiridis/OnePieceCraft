@@ -41,6 +41,9 @@ public class OPBlocks {
     public static Block BlockKairosekiBlock;
     public static Block BlockKairosekiBars;
     public static Block BlockSmokeCloud;
+    public static Block BlockThinCloud;
+    public static Block BlockDenseCloud;
+    public static Block BlockWaterCloud;
 
     public static void registerBlocks(){
 
@@ -72,6 +75,9 @@ public class OPBlocks {
         BlockKairosekiBlock = new BlockKairosekiBlock().setRegistryName("kairoseki_block").setCreativeTab(OPTab);
         BlockKairosekiBars = new BlockKairosekiBars().setRegistryName("kairoseki_bars").setCreativeTab(OPTab);
         BlockSmokeCloud = new BlockSmokeCloud(Material.ROCK).setRegistryName("smoke_cloud");
+        BlockThinCloud = new BlockCloud(true).setRegistryName("cloud_thin").setCreativeTab(OPTab);
+        BlockDenseCloud = new BlockCloud(false).setRegistryName("cloud_dense").setCreativeTab(OPTab);
+        BlockWaterCloud = new BlockCloud(true).setRegistryName("cloud_water").setCreativeTab(OPTab);
 
         registerBlock(BlockCherryTreeSapling);
         registerBlock(BlockCherryTreeWood);
@@ -97,6 +103,9 @@ public class OPBlocks {
         registerBlock(BlockKairosekiBlock);
         registerBlock(BlockKairosekiBars);
         registerBlock(BlockSmokeCloud);
+        //registerBlock(BlockThinCloud);
+        //registerBlock(BlockDenseCloud);
+        //registerBlock(BlockWaterCloud);
     }
 
     static void registerBlock(Block block) {
