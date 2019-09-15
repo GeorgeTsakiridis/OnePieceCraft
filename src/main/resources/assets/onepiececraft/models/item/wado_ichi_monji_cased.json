@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/wadocased"
+        "layer0": "onepiececraft:items/swords/wado_cased"
     }
 }

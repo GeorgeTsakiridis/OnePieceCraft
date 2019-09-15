@@ -90,13 +90,17 @@ public class OPUtils {
         return getNearbyEntities(player, player.getPosition(),radius,get);
     }
 
-    public static List<Entity> getNearbyEntities(EntityPlayer player, BlockPos center,  double radius, Class get) {
-        World world = player.getServer().getEntityWorld();
+    public static List<Entity> getNearbyEntities(World world, BlockPos center,  double radius, Class get) {
         double[] coords = MathUtils.getRadiusCoords(center.getX(), center.getY(), center.getZ(), radius);
 
         List<Entity> entities = world.getEntitiesWithinAABB(get, new AxisAlignedBB(coords[0], coords[2], coords[4], coords[1], coords[3], coords[5]));
 
         return entities;
+    }
+
+    public static List<Entity> getNearbyEntities(EntityPlayer player, BlockPos center,  double radius, Class get) {
+        World world = player.getServer().getEntityWorld();
+        return getNearbyEntities(world,center,radius,get);
     }
 
     public static List<Entity> getNearbyEntitiesExcluding(EntityPlayer player, double radius, Entity excluding) {

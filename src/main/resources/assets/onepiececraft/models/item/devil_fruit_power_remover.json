@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/devilfruitpowerremover"
+        "layer0": "onepiececraft:items/devil_fruits/devil_fruit_power_remover"
     }
 }

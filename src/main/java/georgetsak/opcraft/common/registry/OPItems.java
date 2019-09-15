@@ -5,11 +5,9 @@ import georgetsak.opcraft.common.item.devilfruits.ItemPowerRemover;
 import georgetsak.opcraft.common.item.ItemOPBook;
 import georgetsak.opcraft.common.item.ItemOPRecord;
 import georgetsak.opcraft.common.item.weapons.*;
-import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.OPSoundEvent;
-import georgetsak.opcraft.common.item.weapons.ItemUssopKabuto;
+import georgetsak.opcraft.common.item.weapons.ItemUsoppKabuto;
 import georgetsak.opcraft.common.item.weapons.ammo.ItemGunAmmo;
-import georgetsak.opcraft.common.item.weapons.ammo.ItemUssopKabutoAmmo;
 import georgetsak.opcraft.common.item.weapons.swords.*;
 import net.minecraft.block.Block;
 import net.minecraft.init.MobEffects;
@@ -18,7 +16,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemFood;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import static georgetsak.opcraft.common.registry.OPBlocks.*;
@@ -65,9 +62,9 @@ public class OPItems {
     public static Item ItemClimaCompletedFire;
     public static Item ItemClimaCompletedThunder;
     public static Item ItemTemporaryIce;
-    public static Item ItemUssopKabuto;
-    public static Item ItemUssopKabutoBlack;
-    public static Item ItemUssopKabutoAmmo;
+    public static Item ItemUsoppKabuto;
+    public static Item ItemUsoppKabutoBlack;
+    public static Item ItemSmallRock;
     public static Item ItemFlintlock;
     public static Item ItemFlintlockAmmo;
     public static Item ItemSenriku;
@@ -115,6 +112,8 @@ public class OPItems {
     public static Item ItemThinCloud;
     public static Item ItemDenseCloud;
     public static Item ItemWaterCloud;
+    public static Item ItemExtolCoin;
+    public static Item ItemEmptyDial;
 
     public static void registerItems(){
 
@@ -164,9 +163,9 @@ public class OPItems {
         registerItemBlock(ItemSnail, BlockSnail);
         registerItemBlock(ItemKairosekiBlock, BlockKairosekiBlock);
         registerItemBlock(ItemKairosekiBars, BlockKairosekiBars);
-        //registerItemBlock(ItemThinCloud,BlockThinCloud);
-        //registerItemBlock(ItemDenseCloud,BlockDenseCloud);
-        //registerItemBlock(ItemWaterCloud,BlockWaterCloud);
+        registerItemBlock(ItemThinCloud,BlockThinCloud);
+        registerItemBlock(ItemDenseCloud,BlockDenseCloud);
+        registerItemBlock(ItemWaterCloud,BlockWaterCloud);
 
         //Standalone Items
 
@@ -194,9 +193,9 @@ public class OPItems {
         ItemClimaCompletedWater = new ItemClima(100, 2, 1, true).setRegistryName("clima_water").setCreativeTab(OPTab);
         ItemClimaCompletedFire = new ItemClima(100, 2, 2, true).setRegistryName("clima_fire");
         ItemClimaCompletedThunder = new ItemClima(100, 2, 3, true).setRegistryName("clima_thunder");
-        ItemUssopKabuto = new ItemUssopKabuto(0).setRegistryName("ussop_kabuto").setCreativeTab(OPTab);
-        ItemUssopKabutoBlack = new ItemUssopKabuto(1).setRegistryName("ussop_kabuto_black").setCreativeTab(OPTab);
-        ItemUssopKabutoAmmo = new ItemUssopKabutoAmmo().setRegistryName("ussop_kabuto_ammo").setCreativeTab(OPTab);
+        ItemUsoppKabuto = new ItemUsoppKabuto(0).setRegistryName("usopp_kabuto").setCreativeTab(OPTab);
+        ItemUsoppKabutoBlack = new ItemUsoppKabuto(1).setRegistryName("usopp_kabuto_black").setCreativeTab(OPTab);
+        ItemSmallRock = new Item().setRegistryName("small_rock").setCreativeTab(OPTab);
         ItemFlintlock = new ItemGun(50, 10, 30, 20, 1).setRegistryName("flintlock").setCreativeTab(OPTab);
         ItemSenriku = new ItemGun(300, 6, 80, 10, 2).setRegistryName("senriku").setCreativeTab(OPTab);
         ItemBazooka = new ItemGun(500, 18, 20, 60, 3).setRegistryName("bazooka").setCreativeTab(OPTab);
@@ -233,6 +232,8 @@ public class OPItems {
         ItemBandage = new ItemHeal(4).setRegistryName("bandage").setCreativeTab(OPTab);
         ItemSutures = new ItemHeal(6).setRegistryName("sutures").setCreativeTab(OPTab);
         ItemFirstAidKit = new ItemHeal(10).setRegistryName("first_aid_kit").setCreativeTab(OPTab);
+        ItemExtolCoin = new Item().setRegistryName("extol_coin").setCreativeTab(OPTab);
+        ItemEmptyDial = new Item().setRegistryName("empty_dial").setCreativeTab(OPTab);
 
         SwordPairsManager.addPair(ItemWadoIchiMonjiCased, ItemWadoIchiMonjiOpen);
         SwordPairsManager.addPair(ItemKitetsuCased, ItemKitetsuOpen);
@@ -267,9 +268,9 @@ public class OPItems {
         registerItem(ItemClimaCompletedWater);
         registerItem(ItemClimaCompletedFire);
         registerItem(ItemClimaCompletedThunder);
-        registerItem(ItemUssopKabuto);
-        registerItem(ItemUssopKabutoBlack);
-        registerItem(ItemUssopKabutoAmmo);
+        registerItem(ItemUsoppKabuto);
+        registerItem(ItemUsoppKabutoBlack);
+        registerItem(ItemSmallRock);
         registerItem(ItemFlintlock);
         registerItem(ItemSenriku);
         registerItem(ItemBazooka);
@@ -306,6 +307,8 @@ public class OPItems {
         registerItem(ItemBandage);
         registerItem(ItemSutures);
         registerItem(ItemFirstAidKit);
+        registerItem(ItemExtolCoin);
+        registerItem(ItemEmptyDial);
         // registerItem(ItemSnail);
 
         //Ore Dictionary

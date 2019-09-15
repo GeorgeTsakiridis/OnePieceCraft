@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "onepiececraft:items/luffyhelmet"
+		"layer0": "onepiececraft:items/clothes/luffy_helmet"
 	}
 }

@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderSailBoat extends Render<EntitySailBoat>
 {
-    private static final ResourceLocation SAIL_BOAT = new ResourceLocation(OPCraft.MODID, "textures/entity/other/sailboat.png");
+    private static final ResourceLocation SAIL_BOAT = new ResourceLocation(OPCraft.MODID, "textures/entity/boats/sailboat.png");
     protected ModelBase modelBoat = new ModelSailBoat();
 
     public RenderSailBoat(RenderManager renderManagerIn)
@@ -71,9 +71,6 @@ public class RenderSailBoat extends Render<EntitySailBoat>
         GlStateManager.translate((float)p_188309_1_, (float)p_188309_3_ + .375F + 0.3F, (float)p_188309_5_);
     }
 
-    /**
-     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     */
     protected ResourceLocation getEntityTexture(EntitySailBoat entity)
     {
         return SAIL_BOAT;

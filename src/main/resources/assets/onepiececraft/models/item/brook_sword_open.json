@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/brookswordopen"
+        "layer0": "onepiececraft:items/swords/brook_sword_open"
     }
 }

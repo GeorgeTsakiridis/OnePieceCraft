@@ -4,15 +4,18 @@
   "recipes": [
     {
       "title": "Dials (Water/Lava/Fire/Thunder/Impact)",
-      "totalLines": 7,
+      "totalLines": 10,
       "lines": [
-        "§lDials§r are strange, mysterious devices made from the remains of particular shellfish, which have the ability to store energy and matter. The shellfish remains are gathered from the shallows near the shore of the White-White Sea. Though they originate from Skypiea, some of them can reach and be used in the lower seas.",
+        "§lDials§r are strange, mysterious devices made from the remains of particular shellfish, which have the ability to store energy and matter. The shellfish originate from Skypiea.",
+        "Empty Dial: Doesn't do anything, but they are the base ingredient for crafting all other Dials.",
         "§9Water§r Dial: Places a water block (Like bucket but it is stackable).",
         "§4Lava§r Dial: Places a lava block (Like bucket but it is stackable).",
         "§6Fire§r Dial: Surrounds the Player with fire.",
         "§bThunder§r Dial: Summons a thunder",
         "§cImpact§r Dial: Damages the targeted Player or mob",
-        "(For Lava replace with Lava Bucket, for Fire with Flint and Steel, for Thunder with Redstone Cube and for Impact with a redstone dust)"
+        "",
+        "Dials can also be loaded into a Kabuto, and be thrown as projectiles. When they hit a block they will activate.",
+        "Empty Dials can only be obtained by trading with Skypieans, so a Skypiea Island must be found first in order to get Dials."
       ],
       "itemOrBlock" : "item",
       "totalResults" : 5,

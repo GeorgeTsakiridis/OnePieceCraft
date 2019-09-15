@@ -119,7 +119,7 @@ public class OPDevilFruits {
         PowerHandler.addPower(new int[]{1000, 960, 920, 880, 840}, new int[]{25, 50, 75, 100}, "Liberation", "Liberation", YAMI, 3, "liberation");
         PowerHandler.addPower(new int[]{100, 90, 80, 70, 60}, new int[]{190, 405, 645, 920}, "Tamaito", "Tamaito", ITO, 1, "tamaito");
         PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{10, 20, 30, 45}, "Overheat", "Overheat", ITO, 2, "overheat");
-        PowerHandler.addPower(new int[]{2800, 2400, 2000, 3600, 3200}, new int[]{50, 105, 165, 230}, "Goshikito", "Goshikito", ITO, 3, "goshikito");
+        PowerHandler.addPower(new int[]{480, 440, 400, 360, 320}, new int[]{50, 105, 165, 230}, "Goshikito", "Goshikito", ITO, 3, "goshikito");
         PowerHandler.addPower(new int[]{2200, 2000, 1800, 1600, 1400}, new int[]{10, 15, 25, 40}, false, "SoraNoMichi", "Sora no Michi", ITO, 4, "sora_no_michi");
     }
 

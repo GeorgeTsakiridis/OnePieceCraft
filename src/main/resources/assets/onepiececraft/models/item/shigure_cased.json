@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/shigurecased"
+        "layer0": "onepiececraft:items/swords/shigure_cased"
     }
 }

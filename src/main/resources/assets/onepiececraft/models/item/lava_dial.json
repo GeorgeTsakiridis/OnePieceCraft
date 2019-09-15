@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/lavadial"
+        "layer0": "onepiececraft:items/dials/lava_dial"
     }
 }

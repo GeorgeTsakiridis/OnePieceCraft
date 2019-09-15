@@ -17,6 +17,9 @@ import georgetsak.opcraft.common.capability.devilfruits.IDevilFruitCap;
 import georgetsak.opcraft.common.capability.haki.HakiCap;
 import georgetsak.opcraft.common.capability.haki.HakiCapStorage;
 import georgetsak.opcraft.common.capability.haki.IHakiCap;
+import georgetsak.opcraft.common.capability.kabuto.IKabutoCap;
+import georgetsak.opcraft.common.capability.kabuto.KabutoCap;
+import georgetsak.opcraft.common.capability.kabuto.KabutoCapStorage;
 import georgetsak.opcraft.common.capability.sixpowers.ISixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCap;
 import georgetsak.opcraft.common.capability.sixpowers.SixPowersCapStorage;
@@ -48,8 +51,6 @@ import static georgetsak.opcraft.common.registry.OPArmor.LuffySimpleHelmet;
 
 public class CommonProxy {
 
-	public static MerchantRecipeList merchantRecipes;
-
 	public static CreativeTabs OPTab;
 	public static PotionOP effectInsideDome;
 
@@ -57,7 +58,7 @@ public class CommonProxy {
 
 	public void preInit(FMLPreInitializationEvent event) {
 		OPSoundEvent.registerSounds();
-
+		registerCapabilities();
         registerCreativeTab();
 		OPBlocks.registerBlocks();
 		OPItems.registerItems();
@@ -70,7 +71,6 @@ public class CommonProxy {
 		OPMerchantTrades.registerMerchantTrades();
 		OPLootTables.registerLootTables();
 		registerGUI();
-		registerCapabilities();
 
 	}
 	
@@ -114,6 +114,7 @@ public class CommonProxy {
 		CapabilityManager.INSTANCE.register(IHakiCap.class, new HakiCapStorage(), HakiCap::new);
 		CapabilityManager.INSTANCE.register(ISixPowersCap.class, new SixPowersCapStorage(), SixPowersCap::new);
 		CapabilityManager.INSTANCE.register(IDevilFruitLevelsCap.class, new DevilFruitLevelsCapStorage(), DevilFruitLevelsCap::new);
+		CapabilityManager.INSTANCE.register(IKabutoCap.class, new KabutoCapStorage(), KabutoCap::new);
 
 		CapabilityHandler capabilityHandler = new CapabilityHandler();
 		MinecraftForge.EVENT_BUS.register(capabilityHandler);

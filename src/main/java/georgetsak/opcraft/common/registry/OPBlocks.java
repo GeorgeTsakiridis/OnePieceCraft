@@ -4,7 +4,6 @@ import georgetsak.opcraft.common.block.*;
 import georgetsak.opcraft.common.block.tile.LawDomeTileEntity;
 import georgetsak.opcraft.common.block.tile.SmokeCloudTileEntity;
 import georgetsak.opcraft.common.block.tile.SnailTileEntity;
-import georgetsak.opcraft.OPCraft;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -77,7 +76,7 @@ public class OPBlocks {
         BlockSmokeCloud = new BlockSmokeCloud(Material.ROCK).setRegistryName("smoke_cloud");
         BlockThinCloud = new BlockCloud(true).setRegistryName("cloud_thin").setCreativeTab(OPTab);
         BlockDenseCloud = new BlockCloud(false).setRegistryName("cloud_dense").setCreativeTab(OPTab);
-        BlockWaterCloud = new BlockCloud(true).setRegistryName("cloud_water").setCreativeTab(OPTab);
+        BlockWaterCloud = new BlockWaterCloud(Material.WATER).setRegistryName("cloud_water").setCreativeTab(OPTab);
 
         registerBlock(BlockCherryTreeSapling);
         registerBlock(BlockCherryTreeWood);
@@ -103,9 +102,9 @@ public class OPBlocks {
         registerBlock(BlockKairosekiBlock);
         registerBlock(BlockKairosekiBars);
         registerBlock(BlockSmokeCloud);
-        //registerBlock(BlockThinCloud);
-        //registerBlock(BlockDenseCloud);
-        //registerBlock(BlockWaterCloud);
+        registerBlock(BlockThinCloud);
+        registerBlock(BlockDenseCloud);
+        registerBlock(BlockWaterCloud);
     }
 
     static void registerBlock(Block block) {

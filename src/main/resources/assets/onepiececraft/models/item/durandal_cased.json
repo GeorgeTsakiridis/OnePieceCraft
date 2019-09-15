@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/durandalcased"
+        "layer0": "onepiececraft:items/swords/durandal_cased"
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/kitetsuopen"
+        "layer0": "onepiececraft:items/swords/kitetsu_open"
     }
 }

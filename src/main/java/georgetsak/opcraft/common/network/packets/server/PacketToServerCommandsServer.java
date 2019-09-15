@@ -262,6 +262,7 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                 }
                 case "OverheatA": {
                     EntityOverheat overheat = new EntityOverheat(world, ep.posX, ep.posY, ep.posZ, ep.rotationYaw, ep.rotationPitch, true, ep);
+                    ep.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 80));
                     world.spawnEntity(overheat);
                     world.playSound(null,ep.posX,ep.posY,ep.posZ,OPSoundEvent.fire_fist,SoundCategory.NEUTRAL, 300f, 1f);
                     break;

@@ -15,7 +15,6 @@ import georgetsak.opcraft.common.entity.other.*;
 import georgetsak.opcraft.client.OPClientEventHooks;
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
-import georgetsak.opcraft.common.registry.OPDevilFruits;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
@@ -88,10 +87,10 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityTamaito.class, RenderTamaito::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityOverheat.class, RenderOverheat::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityGoshikito.class, RenderGoshikito::new);
-		//RenderingRegistry.registerEntityRenderingHandler(EntitySkypiean.class, RenderSkypiean::new);
-		//RenderingRegistry.registerEntityRenderingHandler(EntityKuro.class, RenderKuro::new);
-		//RenderingRegistry.registerEntityRenderingHandler(EntityPeacekeeper.class, RenderPeacekeeper::new);
-		//RenderingRegistry.registerEntityRenderingHandler(EntityHomieTree.class, RenderHomieTree::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySkypiean.class, RenderSkypiean::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityKuro.class, RenderKuro::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityPeacekeeper.class, RenderPeacekeeper::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityHomieTree.class, RenderHomieTree::new);
 	}
 
 	@Override
@@ -192,9 +191,9 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemClimaCompletedFire, true);
 		mir(ItemClimaCompletedThunder, true);
 		mir(ItemTemporaryIce, false);
-		mir(ItemUssopKabuto, true);
-		mir(ItemUssopKabutoBlack, true);
-		mir(ItemUssopKabutoAmmo, true);
+		mir(ItemUsoppKabuto, true);
+		mir(ItemUsoppKabutoBlack, true);
+		mir(ItemSmallRock, true);
 		mir(ItemFlintlock, true);
 		mir(ItemFlintlockAmmo, true);
 		mir(ItemSenriku, true);
@@ -263,9 +262,11 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemBandage, true);
 		mir(ItemSutures, true);
 		mir(ItemFirstAidKit, true);
-		//mir(ItemThinCloud, false);
-		//mir(ItemDenseCloud, false);
-		//mir(ItemWaterCloud, false);
+		mir(ItemThinCloud, false);
+		mir(ItemDenseCloud, false);
+		mir(ItemWaterCloud, false);
+		mir(ItemExtolCoin, true);
+		mir(ItemEmptyDial, true);
 
 		mir(ItemDevilFruitGomu, true);
 		mir(ItemDevilFruitMera, true);

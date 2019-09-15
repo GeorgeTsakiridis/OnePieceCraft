@@ -147,10 +147,6 @@ public class EntityCrocodile extends EntityBounty
     public void onUpdate()
     {
         super.onUpdate();
-        if(ticksExisted % 5 == 0) {
-            EntityLargeFireball f = new EntityLargeFireball(world, posX, posY + 10, posZ, 0d, 4d, 0d);
-            world.spawnEntity(f);
-        }
         if(!world.isRemote && !OPCraft.config.disableGriefing.getCurrentValue()){
             Block block = world.getBlockState(getPosition().down()).getBlock();
             if(block == Blocks.DIRT || block == Blocks.GRASS || block == Blocks.GRASS_PATH){

@@ -415,7 +415,7 @@ public class OPCommonEventHooks {
         boolean flag4 = event.getName() == LootTableList.CHESTS_SIMPLE_DUNGEON;
 
         boolean flag = flag1 || flag2 || flag3 || flag4;
-        int prob = 15;
+        int prob = 2;
         if (flag) {
             final LootPool main = event.getTable().getPool("main");
             if (main != null && OPCraft.config.enableDevilFruitsSpawning.getCurrentValue()) {

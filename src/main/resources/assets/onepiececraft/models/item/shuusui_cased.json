@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/shuusuicased"
+        "layer0": "onepiececraft:items/swords/shuusui_cased"
     }
 }

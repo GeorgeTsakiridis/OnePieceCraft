@@ -45,9 +45,9 @@ item.onepiececraft:clima_simple.name=Incomplete Clima-Tact
 item.onepiececraft:clima_water.name=Clima-Tact | Water Mode
 item.onepiececraft:clima_fire.name=Clima-Tact | Heat Mode
 item.onepiececraft:clima_thunder.name=Clima-Tact | Thunder Mode
-item.onepiececraft:ussop_kabuto.name=Usopp's Kabuto
-item.onepiececraft:ussop_kabuto_black.name=Usopp's Black Kabuto
-item.onepiececraft:ussop_kabuto_ammo.name=Small Rock
+item.onepiececraft:usopp_kabuto.name=Usopp's Kabuto
+item.onepiececraft:usopp_kabuto_black.name=Usopp's Black Kabuto
+item.onepiececraft:small_rock.name=Small Rock
 item.onepiececraft:flintlock.name=Flintlock Gun
 item.onepiececraft:flintlock_ammo.name=Flintlock Bullet
 item.onepiececraft:senriku.name=Senriku Rifle
@@ -119,10 +119,12 @@ item.onepiececraft:durandal_open.name=Durandal Sword
 item.onepiececraft:bandage.name=Bandage
 item.onepiececraft:sutures.name=Sutures
 item.onepiececraft:first_aid_kit.name=First Aid Kit
+item.onepiececraft:extol_coin.name=Extol Coin
+item.onepiececraft:empty_dial.name=Empty Dial
 
 item.record.disc_we_are.desc=OPCraft - We Are!
 
-entity.ussop_kabuto_ammo.name=Kabuto
+entity.usopp_kabuto_ammo.name=Kabuto
 entity.marine.name=Marine
 entity.wild_marine.name=Marine
 entity.hard_marine.name=Marine

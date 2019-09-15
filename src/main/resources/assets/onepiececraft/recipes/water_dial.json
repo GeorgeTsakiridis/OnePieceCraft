@@ -1,19 +1,15 @@
 {
-  "result": {
-    "item": "onepiececraft:water_dial"
-  },
-  "pattern": [
-    " C ",
-    "CBC",
-    " C "
-  ],
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "B": {
-      "item": "minecraft:water_bucket"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "onepiececraft:empty_dial"
     },
-    "C": {
-      "item": "minecraft:clay_ball"
+    {
+      "item": "minecraft:water_bucket"
     }
+  ],
+  "result": {
+    "item": "onepiececraft:water_dial",
+    "count": 1
   }
 }

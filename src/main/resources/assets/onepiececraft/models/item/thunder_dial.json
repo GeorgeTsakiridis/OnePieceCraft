@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/thunderdial"
+        "layer0": "onepiececraft:items/dials/thunder_dial"
     }
 }

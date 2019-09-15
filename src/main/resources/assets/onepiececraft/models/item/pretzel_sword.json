@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/pretzelsword"
+        "layer0": "onepiececraft:items/swords/pretzel_sword"
     }
 }

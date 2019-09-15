@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/lawswordcased"
+        "layer0": "onepiececraft:items/swords/kikoku_cased"
     }
 }

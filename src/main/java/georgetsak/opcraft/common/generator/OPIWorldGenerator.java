@@ -53,7 +53,7 @@ public class OPIWorldGenerator implements IWorldGenerator
                 int randX = blockX + rand.nextInt(10);
                 int randZ = blockZ + rand.nextInt(10);
 
-                if (rand.nextInt(700) == 0) {
+                if (rand.nextInt(350) == 0) {
                     worldGenAdamTree.generate(world, rand, new BlockPos(randX, getGroundFromAbove(world, randX + 2, randZ), randZ));
                 } else {
                     worldGenCherryTree.generate(world, rand, new BlockPos(randX, getGroundFromAbove(world, randX, randZ), randZ));
@@ -84,8 +84,25 @@ public class OPIWorldGenerator implements IWorldGenerator
 				}
 			}
         }
+			//TODO fix me
+		if(biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN && 1 == 0){
+			int randX = blockX + rand.nextInt(16);
+			int randZ = blockZ + rand.nextInt(16);
 
+			if(rand.nextInt(10) == 0){
 
+				Template boat = getTemplate("marine_boat", world);
+				Rotation rot = randomRot(rand);
+				//rot
+				PlacementSettings placementSettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(rot).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
+
+				if (boat != null){
+					clear(world, randX, getGroundFromAbove(world,randX,randZ), randZ, 20, 20, 20, rot);
+					System.out.println("Spawning boat at " + randX + " // " + randZ);
+					boat.addBlocksToWorld(world, new BlockPos(randX, getSeaLevel(world, randX, randZ)-1, randZ), placementSettings);
+				}
+			}
+		}
 		
 		if(biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN || biome == Biomes.RIVER || biome == Biomes.FROZEN_RIVER || biome == Biomes.FROZEN_OCEAN){
 			
@@ -160,11 +177,21 @@ public class OPIWorldGenerator implements IWorldGenerator
 	{
 		int y = 255;
 		boolean foundGround = false;
-		while(!foundGround && y >= 0)
-		{
-			Block blockAt = world.getBlockState(new BlockPos(x,y,z)).getBlock();
-			// "ground" for our bush is grass or dirt
+		while(!foundGround && y >= 0) {
+			Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
 			foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS;
+			y--;
+		}
+
+		return y;
+	}
+
+	public static int getSeaLevel(World world, int x, int z){
+		int y = 255;
+		boolean foundWater = false;
+		while(!foundWater && y > 0){
+			Block block = world.getBlockState(new BlockPos(x, y , z)).getBlock();
+			foundWater = block == Blocks.WATER;
 			y--;
 		}
 

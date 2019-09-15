@@ -58,6 +58,8 @@ public class PageEntityInfo extends Page {
         EntityHardMarine hardMarine = new EntityHardMarine(world);
         hardMarine.setMarineType(1);
 
+        EntitySkypiean skypiean = new EntitySkypiean(world);
+
         switch (entry){
             case "morgan": return new EntityMorgan(world);
             case "pirateStrong": pirate.setType(EntityPirate.STRONG); return pirate;
@@ -70,6 +72,11 @@ public class PageEntityInfo extends Page {
             case "villager": return new EntityOPVillager(world);
             case "marine": return marine;
             case "hardMarine": return hardMarine;
+            case "skypiean1": skypiean.setType(0); return skypiean;
+            case "skypiean2": skypiean.setType(1); return skypiean;
+            case "skypiean3": skypiean.setType(2); return skypiean;
+            case "skypiean4": skypiean.setType(3); return skypiean;
+            case "skypiean5": skypiean.setType(4); return skypiean;
         }
         return new EntityZombie(world);
     }
@@ -85,7 +92,7 @@ public class PageEntityInfo extends Page {
     public void draw(GuiScreen screen, FontRenderer fontRenderer) {
 
         int total = ENTITIES_TO_RENDER.length;
-        if(stepTick > 120){
+        if(stepTick > 60){
             stepTick = 0;
             step++;
         }

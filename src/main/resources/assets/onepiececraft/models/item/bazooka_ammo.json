@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "onepiececraft:items/bazookaammo"
+		"layer0": "onepiececraft:items/shooting/bazooka_ammo"
 	}
 }

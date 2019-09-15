@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderKabutoAmmo extends RenderTippedArrow {
-	private static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(OPCraft.MODID, "textures/entity/kabutoammo.png");
+	private static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(OPCraft.MODID, "textures/entity/other/kabutoammo.png");
 
 	public RenderKabutoAmmo(RenderManager renderManager) {
 		super(renderManager);

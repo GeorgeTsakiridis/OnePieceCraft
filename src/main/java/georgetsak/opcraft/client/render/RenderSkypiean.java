@@ -35,7 +35,7 @@ public class RenderSkypiean extends RenderLiving<EntitySkypiean> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntitySkypiean entity) {
-		return new ResourceLocation(OPCraft.MODID, "textures/entity/other/skypiean" + (entity.getType()+1) + ".png");
+		return new ResourceLocation(OPCraft.MODID, "textures/entity/skypieans/skypiean" + (entity.getType()+1) + ".png");
 	}
 
 

@@ -19,9 +19,9 @@ import java.util.Map;
 @Mod(modid = OPCraft.MODID, version = OPCraft.VERSION, name = OPCraft.NAME)
 public class OPCraft {
     public static final String MODID = "onepiececraft";
-    public static final String VERSION = "2.4.2";
+    public static final String VERSION = "2.5pre1";
     public static final String NAME = "One Piece Craft";
-    public static final boolean IS_RELEASE_VERSION = true;
+    public static final boolean IS_RELEASE_VERSION = false;
 
     @SidedProxy(clientSide = "georgetsak.opcraft.client.proxy.ClientProxy", serverSide = "georgetsak.opcraft.common.network.proxy.CommonProxy")
     public static CommonProxy proxy;

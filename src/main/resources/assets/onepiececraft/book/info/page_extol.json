@@ -1,0 +1,11 @@
+{
+  "type": "info",
+  "title": "Extol Coin",
+  "totalLines": 3,
+  "lines":[
+    "§lExtol§r is the currency of the Skypiea Island. It is used to trade with skypieans.",
+    "You can obtain them by trading them for Berry Coins in a ration of 10:1, meaning that 1 Berry Coin = 10 Extol Coins.",
+    "Extol Coins are useless outside Skypiea."
+  ],
+  "icon":"onepiececraft:extol_coin"
+}

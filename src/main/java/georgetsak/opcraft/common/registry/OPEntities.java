@@ -64,10 +64,10 @@ public class OPEntities {
         registerEntity(EntityLongLine.class,"long_line", 200, 3, true);
         registerEntity(EntityOverheat.class,"overheat",200, 3, true);
         registerEntity(EntityGoshikito.class,"goshikito",48, 3, true);
-        //registerEntity(EntitySkypiean.class,"skypiean",48,3,true, toRGB(Color.WHITE), toRGB(157,100,87));
-        //registerEntity(EntityKuro.class,"kuro",48,3,true, toRGB(Color.BLACK), toRGB(65,65,65));
-        //registerEntity(EntityPeacekeeper.class,"peacekeeper",48,3,true, toRGB(Color.WHITE), toRGB(Color.BLACK));
-        //registerEntity(EntityHomieTree.class,"homie_tree",48,3,true, toRGB(104, 84, 51), toRGB(37, 137, 0));
+        registerEntity(EntitySkypiean.class,"skypiean",48,3,true, toRGB(Color.WHITE), toRGB(157,100,87));
+        registerEntity(EntityKuro.class,"kuro",48,3,true, toRGB(Color.BLACK), toRGB(65,65,65));
+        registerEntity(EntityPeacekeeper.class,"peacekeeper",48,3,true, toRGB(Color.WHITE), toRGB(Color.BLACK));
+        registerEntity(EntityHomieTree.class,"homie_tree",48,3,true, toRGB(104, 84, 51), toRGB(37, 137, 0));
 
         //registerEntity2(EntitySeaKing.class, "sea_king", id++, OPCraft.MODID, 48, 3, true);
 
@@ -75,9 +75,8 @@ public class OPEntities {
         EntityRegistry.addSpawn(EntityWildHardMarine.class, 10, 1, 1, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityPirate.class, 5, 1, 6, EnumCreatureType.MONSTER, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityCrocodile.class, 1, 1, 1, EnumCreatureType.MONSTER, hotBiomes);
-        EntityRegistry.addSpawn(EntityRayleigh.class, 1, 1, 1, EnumCreatureType.AMBIENT, allSpawnableBiomes);
+        EntityRegistry.addSpawn(EntityRayleigh.class, 1, 1, 1, EnumCreatureType.CREATURE, allSpawnableBiomes);
         EntityRegistry.addSpawn(EntityTonta.class, 1, 1, 6, EnumCreatureType.CREATURE, allSpawnableBiomes);
-
 
     }
 

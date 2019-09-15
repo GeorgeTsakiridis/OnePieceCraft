@@ -1,19 +1,15 @@
 {
-  "result": {
-    "item": "onepiececraft:thunder_dial"
-  },
-  "pattern": [
-    " C ",
-    "CBC",
-    " C "
-  ],
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "B": {
-      "item": "minecraft:redstone_block"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "onepiececraft:empty_dial"
     },
-    "C": {
-      "item": "minecraft:clay_ball"
+    {
+      "item": "minecraft:redstone_block"
     }
+  ],
+  "result": {
+    "item": "onepiececraft:thunder_dial",
+    "count": 1
   }
 }

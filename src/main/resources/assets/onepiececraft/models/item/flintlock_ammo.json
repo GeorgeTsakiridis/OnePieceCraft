@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "onepiececraft:items/flintlockammo"
+		"layer0": "onepiececraft:items/shooting/flintlock_ammo"
 	}
 }

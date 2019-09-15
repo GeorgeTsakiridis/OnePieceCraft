@@ -20,7 +20,7 @@ import java.util.Random;
 @SideOnly(Side.CLIENT)
 public class RenderAceBoat extends Render<EntityAceBoat>
 {
-    private static final ResourceLocation ACE_BOAT = new ResourceLocation(OPCraft.MODID, "textures/entity/other/aceboat.png");
+    private static final ResourceLocation ACE_BOAT = new ResourceLocation(OPCraft.MODID, "textures/entity/boats/aceboat.png");
     protected ModelBase modelBoat = new ModelAceBoat();
 
     public RenderAceBoat(RenderManager renderManagerIn)

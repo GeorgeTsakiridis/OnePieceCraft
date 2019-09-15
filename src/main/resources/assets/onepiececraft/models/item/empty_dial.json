@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/ussopkabutoblack"
+        "layer0": "onepiececraft:items/dials/empty_dial"
     }
 }

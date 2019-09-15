@@ -24,6 +24,7 @@ public class OPBook {
         PageManager.addPage("devil_fruit/page_ito");
         PageManager.addPage("info/page_devil_fruit_power_remover");
         PageManager.addPage("info/page_berries");
+        PageManager.addPage("info/page_extol");
         PageManager.addPage("simple_recipe/page_kairoseki");
         PageManager.addPage("weapon_recipe/page_weapons1");
         PageManager.addPage("weapon_recipe/page_weapons2");
@@ -55,6 +56,7 @@ public class OPBook {
         PageManager.addPage("entity_info/page_morgan");
         PageManager.addPage("entity_info/page_crocodile");
         PageManager.addPage("entity_info/page_rayleigh");
-        PageManager.addPage("entity_info/page_tonta");//TODO Finish entity manual book stuff
+        PageManager.addPage("entity_info/page_tonta");
+        PageManager.addPage("entity_info/page_skypiean");//TODO Finish entity manual book stuff
     }
 }

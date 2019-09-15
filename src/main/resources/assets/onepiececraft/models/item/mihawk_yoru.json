@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/mihawkyoru"
+        "layer0": "onepiececraft:items/swords/mihawk_yoru"
     }
 }

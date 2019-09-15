@@ -96,11 +96,6 @@ public class EntityRayleigh extends EntityMob {
     public void onUpdate() {
         super.onUpdate();
 
-        if(ticksExisted % 5 == 0) {
-            EntityLargeFireball f = new EntityLargeFireball(world, posX, posY + 10, posZ, 0d, 4d, 0d);
-            world.spawnEntity(f);
-        }
-
         if(ticksCooldown > 0){
             ticksCooldown--;
         }

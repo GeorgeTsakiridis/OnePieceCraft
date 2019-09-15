@@ -19,7 +19,7 @@ public class RenderPeacekeeper extends RenderLiving<EntityPeacekeeper> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityPeacekeeper entity) {
-		return new ResourceLocation(OPCraft.MODID, "textures/entity/other/peacekeeper" + (entity.getType()+1) + ".png");
+		return new ResourceLocation(OPCraft.MODID, "textures/entity/homies/peacekeeper" + (entity.getType()+1) + ".png");
 	}
 
 

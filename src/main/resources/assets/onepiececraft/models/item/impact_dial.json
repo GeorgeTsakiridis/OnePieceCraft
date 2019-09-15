@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/impactdial"
+        "layer0": "onepiececraft:items/dials/impact_dial"
     }
 }

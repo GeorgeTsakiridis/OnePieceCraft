@@ -1,9 +1,11 @@
 package georgetsak.opcraft.common.item.weapons;
 
 import com.google.common.collect.Multimap;
+import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.client.OPSoundEvent;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -18,20 +20,26 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraft.world.gen.structure.template.PlacementSettings;
+import net.minecraft.world.gen.structure.template.Template;
+import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
+import java.util.Random;
 
 public class ItemClima extends Item
 {	
     private final float attackDamage;
     
-    int type = 0;//0 stands for null or climaBasic, 1 for Water, 2 for Fire, 3 for Thunder, ... 
+    int type = 0; //0 stands for null or climaBasic, 1 for Water, 2 for Fire, 3 for Thunder, ...
     boolean completed;
     
     public ItemClima(int durability, float attackDamage, int type, boolean completed)

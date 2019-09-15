@@ -40,7 +40,7 @@ public class ItemDevilFruit extends ItemFood {
             IDevilFruitCap df = entityplayer.getCapability(DevilFruitCapProvider.DF_CAP, null);
 
             if(df.hasPower()) {
-				entityplayer.attackEntityFrom(new EntityDamageSource("ate more than one Devil Fruit", entityplayer), Float.MAX_VALUE);
+				entityplayer.attackEntityFrom(new EntityDamageSource("ate more than one Devil Fruit", entityplayer), Float.MAX_VALUE/2f);
 				if (!world.isRemote) {
 					OPUtils.createExplosion(entityLiving, world, entityLiving.posX, entityLiving.posY, entityLiving.posZ, 1, true);
 				}

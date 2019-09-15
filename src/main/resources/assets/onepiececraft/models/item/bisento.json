@@ -1,7 +1,7 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/bisento"
+        "layer0": "onepiececraft:items/swords/bisento"
     },
     "display": {
         "thirdperson_righthand": {

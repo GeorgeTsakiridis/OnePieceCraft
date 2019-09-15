@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "onepiececraft:items/usoppleggings"
+		"layer0": "onepiececraft:items/clothes/usopp_leggings"
 	}
 }

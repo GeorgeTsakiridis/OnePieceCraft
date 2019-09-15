@@ -1,0 +1,13 @@
+{
+  "type": "entity_info",
+  "title": "Skypieans",
+  "entityToDisplay" : ["skypiean1", "skypiean2", "skypiean3", "skypiean4", "skypiean5"],
+  "displaySize" : 50,
+  "totalLines": 4,
+  "lines":[
+    "Skypieans can be found in Skypiea Islands.",
+    "You can buy from them shells as well as convert Berry Coins to Extol Coins, the currency of Skypiea.",
+    "Skypieans are friendly creatures and will not attack you.",
+    "They spawn naturally on Dense Cloud blocks at a height of over 150 blocks."
+  ]
+}

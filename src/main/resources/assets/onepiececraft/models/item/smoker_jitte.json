@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/smokerjitte"
+        "layer0": "onepiececraft:items/swords/smoker_jitte"
     }
 }

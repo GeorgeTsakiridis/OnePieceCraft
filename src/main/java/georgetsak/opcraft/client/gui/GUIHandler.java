@@ -31,6 +31,8 @@ public class GUIHandler implements IGuiHandler {
             case 6:
                 PacketDispatcher.sendTo(new PacketDevilFruitLevels(DevilFruitLevelsCap.get(player)),(EntityPlayerMP)player);
                 return null;
+            case 7:
+                return new ContainerKabuto(player.inventory, player.getHeldItemMainhand(), player.world);
             default:
                 return null;
         }
@@ -54,6 +56,8 @@ public class GUIHandler implements IGuiHandler {
                 return new CrewGUI();
             case 6:
                 return new PowerUpgradeGUI();
+            case 7:
+                return new KabutoGUI(player.inventory, player.getHeldItemMainhand());
             default:
                 return null;
         }

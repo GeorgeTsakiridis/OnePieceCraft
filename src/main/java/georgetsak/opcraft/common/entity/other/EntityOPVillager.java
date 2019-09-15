@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.entity.other;
 
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPItems;
+import georgetsak.opcraft.common.registry.OPMerchantTrades;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.EntityLiving;
@@ -174,13 +175,13 @@ public class EntityOPVillager extends EntityCreature implements IMerchant
     @Override
     public MerchantRecipeList getRecipes(EntityPlayer player) {
 
-        fullList = CommonProxy.merchantRecipes;
+        fullList = OPMerchantTrades.villagerRecipes;
 
         if (this.buyingList == null)
         {
             this.buyingList = new MerchantRecipeList();
             for(int i = 0; i < 5; i++){
-                int random = rand.nextInt(fullList.size() + 1);
+                int random = rand.nextInt(fullList.size());
                 if(!this.buyingList.contains(fullList.get(random))){
                     this.buyingList.add(fullList.get(random));
                 }
@@ -201,7 +202,7 @@ public class EntityOPVillager extends EntityCreature implements IMerchant
         boolean selected = false;
         if(rand.nextInt(6) == 0 && this.buyingList.size() < 8){
             while(!selected){
-                int random = rand.nextInt(fullList.size() + 1);
+                int random = rand.nextInt(fullList.size());
                 if(!this.buyingList.contains(fullList.get(random))){
                     this.buyingList.add(fullList.get(random));
                     selected = true;

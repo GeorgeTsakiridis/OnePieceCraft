@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "onepiececraft:items/zorochestplate"
+		"layer0": "onepiececraft:items/clothes/zoro_chestplate"
 	}
 }

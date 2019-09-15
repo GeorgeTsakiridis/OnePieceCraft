@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "onepiececraft:items/usopphelmet"
+		"layer0": "onepiececraft:items/clothes/usopp_helmet"
 	}
 }
