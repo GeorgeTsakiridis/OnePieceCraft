@@ -165,7 +165,8 @@ public class OPItems {
         registerItemBlock(ItemKairosekiBars, BlockKairosekiBars);
         registerItemBlock(ItemThinCloud,BlockThinCloud);
         registerItemBlock(ItemDenseCloud,BlockDenseCloud);
-        registerItemBlock(ItemWaterCloud,BlockWaterCloud);
+        registerItemBlock(ItemWaterCloud, BlockWaterCloud);
+
 
         //Standalone Items
 

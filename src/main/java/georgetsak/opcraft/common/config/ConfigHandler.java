@@ -43,6 +43,8 @@ public class ConfigHandler {
 
     public ConfigEntryBoolean enableMorganFortress;
     public ConfigEntryInt morganFortressSpawnChance;
+    public ConfigEntryBoolean enableSkypiea;
+    public ConfigEntryInt skypieaSpawnChance;
 
     public ConfigEntryBoolean disableGriefing;
     public ConfigEntryBoolean allowDevilFruitUsersToSwim;
@@ -94,6 +96,8 @@ public class ConfigHandler {
 
         configEntries.add(enableMorganFortress = new ConfigEntryBoolean(configuration, "enableMorganFortressGeneration", "Enables or Disables Morgan's fortress generation", CATEGORY_GENERATION, true));
         configEntries.add(morganFortressSpawnChance = new ConfigEntryInt(configuration, "morganFortressSpawnChance", "Chance 1/x per chunk (Only for plain biome chunks)", CATEGORY_GENERATION, 800,200,Integer.MAX_VALUE));
+        configEntries.add(enableSkypiea = new ConfigEntryBoolean(configuration, "enableSkypieaGeneration", "Enables or Disables Skypiea Islands generation", CATEGORY_GENERATION, true));
+        configEntries.add(skypieaSpawnChance = new ConfigEntryInt(configuration, "skypieaSpawnChance", "Chance 1/x per chunk (Only for biomes that are not Hills)", CATEGORY_GENERATION, 2000,200,Integer.MAX_VALUE));
 
         configEntries.add(disableGriefing = new ConfigEntryBoolean(configuration,"disableGriefing","Disables the griefing from the mod. E.g. The explosion from Gear 3 won't destroy any blocks. WARNING! Enabling this will make some powers useless.", CATEGORY_MISC, false));
         configEntries.add(allowDevilFruitUsersToSwim = new ConfigEntryBoolean(configuration,"allowDevilFruitUsersToSwim","Allows the Devil Fruit users to swim and use their powers in water.", CATEGORY_MISC, false));

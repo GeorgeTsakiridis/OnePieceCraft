@@ -61,6 +61,7 @@ public class CommonProxy {
 		registerCapabilities();
         registerCreativeTab();
 		OPBlocks.registerBlocks();
+		OPBlocks.registerFluids();
 		OPItems.registerItems();
 		OPDevilFruits.registerDevilFruits();
 		OPArmor.registerArmor();

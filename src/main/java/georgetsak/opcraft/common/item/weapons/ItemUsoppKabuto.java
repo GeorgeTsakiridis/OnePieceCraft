@@ -53,6 +53,7 @@ public class ItemUsoppKabuto extends ItemBow {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		tooltip.add("Right click while sneaking to load.");
+		tooltip.add("Can be loaded with dials and small rocks.");
 	}
 
 	protected boolean isAmmoRequired(EntityPlayer shooter) {

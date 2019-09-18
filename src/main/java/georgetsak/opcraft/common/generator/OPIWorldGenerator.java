@@ -1,91 +1,93 @@
 package georgetsak.opcraft.common.generator;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.common.registry.OPBlocks;
+import georgetsak.opcraft.common.config.ConfigHandler;
 import georgetsak.opcraft.common.generator.terrain.WorldGenAdamTree;
 import georgetsak.opcraft.common.generator.terrain.WorldGenCherryTree;
-import net.minecraft.block.Block;
+import georgetsak.opcraft.common.registry.OPBlocks;
 import net.minecraft.init.Biomes;
-import net.minecraft.init.Blocks;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Mirror;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeHills;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
-import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Random;
+
+import static georgetsak.opcraft.common.util.WorldGenUtils.*;
 
 public class OPIWorldGenerator implements IWorldGenerator
 {
 
-	private void generateNether(World world, Random rand, int blockX, int blockZ) 
+	private void generateNether(World world, Random rand, int blockX, int blockZ)
 	{
 	}
 
-	private void generateOverworld(World world, Random rand, int blockX, int blockZ) 
-	{
+	private void generateOverworld(World world, Random rand, int blockX, int blockZ) {
 		WorldGenerator worldGenCherryTree = new WorldGenCherryTree();
 		WorldGenerator worldGenAdamTree = new WorldGenAdamTree();
 		WorldGenerator worldGenMinable;
-		
+
 		Biome biome = world.getBiomeForCoordsBody(new BlockPos(blockX, 64, blockZ));
 
-		if(biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT) {
-            int MIN = 0;
-            int MAX = 2;
-            int numBushes = MIN + rand.nextInt(MAX - MIN);
-            for (int i = 0; i < numBushes; i++) {
-                int randX = blockX + rand.nextInt(10);
-                int randZ = blockZ + rand.nextInt(10);
+		if (biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT) {
+			int numBushes = rand.nextInt(2);
+			for (int i = 0; i < numBushes; i++) {
+				int randX = blockX + rand.nextInt(10);
+				int randZ = blockZ + rand.nextInt(10);
 
-                if (rand.nextInt(350) == 0) {
-                    worldGenAdamTree.generate(world, rand, new BlockPos(randX, getGroundFromAbove(world, randX + 2, randZ), randZ));
-                } else {
-                    worldGenCherryTree.generate(world, rand, new BlockPos(randX, getGroundFromAbove(world, randX, randZ), randZ));
-                }
-            }
-        }
+				if (rand.nextInt(350) == 0) {
+					worldGenAdamTree.generate(world, rand, new BlockPos(randX, getGroundFromAbove(world, randX + 2, randZ), randZ));
+				} else {
+					worldGenCherryTree.generate(world, rand, new BlockPos(randX, getGroundFromAbove(world, randX, randZ), randZ));
+				}
+			}
+		}
 
-        if(biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT && OPCraft.config.enableMorganFortress.getCurrentValue()){
-            int randX = blockX + rand.nextInt(16);
-            int randZ = blockZ + rand.nextInt(16);
+		if (biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT && OPCraft.config.enableMorganFortress.getCurrentValue()) {
+			int randX = blockX + rand.nextInt(16);
+			int randZ = blockZ + rand.nextInt(16);
 
-            if(rand.nextInt(OPCraft.config.morganFortressSpawnChance.getCurrentValue()) == 0){
+			if (rand.nextInt(OPCraft.config.morganFortressSpawnChance.getCurrentValue()) == 0) {
 
 				Template morgan_fortress_stage1 = getTemplate("morgan_fortress_stage1", world);
 				Template morgan_fortress_stage2 = getTemplate("morgan_fortress_stage2", world);
 				Rotation rot = randomRot(rand);
-																											//rot
-				PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(true).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
-				PlacementSettings placementsettingsTorch = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
+				//rot
+				PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(true).setChunk(null).setReplacedBlock(null);
+				PlacementSettings placementsettingsTorch = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null);
 
-				int finalY =  getAverageHeight(world, randX, randZ - 1, 109, false) + 1;
+				int finalY = getAverageHeight(world, randX, randZ - 1, 109, false) + 1;
 
-				if (morgan_fortress_stage1 != null && morgan_fortress_stage2 != null){
-                	clear(world, randX, finalY, randZ, 102, 42, 52, rot);
-					System.out.println("Spawning fortress at " + randX + " // " + randZ);
+				if (morgan_fortress_stage1 != null && morgan_fortress_stage2 != null) {
+					clear(world, randX, finalY, randZ, 102, 42, 52, Rotation.NONE);
 					morgan_fortress_stage1.addBlocksToWorld(world, new BlockPos(randX, finalY, randZ), placementsettings);
 					morgan_fortress_stage2.addBlocksToWorld(world, new BlockPos(randX, finalY, randZ), placementsettingsTorch);
 				}
 			}
-        }
-			//TODO fix me
-		if(biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN && 1 == 0){
+		}
+
+		if (OPCraft.config.enableSkypiea.getCurrentValue() && rand.nextInt(OPCraft.config.skypieaSpawnChance.getCurrentValue()) == 0 && !(biome instanceof BiomeHills)) {
+			Template skypiea = getTemplate("skypiea", world);
+			Rotation rotation = randomRot(rand);
+			PlacementSettings placementSettings = new PlacementSettings().setMirror(Mirror.NONE).setRotation(rotation).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null);
+
+			if (skypiea != null) {
+				skypiea.addBlocksToWorld(world, new BlockPos(blockX, 200, blockZ), placementSettings);
+			}
+		}
+
+			//TODO enable me after boats are added
+		if((biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN) && false){
 			int randX = blockX + rand.nextInt(16);
 			int randZ = blockZ + rand.nextInt(16);
 
@@ -94,10 +96,9 @@ public class OPIWorldGenerator implements IWorldGenerator
 				Template boat = getTemplate("marine_boat", world);
 				Rotation rot = randomRot(rand);
 				//rot
-				PlacementSettings placementSettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(rot).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null).setIgnoreStructureBlock(false);
+				PlacementSettings placementSettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null);
 
 				if (boat != null){
-					clear(world, randX, getGroundFromAbove(world,randX,randZ), randZ, 20, 20, 20, rot);
 					System.out.println("Spawning boat at " + randX + " // " + randZ);
 					boat.addBlocksToWorld(world, new BlockPos(randX, getSeaLevel(world, randX, randZ)-1, randZ), placementSettings);
 				}
@@ -148,99 +149,9 @@ public class OPIWorldGenerator implements IWorldGenerator
 		
 	}
 
-	private void clear(World world, int x, int y, int z, int sizeX, int sizeY, int sizeZ, Rotation rot){
-
-		for(int i = 0; i <= sizeX; i++){
-			for(int j = 0; j <= sizeY; j++){
-				for(int k = 0; k <= sizeZ; k++){
-					world.setBlockToAir(new BlockPos(x, y, z).add(i, j, k));
-				}
-			}
-		}
-
-	}
-
 	private void generateEnd(World world, Random rand, int blockX, int blockZ) 
 	{
 	}
-
-    private Template getTemplate(String fileName, World world){
-
-        WorldServer worldserver = (WorldServer)world;
-        MinecraftServer minecraftserver = world.getMinecraftServer();
-        TemplateManager templatemanager = worldserver.getStructureTemplateManager();
-        return templatemanager.get(minecraftserver, new ResourceLocation(OPCraft.MODID, fileName));
-
-    }
-
-	public static int getGroundFromAbove(World world, int x, int z)
-	{
-		int y = 255;
-		boolean foundGround = false;
-		while(!foundGround && y >= 0) {
-			Block blockAt = world.getBlockState(new BlockPos(x, y, z)).getBlock();
-			foundGround = blockAt == Blocks.DIRT || blockAt == Blocks.GRASS;
-			y--;
-		}
-
-		return y;
-	}
-
-	public static int getSeaLevel(World world, int x, int z){
-		int y = 255;
-		boolean foundWater = false;
-		while(!foundWater && y > 0){
-			Block block = world.getBlockState(new BlockPos(x, y , z)).getBlock();
-			foundWater = block == Blocks.WATER;
-			y--;
-		}
-
-		return y;
-	}
-
-	public static int getAverageHeight(World world, int x, int z, int radius, boolean lowestBlockMode) {
-		ArrayList<Integer> heights = new ArrayList<>();
-
-		for (int i = x - radius; i < x + radius; i++) {
-			for (int k = z - radius; k < z + radius; k++) {
-				int y = 255;
-				boolean foundGround = false;
-				while (!foundGround && y >= 0) {
-					Block blockAt = world.getBlockState(new BlockPos(i, y, k)).getBlock();
-					foundGround = blockAt != Blocks.AIR;
-					y--;
-				}
-				heights.add(y);
-			}
-		}
-		int totalSum = 0;
-		for(int i = 0; i < heights.size(); i++){
-			totalSum += heights.get(i);
-		}
-		if(lowestBlockMode){
-			Collections.sort(heights);
-			return heights.get(0);
-		}
-		else{
-		return totalSum / (radius*2*radius*2);
-	}
-	}
-
-	private Rotation randomRot(Random rand) {
-        int i = rand.nextInt(4);
-        switch (i) {
-            case 0:
-                return Rotation.NONE;
-            case 1:
-                return Rotation.CLOCKWISE_90;
-            case 2:
-                return Rotation.CLOCKWISE_180;
-            case 3:
-                return Rotation.COUNTERCLOCKWISE_90;
-        }
-        return Rotation.NONE;
-
-    }
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,

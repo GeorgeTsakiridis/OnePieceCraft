@@ -1,8 +1,7 @@
 package georgetsak.opcraft.common.generator.structures.village.components;
 
-import georgetsak.opcraft.common.entity.other.EntityOPVillager;
-import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPLootTables;
+import georgetsak.opcraft.common.util.WorldGenUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -642,21 +641,8 @@ public class BigHouse1Component extends StructureVillagePieces.House1{
         setBlock(world, sbb, 4, j + 5, 2, Blocks.BED.getDefaultState().withProperty(BlockBed.FACING, EnumFacing.SOUTH).withProperty(BlockBed.PART, BlockBed.EnumPartType.HEAD), 0);
         setBlock(world, sbb, 4, j + 5, 3, Blocks.BED.getDefaultState().withProperty(BlockBed.FACING, EnumFacing.SOUTH).withProperty(BlockBed.PART, BlockBed.EnumPartType.FOOT), 0);
 
+        WorldGenUtils.spawnEntities(world, this, 5,0,8,2,"villager");
 
-
-        EntityOPVillager villager1 = new EntityOPVillager(world);
-        EntityOPVillager villager2 = new EntityOPVillager(world);
-
-        villager1.setLocationAndAngles(sbb.maxX - 10, sbb.minY + 5, sbb.maxZ - 10, 0F, 0F);
-        villager2.setLocationAndAngles(sbb.maxX - 10, sbb.minY + 5, sbb.maxZ - 10, 0F, 0F);
-
-        world.spawnEntity(villager1);
-        world.spawnEntity(villager2);
-
-        // setBlock(world, sbb, 5, j + 5, 5, Blocks.FLOWER_POT.getDefaultState().withProperty(BlockFlowerPot.CONTENTS, BlockFlowerPot.EnumFlowerType.ORANGE_TULIP), 0);
-       // setBlock(world, sbb, 5, j + 5, 6, Blocks.FLOWER_POT.getDefaultState().withProperty(BlockFlowerPot.CONTENTS, BlockFlowerPot.EnumFlowerType.PINK_TULIP), 0);
-       // setBlock(world, sbb, 5, j + 1, 2, Blocks.FLOWER_POT.getDefaultState().withProperty(BlockFlowerPot.CONTENTS, BlockFlowerPot.EnumFlowerType.POPPY), 0);
-       // setBlock(world, sbb, 2, j + 1, 5, Blocks.FLOWER_POT.getDefaultState().withProperty(BlockFlowerPot.CONTENTS, BlockFlowerPot.EnumFlowerType.MUSHROOM_BROWN), 0);
 
     }
 
@@ -697,13 +683,6 @@ public class BigHouse1Component extends StructureVillagePieces.House1{
         else if(s == Blocks.CHEST.getDefaultState()){
             generateChest(world, sbb, new Random(), x, y, z, OPLootTables.OPVILLAGE_CHEST);
 
-            //setBlockState(world, Blocks.CHEST.getStateFromMeta(metadata), x, y, z, sbb);
-            //if(metadata == 3){
-            //   setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.NORTH), x, y, z, sbb);
-           // }
-            //if(metadata == 4){
-           //     setBlockState(world, Blocks.CHEST.getDefaultState().withProperty(BlockChest.FACING, EnumFacing.WEST), x, y, z, sbb);
-           // }
         }
 
         else if(s == Blocks.LADDER.getDefaultState()){

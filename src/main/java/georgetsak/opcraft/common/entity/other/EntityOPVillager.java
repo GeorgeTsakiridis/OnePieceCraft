@@ -1,6 +1,5 @@
 package georgetsak.opcraft.common.entity.other;
 
-import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.common.registry.OPMerchantTrades;
 import net.minecraft.block.Block;

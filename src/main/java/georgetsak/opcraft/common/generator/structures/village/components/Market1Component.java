@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.generator.structures.village.components;
 
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPLootTables;
+import georgetsak.opcraft.common.util.WorldGenUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
@@ -266,6 +267,8 @@ public class Market1Component extends StructureVillagePieces.House1{
          setBlock(world, sbb, 7, j + 2,  5, Blocks.WOODEN_PRESSURE_PLATE.getDefaultState(), 0);
          setBlock(world, sbb, 7, j + 2,  6, Blocks.WOODEN_PRESSURE_PLATE.getDefaultState(), 0);
 
+        WorldGenUtils.spawnEntities(world, this, 3, 0, 5, 2, "villager");
+        WorldGenUtils.spawnEntities(world, this, 3, 0, 6, 1, "marine");
 
     }
 

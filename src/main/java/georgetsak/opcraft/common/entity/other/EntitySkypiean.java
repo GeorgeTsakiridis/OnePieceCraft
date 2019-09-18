@@ -40,7 +40,7 @@ public class EntitySkypiean extends EntityCreature implements IMerchant {
     public EntitySkypiean(World worldIn) {
         super(worldIn);
         setSize(0.8f,1.9f);
-        int i = new Random().nextInt(6); // TODO: 9/13/2019 change 6 to 5 since banker (id=5) will not spawn naturally. Changed to 6 for testing purposes.
+        int i = new Random().nextInt(5);
         this.getDataManager().register(TYPE, i);
 
     }
@@ -53,12 +53,12 @@ public class EntitySkypiean extends EntityCreature implements IMerchant {
     @Override
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAISwimming(this));
+        this.tasks.addTask(1, new EntityAIWander(this, 0.6D));
         this.tasks.addTask(2, new EntityAIMoveIndoors(this));
         this.tasks.addTask(3, new EntityAIRestrictOpenDoor(this));
         this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.6D));
         this.tasks.addTask(9, new EntityAIWatchClosest2(this, EntityPlayer.class, 3.0F, 1.0F));
-        this.tasks.addTask(9, new EntityAIWander(this, 0.6D));
         this.tasks.addTask(10, new EntityAIWatchClosest(this, EntityLiving.class, 8.0F));
 
     }

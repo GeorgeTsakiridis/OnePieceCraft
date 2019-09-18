@@ -32,7 +32,7 @@ public class BlockCloud extends Block {
         super(Material.CLOTH, MapColor.AIR);
         this.setResistance(3);
         this.setHardness(0.5f);
-        this.setLightLevel(0.6f);
+        this.setLightLevel(0.75f);
         this.setTickRandomly(true);
         setSoundType(SoundType.CLOTH);
         this.canFallThrough = canFallThrough;

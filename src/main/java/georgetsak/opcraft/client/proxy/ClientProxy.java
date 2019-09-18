@@ -5,6 +5,7 @@ import georgetsak.opcraft.client.gui.overlay.SixPowersSelectionWheelRender;
 import georgetsak.opcraft.client.registry.OPBook;
 import georgetsak.opcraft.client.render.*;
 import georgetsak.opcraft.client.render.devilfruit.*;
+import georgetsak.opcraft.common.block.BlockWaterCloud;
 import georgetsak.opcraft.common.command.CommandJoinCrew;
 import georgetsak.opcraft.common.crew.Crew;
 import georgetsak.opcraft.common.entity.boat.EntityAceBoat;
@@ -15,13 +16,22 @@ import georgetsak.opcraft.common.entity.other.*;
 import georgetsak.opcraft.client.OPClientEventHooks;
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
+import georgetsak.opcraft.common.registry.OPBlocks;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemMeshDefinition;
+import net.minecraft.client.renderer.block.model.ModelBakery;
+import net.minecraft.client.renderer.block.model.ModelBlockDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IThreadListener;
 import net.minecraftforge.client.ClientCommandHandler;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.b3d.B3DLoader;
 import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.client.settings.KeyConflictContext;
@@ -91,6 +101,14 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityKuro.class, RenderKuro::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityPeacekeeper.class, RenderPeacekeeper::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHomieTree.class, RenderHomieTree::new);
+
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPBlocks.BlockWaterCloud), stack -> new ModelResourceLocation(OPCraft.MODID + ":cloud_water", "cloud_water"));
+		ModelLoader.setCustomStateMapper(OPBlocks.BlockWaterCloud, new StateMapperBase() {
+			@Override
+			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
+				return new ModelResourceLocation(OPCraft.MODID + ":cloud_water", "cloud_water");
+			}
+		});
 	}
 
 	@Override
@@ -264,7 +282,6 @@ public class ClientProxy extends CommonProxy {
 		mir(ItemFirstAidKit, true);
 		mir(ItemThinCloud, false);
 		mir(ItemDenseCloud, false);
-		mir(ItemWaterCloud, false);
 		mir(ItemExtolCoin, true);
 		mir(ItemEmptyDial, true);
 

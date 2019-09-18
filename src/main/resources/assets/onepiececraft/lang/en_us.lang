@@ -122,6 +122,8 @@ item.onepiececraft:first_aid_kit.name=First Aid Kit
 item.onepiececraft:extol_coin.name=Extol Coin
 item.onepiececraft:empty_dial.name=Empty Dial
 
+fluid.cloud_water=Liquid Cloud
+
 item.record.disc_we_are.desc=OPCraft - We Are!
 
 entity.usopp_kabuto_ammo.name=Kabuto

@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.generator.structures.village.components;
 
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPLootTables;
+import georgetsak.opcraft.common.util.WorldGenUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -381,8 +382,7 @@ public class SmallHouse1Component extends StructureVillagePieces.House2{
         setBlock(world, sbb, 7, j + 5, 1, Blocks.CHEST.getDefaultState(), 3);
         setBlock(world, sbb, 6, j + 5, 1, Blocks.CHEST.getDefaultState(), 3);
 
-       // setBlock(world, sbb, 8, j + 1, 2, -116, 0); flower pots
-       // setBlock(world, sbb, 2, j + 1, 5, -116, 0);
+        WorldGenUtils.spawnEntities(world, this, 4,0,4,1,"villager");
 
     }
 

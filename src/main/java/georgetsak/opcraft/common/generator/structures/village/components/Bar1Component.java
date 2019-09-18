@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.generator.structures.village.components;
 
+import georgetsak.opcraft.common.util.WorldGenUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -752,14 +753,12 @@ public class Bar1Component extends StructureVillagePieces.House1{
         setBlock(world, sbb, 7, j + 1, 2, Blocks.DARK_OAK_STAIRS.getDefaultState(), 3);
         setBlock(world, sbb, 6, j + 1, 2, Blocks.DARK_OAK_STAIRS.getDefaultState(), 3);
         setBlock(world, sbb, 5, j + 1, 2, Blocks.DARK_OAK_STAIRS.getDefaultState(), 3);
-
-
         setBlock(world, sbb, 4, j + 1, 4, Blocks.DARK_OAK_STAIRS.getDefaultState(), 3);//?
         setBlock(world, sbb, 4, j + 1, 6, Blocks.DARK_OAK_STAIRS.getDefaultState(), 2);
         setBlock(world, sbb, 4, j + 1, 9, Blocks.DARK_OAK_STAIRS.getDefaultState(), 3);
 
-
-
+        WorldGenUtils.spawnEntities(world, this, 5, 1, 5, 2, "villager");
+        WorldGenUtils.spawnEntities(world, this, 5, 2, 5, 2, "marine");
 
     }
 

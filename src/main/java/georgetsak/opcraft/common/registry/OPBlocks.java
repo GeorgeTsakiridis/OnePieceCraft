@@ -1,13 +1,19 @@
 package georgetsak.opcraft.common.registry;
 
+import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.block.*;
 import georgetsak.opcraft.common.block.tile.LawDomeTileEntity;
 import georgetsak.opcraft.common.block.tile.SmokeCloudTileEntity;
 import georgetsak.opcraft.common.block.tile.SnailTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
+import java.awt.*;
 
 import static georgetsak.opcraft.common.network.proxy.CommonProxy.*;
 
@@ -76,7 +82,6 @@ public class OPBlocks {
         BlockSmokeCloud = new BlockSmokeCloud(Material.ROCK).setRegistryName("smoke_cloud");
         BlockThinCloud = new BlockCloud(true).setRegistryName("cloud_thin").setCreativeTab(OPTab);
         BlockDenseCloud = new BlockCloud(false).setRegistryName("cloud_dense").setCreativeTab(OPTab);
-        BlockWaterCloud = new BlockWaterCloud(Material.WATER).setRegistryName("cloud_water").setCreativeTab(OPTab);
 
         registerBlock(BlockCherryTreeSapling);
         registerBlock(BlockCherryTreeWood);
@@ -104,6 +109,17 @@ public class OPBlocks {
         registerBlock(BlockSmokeCloud);
         registerBlock(BlockThinCloud);
         registerBlock(BlockDenseCloud);
+    }
+
+    public static void registerFluids(){
+        ResourceLocation stillTexture = new ResourceLocation(OPCraft.MODID, "blocks/cloud_water_still");
+        ResourceLocation flowingTexture = new ResourceLocation(OPCraft.MODID, "blocks/cloud_water_flow");
+
+        Fluid fluid = new FluidWaterCloud("cloud_water", stillTexture, flowingTexture, new Color(189, 239, 254, 140));
+        FluidRegistry.registerFluid(fluid);
+        FluidRegistry.addBucketForFluid(fluid);
+       BlockWaterCloud = new BlockWaterCloud(fluid).setRegistryName("cloud_water").setCreativeTab(OPTab);
+
         registerBlock(BlockWaterCloud);
     }
 

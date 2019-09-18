@@ -4,6 +4,7 @@ import georgetsak.opcraft.common.command.*;
 import georgetsak.opcraft.common.config.ConfigHandler;
 import georgetsak.opcraft.common.network.packetsdispacher.PacketDispatcher;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -19,13 +20,17 @@ import java.util.Map;
 @Mod(modid = OPCraft.MODID, version = OPCraft.VERSION, name = OPCraft.NAME)
 public class OPCraft {
     public static final String MODID = "onepiececraft";
-    public static final String VERSION = "2.5pre1";
+    public static final String VERSION = "2.5pre3";
     public static final String NAME = "One Piece Craft";
     public static final boolean IS_RELEASE_VERSION = false;
 
     @SidedProxy(clientSide = "georgetsak.opcraft.client.proxy.ClientProxy", serverSide = "georgetsak.opcraft.common.network.proxy.CommonProxy")
     public static CommonProxy proxy;
     public static ConfigHandler config;
+
+    static {
+        FluidRegistry.enableUniversalBucket();
+    }
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {

@@ -26,4 +26,6 @@ public class BigHouse1Handler implements VillagerRegistry.IVillageCreationHandle
     public StructureVillagePieces.Village buildComponent(StructureVillagePieces.PieceWeight villagePiece, StructureVillagePieces.Start startPiece, List<StructureComponent> pieces, Random random, int p1, int p2, int p3, EnumFacing facing, int p5){
         return BigHouse1Component.buildComponent(pieces, p1, p2, p3, facing);
     }
+
+
 }

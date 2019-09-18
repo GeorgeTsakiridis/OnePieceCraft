@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.generator.structures.village.components;
 
 import georgetsak.opcraft.common.entity.other.EntityBandit;
 import georgetsak.opcraft.common.registry.OPLootTables;
+import georgetsak.opcraft.common.util.WorldGenUtils;
 import net.minecraft.block.*;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
@@ -244,15 +245,8 @@ public class BanditHouse1Component extends StructureVillagePieces.House2{
         setBlock(world, sbb, 5, 1, 4, Blocks.LADDER.getDefaultState().withProperty(BlockLadder.FACING, EnumFacing.NORTH), 0);
         fillWithBlocks(world, sbb, 0, -1, 0, 5, -1, 5, Blocks.STONEBRICK);
 
-        EntityBandit bandit1 = new EntityBandit(world);
-        EntityBandit bandit2 = new EntityBandit(world);
-
-        bandit1.setLocationAndAngles(sbb.maxX - 10, sbb.minY + 5, sbb.maxZ - 10, 0F, 0F);
-        bandit2.setLocationAndAngles(sbb.maxX - 10, sbb.minY + 5, sbb.maxZ - 10, 0F, 0F);
-
-        world.spawnEntity(bandit1);
-        world.spawnEntity(bandit2);
-
+        WorldGenUtils.spawnEntities(world, this, 3,0,5,1,"bandit");
+        WorldGenUtils.spawnEntities(world, this, 3,0,4,1,"bandit");
 
     }
 
