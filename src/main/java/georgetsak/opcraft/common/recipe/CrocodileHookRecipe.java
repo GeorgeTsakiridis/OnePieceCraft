@@ -52,7 +52,7 @@ import net.minecraft.world.World;
 
 		@Override
 		public ItemStack getCraftingResult(InventoryCrafting inv) {
-			return new ItemStack(OPItems.ItemCrocodileHookCased);
+			return new ItemStack(OPItems.CROCODILE_HOOK_CASED);
 		}
 
 		@Override
@@ -74,7 +74,7 @@ import net.minecraft.world.World;
 
 		@Override
 		public ItemStack getRecipeOutput() {
-			return new ItemStack(OPItems.ItemCrocodileHookCased);
+			return new ItemStack(OPItems.CROCODILE_HOOK_CASED);
 		}
 
 	}

@@ -1,7 +1,7 @@
 package georgetsak.opcraft.client.render;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.model.ModelCrocodile;
+import georgetsak.opcraft.client.model.npc.ModelCrocodile;
 import georgetsak.opcraft.common.entity.other.EntityCrocodile;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

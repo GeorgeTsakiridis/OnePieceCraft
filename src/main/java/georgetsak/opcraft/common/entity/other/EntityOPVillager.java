@@ -132,7 +132,7 @@ public class EntityOPVillager extends EntityCreature implements IMerchant
     {
         super.onDeath(cause);
         if(!world.isRemote) {
-            this.entityDropItem(new ItemStack(OPItems.ItemBerryCoin, rand.nextInt(10)), 0.0F);
+            this.entityDropItem(new ItemStack(OPItems.BERRY_COIN, rand.nextInt(10)), 0.0F);
         }
     }
 

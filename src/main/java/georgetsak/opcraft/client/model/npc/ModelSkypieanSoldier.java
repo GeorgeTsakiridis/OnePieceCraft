@@ -1,4 +1,4 @@
-package georgetsak.opcraft.client.model;
+package georgetsak.opcraft.client.model.npc;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelBox;

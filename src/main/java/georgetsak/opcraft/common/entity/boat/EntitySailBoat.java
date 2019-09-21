@@ -135,7 +135,7 @@ public class EntitySailBoat extends Entity
                 {
                     if (!flag && this.world.getGameRules().getBoolean("doEntityDrops"))
                     {
-                        this.dropItemWithOffset(OPItems.ItemSailBoat, 1, 0.0F);
+                        this.dropItemWithOffset(OPItems.SAIL_BOAT, 1, 0.0F);
                     }
 
                     this.setDead();
@@ -728,7 +728,7 @@ public class EntitySailBoat extends Entity
                         {
                             for (int i = 0; i < 3; ++i)
                             {
-                                this.entityDropItem(new ItemStack(OPItems.ItemSailBoat), 0.0F);
+                                this.entityDropItem(new ItemStack(OPItems.SAIL_BOAT), 0.0F);
                             }
 
                             for (int j = 0; j < 2; ++j)

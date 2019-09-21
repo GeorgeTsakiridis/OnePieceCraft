@@ -37,6 +37,7 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -50,6 +51,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -67,7 +69,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  */
 public class OPClientEventHooks {
 
-    private int id = OPDevilFruits.NO_POWER; //Represents the Devil Fruit Power player has.
+    private int id = OPDevilFruits.NO_POWER_ID; //Represents the Devil Fruit Power player has.
 
     private boolean isGear4Active = false;
     private int gear4RemainingTime = 0;
@@ -105,7 +107,7 @@ public class OPClientEventHooks {
                 Entity ridingEntity = mcPlayer.getRidingEntity();
                 MovementInput mi = mcPlayer.movementInput; //Get the player's controls
 
-                if(ridingEntity instanceof EntityAceBoat && id == OPDevilFruits.MERA){//Send the input to the boat player is riding if any.
+                if(ridingEntity instanceof EntityAceBoat && id == OPDevilFruits.MERA_ID){//Send the input to the boat player is riding if any.
                     ((EntityAceBoat)ridingEntity).updateInputs(mi.leftKeyDown, mi.rightKeyDown, mi.forwardKeyDown, mi.backKeyDown);
                 }
                 else if(ridingEntity instanceof EntitySailBoat){
@@ -138,20 +140,20 @@ public class OPClientEventHooks {
                 if(!mcPlayer.isCreative() && OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getCurrentValue()) {
                     Block standingBlock = Minecraft.getMinecraft().world.getBlockState(new BlockPos(mcPlayer.posX, mcPlayer.posY-1, mcPlayer.posZ)).getBlock();
 
-                    if (standingBlock == OPBlocks.BlockKairosekiBlock || standingBlock == OPBlocks.BlockKairosekiStone || standingBlock == OPBlocks.BlockKairosekiBars) {
+                    if (standingBlock == OPBlocks.KAIROSEKI_BLOCK || standingBlock == OPBlocks.KAIROSEKI_STONE || standingBlock == OPBlocks.KAIROSEKI_BARS) {
                         sendMessage("KairosekiItem");
                         setAllPowersCooldown(40);
                     }
-                    if (mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBlock)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiBars)) ||
-                            mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.BlockKairosekiStone)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPItems.ItemKairosekiGem))) {
+                    if (mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.KAIROSEKI_BLOCK)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.KAIROSEKI_BARS)) ||
+                            mcPlayer.inventory.hasItemStack(new ItemStack(OPBlocks.KAIROSEKI_STONE)) || mcPlayer.inventory.hasItemStack(new ItemStack(OPItems.KAIROSEKI_GEM))) {
                         sendMessage("KairosekiItem");
                         setAllPowersCooldown(20);
                     }
                 }
 
             }else{
-                id = OPDevilFruits.NO_POWER;
-                PowerSelector.setFruitID(OPDevilFruits.NO_POWER);
+                id = OPDevilFruits.NO_POWER_ID;
+                PowerSelector.setFruitID(OPDevilFruits.NO_POWER_ID);
             }
 
             if(fallDamageSendMessage) {//There was a problem where the "DISABLEDAMAGE" packet would occasionally be lost. This ensures the packet is sent multiple times.
@@ -317,7 +319,7 @@ public class OPClientEventHooks {
             return;
         }
         //Powers keys handler.
-        if(!gameSettings.keyBindSneak.isKeyDown() && id != OPDevilFruits.NO_POWER && id != OPDevilFruits.YOMI) {
+        if(!gameSettings.keyBindSneak.isKeyDown() && id != OPDevilFruits.NO_POWER_ID && id != OPDevilFruits.YOMI_ID) {
             if (ClientProxy.key1.isPressed()) {//X
                     PowerSelector.buttonPressed(false);
                     cooldownTransparency = 200;
@@ -332,7 +334,7 @@ public class OPClientEventHooks {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null && power.getCurrentCooldown() == 0 && !OPCraft.config.isDFDisabled(id)) {//V
 
-                    if(id == OPDevilFruits.OPE && !isInRoom && power != PowerHandler.getPower(OPDevilFruits.OPE,1))return;
+                    if(id == OPDevilFruits.OPE_ID && !isInRoom && power != PowerHandler.getPower(OPDevilFruits.OPE_ID,1))return;
 
                     IDevilFruitLevelsCap dfc = DevilFruitLevelsCap.get(Minecraft.getMinecraft().player);
                     power.setCurrentCooldown(adjustTicks(dfc.getPowerCooldown(power.getKey())));
@@ -524,9 +526,9 @@ public class OPClientEventHooks {
                     if (itemstack.getItem() instanceof IExtendedReach) {
                         iExtendedReach = (IExtendedReach) itemstack.getItem();
 
-                        boolean flag1 = !(iExtendedReach.getType() == 1 && player.inventory.hasItemStack(new ItemStack(OPItems.ItemFlintlockAmmo)));
-                        boolean flag2 = !(iExtendedReach.getType() == 2 && player.inventory.hasItemStack(new ItemStack(OPItems.ItemSenrikuAmmo)));
-                        boolean flag3 = !(iExtendedReach.getType() == 3 && player.inventory.hasItemStack(new ItemStack(OPItems.ItemBazookaAmmo)));
+                        boolean flag1 = !(iExtendedReach.getType() == 1 && player.inventory.hasItemStack(new ItemStack(OPItems.FLINTLOCK_AMMO)));
+                        boolean flag2 = !(iExtendedReach.getType() == 2 && player.inventory.hasItemStack(new ItemStack(OPItems.SENRIKU_AMMO)));
+                        boolean flag3 = !(iExtendedReach.getType() == 3 && player.inventory.hasItemStack(new ItemStack(OPItems.BAZOOKA_AMMO)));
 
                         if (flag1 && flag2 && flag3) {
                             iExtendedReach = null;
@@ -541,7 +543,7 @@ public class OPClientEventHooks {
 
                         if (mov != null) {
 
-                            if(mov.typeOfHit == RayTraceResult.Type.BLOCK && player.getCooldownTracker().getCooldown(itemstack.getItem(), 0f) <= 0 && itemstack.getItem().equals(OPItems.ItemBazooka)){
+                            if(mov.typeOfHit == RayTraceResult.Type.BLOCK && player.getCooldownTracker().getCooldown(itemstack.getItem(), 0f) <= 0 && itemstack.getItem().equals(OPItems.BAZOOKA)){
                                 PacketDispatcher.sendToServer(new PacketCreateExplosionServer(mov.getBlockPos(), 8));
                             }
 
@@ -667,7 +669,7 @@ public class OPClientEventHooks {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null) {
                     ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), adjustTicks(DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerCooldown(power.getKey())), event.getResolution(), (int) sixPowersEnergyBar);
-                }else if(id == OPDevilFruits.YOMI || id == OPDevilFruits.GIRAFFE){
+                }else if(id == OPDevilFruits.YOMI_ID || id == OPDevilFruits.GIRAFFE_ID){
                     ClientProxy.devilFruitRenderOverlay.render(id,0,1,event.getResolution(),(int)sixPowersEnergyBar);
                 }
             }

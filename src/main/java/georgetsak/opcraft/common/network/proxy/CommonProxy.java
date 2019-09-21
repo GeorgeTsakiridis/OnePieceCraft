@@ -36,6 +36,9 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.IThreadListener;
 import net.minecraft.village.MerchantRecipeList;
+import net.minecraft.world.DimensionType;
+import net.minecraft.world.WorldProviderSurface;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -71,8 +74,8 @@ public class CommonProxy {
 		OPGenerators.registerGenerators();
 		OPMerchantTrades.registerMerchantTrades();
 		OPLootTables.registerLootTables();
+		OPDimensions.registerDimensions();
 		registerGUI();
-
 	}
 	
 	public void init(FMLInitializationEvent event) {

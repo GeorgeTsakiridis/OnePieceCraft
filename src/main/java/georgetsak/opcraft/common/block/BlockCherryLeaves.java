@@ -1,7 +1,6 @@
 package georgetsak.opcraft.common.block;
 
 import georgetsak.opcraft.common.registry.OPBlocks;
-import georgetsak.opcraft.common.registry.OPItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
@@ -53,7 +52,7 @@ public class BlockCherryLeaves extends Block implements IShearable{
     	for(int x = -3; x < 4; x++){
     		for(int y = -3; y < 4; y++){
     			for(int z = -3; z < 4; z++){
-    				if(worldIn.getBlockState(pos.add(x, y, z)).getBlock() == OPBlocks.BlockCherryTreeWood){
+    				if(worldIn.getBlockState(pos.add(x, y, z)).getBlock() == OPBlocks.CHERRY_TREE_WOOD){
     					shouldDecay = false;
     				}
     			}
@@ -61,7 +60,7 @@ public class BlockCherryLeaves extends Block implements IShearable{
     	}
     	if(shouldDecay){
     		if(r.nextInt(20) == 0){
-        		OPBlocks.BlockCherryTreeSapling.dropBlockAsItem(worldIn, pos, worldIn.getBlockState(pos), 0);
+        		OPBlocks.CHERRY_TREE_SAPLING.dropBlockAsItem(worldIn, pos, worldIn.getBlockState(pos), 0);
     		}
             worldIn.setBlockToAir(pos);
     	}
@@ -79,7 +78,7 @@ public class BlockCherryLeaves extends Block implements IShearable{
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return OPItems.ItemCherryTreeSapling;
+        return Item.getItemFromBlock(OPBlocks.CHERRY_TREE_SAPLING);
     }
 	
 	@Override
@@ -122,7 +121,7 @@ public class BlockCherryLeaves extends Block implements IShearable{
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(OPItems.ItemCherryTreeLeavesNonDecayable, 1));
+		list.add(new ItemStack(OPBlocks.CHERRY_TREE_LEAVES_NON_DECAYABLE, 1));
 		return list;
 	}
     

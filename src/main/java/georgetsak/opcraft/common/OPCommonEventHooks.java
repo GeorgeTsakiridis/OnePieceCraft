@@ -16,7 +16,6 @@ import georgetsak.opcraft.common.crew.CrewSaveData;
 import georgetsak.opcraft.common.crew.EnumRole;
 import georgetsak.opcraft.common.crew.Member;
 import georgetsak.opcraft.common.damagesource.OPDamageSource;
-import georgetsak.opcraft.common.entity.devilfruit.EntityGomuPistol;
 import georgetsak.opcraft.common.entity.marine.EntityMarine;
 import georgetsak.opcraft.common.entity.other.EntityBandit;
 import georgetsak.opcraft.common.item.weapons.swords.ItemSimpleSword;
@@ -92,7 +91,7 @@ public class OPCommonEventHooks {
         if (!playerData.hasKey(EntityPlayer.PERSISTED_NBT_TAG)) {
             data = playerData.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
             if (!data.getBoolean(TAG_PLAYER_HAS_MANUAL)) {
-                ItemHandlerHelper.giveItemToPlayer(event.player, new ItemStack(OPItems.ItemManualBook, 1));
+                ItemHandlerHelper.giveItemToPlayer(event.player, new ItemStack(OPItems.MANUAL_BOOK, 1));
                 data.setBoolean(TAG_PLAYER_HAS_MANUAL, true);
                 playerData.setTag(EntityPlayer.PERSISTED_NBT_TAG, data);
             }
@@ -146,7 +145,7 @@ public class OPCommonEventHooks {
 
             if ((hurtPlayer.getHealth() - event.getAmount() <= 0)) {//Prevents the player from dying if DF#9 is equipped. Also TP to random location
                 IDevilFruitCap devilFruitsCap = DevilFruitCap.get(hurtPlayer);
-                if (devilFruitsCap.getPower() == OPDevilFruits.YOMI) {
+                if (devilFruitsCap.getPower() == OPDevilFruits.YOMI_ID) {
 
                     hurtPlayer.sendMessage((new TextComponentString("You were revived by using Yomi Yomi no mi devil fruit power!")));
                     devilFruitsCap.setPower(0);
@@ -209,11 +208,11 @@ public class OPCommonEventHooks {
         if (targetPlayer != null) {
             IDevilFruitCap targetDevilFruitsCap = DevilFruitCap.get(targetPlayer);
 
-            if ((source.equals(DamageSource.IN_FIRE) || source.equals(DamageSource.ON_FIRE)) && targetDevilFruitsCap.getPower() == OPDevilFruits.MERA) {//Cancels fire damage if Lightning DF is equipped.
+            if ((source.equals(DamageSource.IN_FIRE) || source.equals(DamageSource.ON_FIRE)) && targetDevilFruitsCap.getPower() == OPDevilFruits.MERA_ID) {//Cancels fire damage if Lightning DF is equipped.
                 event.setCanceled(true);
             }
 
-            if (source.equals(DamageSource.LIGHTNING_BOLT) && targetDevilFruitsCap.getPower() == OPDevilFruits.GORO) {//Cancels lightning damage if Lightning DF is equipped.
+            if (source.equals(DamageSource.LIGHTNING_BOLT) && targetDevilFruitsCap.getPower() == OPDevilFruits.GORO_ID) {//Cancels lightning damage if Lightning DF is equipped.
                 event.setCanceled(true);
             }
 
@@ -291,14 +290,11 @@ public class OPCommonEventHooks {
                 if(event.getSource() instanceof OPDamageSource){
                     if(((OPDamageSource) event.getSource()).isDevilFruit()){
                         dfl.addXP(DevilFruitLevelsCap.PLAYER_KILLED_WITH_DF_XP);
-                        System.out.println("Player killed another player using DF. Granting " + DevilFruitLevelsCap.PLAYER_KILLED_WITH_DF_XP + " XP");
                     }else{
                         dfl.addXP(DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP);
-                        System.out.println("Player killed another player without using DF. Granting " + DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP + " XP");
                     }
                 }else{
                     dfl.addXP(DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP);
-                    System.out.println("Player killed another player without using DF. Granting " + DevilFruitLevelsCap.PLAYER_KILLED_WITHOUT_DF_XP + " XP");
                 }
 
                 PacketDispatcher.sendTo(new PacketBountyClient(victimBountyCap), (EntityPlayerMP) victimPlayer);
@@ -309,14 +305,11 @@ public class OPCommonEventHooks {
                 if (event.getSource() instanceof OPDamageSource) {
                     if (((OPDamageSource) event.getSource()).isDevilFruit()) {
                         dfl.addXP(DevilFruitLevelsCap.ENTITY_KILLED_WITH_DF_XP);
-                        System.out.println("Player killed another entity using DF. Granting " + DevilFruitLevelsCap.ENTITY_KILLED_WITH_DF_XP + " XP");
                     } else {
                         dfl.addXP(DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP);
-                        System.out.println("Player killed another entity without using DF. Granting " + DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP + " XP");
                     }
                 }else{
                     dfl.addXP(DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP);
-                    System.out.println("Player killed another entity without using DF. Granting " + DevilFruitLevelsCap.ENTITY_KILLED_WITHOUT_DF_XP + " XP");
                 }
                 PacketDispatcher.sendTo(new PacketDevilFruitLevels(dfl),(EntityPlayerMP)killerEntity);
             }
@@ -331,16 +324,16 @@ public class OPCommonEventHooks {
     @SubscribeEvent
     public void onPlayerInteractEvent(PlayerInteractEvent.EntityInteractSpecific event){
         EntityPlayer attacker = event.getEntityPlayer();
-        if(DevilFruitCap.get(attacker).getPower() == OPDevilFruits.OPE && event.getTarget() instanceof EntityPlayer){
+        if(DevilFruitCap.get(attacker).getPower() == OPDevilFruits.OPE_ID && event.getTarget() instanceof EntityPlayer){
             EntityPlayer target = (EntityPlayer)event.getTarget();
             if(attacker.isPotionActive(CommonProxy.effectInsideDome) && target.isPotionActive(CommonProxy.effectInsideDome) && attacker.inventory.getCurrentItem() != null
-                    &&  attacker.inventory.getCurrentItem().getItem() == OPItems.ItemKikokuOpen) {
+                    &&  attacker.inventory.getCurrentItem().getItem() == OPItems.KIKOKU_OPEN) {
                 if (!attacker.world.isRemote) {
-                    ItemStack heart = new ItemStack(OPItems.ItemLawHeart);
+                    ItemStack heart = new ItemStack(OPItems.LAW_HEART);
                     heart = OPUtils.setOwner(heart, target);
                     boolean hasHeart = false;
                     for (ItemStack itemStack : attacker.inventory.mainInventory) {//Check if player has already a heart. Cannot use vanilla method because it takes durability into consideration.
-                        if (itemStack != null && itemStack.getItem().equals(OPItems.ItemLawHeart) && itemStack.hasTagCompound() && itemStack.getTagCompound().getString("owner").equals(target.getPersistentID().toString())) {
+                        if (itemStack != null && itemStack.getItem().equals(OPItems.LAW_HEART) && itemStack.hasTagCompound() && itemStack.getTagCompound().getString("owner").equals(target.getPersistentID().toString())) {
                             hasHeart = true;
                             break;
                         }
@@ -419,20 +412,20 @@ public class OPCommonEventHooks {
         if (flag) {
             final LootPool main = event.getTable().getPool("main");
             if (main != null && OPCraft.config.enableDevilFruitsSpawning.getCurrentValue()) {
-                if(OPCraft.config.enableDevilFruitGomuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitGomu, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPluffyLoot"));
-                if(OPCraft.config.enableDevilFruitMeraSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitMera, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPaceLoot"));
-                if(OPCraft.config.enableDevilFruitNoroSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitNoro, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPslowLoot"));
-                if(OPCraft.config.enableDevilFruitSukeSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitSuke, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPclearLoot"));
-                if(OPCraft.config.enableDevilFruitUshiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitGiraffe, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPgiraffeLoot"));
-                if(OPCraft.config.enableDevilFruitOpeSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitOpe, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPlawLoot"));
-                if(OPCraft.config.enableDevilFruitHieSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitHie, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPiceLoot"));
-                if(OPCraft.config.enableDevilFruitNikyuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitNikyu, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPpawLoot"));
-                if(OPCraft.config.enableDevilFruitYomiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitYomi, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPreviveLoot"));
-                if(OPCraft.config.enableDevilFruitGoroSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitGoro, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPthunderLoot"));
-                if(OPCraft.config.enableDevilFruitMokuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitMoku, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPsmokeLoot"));
-                if(OPCraft.config.enableDevilFruitYamiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitYami, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPstringLoot"));
-                if(OPCraft.config.enableDevilFruitItoSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ItemDevilFruitIto, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPitoLoot"));
-                main.addEntry(new LootEntryItem(OPItems.ItemDevilFruitPowerRemover, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPdevilFruitRemoverLoot"));
+                if(OPCraft.config.enableDevilFruitGomuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.GOMU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPluffyLoot"));
+                if(OPCraft.config.enableDevilFruitMeraSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.MERA, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPaceLoot"));
+                if(OPCraft.config.enableDevilFruitNoroSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.NORO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPslowLoot"));
+                if(OPCraft.config.enableDevilFruitSukeSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.SUKE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPclearLoot"));
+                if(OPCraft.config.enableDevilFruitUshiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.GIRAFFE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPgiraffeLoot"));
+                if(OPCraft.config.enableDevilFruitOpeSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.OPE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPlawLoot"));
+                if(OPCraft.config.enableDevilFruitHieSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.HIE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPiceLoot"));
+                if(OPCraft.config.enableDevilFruitNikyuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.NIKYU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPpawLoot"));
+                if(OPCraft.config.enableDevilFruitYomiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.YOMI, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPreviveLoot"));
+                if(OPCraft.config.enableDevilFruitGoroSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.GORO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPthunderLoot"));
+                if(OPCraft.config.enableDevilFruitMokuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.MOKU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPsmokeLoot"));
+                if(OPCraft.config.enableDevilFruitYamiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.YAMI, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPstringLoot"));
+                if(OPCraft.config.enableDevilFruitItoSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ITO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPitoLoot"));
+                main.addEntry(new LootEntryItem(OPItems.DEVIL_FRUIT_POWER_REMOVER, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPdevilFruitRemoverLoot"));
             }
         }
     }

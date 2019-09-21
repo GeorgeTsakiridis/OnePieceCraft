@@ -120,7 +120,7 @@ public class EntityBandit extends EntityBounty
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-        this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(OPItems.ItemCutlass));
+        this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(OPItems.CUTLASS));
 
     }
 

@@ -5,15 +5,11 @@ import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.common.util.OPUtils;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.IProjectile;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
@@ -39,7 +35,7 @@ public class EntityKabutoAmmo extends EntityTippedArrow implements IThrowableEnt
 
 	@Override
 	protected ItemStack getArrowStack() {
-		return new ItemStack(OPItems.ItemSmallRock);
+		return new ItemStack(OPItems.SMALL_ROCK);
 	}
 
 	@Override
@@ -51,12 +47,12 @@ public class EntityKabutoAmmo extends EntityTippedArrow implements IThrowableEnt
 		Entity entityHit = raytraceResultIn.entityHit;
 		EntityPlayer shooter = (EntityPlayer)shootingEntity;
 
-		boolean isFireDial = ammo == OPItems.ItemFireDial;
-		boolean isWaterDial = ammo == OPItems.ItemWaterDial;
-		boolean isLavaDial = ammo == OPItems.ItemLavaDial;
-		boolean isThunderDial = ammo == OPItems.ItemThunderDial;
-		boolean isImpactDial = ammo == OPItems.ItemImpactDial;
-		boolean isSmallRock = ammo == OPItems.ItemSmallRock;
+		boolean isFireDial = ammo == OPItems.FIRE_DIAL;
+		boolean isWaterDial = ammo == OPItems.WATER_DIAL;
+		boolean isLavaDial = ammo == OPItems.LAVA_DIAL;
+		boolean isThunderDial = ammo == OPItems.THUNDER_DIAL;
+		boolean isImpactDial = ammo == OPItems.IMPACT_DIAL;
+		boolean isSmallRock = ammo == OPItems.SMALL_ROCK;
 
 		if(entityHit != null){
 			if(isFireDial) {

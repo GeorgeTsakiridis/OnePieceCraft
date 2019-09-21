@@ -93,7 +93,7 @@ public class PageWeaponRecipe extends Page {
                 }
                 if(RESULT[1].equals("$Crocodile")){
                     CraftingRecipeRenderer.prepareCraftingRecipeCrocodileHook();
-                    itemStacks[1] = new ItemStack(OPItems.ItemCrocodileHookCased);
+                    itemStacks[1] = new ItemStack(OPItems.CROCODILE_HOOK_CASED);
                 }
             }
 

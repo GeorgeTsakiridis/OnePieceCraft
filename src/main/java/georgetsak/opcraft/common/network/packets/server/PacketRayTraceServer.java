@@ -58,7 +58,7 @@ public class PacketRayTraceServer extends AbstractMessage.AbstractServerMessage<
                     theEntity.attackEntityFrom(DamageSource.causePlayerDamage(thePlayer), theExtendedReachWeapon.getDamage());
                 }
 
-                if(theExtendedReachWeapon.getItem() == OPItems.ItemBazooka){
+                if(theExtendedReachWeapon.getItem() == OPItems.BAZOOKA){
                     OPUtils.createExplosion(thePlayer, thePlayer.world, theEntity.posX, theEntity.posY, theEntity.posZ, 8, true);
                 }
 

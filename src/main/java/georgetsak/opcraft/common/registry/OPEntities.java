@@ -49,7 +49,7 @@ public class OPEntities {
         registerEntity(EntityHardMarine.class, "hard_marine", 48, 3, true, toRGB(Color.WHITE), toRGB(Color.BLUE.darker()));
         registerEntity(EntityWildMarine.class, "wild_marine", 48, 3, true);
         registerEntity(EntityWildHardMarine.class, "wild_hard_marine", 48, 3, true);
-        registerEntity(EntityMorgan.class, "morgan", 48, 3, true, toRGB(Color.BLUE), toRGB(Color.CYAN.darker()));
+        registerEntity(EntityMorgan.class, "morgan", 64, 3, true, toRGB(Color.BLUE), toRGB(Color.CYAN.darker()));
         registerEntity(EntityBandit.class, "bandit", 48, 3, true, Color.BLACK.getRGB(), Color.WHITE.getRGB());
         registerEntity(EntityOPVillager.class, "one_piece_villager", 48, 3, true, toRGB(104, 29, 0), toRGB(160, 42, 0));
         registerEntity(EntityAceBoat.class, "ace_boat", 48, 20, true);
@@ -64,10 +64,12 @@ public class OPEntities {
         registerEntity(EntityLongLine.class,"long_line", 200, 3, true);
         registerEntity(EntityOverheat.class,"overheat",200, 3, true);
         registerEntity(EntityGoshikito.class,"goshikito",48, 3, true);
-        registerEntity(EntitySkypiean.class,"skypiean",48,3,true, toRGB(Color.WHITE), toRGB(157,100,87));
-        registerEntity(EntityKuro.class,"kuro",48,3,true, toRGB(Color.BLACK), toRGB(65,65,65));
+        registerEntity(EntitySkypiean.class,"skypiean",64,3,true, toRGB(Color.WHITE), toRGB(157,100,87));
+        registerEntity(EntityKuro.class,"kuro",64,3,true, toRGB(Color.BLACK), toRGB(65,65,65));
         registerEntity(EntityPeacekeeper.class,"peacekeeper",48,3,true, toRGB(Color.WHITE), toRGB(Color.BLACK));
         registerEntity(EntityHomieTree.class,"homie_tree",48,3,true, toRGB(104, 84, 51), toRGB(37, 137, 0));
+        registerEntity(EntityTequilaBridgeGuard.class,"tequila_bridge_guard", 64, 3, true, toRGB(148, 53, 54), toRGB(225, 225, 225));
+        registerEntity(EntitySlave.class, "slave", 48, 3, true, toRGB(132, 168, 179), toRGB(225, 225, 225));
 
         //registerEntity2(EntitySeaKing.class, "sea_king", id++, OPCraft.MODID, 48, 3, true);
 

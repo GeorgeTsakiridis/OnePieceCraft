@@ -38,7 +38,7 @@ public class EntityHardMarine extends EntityMarine{
         super.onLivingUpdate();
         switch(getMarineType()) {
             case (2):
-                this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(OPItems.ItemSmokerJitte));
+                this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(OPItems.SMOKER_JITTE));
                 break;
         }
     }

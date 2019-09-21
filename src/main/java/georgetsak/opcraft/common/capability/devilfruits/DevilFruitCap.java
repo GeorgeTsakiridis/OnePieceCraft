@@ -11,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
  */
 public class DevilFruitCap implements IDevilFruitCap {
 
-    private int powerID = OPDevilFruits.NO_POWER;
+    private int powerID = OPDevilFruits.NO_POWER_ID;
 
     public static IDevilFruitCap get(EntityPlayer player)
     {
@@ -20,7 +20,7 @@ public class DevilFruitCap implements IDevilFruitCap {
 
     @Override
     public boolean hasPower() {
-        return powerID != OPDevilFruits.NO_POWER;
+        return powerID != OPDevilFruits.NO_POWER_ID;
     }
 
     @Override

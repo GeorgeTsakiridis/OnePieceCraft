@@ -1,9 +1,8 @@
 package georgetsak.opcraft.client.render;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.model.ModelRayleigh;
+import georgetsak.opcraft.client.model.npc.ModelRayleigh;
 import georgetsak.opcraft.common.entity.other.EntityRayleigh;
-import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;

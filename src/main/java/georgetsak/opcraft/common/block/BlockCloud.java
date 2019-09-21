@@ -40,7 +40,7 @@ public class BlockCloud extends Block {
 
     @Override
     public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random) {
-        if(worldIn.getGameRules().getBoolean("doMobSpawning")  && this == OPBlocks.BlockDenseCloud && random.nextInt(300) == 0) {
+        if(worldIn.getGameRules().getBoolean("doMobSpawning")  && this == OPBlocks.DENSE_CLOUD && random.nextInt(300) == 0) {
             int totalSkypieansInArea = OPUtils.getNearbyEntities(worldIn, pos, 50, EntitySkypiean.class).size();
             int totalSkypieansNearby = OPUtils.getNearbyEntities(worldIn, pos, 10, EntitySkypiean.class).size();
             int totalSkypieansOnBlock = OPUtils.getNearbyEntities(worldIn,pos.up(),1,EntitySkypiean.class).size();
@@ -72,11 +72,6 @@ public class BlockCloud extends Block {
     @Override
     public boolean canEntitySpawn(IBlockState state, Entity entityIn) {
         return false;
-    }
-
-    @Override
-    public BlockFaceShape getBlockFaceShape(IBlockAccess worldIn, IBlockState state, BlockPos pos, EnumFacing face) {
-        return super.getBlockFaceShape(worldIn, state, pos, face);
     }
 
     @Nullable

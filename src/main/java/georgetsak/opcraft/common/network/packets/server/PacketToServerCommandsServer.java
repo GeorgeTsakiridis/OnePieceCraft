@@ -160,7 +160,7 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                 }
                 case "RoomA": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.dome_appear, SoundCategory.NEUTRAL, 40.0F, 1.0F);
-                    world.setBlockState(new BlockPos(ep.getPosition().getX(), ep.getPosition().getY(), ep.getPosition().getZ()), OPBlocks.BlockLawDomeCenter.getDefaultState());
+                    world.setBlockState(new BlockPos(ep.getPosition().getX(), ep.getPosition().getY(), ep.getPosition().getZ()), OPBlocks.LAW_DOME_CENTER.getDefaultState());
                     break;
                 }
                 case "ShamblesA": {
@@ -246,7 +246,7 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                     break;
                 }
                 case "WhiteOutA": {
-                    world.setBlockState(ep.getPosition(), OPBlocks.BlockSmokeCloud.getDefaultState());
+                    world.setBlockState(ep.getPosition(), OPBlocks.SMOKE_CLOUD.getDefaultState());
                     world.playSound(null, ep.getPosition(), OPSoundEvent.smoke_ambient, SoundCategory.NEUTRAL, 20.0F, 1.0F);
                     break;
                 }

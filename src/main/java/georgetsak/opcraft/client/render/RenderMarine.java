@@ -1,6 +1,6 @@
 package georgetsak.opcraft.client.render;
 
-import georgetsak.opcraft.client.model.ModelMarine;
+import georgetsak.opcraft.client.model.npc.ModelMarine;
 import georgetsak.opcraft.common.entity.marine.EntityMarine;
 import georgetsak.opcraft.OPCraft;
 import net.minecraft.client.renderer.entity.RenderBiped;

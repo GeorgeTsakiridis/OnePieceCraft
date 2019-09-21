@@ -1,35 +1,39 @@
 package georgetsak.opcraft.client.proxy;
 
+import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.OPClientEventHooks;
 import georgetsak.opcraft.client.gui.overlay.DevilFruitRenderOverlay;
 import georgetsak.opcraft.client.gui.overlay.SixPowersSelectionWheelRender;
 import georgetsak.opcraft.client.registry.OPBook;
 import georgetsak.opcraft.client.render.*;
 import georgetsak.opcraft.client.render.devilfruit.*;
-import georgetsak.opcraft.common.block.BlockWaterCloud;
 import georgetsak.opcraft.common.command.CommandJoinCrew;
 import georgetsak.opcraft.common.crew.Crew;
 import georgetsak.opcraft.common.entity.boat.EntityAceBoat;
 import georgetsak.opcraft.common.entity.boat.EntitySailBoat;
 import georgetsak.opcraft.common.entity.devilfruit.*;
-import georgetsak.opcraft.common.entity.marine.*;
+import georgetsak.opcraft.common.entity.marine.EntityHardMarine;
+import georgetsak.opcraft.common.entity.marine.EntityMarine;
+import georgetsak.opcraft.common.entity.marine.EntityMorgan;
+import georgetsak.opcraft.common.entity.marine.EntityTequilaBridgeGuard;
 import georgetsak.opcraft.common.entity.other.*;
-import georgetsak.opcraft.client.OPClientEventHooks;
-import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
+import georgetsak.opcraft.common.registry.OPArmor;
 import georgetsak.opcraft.common.registry.OPBlocks;
+import georgetsak.opcraft.common.registry.OPDevilFruits;
+import georgetsak.opcraft.common.registry.OPItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.ItemMeshDefinition;
-import net.minecraft.client.renderer.block.model.ModelBakery;
-import net.minecraft.client.renderer.block.model.ModelBlockDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.IThreadListener;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.b3d.B3DLoader;
@@ -47,11 +51,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import org.lwjgl.input.Keyboard;
 
+import java.awt.*;
 import java.util.ArrayList;
-
-import static georgetsak.opcraft.common.registry.OPArmor.*;
-import static georgetsak.opcraft.common.registry.OPDevilFruits.*;
-import static georgetsak.opcraft.common.registry.OPItems.*;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
@@ -101,14 +102,17 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityKuro.class, RenderKuro::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityPeacekeeper.class, RenderPeacekeeper::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHomieTree.class, RenderHomieTree::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityTequilaBridgeGuard.class, RenderTequilaBridgeGuard::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntitySlave.class, RenderSlave::new);
 
-		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPBlocks.BlockWaterCloud), stack -> new ModelResourceLocation(OPCraft.MODID + ":cloud_water", "cloud_water"));
-		ModelLoader.setCustomStateMapper(OPBlocks.BlockWaterCloud, new StateMapperBase() {
+		ModelLoader.setCustomMeshDefinition(Item.getItemFromBlock(OPBlocks.WATER_CLOUD), stack -> new ModelResourceLocation(OPCraft.MODID + ":cloud_water", "cloud_water"));
+		ModelLoader.setCustomStateMapper(OPBlocks.WATER_CLOUD, new StateMapperBase() {
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
 				return new ModelResourceLocation(OPCraft.MODID + ":cloud_water", "cloud_water");
 			}
 		});
+
 	}
 
 	@Override
@@ -117,6 +121,8 @@ public class ClientProxy extends CommonProxy {
 		registerItemRenderers();
 		registerKeyBindings();
 		OPBook.registerPages();
+		Minecraft.getMinecraft().getBlockColors().registerBlockColorHandler((IBlockColor) OPBlocks.MIRROR_BLOCK, OPBlocks.MIRROR_BLOCK);
+
 	}
 
 	@Override
@@ -173,141 +179,148 @@ public class ClientProxy extends CommonProxy {
 	}
 
 	private void registerItemRenderers() {
-		mir(ItemCherryTreeSapling, true);
-		mir(ItemCherryTreeWood, false);
-		mir(ItemCherryTreePlanks, false);
-		mir(ItemCherryTreeLeavesNonDecayable, false);
-		mir(ItemAdamTreeWood, false);
-		mir(ItemAdamTreePlanks, false);
-		mir(ItemAdamTreeLeavesNonDecayable, false);
-		mir(ItemKairosekiStone, false);
-		mir(ItemKairosekiGem, true);
-		mir(ItemSteelOre, false);
-		mir(ItemDarkSteelOre, false);
-		mir(ItemSteelIngot, true);
-		mir(ItemDarkSteelIngot, true);
-		mir(ItemSteelBlock, false);
-		mir(ItemDarkSteelBlock, false);
-		mir(ItemDarkSteelNugget, true);
-		mir(ItemWadoIchiMonjiCased, true);
-		mir(ItemWadoIchiMonjiOpen, true);
-		mir(ItemKitetsuCased, true);
-		mir(ItemKitetsuOpen, true);
-		mir(ItemShuusuiCased, true);
-		mir(ItemShuusuiOpen, true);
-		mir(ItemMihawkYoru, true);
-		mir(ItemArlongKiribachi, true);
-		mir(ItemSmokerJitte, true);
-		mir(ItemBrookSwordCased, true);
-		mir(ItemBrookSwordOpen, true);
-		mir(ItemCrocodileHookCased, true);
-		mir(ItemCrocodileHookOpen, true);
-		mir(ItemKikokuCased, true);
-		mir(ItemKikokuOpen, true);
-		mir(ItemClimaSimple, true);
-		mir(ItemClimaCompletedWater, true);
-		mir(ItemClimaCompletedFire, true);
-		mir(ItemClimaCompletedThunder, true);
-		mir(ItemTemporaryIce, false);
-		mir(ItemUsoppKabuto, true);
-		mir(ItemUsoppKabutoBlack, true);
-		mir(ItemSmallRock, true);
-		mir(ItemFlintlock, true);
-		mir(ItemFlintlockAmmo, true);
-		mir(ItemSenriku, true);
-		mir(ItemSenrikuAmmo, true);
-		mir(ItemBazooka, true);
-		mir(ItemBazookaAmmo, true);
-		mir(ItemWaterDial, true);
-		mir(ItemLavaDial, true);
-		mir(ItemFireDial, true);
-		mir(ItemImpactDial, true);
-		mir(ItemThunderDial, true);
-		mir(LuffySimpleHelmet, true);
-		mir(LuffySimpleChestplate, true);
-		mir(LuffySimpleLeggings, true);
-		mir(LuffySimpleBoots, true);
-		mir(ZoroSimpleHelmet, true);
-		mir(ZoroSimpleChestplate, true);
-		mir(ZoroSimpleLeggings, true);
-		mir(ZoroSimpleBoots, true);
-		mir(UsoppSimpleHelmet, true);
-		mir(UsoppSimpleChestplate, true);
-		mir(UsoppSimpleLeggings, true);
-		mir(UsoppSimpleBoots, true);
-		mir(SanjiSimpleHelmet, true);
-		mir(SanjiSimpleChestplate, true);
-		mir(SanjiSimpleLeggings, true);
-		mir(SanjiSimpleBoots, true);
-		mir(MarineSimpleHelmet, true);
-		mir(MarineSimpleChestplate, true);
-		mir(MarineSimpleLeggings, true);
-		mir(MarineSimpleBoots, true);
-		mir(PirateSimpleChestplate, true);
-		mir(PirateSimpleLeggings, true);
-		mir(PirateSimpleBoots, true);
-		mir(ItemCutlass, true);
-		mir(ItemLawDomeBlock, false);
-		mir(ItemLawDomeCenterBlock, false);
-		mir(ItemIceCageBlock, false);
-		mir(ItemIceAgeBlock, false);
-		mir(ItemBerryCoin, true);
-		mir(ItemManualBook, true);
-		mir(ItemDevilFruitPowerRemover, true);
-		mir(ItemWeAreDisk, true);
-		mir(ItemSake, true);
-		mir(ItemSake, true);
-		mir(ItemShipBuilder, false);
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ItemSnail, 0, new ModelResourceLocation("onepiececraft:snail", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ItemAceBoat, 0, new ModelResourceLocation("onepiececraft:ace_boat", "inventory"));
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ItemSailBoat, 0, new ModelResourceLocation("onepiececraft:sail_boat", "inventory"));
-		mir(ItemKairosekiBlock, false);
-		mir(ItemKairosekiBars, true);
-		mir(ItemLawHeart, true);
-		mir(ItemBisento, true);
-		mir(ItemShigureCased, true);
-		mir(ItemShigureOpen, true);
-		mir(ItemYubashiriCased, true);
-		mir(ItemYubashiriOpen, true);
-		mir(ItemTerrySword, true);
-		mir(ItemEisenWhip, true);
-		mir(ItemDurandalCased, true);
-		mir(ItemDurandalOpen, true);
-		mir(ItemSamekiriBochoSword, true);
-		mir(ItemPretzelSword, true);
-		mir(ItemShirauoCased, true);
-		mir(ItemShirauoOpen, true);
-		mir(ItemBandage, true);
-		mir(ItemSutures, true);
-		mir(ItemFirstAidKit, true);
-		mir(ItemThinCloud, false);
-		mir(ItemDenseCloud, false);
-		mir(ItemExtolCoin, true);
-		mir(ItemEmptyDial, true);
+		//blocks
+		mir(Item.getItemFromBlock(OPBlocks.CHERRY_TREE_SAPLING));
+		mir(OPBlocks.CHERRY_TREE_WOOD);
+		mir(OPBlocks.CHERRY_TREE_PLANKS);
+		mir(OPBlocks.CHERRY_TREE_LEAVES_NON_DECAYABLE);
+		mir(OPBlocks.ADAM_TREE_WOOD);
+		mir(OPBlocks.ADAM_TREE_PLANKS);
+		mir(OPBlocks.ADAM_TREE_LEAVES_NON_DECAYABLE);
+		mir(OPBlocks.KAIROSEKI_STONE);
+		mir(OPBlocks.STEEL_ORE);
+		mir(OPBlocks.DARK_STEEL_ORE);
+		mir(OPBlocks.STEEL_BLOCK);
+		mir(OPBlocks.DARK_STEEL_BLOCK);
+		mir(OPBlocks.LAW_DOME);
+		mir(OPBlocks.ICE_CAGE);
+		mir(OPBlocks.ICE_AGE);
+		mir(OPBlocks.SHIP_BUILDER);
+		mir(OPBlocks.KAIROSEKI_BLOCK);
+		mir(Item.getItemFromBlock(OPBlocks.KAIROSEKI_BARS));
+		mir(OPBlocks.TEMPORARY_ICE);
+		mir(OPBlocks.THIN_CLOUD);
+		mir(OPBlocks.DENSE_CLOUD);
+		mir(OPBlocks.MIRROR_BLOCK);
 
-		mir(ItemDevilFruitGomu, true);
-		mir(ItemDevilFruitMera, true);
-		mir(ItemDevilFruitNoro, true);
-		mir(ItemDevilFruitSuke, true);
-		mir(ItemDevilFruitGiraffe, true);
-		mir(ItemDevilFruitOpe, true);
-		mir(ItemDevilFruitHie, true);
-		mir(ItemDevilFruitNikyu, true);
-		mir(ItemDevilFruitYomi, true);
-		mir(ItemDevilFruitGoro, true);
-		mir(ItemDevilFruitMoku, true);
-		mir(ItemDevilFruitYami, true);
-		mir(ItemDevilFruitIto, true);
+
+		//items
+		mir(OPItems.KAIROSEKI_GEM);
+		mir(OPItems.STEEL_INGOT);
+		mir(OPItems.DARK_STEEL_INGOT);
+		mir(OPItems.DARK_STEEL_NUGGET);
+		mir(OPItems.WADO_ICHI_MONJI_CASED);
+		mir(OPItems.WADO_ICHI_MONJI_OPEN);
+		mir(OPItems.KITETSU_CASED);
+		mir(OPItems.KITETSU_OPEN);
+		mir(OPItems.SHUUSUI_CASED);
+		mir(OPItems.SHUUSUI_OPEN);
+		mir(OPItems.MIHAWK_YORU);
+		mir(OPItems.ARLONG_KIRIBACHI);
+		mir(OPItems.SMOKER_JITTE);
+		mir(OPItems.BROOK_SWORD_CASED);
+		mir(OPItems.BROOK_SWORD_OPEN);
+		mir(OPItems.CROCODILE_HOOK_CASED);
+		mir(OPItems.CROCODILE_HOOK_OPEN);
+		mir(OPItems.KIKOKU_CASED);
+		mir(OPItems.KIKOKU_OPEN);
+		mir(OPItems.CLIMA_SIMPLE);
+		mir(OPItems.CLIMA_COMPLETED_WATER);
+		mir(OPItems.CLIMA_COMPLETED_FIRE);
+		mir(OPItems.CLIMA_COMPLETED_THUNDER);
+		mir(OPItems.USOPP_KABUTO);
+		mir(OPItems.USOPP_KABUTO_BLACK);
+		mir(OPItems.SMALL_ROCK);
+		mir(OPItems.FLINTLOCK);
+		mir(OPItems.FLINTLOCK_AMMO);
+		mir(OPItems.SENRIKU);
+		mir(OPItems.SENRIKU_AMMO);
+		mir(OPItems.BAZOOKA);
+		mir(OPItems.BAZOOKA_AMMO);
+		mir(OPItems.WATER_DIAL);
+		mir(OPItems.LAVA_DIAL);
+		mir(OPItems.FIRE_DIAL);
+		mir(OPItems.IMPACT_DIAL);
+		mir(OPItems.THUNDER_DIAL);
+		mir(OPItems.CUTLASS);
+		mir(OPItems.BERRY_COIN);
+		mir(OPItems.MANUAL_BOOK);
+		mir(OPItems.DEVIL_FRUIT_POWER_REMOVER);
+		mir(OPItems.WE_ARE_DISK);
+		mir(OPItems.SAKE);
+		mir(OPItems.SAKE);
+		mir(OPItems.LAW_HEART);
+		mir(OPItems.BISENTO);
+		mir(OPItems.SHIGURE_CASED);
+		mir(OPItems.SHIGURE_OPEN);
+		mir(OPItems.YUBASHIRI_CASED);
+		mir(OPItems.YUBASHIRI_OPEN);
+		mir(OPItems.TERRY_SWORD);
+		mir(OPItems.EISEN_WHIP);
+		mir(OPItems.DURANDAL_CASED);
+		mir(OPItems.DURANDAL_OPEN);
+		mir(OPItems.SAMEKIRI_BOCHO_SWORD);
+		mir(OPItems.PRETZEL_SWORD);
+		mir(OPItems.SHIRAUO_CASED);
+		mir(OPItems.SHIRAUO_OPEN);
+		mir(OPItems.BANDAGE);
+		mir(OPItems.SUTURES);
+		mir(OPItems.FIRST_AID_KIT);
+		mir(OPItems.EXTOL_COIN);
+		mir(OPItems.EMPTY_DIAL);
+
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(OPBlocks.SNAIL), 0, new ModelResourceLocation("onepiececraft:snail", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(OPItems.ACE_BOAT, 0, new ModelResourceLocation("onepiececraft:ace_boat", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(OPItems.SAIL_BOAT, 0, new ModelResourceLocation("onepiececraft:sail_boat", "inventory"));
+
+		mir(OPDevilFruits.GOMU);
+		mir(OPDevilFruits.MERA);
+		mir(OPDevilFruits.NORO);
+		mir(OPDevilFruits.SUKE);
+		mir(OPDevilFruits.GIRAFFE);
+		mir(OPDevilFruits.OPE);
+		mir(OPDevilFruits.HIE);
+		mir(OPDevilFruits.NIKYU);
+		mir(OPDevilFruits.YOMI);
+		mir(OPDevilFruits.GORO);
+		mir(OPDevilFruits.MOKU);
+		mir(OPDevilFruits.YAMI);
+		mir(OPDevilFruits.ITO);
+
+		mir(OPArmor.LuffySimpleHelmet);
+		mir(OPArmor.LuffySimpleChestplate);
+		mir(OPArmor.LuffySimpleLeggings);
+		mir(OPArmor.LuffySimpleBoots);
+		mir(OPArmor.ZoroSimpleHelmet);
+		mir(OPArmor.ZoroSimpleChestplate);
+		mir(OPArmor.ZoroSimpleLeggings);
+		mir(OPArmor.ZoroSimpleBoots);
+		mir(OPArmor.UsoppSimpleHelmet);
+		mir(OPArmor.UsoppSimpleChestplate);
+		mir(OPArmor.UsoppSimpleLeggings);
+		mir(OPArmor.UsoppSimpleBoots);
+		mir(OPArmor.SanjiSimpleHelmet);
+		mir(OPArmor.SanjiSimpleChestplate);
+		mir(OPArmor.SanjiSimpleLeggings);
+		mir(OPArmor.SanjiSimpleBoots);
+		mir(OPArmor.MarineSimpleHelmet);
+		mir(OPArmor.MarineSimpleChestplate);
+		mir(OPArmor.MarineSimpleLeggings);
+		mir(OPArmor.MarineSimpleBoots);
+		mir(OPArmor.PirateSimpleChestplate);
+		mir(OPArmor.PirateSimpleLeggings);
+		mir(OPArmor.PirateSimpleBoots);
 
 	}
 
 	//Minecraft Item Render (MIR)
-	private void mir(Item item, boolean isItem) {
-		if (isItem) {
+	private void mir(Block block){
+		Item item = Item.getItemFromBlock(block);
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "normal"));
+	}
+	
+	private void mir(Item item) {
 			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
-		} else {
-			Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString()));
-		}
 
 	}
 

@@ -40,7 +40,7 @@ public class BlockAdamTreeLeaves extends Block implements IShearable{
     	for(int x = -6; x < 6; x++){
     		for(int y = -6; y < 6; y++){
     			for(int z = -6; z < 6; z++){
-    				if(worldIn.getBlockState(pos.add(x, y, z)).getBlock() == OPBlocks.BlockAdamTreeWood){
+    				if(worldIn.getBlockState(pos.add(x, y, z)).getBlock() == OPBlocks.ADAM_TREE_WOOD){
     					shouldDecay = false;
     				}
     			}
@@ -107,7 +107,7 @@ public class BlockAdamTreeLeaves extends Block implements IShearable{
 	@Override
 	public List<ItemStack> onSheared(ItemStack item, IBlockAccess world, BlockPos pos, int fortune) {
 		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
-		list.add(new ItemStack(OPItems.ItemAdamTreeLeavesNonDecayable, 1));
+		list.add(new ItemStack(OPBlocks.ADAM_TREE_LEAVES_NON_DECAYABLE, 1));
 		return list;
 	}
     

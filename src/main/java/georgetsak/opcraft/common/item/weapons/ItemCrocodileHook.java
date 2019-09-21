@@ -51,11 +51,11 @@ public class ItemCrocodileHook extends Item
         if(!worldIn.isRemote) {
             ItemStack itemStack = playerIn.getHeldItem(hand);
             if (type == 1) {
-                ItemStack stack2 = new ItemStack(OPItems.ItemCrocodileHookOpen, 1);
+                ItemStack stack2 = new ItemStack(OPItems.CROCODILE_HOOK_OPEN, 1);
                 stack2.damageItem(this.getDamage(itemStack), playerIn);
                 playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem, stack2);
             } else {
-                ItemStack stack2 = new ItemStack(OPItems.ItemCrocodileHookCased, 1);
+                ItemStack stack2 = new ItemStack(OPItems.CROCODILE_HOOK_CASED, 1);
                 stack2.damageItem(this.getDamage(itemStack), playerIn);
                 playerIn.inventory.setInventorySlotContents(playerIn.inventory.currentItem, stack2);
 

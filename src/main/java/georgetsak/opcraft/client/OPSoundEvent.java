@@ -1,8 +1,18 @@
 package georgetsak.opcraft.client;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.proxy.ClientProxy;
+import georgetsak.opcraft.common.entity.other.EntityOPVillager;
+import georgetsak.opcraft.common.registry.OPEntities;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.audio.MusicTicker;
+import net.minecraft.entity.EntityCreature;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraft.world.GameType;
+import net.minecraftforge.client.EnumHelperClient;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

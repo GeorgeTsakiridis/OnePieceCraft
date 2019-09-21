@@ -2,7 +2,6 @@ package georgetsak.opcraft.common.item.weapons;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.OPSoundEvent;
-import georgetsak.opcraft.client.gui.ContainerKabuto;
 import georgetsak.opcraft.common.capability.kabuto.KabutoCap;
 import georgetsak.opcraft.common.capability.kabuto.KabutoCapProvider;
 import georgetsak.opcraft.common.entity.other.EntityKabutoAmmo;
@@ -76,7 +75,7 @@ public class ItemUsoppKabuto extends ItemBow {
 
 	 protected boolean isArrow(ItemStack stack)
 	    {
-	        return stack != null && stack.getItem() == OPItems.ItemSmallRock;
+	        return stack != null && stack.getItem() == OPItems.SMALL_ROCK;
 	    }
 	
 	protected void fireArrow(ItemStack bow, World world, EntityLivingBase shooter, int charge) {

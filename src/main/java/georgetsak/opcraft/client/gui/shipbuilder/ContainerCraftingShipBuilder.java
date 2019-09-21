@@ -102,7 +102,7 @@ public class ContainerCraftingShipBuilder extends Container
      * Determines whether supplied player can use this container
      */
     public boolean canInteractWith(EntityPlayer playerIn) {
-        if (this.world.getBlockState(this.pos).getBlock() != OPBlocks.BlockShipBuilder) {
+        if (this.world.getBlockState(this.pos).getBlock() != OPBlocks.SHIP_BUILDER) {
             return false;
         } else {
             return playerIn.getDistanceSq((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D) <= 64.0D;

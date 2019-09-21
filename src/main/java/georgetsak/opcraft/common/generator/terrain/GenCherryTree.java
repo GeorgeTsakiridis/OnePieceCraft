@@ -10,8 +10,8 @@ import java.util.Random;
 
 public class GenCherryTree extends WorldGenAbstractTree
 {
-    private static final IBlockState LOG = OPBlocks.BlockCherryTreeWood.getDefaultState();
-    private static final IBlockState LEAF = OPBlocks.BlockCherryTreeLeaves.getDefaultState();
+    private static final IBlockState LOG = OPBlocks.CHERRY_TREE_WOOD.getDefaultState();
+    private static final IBlockState LEAF = OPBlocks.CHERRY_TREE_LEAVES.getDefaultState();
     private boolean useExtraRandomHeight;
 
     public GenCherryTree(boolean notify, boolean useExtraRandomHeightIn)

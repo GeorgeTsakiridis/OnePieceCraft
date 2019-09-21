@@ -53,7 +53,7 @@ public class PowerUtils {
 
     public static void createIceSeaRoad(EnumFacing ef, BlockPos startPoint, EntityPlayer ep){
 
-        Block roadMat = OPBlocks.BlockIceAge;
+        Block roadMat = OPBlocks.ICE_AGE;
         World world = ep.world;
 
         int level = DevilFruitLevelsCap.get(ep).getPowerLevel(3);
@@ -165,7 +165,7 @@ public class PowerUtils {
         for (int i = x - radius; i < x + radius; i++) {
             for (int j = y - radius; j < y + radius; j++) {
                 for (int k = z - radius; k < z + radius; k++) {
-                    if (ep.getServer().getEntityWorld().getBlockState(new BlockPos(i, j, k)).getBlock() == OPBlocks.BlockLawDomeCenter) {
+                    if (ep.getServer().getEntityWorld().getBlockState(new BlockPos(i, j, k)).getBlock() == OPBlocks.LAW_DOME_CENTER) {
                         foundCenter = true;
                         domeCenter = new BlockPos(i, j, k);
                         break;
@@ -226,7 +226,7 @@ public class PowerUtils {
         World world = ep.getServer().getEntityWorld();
 
         for(int i = 256; i > y; i--){
-            if(world.getBlockState(new BlockPos(x, i, z)) != Blocks.AIR.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != Blocks.FIRE.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != OPBlocks.BlockLawDome.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != OPBlocks.BlockLawDomeCenter.getDefaultState()){
+            if(world.getBlockState(new BlockPos(x, i, z)) != Blocks.AIR.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != Blocks.FIRE.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != OPBlocks.LAW_DOME.getDefaultState() && world.getBlockState(new BlockPos(x, i, z)) != OPBlocks.LAW_DOME_CENTER.getDefaultState()){
                 return false;
             }
         }

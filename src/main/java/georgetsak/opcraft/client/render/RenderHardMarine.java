@@ -1,7 +1,7 @@
 package georgetsak.opcraft.client.render;
 
 import georgetsak.opcraft.common.entity.marine.EntityHardMarine;
-import georgetsak.opcraft.client.model.ModelBandit;
+import georgetsak.opcraft.client.model.npc.ModelBandit;
 import georgetsak.opcraft.OPCraft;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.client.renderer.entity.RenderManager;

@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 
 public class WorldGenIceBall {
 
-    private Block b = OPBlocks.BlockIceCage;
+    private Block b = OPBlocks.ICE_CAGE;
 
     public WorldGenIceBall(){
 

@@ -1,8 +1,8 @@
 package georgetsak.opcraft.client.render;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.model.ModelSkypieanAntennae;
-import georgetsak.opcraft.client.model.ModelSkypieanSoldier;
+import georgetsak.opcraft.client.model.npc.ModelSkypieanAntennae;
+import georgetsak.opcraft.client.model.npc.ModelSkypieanSoldier;
 import georgetsak.opcraft.common.entity.other.EntitySkypiean;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;

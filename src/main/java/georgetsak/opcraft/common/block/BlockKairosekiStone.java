@@ -45,7 +45,7 @@ public class BlockKairosekiStone extends Block {
 
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return OPItems.ItemKairosekiGem;
+		return OPItems.KAIROSEKI_GEM;
 	}
 
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {

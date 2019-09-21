@@ -12,18 +12,18 @@ public class GenerateDome {
 
         Block blockAtCoords = world.getBlockState(new BlockPos(x, y, z)).getBlock();
 
-        if (blockToCreate == OPBlocks.BlockLawDome && blockAtCoords == Blocks.AIR) {
+        if (blockToCreate == OPBlocks.LAW_DOME && blockAtCoords == Blocks.AIR) {
             world.setBlockState(new BlockPos(x, y, z), blockToCreate.getDefaultState());
         }
 
-        if(blockToCreate == Blocks.AIR && blockAtCoords == OPBlocks.BlockLawDome){
+        if(blockToCreate == Blocks.AIR && blockAtCoords == OPBlocks.LAW_DOME){
             world.setBlockState(new BlockPos(x, y, z), blockToCreate.getDefaultState());
         }
 
     }
 
     public boolean generate(World world, int i, int j, int k, boolean destroy) {
-        Block block = OPBlocks.BlockLawDome;
+        Block block = OPBlocks.LAW_DOME;
 
         if(destroy){
             block = Blocks.AIR;

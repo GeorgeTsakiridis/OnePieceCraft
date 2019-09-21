@@ -1,4 +1,4 @@
-package georgetsak.opcraft.client.model;
+package georgetsak.opcraft.client.model.devilfruit;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemGun extends Item implements IExtendedReach {
 
-	int damage, range, delay, type;
+	private int damage, range, delay, type;
 
 	public ItemGun(int durability, int damage, int range, int delay, int type){
 		this.setMaxDamage(durability);
@@ -31,9 +31,9 @@ public class ItemGun extends Item implements IExtendedReach {
 	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer playerIn, EnumHand hand)
 	{
         ItemStack is = findAmmo(playerIn);
-		boolean flag1 = !(type==1 && playerIn.inventory.hasItemStack(new ItemStack(OPItems.ItemFlintlockAmmo)));
-		boolean flag2 = !(type==2 && playerIn.inventory.hasItemStack(new ItemStack(OPItems.ItemSenrikuAmmo)));
-		boolean flag3 = !(type==3 && playerIn.inventory.hasItemStack(new ItemStack(OPItems.ItemBazookaAmmo)));
+		boolean flag1 = !(type==1 && playerIn.inventory.hasItemStack(new ItemStack(OPItems.FLINTLOCK_AMMO)));
+		boolean flag2 = !(type==2 && playerIn.inventory.hasItemStack(new ItemStack(OPItems.SENRIKU_AMMO)));
+		boolean flag3 = !(type==3 && playerIn.inventory.hasItemStack(new ItemStack(OPItems.BAZOOKA_AMMO)));
 
 		if(flag1 && flag2 && flag3){
 			world.playSound(playerIn, playerIn.posX, playerIn.posY, playerIn.posZ, OPSoundEvent.gun_empty, SoundCategory.NEUTRAL, 2, 1);
@@ -84,13 +84,13 @@ public class ItemGun extends Item implements IExtendedReach {
 	 protected boolean isArrow(ItemStack stack)
 	    {
 		 if(type == 1){
-		        return stack != null && stack.getItem().getRegistryName() == OPItems.ItemFlintlockAmmo.getRegistryName();
+		        return stack != null && stack.getItem().getRegistryName() == OPItems.FLINTLOCK_AMMO.getRegistryName();
 		 }
 		 if(type == 2){
-		        return stack != null && stack.getItem().getRegistryName() == OPItems.ItemSenrikuAmmo.getRegistryName();
+		        return stack != null && stack.getItem().getRegistryName() == OPItems.SENRIKU_AMMO.getRegistryName();
 		 }
 		 if(type == 3){
-		        return stack != null && stack.getItem().getRegistryName() == OPItems.ItemBazookaAmmo.getRegistryName();
+		        return stack != null && stack.getItem().getRegistryName() == OPItems.BAZOOKA_AMMO.getRegistryName();
 		 }
 		 return false;
 	    }

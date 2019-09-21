@@ -4,11 +4,7 @@ import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.entity.marine.EntityMarine;
 import georgetsak.opcraft.common.entity.other.EntityBandit;
 import georgetsak.opcraft.common.entity.other.EntityOPVillager;
-import georgetsak.opcraft.common.registry.OPBlocks;
 import net.minecraft.block.Block;
-import net.minecraft.entity.IEntityLivingData;
-import net.minecraft.entity.monster.EntityZombieVillager;
-import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.EnumFacing;
@@ -17,7 +13,6 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraft.world.gen.structure.template.TemplateManager;
@@ -33,6 +28,7 @@ public class WorldGenUtils {
         WorldServer worldserver = (WorldServer) world;
         MinecraftServer minecraftserver = world.getMinecraftServer();
         TemplateManager templatemanager = worldserver.getStructureTemplateManager();
+
         return templatemanager.get(minecraftserver, new ResourceLocation(OPCraft.MODID, fileName));
 
     }
@@ -88,7 +84,7 @@ public class WorldGenUtils {
         }
     }
 
-    public static Rotation randomRot(Random rand) {
+    public static Rotation getRandomRotation(Random rand) {
         int i = rand.nextInt(4);
         switch (i) {
             case 0:

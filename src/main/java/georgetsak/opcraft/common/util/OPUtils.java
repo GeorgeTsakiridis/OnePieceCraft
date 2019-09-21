@@ -210,7 +210,7 @@ public class OPUtils {
 
     }
 
-    public static Block[] nonMovableBlocks = new Block[]{OPBlocks.BlockLawDomeCenter, OPBlocks.BlockLawDome, Blocks.AIR, Blocks.BEDROCK, Blocks.PORTAL, Blocks.END_GATEWAY, Blocks.END_PORTAL, Blocks.END_PORTAL_FRAME,
+    public static Block[] nonMovableBlocks = new Block[]{OPBlocks.LAW_DOME_CENTER, OPBlocks.LAW_DOME, Blocks.AIR, Blocks.BEDROCK, Blocks.PORTAL, Blocks.END_GATEWAY, Blocks.END_PORTAL, Blocks.END_PORTAL_FRAME,
             Blocks.CHEST, Blocks.TRAPPED_CHEST, Blocks.ENDER_CHEST, Blocks.WATER, Blocks.FLOWING_WATER, Blocks.LAVA, Blocks.FLOWING_LAVA, Blocks.WHEAT, Blocks.CARROTS, Blocks.POTATOES, Blocks.PUMPKIN_STEM, Blocks.MELON_STEM,
             Blocks.RAIL, Blocks.ACTIVATOR_RAIL, Blocks.DETECTOR_RAIL, Blocks.GOLDEN_RAIL, Blocks.CHORUS_FLOWER, Blocks.RED_FLOWER, Blocks.YELLOW_FLOWER, Blocks.BROWN_MUSHROOM, Blocks.RED_MUSHROOM, Blocks.TALLGRASS, Blocks.SAPLING,
             Blocks.REDSTONE_WIRE, Blocks.BEETROOTS, Blocks.DOUBLE_PLANT, Blocks.TRIPWIRE, Blocks.TRIPWIRE_HOOK, Blocks.MOB_SPAWNER, Blocks.FIRE};

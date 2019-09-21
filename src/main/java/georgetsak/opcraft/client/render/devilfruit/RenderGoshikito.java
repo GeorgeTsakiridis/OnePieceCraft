@@ -1,7 +1,7 @@
 package georgetsak.opcraft.client.render.devilfruit;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.model.ModelGoshikito;
+import georgetsak.opcraft.client.model.devilfruit.ModelGoshikito;
 import georgetsak.opcraft.common.entity.devilfruit.EntityGoshikito;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

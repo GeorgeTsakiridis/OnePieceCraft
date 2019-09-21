@@ -52,7 +52,7 @@ public class ItemDevilFruit extends ItemFood {
 				}
 			}
             else{
-            	if(id != OPDevilFruits.GIRAFFE) {
+            	if(id != OPDevilFruits.GIRAFFE_ID) {
 					df.setPower(id);
 				}
 			}

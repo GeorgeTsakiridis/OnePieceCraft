@@ -1,6 +1,6 @@
 package georgetsak.opcraft.client.render;
 
-import georgetsak.opcraft.client.model.ModelMorgan;
+import georgetsak.opcraft.client.model.npc.ModelMorgan;
 import georgetsak.opcraft.common.entity.marine.EntityMorgan;
 import georgetsak.opcraft.OPCraft;
 import net.minecraft.client.renderer.entity.RenderLiving;

@@ -2,6 +2,7 @@ package georgetsak.opcraft.common.entity.other;
 
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPBlocks;
+import georgetsak.opcraft.common.registry.OPLootTables;
 import georgetsak.opcraft.common.registry.OPMerchantTrades;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -19,6 +20,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
@@ -87,6 +89,12 @@ public class EntitySkypiean extends EntityCreature implements IMerchant {
     public int getType()
     {
         return this.getDataManager().get(TYPE);
+    }
+
+    @Nullable
+    @Override
+    protected ResourceLocation getLootTable() {
+        return OPLootTables.ENTITY_SKYPIEAN;
     }
 
     @Override

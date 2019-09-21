@@ -1,11 +1,9 @@
 package georgetsak.opcraft.common.item.weapons;
 
 import com.google.common.collect.Multimap;
-import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import georgetsak.opcraft.common.registry.OPItems;
 import georgetsak.opcraft.client.OPSoundEvent;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -20,20 +18,14 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.*;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
-import net.minecraft.world.gen.structure.template.PlacementSettings;
-import net.minecraft.world.gen.structure.template.Template;
-import net.minecraft.world.gen.structure.template.TemplateManager;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
-import java.util.Random;
 
 public class ItemClima extends Item
 {	
@@ -62,19 +54,19 @@ public class ItemClima extends Item
 					ItemStack stack2;
 					switch (type) {
 						case 1:
-							stack2 = new ItemStack(OPItems.ItemClimaCompletedFire, 1);
+							stack2 = new ItemStack(OPItems.CLIMA_COMPLETED_FIRE, 1);
 							stack2.damageItem(this.getDamage(stack), player);
 							player.inventory.setInventorySlotContents(player.inventory.currentItem, stack2);
 							return super.onItemRightClick(world, player, hand);
 
 						case 2:
-							stack2 = new ItemStack(OPItems.ItemClimaCompletedThunder, 1);
+							stack2 = new ItemStack(OPItems.CLIMA_COMPLETED_THUNDER, 1);
 							stack2.damageItem(this.getDamage(stack), player);
 							player.inventory.setInventorySlotContents(player.inventory.currentItem, stack2);
 							return super.onItemRightClick(world, player, hand);
 
 						case 3:
-							stack2 = new ItemStack(OPItems.ItemClimaCompletedWater, 1);
+							stack2 = new ItemStack(OPItems.CLIMA_COMPLETED_WATER, 1);
 							stack2.damageItem(this.getDamage(stack), player);
 							player.inventory.setInventorySlotContents(player.inventory.currentItem, stack2);
 							return super.onItemRightClick(world, player, hand);
@@ -185,7 +177,7 @@ public class ItemClima extends Item
     			for(int z =invertedI; z <= i; z++){
     				if(world.getBlockState(center.add(x, y, z)).getBlock() == Blocks.WATER){
     					killed = true;
-    					world.setBlockState(center.add(x,y,z), OPBlocks.BlockTemporaryIce.getDefaultState());
+    					world.setBlockState(center.add(x,y,z), OPBlocks.TEMPORARY_ICE.getDefaultState());
     				}
     			}
     		}

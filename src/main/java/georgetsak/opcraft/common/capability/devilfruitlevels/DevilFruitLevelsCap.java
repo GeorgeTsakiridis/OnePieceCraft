@@ -18,7 +18,7 @@ public class DevilFruitLevelsCap implements IDevilFruitLevelsCap {
     private int[] uses = {};
     private int[] powersLevels = {};
     private int xp = 0;
-    private int devilFruitID = OPDevilFruits.NO_POWER;
+    private int devilFruitID = OPDevilFruits.NO_POWER_ID;
 
     public static IDevilFruitLevelsCap get(EntityPlayer player)
     {

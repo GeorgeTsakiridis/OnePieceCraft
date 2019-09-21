@@ -9,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.*;
-import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -146,7 +145,7 @@ public class EntityMarine extends EntityBounty
     public void onLivingUpdate()
     {
         super.onLivingUpdate();
-        this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(OPItems.ItemCutlass));
+        this.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(OPItems.CUTLASS));
     }
 
     protected boolean isValidLightLevel()

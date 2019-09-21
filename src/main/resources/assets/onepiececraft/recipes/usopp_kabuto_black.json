@@ -1,6 +1,6 @@
 {
   "result": {
-    "item": "onepiececraft:ussop_kabuto_black"
+    "item": "onepiececraft:usopp_kabuto_black"
   },
   "pattern": [
     "BK",
@@ -16,7 +16,7 @@
       "item": "minecraft:iron_ingot"
     },
     "K": {
-      "item": "onepiececraft:ussop_kabuto"
+      "item": "onepiececraft:usopp_kabuto"
     }
   }
 }

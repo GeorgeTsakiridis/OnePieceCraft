@@ -1,4 +1,4 @@
-package georgetsak.opcraft.client.model;
+package georgetsak.opcraft.client.model.npc;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.entity.Entity;

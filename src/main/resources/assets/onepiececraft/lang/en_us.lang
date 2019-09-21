@@ -21,6 +21,8 @@ tile.onepiececraft:kairoseki_block.name=Kairoseki Block
 tile.onepiececraft:kairoseki_bars.name=Kairoseki Bars
 tile.onepiececraft:cloud_thin.name=Thin Cloud
 tile.onepiececraft:cloud_dense.name=Dense Cloud
+tile.onepiececraft:cloud_water.name=Liquid Cloud
+tile.onepiececraft:mirror_block.name=Mirror Dimension Block
 
 item.onepiececraft:kairoseki_gem.name=Kairoseki Gem
 item.onepiececraft:steel_ingot.name=Steel Ingot
@@ -143,6 +145,8 @@ entity.skypiean.name=Skypiean
 entity.kuro.name=Kuro
 entity.peacekeeper.name=Peacekeeper
 entity.homie_tree.name=Homie Tree
+entity.tequila_bridge_guard.name=Tequila Wolf Bridge Guard
+entity.slave.name=Slave
 
 effect.onepiececraft:insideDome=Inside Dome
 

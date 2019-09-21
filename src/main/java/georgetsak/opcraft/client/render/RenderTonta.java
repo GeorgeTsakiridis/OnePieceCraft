@@ -1,7 +1,7 @@
 package georgetsak.opcraft.client.render;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.model.ModelTonta;
+import georgetsak.opcraft.client.model.npc.ModelTonta;
 import georgetsak.opcraft.common.entity.other.EntityTonta;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

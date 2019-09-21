@@ -1,7 +1,7 @@
 package georgetsak.opcraft.client.render;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.model.ModelKuro;
+import georgetsak.opcraft.client.model.npc.ModelKuro;
 import georgetsak.opcraft.common.entity.other.EntityKuro;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.client.renderer.entity.RenderManager;

@@ -1,7 +1,6 @@
 package georgetsak.opcraft.common.generator;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.common.config.ConfigHandler;
 import georgetsak.opcraft.common.generator.terrain.WorldGenAdamTree;
 import georgetsak.opcraft.common.generator.terrain.WorldGenCherryTree;
 import georgetsak.opcraft.common.registry.OPBlocks;
@@ -61,7 +60,7 @@ public class OPIWorldGenerator implements IWorldGenerator
 
 				Template morgan_fortress_stage1 = getTemplate("morgan_fortress_stage1", world);
 				Template morgan_fortress_stage2 = getTemplate("morgan_fortress_stage2", world);
-				Rotation rot = randomRot(rand);
+				Rotation rot = getRandomRotation(rand);
 				//rot
 				PlacementSettings placementsettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(true).setChunk(null).setReplacedBlock(null);
 				PlacementSettings placementsettingsTorch = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null);
@@ -77,15 +76,32 @@ public class OPIWorldGenerator implements IWorldGenerator
 		}
 
 		if (OPCraft.config.enableSkypiea.getCurrentValue() && rand.nextInt(OPCraft.config.skypieaSpawnChance.getCurrentValue()) == 0 && !(biome instanceof BiomeHills)) {
-			Template skypiea = getTemplate("skypiea", world);
-			Rotation rotation = randomRot(rand);
+			Template skypieaStage1 = getTemplate("skypiea_stage_1", world);
+			Template skypieaStage2 = getTemplate("skypiea_stage_2", world);
+			Rotation rotation = getRandomRotation(rand);
 			PlacementSettings placementSettings = new PlacementSettings().setMirror(Mirror.NONE).setRotation(rotation).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null);
 
-			if (skypiea != null) {
-				skypiea.addBlocksToWorld(world, new BlockPos(blockX, 200, blockZ), placementSettings);
+			if (skypieaStage1 != null && skypieaStage2 != null) {
+				skypieaStage1.addBlocksToWorld(world, new BlockPos(blockX, 200, blockZ), placementSettings);
+				skypieaStage2.addBlocksToWorld(world, new BlockPos(blockX, 200, blockZ), placementSettings);
 			}
 		}
 
+		if((biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN) && rand.nextInt(2000) == 0){
+			Template bridgeStage1 = getTemplate("tequila_wolf_bridge_stage_1", world);
+			Template bridgeStage2 = getTemplate("tequila_wolf_bridge_stage_2", world);
+			Rotation rotation = getRandomRotation(rand);
+			PlacementSettings placementSettings = new PlacementSettings().setMirror(Mirror.NONE).setRotation(rotation).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null);
+
+			System.out.println("SPAWNED TEQUILA WOLF BRIDGE");
+
+			if(bridgeStage1 != null && bridgeStage2 != null){
+				int y = getSeaLevel(world, blockX,blockZ);
+				bridgeStage1.addBlocksToWorld(world, new BlockPos(blockX, y+2, blockZ), placementSettings);
+				bridgeStage2.addBlocksToWorld(world, new BlockPos(blockX, y+2, blockZ), placementSettings);
+			}
+
+		}
 			//TODO enable me after boats are added
 		if((biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN) && false){
 			int randX = blockX + rand.nextInt(16);
@@ -94,7 +110,7 @@ public class OPIWorldGenerator implements IWorldGenerator
 			if(rand.nextInt(10) == 0){
 
 				Template boat = getTemplate("marine_boat", world);
-				Rotation rot = randomRot(rand);
+				Rotation rot = getRandomRotation(rand);
 				//rot
 				PlacementSettings placementSettings = (new PlacementSettings()).setMirror(Mirror.NONE).setRotation(Rotation.NONE).setIgnoreEntities(false).setChunk(null).setReplacedBlock(null);
 
@@ -115,7 +131,7 @@ public class OPIWorldGenerator implements IWorldGenerator
 				int randZ = blockZ + rand.nextInt(10);
 				int randY = rand.nextInt(15) + 5;
 				
-				worldGenMinable = new WorldGenMinable(OPBlocks.BlockKairosekiStone.getDefaultState(), 3);
+				worldGenMinable = new WorldGenMinable(OPBlocks.KAIROSEKI_STONE.getDefaultState(), 3);
 				worldGenMinable.generate(world, rand, new BlockPos(randX, randY, randZ));
 			}
 			
@@ -132,10 +148,10 @@ public class OPIWorldGenerator implements IWorldGenerator
 				int randY = rand.nextInt(40) + 5;
 				
 				if(rand.nextInt(3) <= 1){
-					worldGenMinable = new WorldGenMinable(OPBlocks.BlockSteelOre.getDefaultState(), 4);
+					worldGenMinable = new WorldGenMinable(OPBlocks.STEEL_ORE.getDefaultState(), 4);
 				}
 				else{
-					worldGenMinable = new WorldGenMinable(OPBlocks.BlockDarkSteelOre.getDefaultState(), 3);
+					worldGenMinable = new WorldGenMinable(OPBlocks.DARK_STEEL_ORE.getDefaultState(), 3);
 				}
 				
 				worldGenMinable.generate(world, rand, new BlockPos(randX, randY, randZ));

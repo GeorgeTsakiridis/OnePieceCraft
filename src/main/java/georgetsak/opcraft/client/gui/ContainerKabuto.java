@@ -1,7 +1,6 @@
 package georgetsak.opcraft.client.gui;
 
 import georgetsak.opcraft.common.capability.kabuto.KabutoCap;
-import georgetsak.opcraft.common.capability.kabuto.KabutoCapProvider;
 import georgetsak.opcraft.common.item.ItemDial;
 import georgetsak.opcraft.common.registry.OPItems;
 import net.minecraft.entity.player.EntityPlayer;
@@ -109,7 +108,7 @@ public class ContainerKabuto extends Container {
         @Override
         public boolean isItemValid(ItemStack stack) {
             Item item = stack.getItem();
-            return item instanceof ItemDial && item != OPItems.ItemEmptyDial || item == OPItems.ItemSmallRock;
+            return item instanceof ItemDial && item != OPItems.EMPTY_DIAL || item == OPItems.SMALL_ROCK;
         }
 
     }

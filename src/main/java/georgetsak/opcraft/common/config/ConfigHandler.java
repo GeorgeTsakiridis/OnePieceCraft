@@ -45,6 +45,8 @@ public class ConfigHandler {
     public ConfigEntryInt morganFortressSpawnChance;
     public ConfigEntryBoolean enableSkypiea;
     public ConfigEntryInt skypieaSpawnChance;
+    public ConfigEntryBoolean enableTequilaWolfBridge;
+    public ConfigEntryInt tequilaWolfBridgeSpawnChance;
 
     public ConfigEntryBoolean disableGriefing;
     public ConfigEntryBoolean allowDevilFruitUsersToSwim;
@@ -80,24 +82,26 @@ public class ConfigHandler {
         configEntries.add(enableDevilFruitYamiSpawning = new ConfigEntryBoolean(configuration, "enableDevilFruitYamiSpawning", "Dark Devil Fruit", CATEGORY_GENERATION, true));
         configEntries.add(enableDevilFruitItoSpawning = new ConfigEntryBoolean(configuration, "enableDevilFruitItoSpawning", "String Devil Fruit", CATEGORY_GENERATION, true));
 
-        configEntries.add(disablePowersGomu = new ConfigEntryBoolean(configuration, "disablePowersGomu", "Rubber Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GOMU));
-        configEntries.add(disablePowersMera = new ConfigEntryBoolean(configuration, "disablePowersMera", "Fire Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.MERA));
-        configEntries.add(disablePowersNoro = new ConfigEntryBoolean(configuration, "disablePowersNoro", "Slow Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.NORO));
-        configEntries.add(disablePowersSuke = new ConfigEntryBoolean(configuration, "disablePowersSuke", "Clear Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.SUKE));
-        configEntries.add(disablePowersUshi = new ConfigEntryBoolean(configuration, "disablePowersUshi", "Giraffe Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GIRAFFE));
-        configEntries.add(disablePowersOpe = new ConfigEntryBoolean(configuration, "disablePowersOpe", "Operation (Law's) Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.OPE));
-        configEntries.add(disablePowersHie = new ConfigEntryBoolean(configuration, "disablePowersHie", "Ice Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.HIE));
-        configEntries.add(disablePowersNikyu = new ConfigEntryBoolean(configuration, "disablePowersNikyu", "Paw Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.NIKYU));
-        configEntries.add(disablePowersYomi = new ConfigEntryBoolean(configuration, "disablePowersYomi", "Revive Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.YOMI));
-        configEntries.add(disablePowersGoro = new ConfigEntryBoolean(configuration, "disablePowersGoro", "Thunder Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GORO));
-        configEntries.add(disablePowersMoku = new ConfigEntryBoolean(configuration, "disablePowersMoku", "Smoke Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.MOKU));
-        configEntries.add(disablePowersYami = new ConfigEntryBoolean(configuration, "disablePowersYami", "Dark Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.YAMI));
-        configEntries.add(disablePowersIto = new ConfigEntryBoolean(configuration, "disablePowersIto", "String Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.ITO));
+        configEntries.add(disablePowersGomu = new ConfigEntryBoolean(configuration, "disablePowersGomu", "Rubber Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GOMU_ID));
+        configEntries.add(disablePowersMera = new ConfigEntryBoolean(configuration, "disablePowersMera", "Fire Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.MERA_ID));
+        configEntries.add(disablePowersNoro = new ConfigEntryBoolean(configuration, "disablePowersNoro", "Slow Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.NORO_ID));
+        configEntries.add(disablePowersSuke = new ConfigEntryBoolean(configuration, "disablePowersSuke", "Clear Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.SUKE_ID));
+        configEntries.add(disablePowersUshi = new ConfigEntryBoolean(configuration, "disablePowersUshi", "Giraffe Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GIRAFFE_ID));
+        configEntries.add(disablePowersOpe = new ConfigEntryBoolean(configuration, "disablePowersOpe", "Operation (Law's) Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.OPE_ID));
+        configEntries.add(disablePowersHie = new ConfigEntryBoolean(configuration, "disablePowersHie", "Ice Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.HIE_ID));
+        configEntries.add(disablePowersNikyu = new ConfigEntryBoolean(configuration, "disablePowersNikyu", "Paw Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.NIKYU_ID));
+        configEntries.add(disablePowersYomi = new ConfigEntryBoolean(configuration, "disablePowersYomi", "Revive Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.YOMI_ID));
+        configEntries.add(disablePowersGoro = new ConfigEntryBoolean(configuration, "disablePowersGoro", "Thunder Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.GORO_ID));
+        configEntries.add(disablePowersMoku = new ConfigEntryBoolean(configuration, "disablePowersMoku", "Smoke Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.MOKU_ID));
+        configEntries.add(disablePowersYami = new ConfigEntryBoolean(configuration, "disablePowersYami", "Dark Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.YAMI_ID));
+        configEntries.add(disablePowersIto = new ConfigEntryBoolean(configuration, "disablePowersIto", "String Devil Fruit", CATEGORY_POWERS, false, OPDevilFruits.ITO_ID));
 
         configEntries.add(enableMorganFortress = new ConfigEntryBoolean(configuration, "enableMorganFortressGeneration", "Enables or Disables Morgan's fortress generation", CATEGORY_GENERATION, true));
         configEntries.add(morganFortressSpawnChance = new ConfigEntryInt(configuration, "morganFortressSpawnChance", "Chance 1/x per chunk (Only for plain biome chunks)", CATEGORY_GENERATION, 800,200,Integer.MAX_VALUE));
         configEntries.add(enableSkypiea = new ConfigEntryBoolean(configuration, "enableSkypieaGeneration", "Enables or Disables Skypiea Islands generation", CATEGORY_GENERATION, true));
-        configEntries.add(skypieaSpawnChance = new ConfigEntryInt(configuration, "skypieaSpawnChance", "Chance 1/x per chunk (Only for biomes that are not Hills)", CATEGORY_GENERATION, 2000,200,Integer.MAX_VALUE));
+        configEntries.add(skypieaSpawnChance = new ConfigEntryInt(configuration, "skypieaSpawnChance", "Chance 1/x per chunk (Only for biomes that are not Hills)", CATEGORY_GENERATION, 10000,500, Integer.MAX_VALUE));
+        configEntries.add(enableTequilaWolfBridge = new ConfigEntryBoolean(configuration, "enableTequilaWolfBridge", "Enables or Disables Tequila Wolf Bridge generation", CATEGORY_GENERATION, true));
+        configEntries.add(tequilaWolfBridgeSpawnChance = new ConfigEntryInt(configuration, "tequilaWolfBridgeSpawnChance", "Chance 1/x per chunk (Only for Ocean and Deep Ocean biomes)", CATEGORY_GENERATION, 10000,500, Integer.MAX_VALUE));
 
         configEntries.add(disableGriefing = new ConfigEntryBoolean(configuration,"disableGriefing","Disables the griefing from the mod. E.g. The explosion from Gear 3 won't destroy any blocks. WARNING! Enabling this will make some powers useless.", CATEGORY_MISC, false));
         configEntries.add(allowDevilFruitUsersToSwim = new ConfigEntryBoolean(configuration,"allowDevilFruitUsersToSwim","Allows the Devil Fruit users to swim and use their powers in water.", CATEGORY_MISC, false));
