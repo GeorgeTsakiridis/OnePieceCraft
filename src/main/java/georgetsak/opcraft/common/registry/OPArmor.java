@@ -1,15 +1,17 @@
 package georgetsak.opcraft.common.registry;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.registry.OPRender;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import static georgetsak.opcraft.common.network.proxy.CommonProxy.*;
+import java.util.ArrayList;
+
+import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
 
 /**
  * Created by GeorgeTsak on 8/7/2017.
@@ -109,6 +111,7 @@ public class OPArmor {
 
     static void registerItem(Item item){
         ForgeRegistries.ITEMS.register(item.setUnlocalizedName(item.getRegistryName().toString()));
+        OPRender.ITEMS_TO_RENDER.add(item);
     }
 
 }

@@ -1,6 +1,7 @@
 package georgetsak.opcraft.common.registry;
 
 import georgetsak.opcraft.OPCraft;
+import georgetsak.opcraft.client.registry.OPRender;
 import georgetsak.opcraft.common.block.*;
 import georgetsak.opcraft.common.block.tile.LawDomeTileEntity;
 import georgetsak.opcraft.common.block.tile.SmokeCloudTileEntity;
@@ -16,6 +17,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
 
@@ -51,10 +53,10 @@ public class OPBlocks {
     public static Block THIN_CLOUD;
     public static Block DENSE_CLOUD;
     public static Block WATER_CLOUD;
-    public static Block MIRROR_BLOCK;
+    public static Block MIRROR_WALL_BLOCK;
+    public static Block MIRROR;
 
     public static void registerBlocks(){
-
         GameRegistry.registerTileEntity(LawDomeTileEntity.class, "law_dome");
         GameRegistry.registerTileEntity(SnailTileEntity.class, "snail");
         GameRegistry.registerTileEntity(SmokeCloudTileEntity.class, "smoke_cloud");
@@ -85,16 +87,17 @@ public class OPBlocks {
         SMOKE_CLOUD = new BlockSmokeCloud(Material.ROCK).setRegistryName("smoke_cloud");
         THIN_CLOUD = new BlockCloud(true).setRegistryName("cloud_thin").setCreativeTab(OPTab);
         DENSE_CLOUD = new BlockCloud(false).setRegistryName("cloud_dense").setCreativeTab(OPTab);
-        MIRROR_BLOCK = new MirrorBlock().setRegistryName("mirror_block").setBlockUnbreakable().setResistance(6000000.0F).setCreativeTab(OPTab);
+        MIRROR_WALL_BLOCK = new MirrorWallBlock().setRegistryName("mirror_block").setBlockUnbreakable().setResistance(6000000.0F).setCreativeTab(OPTab);
+        MIRROR = new MirrorBlock().setRegistryName("mirror").setCreativeTab(OPTab);
 
         registerBlock(CHERRY_TREE_SAPLING);
         registerBlock(CHERRY_TREE_WOOD);
         registerBlock(CHERRY_TREE_PLANKS);
-        registerBlock(CHERRY_TREE_LEAVES);
+        registerBlock(CHERRY_TREE_LEAVES, false);
         registerBlock(CHERRY_TREE_LEAVES_NON_DECAYABLE);
         registerBlock(ADAM_TREE_WOOD);
         registerBlock(ADAM_TREE_PLANKS);
-        registerBlock(ADAM_TREE_LEAVES);
+        registerBlock(ADAM_TREE_LEAVES, false);
         registerBlock(ADAM_TREE_LEAVES_NON_DECAYABLE);
         registerBlock(KAIROSEKI_STONE);
         registerBlock(STEEL_ORE);
@@ -103,17 +106,18 @@ public class OPBlocks {
         registerBlock(DARK_STEEL_BLOCK);
         registerBlock(TEMPORARY_ICE);
         registerBlock(LAW_DOME);
-        registerBlock(LAW_DOME_CENTER);
+        registerBlock(LAW_DOME_CENTER, false);
         registerBlock(ICE_CAGE);
         registerBlock(ICE_AGE);
-        registerBlock(SNAIL);
+        registerBlock(SNAIL, false);
         registerBlock(SHIP_BUILDER);
         registerBlock(KAIROSEKI_BLOCK);
-        registerBlock(KAIROSEKI_BARS);
-        registerBlock(SMOKE_CLOUD);
+        registerBlock(KAIROSEKI_BARS, false);
+        registerBlock(SMOKE_CLOUD, false);
         registerBlock(THIN_CLOUD);
         registerBlock(DENSE_CLOUD);
-        registerBlock(MIRROR_BLOCK);
+        registerBlock(MIRROR_WALL_BLOCK);
+        registerBlock(MIRROR);
 
         OreDictionary.registerOre("plankWood", OPBlocks.CHERRY_TREE_PLANKS);
         OreDictionary.registerOre("plankWood", OPBlocks.ADAM_TREE_PLANKS);
@@ -129,13 +133,19 @@ public class OPBlocks {
         FluidRegistry.addBucketForFluid(fluid);
         WATER_CLOUD = new BlockWaterCloud(fluid).setRegistryName("cloud_water").setCreativeTab(OPTab);
 
-        registerBlock(WATER_CLOUD);
+        registerBlock(WATER_CLOUD, false);
+    }
+
+    static void registerBlock(Block block, boolean normalRender){
+        ForgeRegistries.BLOCKS.register(block.setUnlocalizedName(block.getRegistryName().toString()));
+        ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName().toString()));
+        if(normalRender){
+            OPRender.BLOCKS_TO_RENDER.add(block);
+        }
     }
 
     static void registerBlock(Block block) {
-        ForgeRegistries.BLOCKS.register(block.setUnlocalizedName(block.getRegistryName().toString()));
-        ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName().toString()));
-
+        registerBlock(block,true);
     }
 
 

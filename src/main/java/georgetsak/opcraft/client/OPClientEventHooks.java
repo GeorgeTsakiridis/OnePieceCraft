@@ -3,6 +3,8 @@ package georgetsak.opcraft.client;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.gui.overlay.EnumSixPowers;
+import georgetsak.opcraft.client.registry.OPKeys;
+import georgetsak.opcraft.client.registry.OPRender;
 import georgetsak.opcraft.common.power.Power;
 import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.client.power.PowerSelector;
@@ -261,9 +263,9 @@ public class OPClientEventHooks {
         GameSettings gameSettings = Minecraft.getMinecraft().gameSettings;
 
         //Six Powers
-        if(ClientProxy.sixPowersButton.isPressed()){
+        if(OPKeys.sixPowersButton.isPressed()){
             EntityPlayerSP p = Minecraft.getMinecraft().player;
-            EnumSixPowers selectedPower = ClientProxy.sixPowersSelectionWheelRender.getSelectedPower();
+            EnumSixPowers selectedPower = OPRender.sixPowersSelectionWheelRender.getSelectedPower();
 
             ISixPowersCap sixpowersCap = SixPowersCap.get(p);
             if(selectedPower == EnumSixPowers.NONE)return;
@@ -320,17 +322,17 @@ public class OPClientEventHooks {
         }
         //Powers keys handler.
         if(!gameSettings.keyBindSneak.isKeyDown() && id != OPDevilFruits.NO_POWER_ID && id != OPDevilFruits.YOMI_ID) {
-            if (ClientProxy.key1.isPressed()) {//X
+            if (OPKeys.key1.isPressed()) {//X
                     PowerSelector.buttonPressed(false);
                     cooldownTransparency = 200;
             }
 
-            if (ClientProxy.key2.isPressed()) {
+            if (OPKeys.key2.isPressed()) {
                     PowerSelector.buttonPressed(true);
                     cooldownTransparency = 200;
             }
 
-            if (ClientProxy.key3.isPressed()) {
+            if (OPKeys.key3.isPressed()) {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null && power.getCurrentCooldown() == 0 && !OPCraft.config.isDFDisabled(id)) {//V
 
@@ -366,17 +368,17 @@ public class OPClientEventHooks {
 
         }
         //Normal Stats button
-        if(ClientProxy.statsButton.isPressed()) {
+        if(OPKeys.statsButton.isPressed()) {
             Minecraft.getMinecraft().player.openGui(OPCraft.MODID, 1, Minecraft.getMinecraft().world, 0, 0, 0);
         }
 
         //Haki Stats button
-        if(ClientProxy.hakiButton.isPressed()){
+        if(OPKeys.hakiButton.isPressed()){
             Minecraft.getMinecraft().player.openGui(OPCraft.MODID, 4, Minecraft.getMinecraft().world, 0, 0, 0);
         }
 
         //Power Upgrade button
-        if(ClientProxy.powerUpgradeButton.isPressed()){
+        if(OPKeys.powerUpgradeButton.isPressed()){
             Minecraft.getMinecraft().player.openGui(OPCraft.MODID,6,Minecraft.getMinecraft().world,0,0,0);
         }
 
@@ -385,7 +387,7 @@ public class OPClientEventHooks {
             performAction("Gear4Jump");
         }
         //Emperor Haki key handler.
-        if(ClientProxy.emperorHakiButton.isPressed() && cooldownEmperor == 0) {
+        if(OPKeys.emperorHakiButton.isPressed() && cooldownEmperor == 0) {
                 cooldownEmperor = adjustTicks(1200);
                 PacketDispatcher.sendToServer(new PacketEmperorServer());
         }
@@ -423,7 +425,7 @@ public class OPClientEventHooks {
                     isGear4Active = false;
                 }
             }
-            if(ClientProxy.sixPowersMenuButton.isKeyDown()) {
+            if(OPKeys.sixPowersMenuButton.isKeyDown()) {
                 focused = false;
                 Minecraft.getMinecraft().setIngameNotInFocus();
             } else {
@@ -656,30 +658,30 @@ public class OPClientEventHooks {
 
         if (!event.isCancelable() && event.getType() == RenderGameOverlayEvent.ElementType.EXPERIENCE) {//HOTBAR
             if(sixPowersEnergyBar < 200){
-                ClientProxy.devilFruitRenderOverlay.drawEnergyBar(event.getResolution(), (int)sixPowersEnergyBar);
+                OPRender.devilFruitRenderOverlay.drawEnergyBar(event.getResolution(), (int)sixPowersEnergyBar);
             }
 
             if (cooldownTransparency < 41) {
-                ClientProxy.devilFruitRenderOverlay.decreaseTransparency();
+                OPRender.devilFruitRenderOverlay.decreaseTransparency();
             } else {
-                ClientProxy.devilFruitRenderOverlay.resetTransparency();
+                OPRender.devilFruitRenderOverlay.resetTransparency();
             }
 
             if(DevilFruitCap.get(Minecraft.getMinecraft().player).hasPower() || !OPCraft.IS_RELEASE_VERSION) {
                 Power power = PowerSelector.getSelectedPower();
                 if (power != null) {
-                    ClientProxy.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), adjustTicks(DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerCooldown(power.getKey())), event.getResolution(), (int) sixPowersEnergyBar);
+                    OPRender.devilFruitRenderOverlay.render(id, power.getCurrentCooldown(), adjustTicks(DevilFruitLevelsCap.get(Minecraft.getMinecraft().player).getPowerCooldown(power.getKey())), event.getResolution(), (int) sixPowersEnergyBar);
                 }else if(id == OPDevilFruits.YOMI_ID || id == OPDevilFruits.GIRAFFE_ID){
-                    ClientProxy.devilFruitRenderOverlay.render(id,0,1,event.getResolution(),(int)sixPowersEnergyBar);
+                    OPRender.devilFruitRenderOverlay.render(id,0,1,event.getResolution(),(int)sixPowersEnergyBar);
                 }
             }
 
-            if (ClientProxy.sixPowersMenuButton.isKeyDown()) {
+            if (OPKeys.sixPowersMenuButton.isKeyDown()) {
                 if(once){
                     once = false;
-                    ClientProxy.sixPowersSelectionWheelRender.createTextures();
+                    OPRender.sixPowersSelectionWheelRender.createTextures();
                 }
-                ClientProxy.sixPowersSelectionWheelRender.render(event.getResolution(), mouseX, mouseY);
+                OPRender.sixPowersSelectionWheelRender.render(event.getResolution(), mouseX, mouseY);
             }
         }
     }

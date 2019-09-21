@@ -1,5 +1,6 @@
 package georgetsak.opcraft.common.registry;
 
+import georgetsak.opcraft.client.registry.OPRender;
 import georgetsak.opcraft.common.item.*;
 import georgetsak.opcraft.common.item.devilfruits.ItemPowerRemover;
 import georgetsak.opcraft.common.item.ItemOPBook;
@@ -15,6 +16,8 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.ArrayList;
 
 import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
 
@@ -235,7 +238,14 @@ public class OPItems {
     }
 
     static void registerItem(Item item){
+        registerItem(item, true);
+    }
+
+    static void registerItem(Item item, boolean normalItem){
         ForgeRegistries.ITEMS.register(item.setUnlocalizedName(item.getRegistryName().toString()));
+        if(normalItem){
+            OPRender.ITEMS_TO_RENDER.add(item);
+        }
     }
 
 }

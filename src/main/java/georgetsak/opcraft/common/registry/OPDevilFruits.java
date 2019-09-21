@@ -1,11 +1,14 @@
 package georgetsak.opcraft.common.registry;
 
+import georgetsak.opcraft.client.registry.OPRender;
 import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
 import georgetsak.opcraft.common.item.devilfruits.ItemDevilFruit;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+
+import java.util.ArrayList;
 
 public class OPDevilFruits {
 
@@ -126,6 +129,7 @@ public class OPDevilFruits {
 
     static void registerItem(Item item){
         ForgeRegistries.ITEMS.register(item.setUnlocalizedName(item.getRegistryName().toString()).setCreativeTab(CommonProxy.OPTab));
+        OPRender.ITEMS_TO_RENDER.add(item);
     }
 
 }

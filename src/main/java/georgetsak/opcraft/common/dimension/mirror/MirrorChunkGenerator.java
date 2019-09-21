@@ -3,15 +3,12 @@ package georgetsak.opcraft.common.dimension.mirror;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import georgetsak.opcraft.dev_notUsed.OPLog;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
-import org.lwjgl.Sys;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -79,11 +76,11 @@ public class MirrorChunkGenerator implements IChunkGenerator {
                     int posY = (int) (r * tSin[index++]) + yOffset;
                     int posZ = (int) (d * d2 + zOffset);
 
-                    world.setBlockState(new BlockPos(posX, posY, posZ).up(90), OPBlocks.MIRROR_BLOCK.getDefaultState());
-                    world.setBlockState(new BlockPos(posX+1, posY, posZ).up(90), OPBlocks.MIRROR_BLOCK.getDefaultState());
-                    world.setBlockState(new BlockPos(posX-1, posY, posZ).up(90), OPBlocks.MIRROR_BLOCK.getDefaultState());
-                    world.setBlockState(new BlockPos(posX, posY, posZ+1).up(90), OPBlocks.MIRROR_BLOCK.getDefaultState());
-                    world.setBlockState(new BlockPos(posX, posY, posZ-1).up(90), OPBlocks.MIRROR_BLOCK.getDefaultState());
+                    world.setBlockState(new BlockPos(posX, posY, posZ).up(90), OPBlocks.MIRROR_WALL_BLOCK.getDefaultState());
+                    world.setBlockState(new BlockPos(posX+1, posY, posZ).up(90), OPBlocks.MIRROR_WALL_BLOCK.getDefaultState());
+                    world.setBlockState(new BlockPos(posX-1, posY, posZ).up(90), OPBlocks.MIRROR_WALL_BLOCK.getDefaultState());
+                    world.setBlockState(new BlockPos(posX, posY, posZ+1).up(90), OPBlocks.MIRROR_WALL_BLOCK.getDefaultState());
+                    world.setBlockState(new BlockPos(posX, posY, posZ-1).up(90), OPBlocks.MIRROR_WALL_BLOCK.getDefaultState());
                 }
             }
             millis = System.currentTimeMillis() - millis;

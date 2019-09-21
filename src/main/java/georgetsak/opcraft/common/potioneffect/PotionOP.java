@@ -14,9 +14,9 @@ import java.awt.*;
 
 public class PotionOP extends Potion {
 	private final ResourceLocation iconTexture;
-
 	public int id;
-	
+	private ResourceLocation insideDome = new ResourceLocation(OPCraft.MODID, "textures/gui/powers_icons/room.png");
+
 
 	public PotionOP(boolean isBadEffect, int liquidColor, String name, int id) {
 		super(isBadEffect, liquidColor);
@@ -39,8 +39,6 @@ public class PotionOP extends Potion {
 	public boolean hasStatusIcon() {
 		return false;
 	}
-
-	ResourceLocation insideDome = new ResourceLocation(OPCraft.MODID, "textures/items/insidedome.png");
 
 	@SideOnly(Side.CLIENT)
 	@Override
