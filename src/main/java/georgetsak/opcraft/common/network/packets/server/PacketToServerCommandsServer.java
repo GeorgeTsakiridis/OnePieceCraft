@@ -3,14 +3,17 @@ package georgetsak.opcraft.common.network.packets.server;
 
 import georgetsak.opcraft.OPCraft;
 import georgetsak.opcraft.client.OPSoundEvent;
+import georgetsak.opcraft.common.OPTeleporter;
 import georgetsak.opcraft.common.capability.devilfruitlevels.DevilFruitLevelsCap;
 import georgetsak.opcraft.common.entity.devilfruit.*;
 import georgetsak.opcraft.common.entity.other.EntityStormLeg;
 import georgetsak.opcraft.common.network.packetsdispacher.AbstractMessage;
 import georgetsak.opcraft.common.registry.OPBlocks;
+import georgetsak.opcraft.common.registry.OPDimensions;
 import georgetsak.opcraft.common.util.MathUtils;
 import georgetsak.opcraft.common.util.OPUtils;
 import georgetsak.opcraft.common.util.PowerUtils;
+import net.minecraft.command.server.CommandTeleport;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -27,7 +30,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
+import net.minecraft.world.Teleporter;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.relauncher.Side;
 
@@ -175,7 +180,7 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                 }
                 case "TaktA": {
                     world.playSound(null, ep.getPosition(), OPSoundEvent.takt, SoundCategory.NEUTRAL, 40.0F, 1.0F);
-                    if (!OPCraft.config.disableGriefing.getCurrentValue()) {//if griefing is disabled do not execute this power.
+                    if (!OPCraft.config.disableGriefing.getValue()) {//if griefing is disabled do not execute this power.
                         PowerUtils.OPTakt(ep);
                     }
                     break;
@@ -199,7 +204,7 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                     break;
                 }
                 case "IceAgeA": {
-                    if (!OPCraft.config.disableGriefing.getCurrentValue()) {
+                    if (!OPCraft.config.disableGriefing.getValue()) {
                         PowerUtils.createIceSeaRoad(ep.getHorizontalFacing(), new BlockPos(ep.posX, ep.posY, ep.posZ), ep);
                     }
                     world.playSound(null, ep.getPosition(), OPSoundEvent.ice_age, SoundCategory.NEUTRAL, 50.0F, 1.0F);
@@ -272,6 +277,14 @@ public class PacketToServerCommandsServer extends AbstractMessage.AbstractServer
                     world.spawnEntity(goshikito);
                     world.playSound(null,ep.posX,ep.posY,ep.posZ,OPSoundEvent.tamaito,SoundCategory.NEUTRAL, 300f, 1f);
                     break;
+                }
+                case "MirroWorldA": {
+
+                    float rads = world.rand.nextFloat()* 2f * (float)Math.PI;
+
+                    OPTeleporter teleporter = new OPTeleporter(OPDimensions.MIRROR.getId(), rads);
+                    teleporter.placeEntity(world, ep, 90);
+                    ep.changeDimension(OPDimensions.MIRROR.getId(), teleporter);
                 }
             }
 

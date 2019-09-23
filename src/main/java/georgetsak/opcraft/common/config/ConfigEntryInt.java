@@ -12,11 +12,11 @@ public class ConfigEntryInt extends ConfigEntry{
         originalValue = currentValue = configuration.getInt(name,category,defaultValue,minValue, maxValue,comment);
     }
 
-    public void setCurrentValue(int currentValue) {
+    public void setValue(int currentValue) {
         this.currentValue = currentValue;
     }
 
-    public int getCurrentValue() {
+    public int getValue() {
         return currentValue;
     }
 

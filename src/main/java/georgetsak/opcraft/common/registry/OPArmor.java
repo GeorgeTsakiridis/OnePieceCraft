@@ -1,7 +1,6 @@
 package georgetsak.opcraft.common.registry;
 
 import georgetsak.opcraft.OPCraft;
-import georgetsak.opcraft.client.registry.OPRender;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -17,6 +16,8 @@ import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
  * Created by GeorgeTsak on 8/7/2017.
  */
 public class OPArmor {
+
+    public static ArrayList<Item> ITEMS_TO_RENDER;
 
     public static ItemArmor.ArmorMaterial luffySimpleArmor;
     public static ItemArmor.ArmorMaterial zoroSimpleArmor;
@@ -51,6 +52,7 @@ public class OPArmor {
 
 
     public static void registerArmor(){
+        ITEMS_TO_RENDER = new ArrayList<>();
 
         luffySimpleArmor = EnumHelper.addArmorMaterial("luffy_simple_armor", OPCraft.MODID + ":luffysimple", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
         zoroSimpleArmor = EnumHelper.addArmorMaterial("zoro_simple_armor", OPCraft.MODID + ":zorosimple", 5, new int[]{1, 2, 3, 1}, 15, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F);
@@ -111,7 +113,7 @@ public class OPArmor {
 
     static void registerItem(Item item){
         ForgeRegistries.ITEMS.register(item.setUnlocalizedName(item.getRegistryName().toString()));
-        OPRender.ITEMS_TO_RENDER.add(item);
+        ITEMS_TO_RENDER.add(item);
     }
 
 }

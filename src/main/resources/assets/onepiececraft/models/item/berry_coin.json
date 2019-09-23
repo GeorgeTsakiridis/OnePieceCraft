@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/berry_coin"
+        "layer0": "onepiececraft:items/currency/berry_coin"
     }
 }

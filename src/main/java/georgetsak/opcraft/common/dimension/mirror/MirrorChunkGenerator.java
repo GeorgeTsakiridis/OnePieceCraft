@@ -17,17 +17,21 @@ import java.util.Random;
 public class MirrorChunkGenerator implements IChunkGenerator {
 
     private final World world;
-    private Random rand;
 
-    public MirrorChunkGenerator(World world) {
+    private double randX;
+    private double randY;
+    private double randZ;
+
+
+    public MirrorChunkGenerator(World world, double randX, double randY, double randZ) {
         this.world = world;
-        long seed = world.getSeed();
-        this.rand = world.rand;
+        this.randX = randX;
+        this.randY = randY;
+        this.randZ = randZ;
     }
 
     @Override
     public Chunk generateChunk(int x, int z) {
-        ChunkPrimer chunkPrimer = new ChunkPrimer();
         Chunk chunk = new Chunk(world, x, z);
         chunk.generateSkylightMap();
         return chunk;
@@ -54,10 +58,6 @@ public class MirrorChunkGenerator implements IChunkGenerator {
                 tCos[index] = Math.cos(i);
                 tSin[index++] = Math.sin(i);
             }
-
-            double randX = rand.nextDouble() * twoPi;
-            double randY = rand.nextDouble() * twoPi;
-            double randZ = rand.nextDouble() * twoPi;
 
             for (double f = 0; f < twoPi; f += resolution) {
 

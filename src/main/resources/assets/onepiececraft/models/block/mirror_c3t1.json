@@ -1,0 +1,13 @@
+{
+    "__comment": "Model for when three adjacent connected sides are a T shape.",
+	"parent": "block/cube",
+    "textures": {
+		"particle": "onepiececraft:blocks/mirror_0c",
+        "down": "onepiececraft:blocks/mirror_4c",
+		"up": "onepiececraft:blocks/mirror_4c",
+		"north": "onepiececraft:blocks/mirror_3c_ued",
+		"south": "onepiececraft:blocks/mirror_3c_uwd",
+		"west": "onepiececraft:blocks/mirror_4c",
+		"east": "onepiececraft:blocks/mirror_2c_ud"
+    }
+}

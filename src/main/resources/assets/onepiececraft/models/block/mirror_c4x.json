@@ -1,0 +1,13 @@
+{
+    "__comment": "Model file for four connected sides in a cross shape.",
+	"parent": "block/cube",
+    "textures": {
+		"particle": "onepiececraft:blocks/mirror_0c",
+        "down": "onepiececraft:blocks/mirror_4c",
+		"up": "onepiececraft:blocks/mirror_4c",
+		"north": "onepiececraft:blocks/mirror_4c",
+		"south": "onepiececraft:blocks/mirror_4c",
+		"west": "onepiececraft:blocks/mirror_4c",
+		"east": "onepiececraft:blocks/mirror_4c"
+    }
+}

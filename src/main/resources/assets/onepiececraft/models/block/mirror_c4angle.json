@@ -1,0 +1,13 @@
+{
+    "__comment": "Model for when four connected sides at an angle.",
+	"parent": "block/cube",
+    "textures": {
+		"particle": "onepiececraft:blocks/mirror_0c",
+        "down": "onepiececraft:blocks/mirror_4c",
+		"up": "onepiececraft:blocks/mirror_4c",
+		"north": "onepiececraft:blocks/mirror_4c",
+		"south": "onepiececraft:blocks/mirror_3c_uwd",
+		"west": "onepiececraft:blocks/mirror_4c",
+		"east": "onepiececraft:blocks/mirror_3c_ued"
+    }
+}

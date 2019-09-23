@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/bandage"
+        "layer0": "onepiececraft:items/medical/bandage"
     }
 }

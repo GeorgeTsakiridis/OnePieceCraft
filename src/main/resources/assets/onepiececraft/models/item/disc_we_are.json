@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/diskweare"
+        "layer0": "onepiececraft:items/disk_we_are"
     }
 }

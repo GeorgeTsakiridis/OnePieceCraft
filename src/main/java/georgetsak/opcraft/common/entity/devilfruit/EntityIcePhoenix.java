@@ -65,7 +65,7 @@ public class EntityIcePhoenix extends EntityFlying {
         {
             this.setDead();
         }
-        if(!OPCraft.config.disableGriefing.getCurrentValue()) {
+        if(!OPCraft.config.disableGriefing.getValue()) {
             for (int x = -4; x <= 4; x++) {
                 for (int y = 4; y >= -4; y--) {
                     for (int z = -4; z <= 4; z++) {

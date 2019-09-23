@@ -37,7 +37,7 @@ public class PowerUtils {
                     int num = r.nextInt(entities.size());
                     if (entities.get(num) instanceof EntityLiving) {
                         EntityLiving entity = (EntityLiving)entities.get(num);
-                        world.addWeatherEffect(new EntityLightningBolt(world, entity.posX, entity.posY, entity.posZ, OPCraft.config.disableGriefing.getCurrentValue()));
+                        world.addWeatherEffect(new EntityLightningBolt(world, entity.posX, entity.posY, entity.posZ, OPCraft.config.disableGriefing.getValue()));
                     }
                 }
                 continue;

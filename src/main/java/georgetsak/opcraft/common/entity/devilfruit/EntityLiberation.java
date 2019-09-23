@@ -10,7 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityFlying;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -69,7 +68,7 @@ public class EntityLiberation extends EntityFlying {
             if (owner == null) {
                 setDead();
             }
-            boolean grief = !OPCraft.config.disableGriefing.getCurrentValue();
+            boolean grief = !OPCraft.config.disableGriefing.getValue();
 
             if (!isDead) {
                 if (ticksExisted < 60 + 60*DevilFruitLevelsCap.get(owner).getPowerLevel(3) && grief) {

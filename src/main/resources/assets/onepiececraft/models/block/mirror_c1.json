@@ -1,0 +1,13 @@
+{
+    "__comment": "Model for when only one side is connected.",
+	"parent": "block/cube",
+    "textures": {
+		"particle": "onepiececraft:blocks/mirror_0c",
+        "down": "onepiececraft:blocks/mirror_0c",
+		"up": "onepiececraft:blocks/mirror_4c",
+		"north": "onepiececraft:blocks/mirror_1c_u",
+		"south": "onepiececraft:blocks/mirror_1c_u",
+		"west": "onepiececraft:blocks/mirror_1c_u",
+		"east": "onepiececraft:blocks/mirror_1c_u"
+    }
+}

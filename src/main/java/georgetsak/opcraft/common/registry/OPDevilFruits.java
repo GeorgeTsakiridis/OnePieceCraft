@@ -1,16 +1,16 @@
 package georgetsak.opcraft.common.registry;
 
-import georgetsak.opcraft.client.registry.OPRender;
-import georgetsak.opcraft.common.power.PowerHandler;
 import georgetsak.opcraft.common.item.devilfruits.DevilFruitAssetsManager;
 import georgetsak.opcraft.common.item.devilfruits.ItemDevilFruit;
 import georgetsak.opcraft.common.network.proxy.CommonProxy;
+import georgetsak.opcraft.common.power.PowerHandler;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 
 import java.util.ArrayList;
 
 public class OPDevilFruits {
+    public static ArrayList<Item> ITEMS_TO_RENDER;
 
     public static Item GOMU;//Rubber
     public static Item MERA;//Fire
@@ -25,6 +25,7 @@ public class OPDevilFruits {
     public static Item MOKU;//Smoke
     public static Item YAMI;//Dark
     public static Item ITO;//String
+    public static Item MIRA;//Mirror
 
     public static final int NO_POWER_ID = 0;
     public static final int GOMU_ID = 1;
@@ -40,8 +41,11 @@ public class OPDevilFruits {
     public static final int MOKU_ID = 11;
     public static final int YAMI_ID = 12;
     public static final int ITO_ID = 13;
+    public static final int MIRA_ID = 14;
 
     public static void registerDevilFruits(){
+        ITEMS_TO_RENDER = new ArrayList<>();
+
         GOMU = new ItemDevilFruit(GOMU_ID).setRegistryName("devil_fruit_gomu");
         MERA = new ItemDevilFruit(MERA_ID).setRegistryName("devil_fruit_mera");
         NORO = new ItemDevilFruit(NORO_ID).setRegistryName("devil_fruit_noro");
@@ -55,6 +59,7 @@ public class OPDevilFruits {
         MOKU = new ItemDevilFruit(MOKU_ID).setRegistryName("devil_fruit_moku");
         YAMI = new ItemDevilFruit(YAMI_ID).setRegistryName("devil_fruit_yami");
         ITO = new ItemDevilFruit(ITO_ID).setRegistryName("devil_fruit_ito");
+        MIRA = new ItemDevilFruit(MIRA_ID).setRegistryName("devil_fruit_mira");
 
         registerItem(GOMU);
         registerItem(MERA);
@@ -69,6 +74,7 @@ public class OPDevilFruits {
         registerItem(MOKU);
         registerItem(YAMI);
         registerItem(ITO);
+        registerItem(MIRA);
 
         DevilFruitAssetsManager.addDevilFruitAsset(NO_POWER_ID, null, null, "");//if a non existent fruit is requested this will be returned. This also stands for No power status.
         DevilFruitAssetsManager.addDevilFruitAsset(GOMU_ID, "gomu", "Gum-Gum Fruit", "Gomu Gomu no Mi");
@@ -84,6 +90,7 @@ public class OPDevilFruits {
         DevilFruitAssetsManager.addDevilFruitAsset(MOKU_ID, "moku", "Smoke-Smoke Fruit", "Moku Moku no Mi");
         DevilFruitAssetsManager.addDevilFruitAsset(YAMI_ID, "yami", "Dark-Dark Fruit", "Yami Yami no Mi");
         DevilFruitAssetsManager.addDevilFruitAsset(ITO_ID,"ito", "String-String Fruit", "Ito Ito no Mi");
+        DevilFruitAssetsManager.addDevilFruitAsset(MIRA_ID,"mira", "Mirror-Mirror Fruit", "Miro Miro no Mi");
     }
 
     public static void registerPowers(){
@@ -124,12 +131,16 @@ public class OPDevilFruits {
         PowerHandler.addPower(new int[]{2400, 2200, 2000, 1800, 1600}, new int[]{10, 20, 30, 45}, "Overheat", "Overheat", ITO_ID, 2, "overheat");
         PowerHandler.addPower(new int[]{480, 440, 400, 360, 320}, new int[]{50, 105, 165, 230}, "Goshikito", "Goshikito", ITO_ID, 3, "goshikito");
         PowerHandler.addPower(new int[]{2200, 2000, 1800, 1600, 1400}, new int[]{10, 15, 25, 40}, false, "SoraNoMichi", "Sora no Michi", ITO_ID, 4, "sora_no_michi");
+        PowerHandler.addPower(new int[]{400, 380, 360, 340, 320}, new int[]{20, 45, 70, 100}, "MirroPortal", "Mirro-Portal", MIRA_ID, 1, "mirro_portal");
+        PowerHandler.addPower(new int[]{500, 460, 420, 380, 340}, new int[]{50, 100, 160, 220}, "MirroReflection", "Reflection", MIRA_ID, 2, "reflection");
+        PowerHandler.addPower(new int[]{600, 560, 520, 480, 440}, new int[]{30, 65, 100, 140}, "MirroTrap", "Mirro-Trap", MIRA_ID, 3, "mirro_trap");
+        PowerHandler.addPower(new int[]{3200, 3000, 2800, 2600, 2400}, new int[]{5, 10, 15, 20}, false, "MirroWorld", "Mirro-World", MIRA_ID, 4, "mirro_world");
     }
 
 
     static void registerItem(Item item){
         ForgeRegistries.ITEMS.register(item.setUnlocalizedName(item.getRegistryName().toString()).setCreativeTab(CommonProxy.OPTab));
-        OPRender.ITEMS_TO_RENDER.add(item);
+        ITEMS_TO_RENDER.add(item);
     }
 
 }

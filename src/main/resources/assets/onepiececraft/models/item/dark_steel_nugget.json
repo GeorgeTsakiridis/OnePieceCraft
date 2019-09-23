@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/darksteelnugget"
+        "layer0": "onepiececraft:items/metals/dark_steel_nugget"
     }
 }

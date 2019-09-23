@@ -52,11 +52,11 @@ public class OPIWorldGenerator implements IWorldGenerator
 			}
 		}
 
-		if (biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT && OPCraft.config.enableMorganFortress.getCurrentValue()) {
+		if (biome == Biomes.PLAINS && world.getWorldType() != WorldType.FLAT && OPCraft.config.enableMorganFortress.getValue()) {
 			int randX = blockX + rand.nextInt(16);
 			int randZ = blockZ + rand.nextInt(16);
 
-			if (rand.nextInt(OPCraft.config.morganFortressSpawnChance.getCurrentValue()) == 0) {
+			if (rand.nextInt(OPCraft.config.morganFortressSpawnChance.getValue()) == 0) {
 
 				Template morgan_fortress_stage1 = getTemplate("morgan_fortress_stage1", world);
 				Template morgan_fortress_stage2 = getTemplate("morgan_fortress_stage2", world);
@@ -75,7 +75,7 @@ public class OPIWorldGenerator implements IWorldGenerator
 			}
 		}
 
-		if (OPCraft.config.enableSkypiea.getCurrentValue() && rand.nextInt(OPCraft.config.skypieaSpawnChance.getCurrentValue()) == 0 && !(biome instanceof BiomeHills)) {
+		if (OPCraft.config.enableSkypiea.getValue() && rand.nextInt(OPCraft.config.skypieaSpawnChance.getValue()) == 0 && !(biome instanceof BiomeHills)) {
 			Template skypieaStage1 = getTemplate("skypiea_stage_1", world);
 			Template skypieaStage2 = getTemplate("skypiea_stage_2", world);
 			Rotation rotation = getRandomRotation(rand);

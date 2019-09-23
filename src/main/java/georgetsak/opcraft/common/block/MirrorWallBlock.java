@@ -20,7 +20,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import javax.annotation.Nullable;
 import java.awt.*;
 
-public class MirrorWallBlock extends BlockEmptyDrops implements IBlockColor {
+public class MirrorWallBlock extends BlockEmptyDrops {
 
     public MirrorWallBlock() {
         super(Material.ROCK);
@@ -43,34 +43,4 @@ public class MirrorWallBlock extends BlockEmptyDrops implements IBlockColor {
         return BlockRenderLayer.TRANSLUCENT;
     }
 
-    @Override
-    public int colorMultiplier(IBlockState state, @Nullable IBlockAccess worldIn, @Nullable BlockPos pos, int tintIndex) {
-        //x: +-100
-        //z: +-100
-        if(pos == null)return Color.MAGENTA.getRGB();
-
-        int[] colors = new int[200];
-        float start = 0.66f;
-        float end = 1f;
-        for(int i = 0; i < 200; i++){
-            colors[i] = Color.HSBtoRGB(end - (i/200f)*(end-start), 0.9f,0.7f);
-        }
-
-        int index = pos.getX()*2 + 200;
-
-        if(index > 200)index = 400 - index;
-
-        int colorA = colors[MathHelper.clamp(index, 0, 199)];
-        int colorB = new Color(colorA).darker().getRGB();
-
-        boolean flag1 = pos.getX() % 2 == 0;
-        boolean flag2 = pos.getY() % 2 == 0;
-        boolean flag3 = pos.getZ() % 2 == 0;
-
-        if(flag1 && flag3)return flag2 ? colorA : colorB;
-        if(flag1)return flag2 ? colorB : colorA;
-        if(flag3)return flag2 ? colorB : colorA;
-        else return flag2 ? colorA : colorB;
-
-    }
 }

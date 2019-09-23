@@ -22,11 +22,11 @@ public class PacketConfig extends AbstractMessage<PacketConfig> {
 
         for(ConfigEntry configEntry : OPCraft.config.getConfigEntries()){
             if(configEntry instanceof ConfigEntryBoolean){
-                ((ConfigEntryBoolean) configEntry).setCurrentValue(buffer.readBoolean());
+                ((ConfigEntryBoolean) configEntry).setValue(buffer.readBoolean());
             }
 
             else if(configEntry instanceof ConfigEntryInt){
-                ((ConfigEntryInt) configEntry).setCurrentValue(buffer.readInt());
+                ((ConfigEntryInt) configEntry).setValue(buffer.readInt());
             }
 
         }
@@ -37,11 +37,11 @@ public class PacketConfig extends AbstractMessage<PacketConfig> {
     protected void write(PacketBuffer buffer) throws IOException {
         for(ConfigEntry configEntry : OPCraft.config.getConfigEntries()){
             if(configEntry instanceof ConfigEntryBoolean){
-                buffer.writeBoolean(((ConfigEntryBoolean) configEntry).getCurrentValue());
+                buffer.writeBoolean(((ConfigEntryBoolean) configEntry).getValue());
             }
 
             else if(configEntry instanceof ConfigEntryInt){
-                buffer.writeInt(((ConfigEntryInt) configEntry).getCurrentValue());
+                buffer.writeInt(((ConfigEntryInt) configEntry).getValue());
             }
 
         }

@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "onepiececraft:items/extol_coin"
+        "layer0": "onepiececraft:items/currency/extol_coin"
     }
 }

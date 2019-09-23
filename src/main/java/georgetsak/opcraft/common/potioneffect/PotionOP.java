@@ -9,8 +9,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import java.awt.*;
-
 
 public class PotionOP extends Potion {
 	private final ResourceLocation iconTexture;
@@ -23,11 +21,6 @@ public class PotionOP extends Potion {
 		this.id = id;
 		setPotionName(this, name);
 		iconTexture = insideDome;
-	}
-
-
-	public PotionOP(boolean isBadEffect, int liquidR, int liquidG, int liquidB, String name, int id) {
-		this(isBadEffect, new Color(liquidR, liquidG, liquidB).getRGB(), name, id);
 	}
 
 	public static void setPotionName(Potion potion, String potionName) {

@@ -39,7 +39,6 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.color.IBlockColor;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
@@ -53,7 +52,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.client.event.ColorHandlerEvent;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderLivingEvent;
@@ -131,7 +129,7 @@ public class OPClientEventHooks {
                 id = df.getPower();
                 PowerSelector.setFruitID(id);
 
-                if (!OPCraft.config.allowDevilFruitUsersToSwim.getCurrentValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
+                if (!OPCraft.config.allowDevilFruitUsersToSwim.getValue() && mcPlayer.isInWater() && !mcPlayer.isCreative()) {
                     setAllPowersCooldown(adjustTicks(20));
                     if (OPUtils.isPlayerInOrOverDeepWater(mcPlayer)) {
                         mcPlayer.setVelocity(0, -0.1, 0);//TODO this movement normally should be done on the Server Side. Another alternative would be to disable Player's keys.
@@ -139,7 +137,7 @@ public class OPClientEventHooks {
                 }
 
                 //Kairoseki blocks/items check section.
-                if(!mcPlayer.isCreative() && OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getCurrentValue()) {
+                if(!mcPlayer.isCreative() && OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getValue()) {
                     Block standingBlock = Minecraft.getMinecraft().world.getBlockState(new BlockPos(mcPlayer.posX, mcPlayer.posY-1, mcPlayer.posZ)).getBlock();
 
                     if (standingBlock == OPBlocks.KAIROSEKI_BLOCK || standingBlock == OPBlocks.KAIROSEKI_STONE || standingBlock == OPBlocks.KAIROSEKI_BARS) {
@@ -620,7 +618,6 @@ public class OPClientEventHooks {
         GlStateManager.scale(-0.025F, -0.025F, 0.025F);
         GlStateManager.disableLighting();
         GlStateManager.depthMask(false);
-
         GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         int i = Minecraft.getMinecraft().fontRenderer.getStringWidth(name) / 2;

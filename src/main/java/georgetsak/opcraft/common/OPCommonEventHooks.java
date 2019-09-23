@@ -411,20 +411,20 @@ public class OPCommonEventHooks {
         int prob = 2;
         if (flag) {
             final LootPool main = event.getTable().getPool("main");
-            if (main != null && OPCraft.config.enableDevilFruitsSpawning.getCurrentValue()) {
-                if(OPCraft.config.enableDevilFruitGomuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.GOMU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPluffyLoot"));
-                if(OPCraft.config.enableDevilFruitMeraSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.MERA, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPaceLoot"));
-                if(OPCraft.config.enableDevilFruitNoroSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.NORO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPslowLoot"));
-                if(OPCraft.config.enableDevilFruitSukeSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.SUKE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPclearLoot"));
-                if(OPCraft.config.enableDevilFruitUshiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.GIRAFFE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPgiraffeLoot"));
-                if(OPCraft.config.enableDevilFruitOpeSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.OPE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPlawLoot"));
-                if(OPCraft.config.enableDevilFruitHieSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.HIE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPiceLoot"));
-                if(OPCraft.config.enableDevilFruitNikyuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.NIKYU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPpawLoot"));
-                if(OPCraft.config.enableDevilFruitYomiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.YOMI, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPreviveLoot"));
-                if(OPCraft.config.enableDevilFruitGoroSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.GORO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPthunderLoot"));
-                if(OPCraft.config.enableDevilFruitMokuSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.MOKU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPsmokeLoot"));
-                if(OPCraft.config.enableDevilFruitYamiSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.YAMI, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPstringLoot"));
-                if(OPCraft.config.enableDevilFruitItoSpawning.getCurrentValue())main.addEntry(new LootEntryItem(OPDevilFruits.ITO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPitoLoot"));
+            if (main != null && OPCraft.config.enableDevilFruitsSpawning.getValue()) {
+                if(OPCraft.config.enableDevilFruitGomuSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.GOMU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPluffyLoot"));
+                if(OPCraft.config.enableDevilFruitMeraSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.MERA, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPaceLoot"));
+                if(OPCraft.config.enableDevilFruitNoroSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.NORO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPslowLoot"));
+                if(OPCraft.config.enableDevilFruitSukeSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.SUKE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPclearLoot"));
+                if(OPCraft.config.enableDevilFruitUshiSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.GIRAFFE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPgiraffeLoot"));
+                if(OPCraft.config.enableDevilFruitOpeSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.OPE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPlawLoot"));
+                if(OPCraft.config.enableDevilFruitHieSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.HIE, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPiceLoot"));
+                if(OPCraft.config.enableDevilFruitNikyuSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.NIKYU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPpawLoot"));
+                if(OPCraft.config.enableDevilFruitYomiSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.YOMI, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPreviveLoot"));
+                if(OPCraft.config.enableDevilFruitGoroSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.GORO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPthunderLoot"));
+                if(OPCraft.config.enableDevilFruitMokuSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.MOKU, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPsmokeLoot"));
+                if(OPCraft.config.enableDevilFruitYamiSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.YAMI, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPstringLoot"));
+                if(OPCraft.config.enableDevilFruitItoSpawning.getValue())main.addEntry(new LootEntryItem(OPDevilFruits.ITO, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPitoLoot"));
                 main.addEntry(new LootEntryItem(OPItems.DEVIL_FRUIT_POWER_REMOVER, prob, 1, new LootFunction[0], new LootCondition[0], OPCraft.MODID + ":OPdevilFruitRemoverLoot"));
             }
         }

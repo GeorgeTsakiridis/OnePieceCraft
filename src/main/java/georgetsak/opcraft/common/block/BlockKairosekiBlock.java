@@ -28,7 +28,7 @@ public class BlockKairosekiBlock extends Block {
 
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
         if (entityIn instanceof EntityPlayer) {
-            if(!OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getCurrentValue() || ((EntityPlayer) entityIn).isCreative())return;
+            if(!OPCraft.config.doesSeaStoneAffectDevilFruitUsers.getValue() || ((EntityPlayer) entityIn).isCreative())return;
             IDevilFruitCap df = entityIn.getCapability(DevilFruitCapProvider.DF_CAP, null);
             if(df.hasPower()) {
                 ((EntityPlayer) entityIn).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20, 3));

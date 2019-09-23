@@ -1,21 +1,22 @@
 package georgetsak.opcraft.common.registry;
 
-import georgetsak.opcraft.client.registry.OPRender;
+import georgetsak.opcraft.client.OPSoundEvent;
 import georgetsak.opcraft.common.item.*;
 import georgetsak.opcraft.common.item.devilfruits.ItemPowerRemover;
-import georgetsak.opcraft.common.item.ItemOPBook;
-import georgetsak.opcraft.common.item.ItemOPRecord;
-import georgetsak.opcraft.common.item.weapons.*;
-import georgetsak.opcraft.client.OPSoundEvent;
+import georgetsak.opcraft.common.item.weapons.ItemClima;
+import georgetsak.opcraft.common.item.weapons.ItemCrocodileHook;
+import georgetsak.opcraft.common.item.weapons.ItemGun;
 import georgetsak.opcraft.common.item.weapons.ItemUsoppKabuto;
 import georgetsak.opcraft.common.item.weapons.ammo.ItemGunAmmo;
-import georgetsak.opcraft.common.item.weapons.swords.*;
+import georgetsak.opcraft.common.item.weapons.swords.ItemSimpleSword;
+import georgetsak.opcraft.common.item.weapons.swords.ItemSmokerJitte;
+import georgetsak.opcraft.common.item.weapons.swords.ItemSwordWithCase;
+import georgetsak.opcraft.common.item.weapons.swords.SwordPairsManager;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.oredict.OreDictionary;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,8 @@ import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
  * Created by GeorgeTsak on 8/7/2017.
  */
 public class OPItems {
+
+    public static ArrayList<Item> ITEMS_TO_RENDER;
 
     public static Item KAIROSEKI_GEM;
     public static Item STEEL_INGOT;
@@ -92,7 +95,7 @@ public class OPItems {
     public static Item EMPTY_DIAL;
 
     public static void registerItems(){
-
+        ITEMS_TO_RENDER = new ArrayList<>();
         STEEL_INGOT = new ItemSteelIngot().setRegistryName("steel_ingot").setCreativeTab(OPTab);
         KAIROSEKI_GEM = new ItemKairosekiGem().setRegistryName("kairoseki_gem").setCreativeTab(OPTab);
         DARK_STEEL_INGOT = new ItemSteelIngot().setRegistryName("dark_steel_ingot").setCreativeTab(OPTab);
@@ -234,7 +237,6 @@ public class OPItems {
         registerItem(EXTOL_COIN);
         registerItem(EMPTY_DIAL);
 
-
     }
 
     static void registerItem(Item item){
@@ -244,7 +246,7 @@ public class OPItems {
     static void registerItem(Item item, boolean normalItem){
         ForgeRegistries.ITEMS.register(item.setUnlocalizedName(item.getRegistryName().toString()));
         if(normalItem){
-            OPRender.ITEMS_TO_RENDER.add(item);
+            ITEMS_TO_RENDER.add(item);
         }
     }
 

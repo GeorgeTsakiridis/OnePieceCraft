@@ -26,6 +26,8 @@ import static georgetsak.opcraft.common.network.proxy.CommonProxy.OPTab;
  */
 public class OPBlocks {
 
+    public static ArrayList<Block> BLOCKS_TO_RENDER;
+
     public static Block CHERRY_TREE_SAPLING;
     public static Block CHERRY_TREE_WOOD;
     public static Block CHERRY_TREE_PLANKS;
@@ -57,6 +59,7 @@ public class OPBlocks {
     public static Block MIRROR;
 
     public static void registerBlocks(){
+        BLOCKS_TO_RENDER = new ArrayList<>();
         GameRegistry.registerTileEntity(LawDomeTileEntity.class, "law_dome");
         GameRegistry.registerTileEntity(SnailTileEntity.class, "snail");
         GameRegistry.registerTileEntity(SmokeCloudTileEntity.class, "smoke_cloud");
@@ -117,7 +120,7 @@ public class OPBlocks {
         registerBlock(THIN_CLOUD);
         registerBlock(DENSE_CLOUD);
         registerBlock(MIRROR_WALL_BLOCK);
-        registerBlock(MIRROR);
+        registerBlock(MIRROR, false);
 
         OreDictionary.registerOre("plankWood", OPBlocks.CHERRY_TREE_PLANKS);
         OreDictionary.registerOre("plankWood", OPBlocks.ADAM_TREE_PLANKS);
@@ -140,7 +143,7 @@ public class OPBlocks {
         ForgeRegistries.BLOCKS.register(block.setUnlocalizedName(block.getRegistryName().toString()));
         ForgeRegistries.ITEMS.register(new ItemBlock(block).setRegistryName(block.getRegistryName().toString()));
         if(normalRender){
-            OPRender.BLOCKS_TO_RENDER.add(block);
+            BLOCKS_TO_RENDER.add(block);
         }
     }
 

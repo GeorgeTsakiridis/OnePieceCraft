@@ -188,13 +188,13 @@ public class OPUtils {
      * Used to check if Griefing is allowed from the Config to adjust the explosion.
      */
     public static void newExplosion(Entity entity, World world, double posX, double posY, double posZ, float strength, boolean isFlaming, boolean isSmoking){
-        boolean flag = OPCraft.config.disableGriefing.getCurrentValue();
+        boolean flag = OPCraft.config.disableGriefing.getValue();
 
         world.newExplosion(entity, posX, posY, posZ, strength, !flag && isFlaming, !flag && isSmoking);
     }
 
     public static void createExplosion(Entity entity, World world, double posX, double posY, double posZ, float strength, boolean isSmoking){
-        boolean flag = OPCraft.config.disableGriefing.getCurrentValue();
+        boolean flag = OPCraft.config.disableGriefing.getValue();
 
         world.createExplosion(entity, posX, posY, posZ, strength, !flag && isSmoking);
     }

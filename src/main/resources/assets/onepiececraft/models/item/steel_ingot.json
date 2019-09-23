@@ -1,6 +1,6 @@
 {
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "onepiececraft:items/steelingot"
+		"layer0": "onepiececraft:items/metals/steel_ingot"
 	}
 }

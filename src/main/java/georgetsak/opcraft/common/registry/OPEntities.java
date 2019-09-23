@@ -6,20 +6,13 @@ import georgetsak.opcraft.common.entity.boat.EntitySailBoat;
 import georgetsak.opcraft.common.entity.devilfruit.*;
 import georgetsak.opcraft.common.entity.marine.*;
 import georgetsak.opcraft.common.entity.other.*;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
-import net.minecraft.world.chunk.Chunk;
-import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * Created by GeorgeTsak on 8/7/2017.

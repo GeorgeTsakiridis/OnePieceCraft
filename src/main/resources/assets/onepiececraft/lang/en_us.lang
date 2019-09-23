@@ -23,6 +23,7 @@ tile.onepiececraft:cloud_thin.name=Thin Cloud
 tile.onepiececraft:cloud_dense.name=Dense Cloud
 tile.onepiececraft:cloud_water.name=Liquid Cloud
 tile.onepiececraft:mirror_block.name=Mirror Dimension Block
+tile.onepiececraft:mirror.name=Mirror
 
 item.onepiececraft:kairoseki_gem.name=Kairoseki Gem
 item.onepiececraft:steel_ingot.name=Steel Ingot

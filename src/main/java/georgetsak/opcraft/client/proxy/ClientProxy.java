@@ -13,6 +13,7 @@ import georgetsak.opcraft.common.network.proxy.CommonProxy;
 import georgetsak.opcraft.common.registry.OPBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.color.IBlockColor;
+import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IThreadListener;
 import net.minecraftforge.client.ClientCommandHandler;
@@ -48,6 +49,7 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
+
 		OPRender.registerBlockRenderers();
 		OPRender.registerItemRenderers();
 		OPKeys.registerKeyBindings();

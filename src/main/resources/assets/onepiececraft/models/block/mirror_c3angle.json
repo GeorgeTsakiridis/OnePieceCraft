@@ -1,0 +1,13 @@
+{
+    "__comment": "Model for when three adjacent sides are connected.",
+	"parent": "block/cube",
+    "textures": {
+		"particle": "onepiececraft:blocks/mirror_0c",
+        "down": "onepiececraft:blocks/mirror_2c_ue",
+		"up": "onepiececraft:blocks/mirror_4c",
+		"north": "onepiececraft:blocks/mirror_2c_uw",
+		"south": "onepiececraft:blocks/mirror_4c",
+		"west": "onepiececraft:blocks/mirror_2c_ue",
+		"east": "onepiececraft:blocks/mirror_4c"
+    }
+}

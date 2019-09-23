@@ -1,0 +1,30 @@
+{
+  "type": "devil_fruit",
+  "title" : "Mira Mira no Mi",
+  "prefix" : "Mira Mira no Mi",
+  "powers": [
+    4,
+    {
+      "name" : "Mirro-Portal",
+      "cooldown" : "20s / 19s / 18s / 17s / 16s",
+      "description" : "Creates the dome that is necessary to use any other power."
+    },
+    {
+      "name" : "Reflection",
+      "cooldown" : "25s / 23s / 21s / 19s / 17s",
+      "description" : "Moves all entities inside the dome (room) in random locations inside the dome."
+    }
+  ,
+    {
+      "name" : "Mirro-Trap",
+      "cooldown" : "30s / 28s / 26s / 24s / 22s",
+      "description" : "Quicly moves player towards another player. Upon impact causes great damage."
+    }
+  ,
+    {
+      "name" : "Mirro-World",
+      "cooldown" : "160s / 150s / 140s / 130s / 120s",
+      "description" : "Makes blocks float and throws them in random directions."
+    }
+  ]
+}

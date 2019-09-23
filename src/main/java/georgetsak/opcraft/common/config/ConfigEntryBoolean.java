@@ -17,11 +17,11 @@ public class ConfigEntryBoolean extends ConfigEntry{
         originalValue = currentValue = configuration.getBoolean(name, category, defaultValue, comment);
     }
 
-    public void setCurrentValue(boolean currentValue) {
+    public void setValue(boolean currentValue) {
         this.currentValue = currentValue;
     }
 
-    public boolean getCurrentValue(){
+    public boolean getValue(){
         return currentValue;
     }
 
